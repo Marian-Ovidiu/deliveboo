@@ -19,8 +19,7 @@ class Product extends Model
         'img',
     ];
 
-    public function businesses()
-    {
+    public function businesses() {
       return $this->belongsTo(Business::class);
     }
 

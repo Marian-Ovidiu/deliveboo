@@ -18,8 +18,7 @@ class Business extends Model
         'logo',
     ];
 
-    public function user()
-    {
+    public function user() {
       return $this->belongsTo(User::class);
     }
 

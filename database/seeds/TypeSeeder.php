@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\Type;
+use App\Business;
 
 class TypeSeeder extends Seeder
 {
@@ -42,13 +43,12 @@ class TypeSeeder extends Seeder
             'https://just-eat-prod-eu-res.cloudinary.com/image/upload/c_fill,d_cms:wallpaper:fallback_4.jpg,h_151,w_387/c_fill,g_auto,f_auto,q_auto,dpr_2.0/v1/it/cuisine-icons/Dolci'
         ];
 
+
         for($i = 0; $i < count($types); $i++){
-            $newType = New Type();
-            $newType->name = $types[$i];
-            $newType->img = $imgs[$i];
-            $newType->save();
+            $type = New Type();
+            $type->name = $types[$i];
+            $type->img = $imgs[$i];
+            $type->save();
         }
-
-
     }
 }
