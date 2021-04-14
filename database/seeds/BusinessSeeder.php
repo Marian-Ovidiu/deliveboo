@@ -19,7 +19,9 @@ class BusinessSeeder extends Seeder
             $business = new Business();
             $business->name = $faker->name();
             $business->description = $faker->text(1024);
-            $business->type = $faker->text(255);
+            for ($i = 0; $i < rand(1, 5); $i ++) {
+                $business->type = random(1, 12);
+            }
             $business->address = $faker->address();
             $business->logo = 'https://picsum.photos/seed/' . rand(1,1000) . '/200/300' ;
             $user->business()->save($business);
