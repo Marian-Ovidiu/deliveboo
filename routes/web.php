@@ -13,8 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::resource('/product', 'Admin\ProductsController');
-
+Route::resource('products', 'Admin\ProductsController');
+Route::resource('business', 'Admin\BusinessController');
 
 Auth::routes();
 
+Route::get('', 'HomeController@index')->name('home');

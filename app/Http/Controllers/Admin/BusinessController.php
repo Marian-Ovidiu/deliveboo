@@ -4,9 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Product;
+use App\User;
+use App\Business;
 
-class ProductsController extends Controller
+class BusinessController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +16,7 @@ class ProductsController extends Controller
      */
     public function index()
     {
-        $products = Product::all();
-
-        return view('auth.register');
+        return view('home');
     }
 
     /**
@@ -25,10 +24,10 @@ class ProductsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        return view('products.create');
-    }
+     public function create()
+     {
+       return view('business.create');
+     }
 
     /**
      * Store a newly created resource in storage.
@@ -38,17 +37,14 @@ class ProductsController extends Controller
      */
     public function store(Request $request)
     {
-        $this->isValid($request);
 
         $data = $request->all();
 
-        $product = new Product();
-        $product->fill($data);
-        $product->save();
+        $business = new Business();
+        $business->fill($data);
+        $business->save();
 
-        $storedProduct = Product::OrderBy('id', 'desc')->first();
-
-        return redirect()->route('products.index');
+        return redirect()->route('home');
     }
 
     /**

@@ -4,7 +4,7 @@
 
 @section('content')
 
-<form action="{{ route('product.store') }}" method="post">
+<form action="{{ route('products.store') }}" method="post">
     @csrf
     @method('POST')
     <div class="form-group">
@@ -51,7 +51,7 @@
             <input type="checkbox" class="form-check-input" name="visible" id="visible" value="1">
         </div>
 
-        <input type="hidden" name="business_id" id="business_id" value="1" >
+        <input type="hidden" name="business_id" id="business_id" value="1">
 
         <button type="submit" class="btn btn-primary">Crea</button>
 </form>
