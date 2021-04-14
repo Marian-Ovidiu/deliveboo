@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\Type;
+use App\Business;
 
 class TypeSeeder extends Seeder
 {
@@ -42,6 +43,7 @@ class TypeSeeder extends Seeder
             'https://just-eat-prod-eu-res.cloudinary.com/image/upload/c_fill,d_cms:wallpaper:fallback_4.jpg,h_151,w_387/c_fill,g_auto,f_auto,q_auto,dpr_2.0/v1/it/cuisine-icons/Dolci'
         ];
 
+
         for($i = 0; $i < count($types); $i++){
 
             $newType = New Type();
@@ -51,6 +53,18 @@ class TypeSeeder extends Seeder
             $newType->save();
 
         }
+
+        $businesses = Business::all();
+        $allTypes = Type::all();
+
+        foreach($businesses as $business){
+            for($i = 0; $i < rand(1, 3); $i++){
+                $business->types()->save($allTypes[rand(1, 12)]);
+            }
+        }
+
+
+
 
 
     }
