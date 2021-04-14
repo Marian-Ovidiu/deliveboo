@@ -2,7 +2,12 @@
 
 namespace App;
 
+/* newly registered users will automatically be sent an email containing an email verification link
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+class User extends Authenticatable implements MustVerifyEmail
+*/
+
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Business;
