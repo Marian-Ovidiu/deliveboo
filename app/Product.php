@@ -8,6 +8,15 @@ use App\Order;
 
 class Product extends Model
 {
+    protected $fillable = [
+        'name',
+        'ingredients',
+        'description',
+        'price',
+        'visible',
+        'img',
+    ];
+
     public function businesses()
     {
       return $this->belongsTo(Business::class);
