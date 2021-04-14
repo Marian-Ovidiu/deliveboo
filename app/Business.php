@@ -9,6 +9,15 @@ use App\Product;
 
 class Business extends Model
 {
+
+    protected $fillable = [
+        'user_id',
+        'name',
+        'description',
+        'address',
+        'logo',
+    ];
+
     public function user()
     {
       return $this->belongsTo(User::class);

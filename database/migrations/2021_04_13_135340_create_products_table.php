@@ -16,6 +16,7 @@ class CreateProductsTable extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('business_id');
+            $table->foreign('business_id')->references('id')->on('businesses');
             $table->string('name', 255);
             $table->text('ingredients', 512);
             $table->text('description', 1024);
@@ -23,10 +24,6 @@ class CreateProductsTable extends Migration
             $table->boolean('visible', true);
             $table->text('img', 2048);
             $table->timestamps();
-
-            $table->foreign('business_id')
-            ->references('id')
-            ->on('businesses');
         });
     }
 

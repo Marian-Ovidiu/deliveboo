@@ -17,10 +17,9 @@ class CreateBusinessTypeTable extends Migration
             $table->id();
             $table->unsignedBigInteger('business_id');
             $table->unsignedBigInteger('type_id');
-            $table->timestamps();
-
             $table->foreign('business_id')->references('id')->on('businesses');
             $table->foreign('type_id')->references('id')->on('types');
+            $table->timestamps();
         });
     }
 

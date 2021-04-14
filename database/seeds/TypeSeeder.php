@@ -43,13 +43,10 @@ class TypeSeeder extends Seeder
         ];
 
         for($i = 0; $i < count($types); $i++){
-
             $newType = New Type();
             $newType->name = $types[$i];
             $newType->img = $imgs[$i];
-
             $newType->save();
-
         }
 
 

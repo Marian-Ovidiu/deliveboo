@@ -15,7 +15,6 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->text('products');
             $table->string('customer_name', 64);
             $table->string('customer_last_name', 64);
             $table->string('customer_email');
@@ -25,7 +24,6 @@ class CreateOrdersTable extends Migration
             $table->float('amount', 6, 2);
             $table->boolean('success');
             $table->timestamps();
-
         });
     }
 

@@ -16,17 +16,13 @@ class CreateBusinessesTable extends Migration
         Schema::create('businesses', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->string('name', 255);
             $table->text('description', 1024);
             $table->string('type', 255);
             $table->string('address', 255);
             $table->text('logo', 2048);
-
             $table->timestamps();
-
-            $table->foreign('user_id')
-            ->references('id')
-            ->on('users');
         });
     }
 
