@@ -28,7 +28,6 @@
                 <td>{{$product->description}}</td>
                 <td>{{$product->price}}</td>
                 <td>{{$product->visible}}</td>
-                <td>{{$product->img}}</td>
                 <td><img src="{{asset($product->img)}}" width="150px" height="150px"></td>
 
             </tr>

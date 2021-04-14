@@ -17,7 +17,7 @@ class ProductsController extends Controller
     {
         $products = Product::all();
 
-        return view('auth.register');
+        return view('products.index', compact('products'));
     }
 
     /**

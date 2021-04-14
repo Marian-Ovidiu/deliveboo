@@ -44,7 +44,7 @@ class BusinessController extends Controller
         $business->fill($data);
         $business->save();
 
-        return redirect()->route('home');
+        return redirect()->route('business.create');
     }
 
     /**
