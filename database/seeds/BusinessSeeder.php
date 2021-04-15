@@ -17,7 +17,7 @@ class BusinessSeeder extends Seeder
     $users = User::all();
     foreach ($users as $user) {
       $business = new Business();
-      $business->name = $faker->unique()->randomElement([
+      $business->name = $faker->randomElement([
         'McDonalds',
         'Rosso Pomodoro',
         'Pizzeria Da Mario',
@@ -38,7 +38,7 @@ class BusinessSeeder extends Seeder
       $business->closing_day = rand(0, 7);
       $business->opening_time = $faker->time;
       $business->closing_time = $faker->time;
-      $business->logo = $faker->unique()->randomElement([
+      $business->logo = $faker->randomElement([
         'https://www.logodesign.net/logo-new/food-truck-merged-with-slices-of-pizza-8781ld.png?size=1&industry=restaurant-food&bg=0',
         'https://www.logodesign.net/logo-new/stacked-sushi-rolls-on-a-plate-8831ld.png?size=1&industry=restaurant-food&bg=0',
         'https://www.logodesign.net/logo-new/cube-shaped-food-truck-with-pizza-pyramid-8777ld.png?size=1&industry=restaurant-food&bg=0',
