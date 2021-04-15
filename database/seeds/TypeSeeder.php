@@ -57,7 +57,7 @@ class TypeSeeder extends Seeder
         foreach($businesses as $business){
           $indexes = [];
             for($i = 0; $i < rand(1, 3); $i++){
-              $business->types()->save($types[$this->uniqueId(1, 12, $indexes)]);
+              $business->types()->save($types[$this->uniqueId(0, 11, $indexes)]);
             }
         }
     }
