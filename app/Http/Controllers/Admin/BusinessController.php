@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Type;
 use App\Business;
+use Illuminate\Support\Facades\Auth;
 
 class BusinessController extends Controller
 {
@@ -17,7 +18,8 @@ class BusinessController extends Controller
      */
     public function index()
     {
-        return redirect()->route('public-index');
+        $businesses = Business::where('user_id', Auth::id())->get();
+        return view('businesses.index', compact('businesses'));
     }
 
     /**
@@ -40,56 +42,35 @@ class BusinessController extends Controller
     public function store(Request $request)
     {
 
-        /* $data = $request->all();
-
-        $business = new Business();
-        $business->fill($data);
-        $business->save();
-
-        return redirect()->route('products.create'); */
+        // $data = $request->all();
 
         $data = $request->all();
         // dd($data);
 
-        $post = new Post();
-        $post->fill($data);
-        $post->save();
-        $post->tag()->attach($data['tags']);
-        // dd($data['tags']);
+        $business = new Business();
+        $business->fill($data);
+        $business->save();
+        $business->types()->attach($data['type']);
+        // dd($data['type']);
 
-        // $tagsUsedId = [];
-        // foreach ($data['tags'] as $usedTagId) {
-        //     $tagsUsedId[] = $usedTagId;
-        // }
-        // // dd($tagsUsedId);
-
-        // $tagsUsedTitle = [];
-        // $tags = Tag::all();
-        // foreach ($tags as $tag) {
-        //     if (in_array($tag->id, $data['tags'])) {
-        //         $tagsUsedTitle[] = $tag->title;
-        //     }
-        // }
-        // // dd($tagsUsedTitle);
-
-        $tagsUsedTitle = [];
-        $tags = Tag::all();
-        foreach ($tags as $tag) {
-            if (in_array($tag->id, $data['tags'])) {
-                $tagsUsedTitle[] = $tag; // salvo l'oggetto invece che l'array
+        $typeUsedName = [];
+        $types = Type::all();
+        foreach ($types as $type) {
+            if (in_array($type->id, $data['type'])) {
+                $typeUsedName[] = $type->name; // salvo l'oggetto invece che l'array
             }
         }
-        // dd($tagsUsedTitle);
+        // dd($typeUsedName);
 
-        $tagsMail = new TagsUsed($tagsUsedTitle);
-        Mail::to('lollable@example.mail')->send($tagsMail);
-        // dd($tagsMail);
+        // $tagsMail = new TagsUsed($tagsUsedTitle);
+        // Mail::to('lollable@example.mail')->send($tagsMail);
+        // // dd($tagsMail);
 
-        // Mail::to('lollable@example.mail')->send(new PostCreated($post)); // dipendenza passata
-        $mailableObj = new PostCreated($post);
-        Mail::to('lollable@example.mail')->send($mailableObj);
+        // // Mail::to('lollable@example.mail')->send(new PostCreated($post)); // dipendenza passata
+        // $mailableObj = new PostCreated($post);
+        // Mail::to('lollable@example.mail')->send($mailableObj);
 
-        return redirect()->route('posts.index');
+        return redirect()->route('businesses.index');
     }
 
     /**
@@ -100,7 +81,8 @@ class BusinessController extends Controller
      */
     public function show($id)
     {
-        //
+        $business = Business::find($id);
+        return view('businesses.show', compact('business'));
     }
 
     /**

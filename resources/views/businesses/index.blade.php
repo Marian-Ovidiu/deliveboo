@@ -23,7 +23,7 @@
             @foreach ($businesses as $business)
                 <tr>
                     <th scope="row">{{ $business->id }}</th>
-                    <td><img src="{{ asset($business->logo) }}" width="150px" height="150px"></td>
+                    <td><a href="{{ route('businesses.show', compact('business')) }}"><img src="{{ asset($business->logo) }}" width="150px" height="150px"></a></td>
                     <td><b>{{ $business->name }}</b></td>
                     <td>{{ $business->description }}</td>
                     <td>{{ $business->address }}</td>
@@ -33,7 +33,7 @@
                     <td>{{ $business->closing_day }}</td>
                     <td>
                         @foreach ($business->types as $type)
-                            {{ $type->name }},
+                            {{ $type->name }}
                         @endforeach
                     </td>
                 </tr>
