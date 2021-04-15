@@ -16,7 +16,7 @@ class BusinessController extends Controller
      */
     public function index()
     {
-        return view('home');
+        return redirect()->route('public-index');
     }
 
     /**
@@ -26,7 +26,7 @@ class BusinessController extends Controller
      */
      public function create()
      {
-       return view('business.create');
+       return view('businesses.create');
      }
 
     /**
@@ -44,7 +44,7 @@ class BusinessController extends Controller
         $business->fill($data);
         $business->save();
 
-        return redirect()->route('business.create');
+        return redirect()->route('products.create');
     }
 
     /**
@@ -90,16 +90,5 @@ class BusinessController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    public function isValid($list)
-    {
-      $list->validate([
-        'name' => 'required|max:255',
-        'ingredients' => 'required|max:1024',
-        'description' => 'required|max:1024',
-        'price' => 'required',
-        'img' => 'required|max:2048'
-      ]);
     }
 }

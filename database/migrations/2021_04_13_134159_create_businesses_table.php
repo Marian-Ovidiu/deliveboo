@@ -18,15 +18,16 @@ class CreateBusinessesTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->string('name', 255);
             $table->text('description', 1024);
-            $table->string('type', 255);
             $table->string('address', 255);
             $table->text('logo', 2048);
-
+            $table->tinyInteger('closing_day')->nullable();
+            $table->time('opening_time')->nullable();
+            $table->time('closing_time')->nullable();
             $table->timestamps();
-
+            
             $table->foreign('user_id')
-            ->references('id')
-            ->on('users');
+              ->references('id')
+              ->on('users');
         });
     }
 

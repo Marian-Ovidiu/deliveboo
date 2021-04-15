@@ -1,10 +1,10 @@
-@extends('templates.base')
+@extends('layouts.app')
 
 @section('title', 'index Products')
 
 @section('content')
 
-<form action="{{ route('business.store') }}" method="post">
+<form action="{{ route('businesses.store') }}" method="post">
     @csrf
     @method('POST')
     <div class="form-group">
@@ -16,15 +16,14 @@
 
         <div class="form-group">
             <label for="description">Descrizione</label>
-            <input type="text" class="form-control {{ $errors->has('description') ? 'is-invalid' : '' }}" id="description" name="description" placeholder="Descrizione">
-            <div class="invalid-feedback">
+            <textarea class="form-control {{ $errors->has('description') ? 'is-invalid' : '' }}" id="description" name="description" rows="6"></textarea>            <div class="invalid-feedback">
                 {{ $errors->first('description') }}
             </div>
         </div>
 
         <div class="form-group">
             <label for="address">Indirizzo</label>
-            <textarea class="form-control {{ $errors->has('address') ? 'is-invalid' : '' }}" id="address" name="address" rows="6"></textarea>
+            <input type="text" class="form-control {{ $errors->has('address') ? 'is-invalid' : '' }}" id="address" name="address" placeholder="Indirizzo">
             <div class="invalid-feedback">
                 {{ $errors->first('address') }}
             </div>
@@ -32,7 +31,7 @@
 
         <div class="form-group">
             <label for="logo">Logo Ristorante</label>
-            <textarea class="form-control {{ $errors->has('logo') ? 'is-invalid' : '' }}" id="logo" name="logo" rows="6"></textarea>
+            <input type="text" class="form-control {{ $errors->has('logo') ? 'is-invalid' : '' }}" id="logo" name="logo" placeholder="Logo">
             <div class="invalid-feedback">
                 {{ $errors->first('logo') }}
             </div>

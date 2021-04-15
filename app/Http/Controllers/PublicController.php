@@ -3,18 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Business;
 
-class HomeController extends Controller
+class PublicController extends Controller
 {
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
 
     /**
      * Show the application dashboard.
@@ -23,6 +20,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+      $businesses = Business::all();
+      return view('businesses.index', compact('businesses'));
     }
 }

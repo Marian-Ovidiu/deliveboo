@@ -1,4 +1,4 @@
-@extends('templates.base')
+@extends('layouts.app')
 
 @section('title', 'index Products')
 
@@ -23,7 +23,7 @@
         </div>
 
         <div class="form-group">
-            <label for="description">Description</label>
+            <label for="description">Descrizione</label>
             <textarea class="form-control {{ $errors->has('description') ? 'is-invalid' : '' }}" id="description" name="description" rows="6"></textarea>
             <div class="invalid-feedback">
                 {{ $errors->first('description') }}

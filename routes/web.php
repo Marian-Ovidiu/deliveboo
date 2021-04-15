@@ -16,11 +16,12 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::get('', 'HomeController@index')->name('home');
+Route::get('', 'PublicController@index')->name('public-index');
 
 Route::prefix('admin')
 ->namespace('Admin')
 ->middleware('auth')
 ->group(function () {
-    Route::resource('products', ProductsController::Class);
+  Route::resource('businesses', BusinessController::Class);
+  Route::resource('products', ProductsController::Class);
 });
