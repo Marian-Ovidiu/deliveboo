@@ -33,7 +33,7 @@ class BusinessSeeder extends Seeder
         'Trattorìa da Gennaro',
         'L\'Ostrica'
       ]);
-      $business->description = $faker->text(1024);
+      $business->description = $faker->text(100);
       $business->address = $faker->address();
       $business->closing_day = rand(0, 7);
       $business->opening_time = $faker->time;
