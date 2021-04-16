@@ -1,5 +1,5 @@
 <!--
-QUESTO E' IL CONTROLLER DASHBOARD DEI RISTORANTI UTENTE
+QUESTO E' IL CONTROLLER USER-DASHBOARD DELL'AREA PRIVATA
 *NON CRUD
  -->
 <?php
@@ -12,7 +12,10 @@ use App\Http\Controllers\Controller;
 class DashboardController extends Controller
 {
     public function index(){
-      //Da qui vedremo la dashboard principale "index"
-        return view('admin.dashboard');
+      /*
+      Da qui vedremo la dashboard dell'utente, che conterrà:
+      tutti suoi dati ed la lista ristoranti associati.
+      */
+        return view('admin.userdashboard');
     }
 }
