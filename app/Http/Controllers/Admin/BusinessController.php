@@ -1,121 +1,85 @@
 <?php
-
 namespace App\Http\Controllers\Admin;
-
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\User;
-use App\Type;
-use App\Business;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use App\Business;
 
 class BusinessController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+  // Gestione della VISUALIZZAZIONE DI TUTTI RISTORANTI relativi all'user
     public function index()
     {
-        $businesses = Business::where('user_id', Auth::id())->get();
-        return view('businesses.index', compact('businesses'));
+      $businesses = Business::where('user_id', Auth::user()->id)->get();
+      return view('admin.businesses.index', compact('businesses'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    // Gestione della VISUALIZZAZIONE DI UN SINGOLO RISTORANTE relativo all'user
+    public function show(Business $business)
+    {
+        return view('admin.businesses.show',compact('business'));
+    }
+
+    // Gestione della CREAZIONE DI UN RISTORANTE relativo all'user
     public function create()
     {
-        $types = Type::all();
-        return view('businesses.create', compact('types'));
+      return view('admin.businesses.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    // Gestione dell'INSERIMENTO DEL RISTORANTE CREATO nel Database
     public function store(Request $request)
     {
-
-        // $data = $request->all();
+        $this->isValid($request);
 
         $data = $request->all();
-        // dd($data);
-
         $business = new Business();
         $business->fill($data);
         $business->save();
-        $business->types()->attach($data['type']);
-        // dd($data['type']);
-
-        $typeUsedName = [];
-        $types = Type::all();
-        foreach ($types as $type) {
-            if (in_array($type->id, $data['type'])) {
-                $typeUsedName[] = $type->name; // salvo l'oggetto invece che l'array
-            }
-        }
-        // dd($typeUsedName);
-
-        // $tagsMail = new TagsUsed($tagsUsedTitle);
-        // Mail::to('lollable@example.mail')->send($tagsMail);
-        // // dd($tagsMail);
-
-        // // Mail::to('lollable@example.mail')->send(new PostCreated($post)); // dipendenza passata
-        // $mailableObj = new PostCreated($post);
-        // Mail::to('lollable@example.mail')->send($mailableObj);
-
-        return redirect()->route('businesses.index');
+        return redirect()->route('BOOOOOOH');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    // Gestione della MODIFICA DI UN RISTORANTE relativo all'user
+    public function edit(Business $business)
     {
-        $business = Business::find($id);
-        return view('businesses.show', compact('business'));
+     return view('admin.businesses.edit',compact('business'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+    // Gestione dell'INSERIMENTO DEL RISTORANTE MODIFICATO nel Database
+    public function update(Request $request, Business $business)
     {
-        //
+        $this->isValid($request);
+
+        $data = $request->all();
+        $business->update($data);
+
+        return redirect()->route('BOOOOH');
+
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+    // Gestione dell'ELIMINAZIONE DI UN RISTORANTE dal Database
+    public function destroy(Business $business)
     {
-        //
+        $business->delete();
+        return redirect()->route('BOOOOH');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+    //Da qui vedremo la pagina statistiche relative al ristorante
+    public function statistics(){
+        return view('admin.statistics');
     }
+
+    //Da qui vedremo la pagina ordini relativi al ristorante
+    public function orders(){
+        return view('admin.orders');
+    }
+
+    // Gestione VALIDAZIONE campi
+    protected function isValid($data)
+    {
+      $data->validate([
+        'name'=>'required'
+        // DA FARE
+      ]);
+    }
+
 }
