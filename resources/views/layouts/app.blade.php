@@ -12,33 +12,18 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-
 </head>
 <body>
-    <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
-
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
+    <header>
+        <nav class="navbar navbar-light">
+            <div class="container-fluid">
+                <div class="container d-flex justify-content-between align-items-center">
+                    <a class="navbar-brand d-flex" href="#"><img class=""src="img/deliveroo-logo.png" alt="deliveroo_logo"></a>
+                    <input class="form-control me-2 nav-form" type="search" placeholder="Cerca il ristorante..." aria-label="Search">
+                    <div class="nav_btn">
+                        <ul>
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
@@ -70,12 +55,19 @@
                         @endguest
                     </ul>
                 </div>
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
             </div>
-        </nav>
-
-        <main class="py-4">
-            @yield('content')
-        </main>
+        </div>
+    </nav>
+    <div class="container-fluid menu d-flex justify-content-center d-none">
+        <ul class="list-unstyled text-center">
+            <li><input class="form-control me-2 menu-form" type="search" placeholder="Cerca il ristorante..." aria-label="Search"></li>
+            <li><a href="#"><i class="fas fa-sign-in-alt"></i> &#32; Sign in</a></li>
+            <li><a href="#"><i class="fas fa-user"></i> &#32; Login</a></li>
+        </ul>
     </div>
+</header>
 </body>
 </html>

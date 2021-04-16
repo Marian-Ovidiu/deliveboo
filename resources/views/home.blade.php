@@ -1,7 +1,7 @@
-{{-- @dump($businesses);
-@dump($types); --}}
+@dump($businesses);
+@dump($types);
 
-<form method="POST" action="{{ route('business-list') }}">
+{{-- <form method="POST" action="{{ route('business-list') }}">
     <div class="form-group row">
         <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Search') }}</label>
         <div class="col-md-6">
@@ -18,4 +18,4 @@
       <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
       <a href="#" class="btn btn-primary">Go somewhere</a>
     </div>
-</div>
+</div> --}}

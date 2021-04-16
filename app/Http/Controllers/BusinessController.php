@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\User;
+// use Illuminate\Support\Facades\Auth;
+// use App\User;
 use App\Type;
 use App\Business;
-use Illuminate\Support\Facades\Auth;
 
 class BusinessController extends Controller
 {
@@ -18,8 +18,9 @@ class BusinessController extends Controller
      */
     public function index()
     {
-        $businesses = Business::where('user_id', Auth::id())->get();
-        return view('businesses.index', compact('businesses'));
+        $businesses = Business::all();
+        $types = Type::all();
+        return view('businesses.index', compact('businesses', 'types'));
     }
 
     /**
