@@ -65,12 +65,12 @@ class BusinessController extends Controller
 
     //Da qui vedremo la pagina statistiche relative al ristorante
     public function statistics(){
-        return view('admin.statistics');
+        return view('admin.business.statistics');
     }
 
     //Da qui vedremo la pagina ordini relativi al ristorante
     public function orders(){
-        return view('admin.orders');
+        return view('admin.business.orders');
     }
 
     // Gestione VALIDAZIONE campi

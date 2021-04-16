@@ -13,19 +13,19 @@ class ProductController extends Controller
     {
       $business = Business::where('user_id', Auth::user()->id)->get();
       $products = Product::where('business_id', $business->id)->get();
-      return view('admin.products.index', compact('products'));
+      return view('admin.business.products.index', compact('products'));
     }
 
     // Gestione della VISUALIZZAZIONE DI UN SINGOLO PIATTO relativo al Ristorante
     public function show(Product $product)
     {
-        return view('admin.products.show',compact('product'));
+        return view('admin.business.products.show',compact('product'));
     }
 
     // Gestione della CREAZIONE DI UN PIATTO relativo al Ristorante
     public function create()
     {
-      return view('admin.products.create');
+      return view('admin.business.products.create');
     }
 
     // Gestione dell'INSERIMENTO DEL PIATTO CREATO nel Database
@@ -43,7 +43,7 @@ class ProductController extends Controller
     // Gestione della MODIFICA DI UN PIATTO relativo al Ristorante
     public function edit(Product $product)
     {
-     return view('admin.products.edit',compact('product'));
+     return view('admin.business.products.edit',compact('product'));
     }
 
     // Gestione dell'INSERIMENTO DEL PIATTO MODIFICATO nel Database
