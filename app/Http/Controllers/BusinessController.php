@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 // use Illuminate\Support\Facades\Auth;
-// use App\User;
+use App\User;
 use App\Type;
 use App\Business;
 
@@ -18,9 +18,10 @@ class BusinessController extends Controller
      */
     public function index()
     {
+        $users = User::all();
         $businesses = Business::all();
         $types = Type::all();
-        return view('businesses.index', compact('businesses', 'types'));
+        return view('businesses.index', compact('businesses', 'types', 'users'));
     }
 
     /**
