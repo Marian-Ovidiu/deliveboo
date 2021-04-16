@@ -17,7 +17,10 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 // visualizzazione homepage
-Route::get('', 'HomepageController@index')->name('homepage');
+Route::get('', 'HomepageController@index');
 
 // visualizzazione ristoranti
-Route::get('businesses', 'BusinessController@index')->name('restaurants');
+Route::get('businesses', 'BusinessesController@index');
+
+// ajax
+Route::get('/api/businesses', 'BusinessesController@ajaxcall');

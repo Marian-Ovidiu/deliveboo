@@ -9,17 +9,13 @@ use App\Product;
 
 class MenuController extends Controller
 {
-
-    public function singleProduct(Request $request)
-    {
+    public function singleProduct(Request $request) {
         $business = Business::all();
         $products = Product::find();
         return view('businesses.create', compact('types'));
     }
 
-    public function productsList(Business $business)
-    {
-
+    public function productsList(Business $business) {
         $products = Product::where('business_id', $business->id)->get();
     }
 }

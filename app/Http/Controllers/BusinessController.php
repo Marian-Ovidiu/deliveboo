@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-// use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Auth;
 use App\User;
 use App\Type;
 use App\Business;
@@ -29,8 +29,7 @@ class BusinessController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
+    public function create() {
         $types = Type::all();
         return view('businesses.create', compact('types'));
     }
@@ -41,18 +40,17 @@ class BusinessController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
+    public function store(Request $request) {
 
         // $data = $request->all();
 
         $data = $request->all();
         // dd($data);
 
-        $business = new Business();
-        $business->fill($data);
-        $business->save();
-        $business->types()->attach($data['type']);
+        $businesses = new Business();
+        $businesses->fill($data);
+        $businesses->save();
+        $businesses->types()->attach($data['type']);
         // dd($data['type']);
 
         $typeUsedName = [];
@@ -81,8 +79,7 @@ class BusinessController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
+    public function show($id) {
         $business = Business::find($id);
         return view('businesses.show', compact('business'));
     }
@@ -93,8 +90,7 @@ class BusinessController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
+    public function edit($id) {
         //
     }
 
@@ -105,8 +101,7 @@ class BusinessController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
+    public function update(Request $request, $id) {
         //
     }
 
@@ -116,8 +111,22 @@ class BusinessController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
+    public function destroy($id) {
         //
+    }
+
+    // ajax - get
+    public function ajaxcall(Request $request){
+
+        $businesses = Business::all();
+        $types = Type::all();
+
+        // foreach($businesses as $business){
+
+        // }
+
+        return response()->json([
+            'businesses' => Business::all()
+        ]);
     }
 }

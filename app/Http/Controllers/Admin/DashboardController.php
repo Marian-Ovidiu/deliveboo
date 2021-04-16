@@ -1,10 +1,8 @@
-<!--
-QUESTO E' IL CONTROLLER USER-DASHBOARD DELL'AREA PRIVATA
-*NON CRUD
- -->
 <?php
 
 namespace App\Http\Controllers\Admin;
+// QUESTO E' IL CONTROLLER USER-DASHBOARD DELL'AREA PRIVATA
+// NON CRUD
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
