@@ -25,7 +25,7 @@
 
 </head>
 <body>
-    <div id="app">
+    <div id="app" class="container">
 
         @include('deliveboo-layouts.header')
 
@@ -37,7 +37,8 @@
 
     </div>
     <script src="{{ asset('js/app.js') }}"></script>
-    <script src="{{ asset('js/script.js') }}"></script>
+    <script src="{{ asset('js/slider.js') }}"></script>
+    {{-- <script src="{{ asset('js/script.js') }}"></script> --}}
     @yield('script')
 </body>
 </html>

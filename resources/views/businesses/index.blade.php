@@ -1,6 +1,6 @@
 @extends('deliveboo-layouts.deliveboo')
 @section('content')
-    <h1>Homepage e Ristoranti</h1>
+    <h1>Ristoranti</h1>
     {{-- @dump($businesses) --}}
 
 @endsection
