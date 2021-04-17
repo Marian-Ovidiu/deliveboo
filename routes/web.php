@@ -24,11 +24,11 @@ Route::get('', 'Guest\HomeController@index')->name('home');
 Route::get('search', 'Guest\HomeController@businessList')->name('business-list');
 
 
-Route::prefix('admin')
+Route::prefix('dashboard')
 ->namespace('Admin')
 ->middleware('auth')
 ->group(function () {
-  Route::get('dashboard', 'Admin\DashboardController@index')->name('dashboard');
+  Route::get('', 'DashboardController@index')->name('dashboard');
   Route::resource('business', BusinessController::Class);
   Route::resource('product', ProductController::Class);
 });

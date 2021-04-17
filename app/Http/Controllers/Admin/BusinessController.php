@@ -4,26 +4,27 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Business;
+use App\Type;
 
 class BusinessController extends Controller
 {
   // Gestione della VISUALIZZAZIONE DI TUTTI RISTORANTI relativi all'user
     public function index()
     {
-      $businesses = Business::where('user_id', Auth::user()->id)->get();
-      return view('admin.businesses.index', compact('businesses'));
+      return redirect()->route('dashboard');
     }
 
     // Gestione della VISUALIZZAZIONE DI UN SINGOLO RISTORANTE relativo all'user
     public function show(Business $business)
     {
-        return view('admin.businesses.show',compact('business'));
+        return view('admin.business.show',compact('business'));
     }
 
     // Gestione della CREAZIONE DI UN RISTORANTE relativo all'user
     public function create()
     {
-      return view('admin.businesses.create');
+      $types = Type::all();
+      return view('admin.business.create', compact('types'));
     }
 
     // Gestione dell'INSERIMENTO DEL RISTORANTE CREATO nel Database
@@ -32,16 +33,22 @@ class BusinessController extends Controller
         $this->isValid($request);
 
         $data = $request->all();
+        $path = $request->file('logo')->store('stored-imgs');
+
         $business = new Business();
         $business->fill($data);
+        $business->logo = $path;
         $business->save();
-        return redirect()->route('BOOOOOOH');
+        $business->types()->attach($data['type']);
+
+        return redirect()->route('dashboard');
     }
 
     // Gestione della MODIFICA DI UN RISTORANTE relativo all'user
     public function edit(Business $business)
     {
-     return view('admin.businesses.edit',compact('business'));
+      $types = Type::all();
+      return view('admin.business.edit',compact('business', 'types'));
     }
 
     // Gestione dell'INSERIMENTO DEL RISTORANTE MODIFICATO nel Database

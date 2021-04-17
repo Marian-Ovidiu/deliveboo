@@ -1,0 +1,50 @@
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  .user-header {
+    display: flex;
+    align-items: center;
+    padding: 30px;
+    margin-bottom: 30px;
+    background: linear-gradient(#4A4C5A, #8A8BA4);
+    border-radius: 15px;
+
+
+    &-avatar {
+      width: 20%;
+      margin-right: 50px;
+
+      img {
+        background: rgba(255, 255, 255, 0.4);
+        border-radius: 50%;
+        max-width: 80%;
+      }
+    }
+
+    &-data {
+      width: 40%;
+      color: #FFF;
+      text-shadow: 1px 1px #000;
+    }
+
+    &-button {
+      .btn {
+        box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.4);
+      }
+    }
+  }
+
+  .user-businesses-title {
+    color: #4A4C5A;
+    font-weight: bolder;
+  }
+
+  .table {
+    width: 95%;
+    margin: auto;
+    border: 1px dashed #8A8BA4;
+    font-size: 0.95em;
+  }
+}

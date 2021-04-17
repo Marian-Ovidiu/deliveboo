@@ -1,21 +1,17 @@
-<!--
-QUESTO E' IL CONTROLLER USER-DASHBOARD DELL'AREA PRIVATA
-*NON CRUD
- -->
 <?php
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Business;
 
 class DashboardController extends Controller
 {
-    public function index(){
-      /*
-      Da qui vedremo la dashboard dell'utente, che conterrà:
-      tutti suoi dati ed la lista ristoranti associati.
-      */
-        return view('admin.userdashboard');
-    }
+  public function index()
+  {
+    $businesses = Business::where('user_id', Auth::user()->id)->get();
+    return view('admin.dashboard', compact('businesses'));
+  }
 }
