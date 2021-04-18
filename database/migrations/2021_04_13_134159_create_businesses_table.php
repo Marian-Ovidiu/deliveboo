@@ -20,7 +20,7 @@ class CreateBusinessesTable extends Migration
             $table->text('description', 1024);
             $table->string('address', 255);
             $table->text('logo', 2048);
-            $table->tinyInteger('closing_day')->nullable();
+            $table->string('closing_day')->nullable();
             $table->time('opening_time')->nullable();
             $table->time('closing_time')->nullable();
             $table->timestamps();

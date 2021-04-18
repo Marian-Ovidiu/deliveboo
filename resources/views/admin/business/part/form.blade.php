@@ -114,6 +114,34 @@ $days = [
   </div>
   {{-- / row: closing day --}}
 
+  {{-- / row: business email --}}
+  <div class="form-group">
+    <label for="email"><b>Email Risorante</b></label>
+    <input type="text" class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}" id="email" name="email">
+    <div class="invalid-feedback">
+      {{ $errors->first('email') }}
+    </div>
+  </div>
+  {{-- / row: business email --}}
+
+  {{-- row: telephone --}}
+  <div class="form-group">
+    <label for="telephone"><b>Numero di telefono del Ristorante</b></label>
+    <input id="telephone" type="text" class="form-control {{ $errors->has('telephone') ? 'is-invalid' : '' }}" name="telephone">
+    <div class="invalid-feedback">
+       {{ $errors->first('telephone') }}
+    </div>
+
+    </div>
+    {{-- / row: telephone --}}
+
+    {{-- / row: business website --}}
+  <div class="form-group">
+    <label for="website"><b>Sito web del Risorante (facoltativo)</b></label>
+    <input type="text" class="form-control" id="website" name="website">
+  </div>
+  {{-- / row: business website --}}
+
   <input type="hidden" name="user_id" id="user_id" value="{{ Auth::user()->id }}">
 
   {{-- / row: submit --}}
