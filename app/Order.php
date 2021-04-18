@@ -7,7 +7,19 @@ use App\Product;
 
 class Order extends Model
 {
-    public function products() {
-        return $this->belongsToMany(Product::class);
-    }
+
+  protected $fillable = [
+      'customer_name',
+      'customer_last_name',
+      'customer_email',
+      'customer_telephone',
+      'customer_address',
+      'notes',
+      'amount',
+      'success',
+  ];
+
+  public function products() {
+      return $this->belongsToMany(Product::class);
+  }
 }
