@@ -16,7 +16,11 @@ class Business extends Model
       'address',
       'closing_day',
       'opening_time',
-      'closing_time'
+      'closing_time',
+      'telephone',
+      'email',
+      'website'
+
   ];
 
     public function user()
