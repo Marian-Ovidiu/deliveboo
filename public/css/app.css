@@ -10084,3 +10084,17 @@ footer p {
   border: 1px dashed #8A8BA4;
   font-size: 0.95em;
 }
+.dashboard-business-nav {
+  display: flex;
+}
+.dashboard-business-nav > * {
+  margin-right: 25px;
+}
+.dashboard .products-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+.dashboard .products-list > * {
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
+  margin: 20px;
+}

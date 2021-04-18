@@ -31,4 +31,5 @@ Route::prefix('dashboard')
   Route::get('', 'DashboardController@index')->name('dashboard');
   Route::resource('business', BusinessController::Class);
   Route::resource('product', ProductController::Class);
+  Route::get('business/{id}/add', 'ProductController@add')->name('add-prod');
 });

@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Business;
+use App\Product;
 use App\Type;
 
 class BusinessController extends Controller
@@ -17,7 +18,8 @@ class BusinessController extends Controller
     // Gestione della VISUALIZZAZIONE DI UN SINGOLO RISTORANTE relativo all'user
     public function show(Business $business)
     {
-        return view('admin.business.show',compact('business'));
+      $products = Product::where('business_id', $business->id)->get();
+      return view('admin.business.show', compact('business'));
     }
 
     // Gestione della CREAZIONE DI UN RISTORANTE relativo all'user
@@ -48,7 +50,7 @@ class BusinessController extends Controller
     public function edit(Business $business)
     {
       $types = Type::all();
-      return view('admin.business.edit',compact('business', 'types'));
+      return view('admin.business.edit', compact('business', 'types'));
     }
 
     // Gestione dell'INSERIMENTO DEL RISTORANTE MODIFICATO nel Database
@@ -57,10 +59,11 @@ class BusinessController extends Controller
         $this->isValid($request);
 
         $data = $request->all();
+        $path = $request->file('logo')->store('stored-imgs');
+        $business->logo = $path;
         $business->update($data);
-
-        return redirect()->route('BOOOOH');
-
+        $business->types()->sync($data['type']);
+        return redirect()->route('dashboard');
     }
 
     // Gestione dell'ELIMINAZIONE DI UN RISTORANTE dal Database
@@ -84,8 +87,12 @@ class BusinessController extends Controller
     protected function isValid($data)
     {
       $data->validate([
-        'name'=>'required'
-        // DA FARE
+        'name' => 'required|max:255',
+        'address' => 'required|max:255',
+        'description' => 'required|max:1024',
+        'logo' => 'required|mimes:jpeg,png,jpg,gif,svg|image',
+        'vat' => 'required|min:11|max:11',
+        'type' => 'required'
       ]);
     }
 

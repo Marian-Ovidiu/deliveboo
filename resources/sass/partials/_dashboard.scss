@@ -47,4 +47,24 @@
     border: 1px dashed #8A8BA4;
     font-size: 0.95em;
   }
+
+  &-business-nav {
+    display: flex;
+
+    & > * {
+      margin-right: 25px;
+    }
+  }
+
+  .products-list {
+    display: flex;
+    flex-wrap: wrap;
+
+    & > * {
+      box-shadow: 2px 2px 8px rgba(0, 0, 0, .4);
+      margin: 20px;
+    }
+    
+  }
+
 }
