@@ -66,9 +66,15 @@
               <div class="card-body">
                 <h5 class="card-title">{{$product->name}}</h5>
                 <p class="card-text">{{$product->description}}</p>
-                <p class="card-text">{{$product->price}}</p>
-                <a href="#" class="btn btn-info">Modifica</a>
-                <a href="#" class="btn btn-danger">Cancella</a>
+                <p class="card-text">Eur. {{$product->price}}</p>
+                <a href="{{ route('product.edit', compact('product')) }}" class="btn btn-info">Modifica</a>
+
+                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete{{$product->id}}">
+                  Cancella
+                </button>
+                @include('admin.business.part.modal')
+              </center>
+
               </div>
             </div>
           @endforeach

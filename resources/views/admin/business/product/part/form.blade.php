@@ -76,11 +76,11 @@ if ($edit) {
   <div class="form-group">
     <label for="visible">Disponibile</label>
     &nbsp;&nbsp;&nbsp;&nbsp;
-    <input type="checkbox" id="visible" name="visible" value="1" @if(isset($product) && $plate->visible == 1) checked @endif>
+    <input type="checkbox" id="visible" name="visible" value="1" @if(isset($product) && $product->visible == 1) checked @endif>
   </div>
   {{-- row: visible --}}
 
-  <input type="hidden" name="business_id" id="business_id" value="{{ $business_id }}">
+  <input type="hidden" name="business_id" id="business_id" value="{{ isset($product) ? $product->business_id : $business_id }}">
 
-  <button type="submit" class="btn btn-primary">Crea</button>
+  <button type="submit" class="btn btn-primary">{{$submit}} prodotto</button>
 </form>
