@@ -17,16 +17,16 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-// Layout Homepage
-Route::get('', 'Guest\HomeController@index')->name('home');
-// Layout ristorante
-Route::get('restaurant', 'Guest\RestaurantController@index')->name('restaurant');
+// Layout Homepage Guest
+Route::get('', 'Guest\PublicController@index')->name('public-home');
+// Layout ristorante Guest
+Route::get('business', 'Guest\PublicController@show_business')->name('public-business');
 
 // Carrello
-Route::get('businesses', 'Guest\PublicController@index')->name('businesses-list');;
-Route::get('businesses/{business}', 'Guest\PublicController@show')->name('business-menu');
+Route::get('businesses', 'Guest\PublicController@cart_businesses_list')->name('cart-businesses-list');;
+Route::get('businesses/{business}', 'Guest\PublicController@cart_business_menu')->name('cart-business-menu');
 
-
+// Dashboard Ristoratore
 Route::prefix('dashboard')
 ->namespace('Admin')
 ->middleware('auth')

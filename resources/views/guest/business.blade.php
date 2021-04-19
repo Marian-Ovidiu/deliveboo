@@ -1,56 +1,68 @@
-@extends('admin.layout')
+{{-- MARIAN --}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="css/animate.min.css" rel="stylesheet">
+    <link href="css/bootstrap-dropdownhover.min.css" rel="stylesheet">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;700&display=swap" rel="stylesheet">
+    <title>Restaurant</title>
+</head>
+<body>
+    <div class="wrapper">
+        @include('parts.header')
 
-@section('content')
+        <main class="main-restaurant">
+            <div class="main-restaurant-row">
+                <div class="col-12 main-restaurant-row-jumbotronn" style="background-image: url('https://wallpaperaccess.com/full/1306153.jpg')">
+                    <div class="main-restaurant-row-jumbotronn-cover row">
+                        <div class="col-1 main-restaurant-row-jumbotronn-cover-space"></div>
+                        <div class="col-5 main-restaurant-row-jumbotronn-cover-logo">
+                            <div class="main-restaurant-row-jumbotronn-cover-logo-img fl">
+                                <img src="http://foodbakery.chimpgroup.com/foodstop/wp-content/uploads/kfc-1.png" alt="logo">
+                            </div>
+                            <div class="main-restaurant-row-jumbotronn-cover-logo-box fl">
+                                <div class="main-restaurant-row-jumbotronn-cover-logo-box-title">Kfc – Kentucky</div>
+                                <div class="main-restaurant-row-jumbotronn-cover-logo-box-types">Hot Dogs, Pizza & Stakes</div>
+                            </div>
+                        </div>
+                        <div class="col-5 main-restaurant-row-jumbotronn-cover-info">
+                            <div class="main-restaurant-row-jumbotronn-cover-info-box fl">
+                                <div class="main-restaurant-row-jumbotronn-cover-info-box-icon"><i class="fas fa-motorcycle"></i></div>
+                            </div>
+                            <div class="main-restaurant-row-jumbotronn-cover-info-box ">
+                                <div class="main-restaurant-row-jumbotronn-cover-info-box-fee">Delivery fee: €5.00</div>
+                                <div class="main-restaurant-row-jumbotronn-cover-info-box-minOrder">Min Order : €10.00</div>
+                            </div>
+                            <div class="main-restaurant-row-jumbotronn-cover-info-box">
+                                <select class="main-restaurant-row-jumbotronn-cover-info-box-select">
+                                    <option value="">Today : 09:00 am - 09:30 pm</option>
+                                    <option value="">Monday:09:00 am - 09:30 pm</option>
+                                    <option value="">Tuesday:09:00 am - 09:45 pm</option>
+                                    <option value="">Wednesday:09:00 am - 04:15 pm</option>
+                                    <option value="">Thursday:09:00 am - 07:45 pm</option>
+                                    <option value="">Friday:06:00 am - 11:00 pm</option>
+                                    <option value="">Saturday:09:00 am - 04:00 pm</option>
+                                    <option value="">Sunday:12:00 am - 12:00 am</option>
+                                </select>
+                            </div>
 
-<div id="cart" class="container">
-  <div v-show="cart.length > 0">
-    <div v-for="product in cart">
-      <hr>
-      [ #@{{product.id}} | @{{product.name}} | Qt. @{{product.quantity}} | Eur. @{{product.price}} ]
-      <br>
-      <br>
-      @{{amount()}}
-      <br>
-      <hr>
+                        <div class="col-1 main-restaurant-row-jumbotronn-cover-space"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="main-restaurant-row">
+
+            </div>
+        <main>
     </div>
-  </div>
-  <table class="table table-dark">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Business ID</th>
-        <th scope="col">Name</th>
-        <th scope="col">Ingredients</th>
-        <th scope="col">Description</th>
-        <th scope="col">Price</th>
-        <th scope="col">Visible</th>
-        <th scope="col">Img</th>
-        <th scope="col">Actions</th>
-      </thead>
-      <tbody>
-        @foreach ($business->products as $product)
-          <tr>
-            <th scope="row">{{ $product->id }}</th>
-            <td>{{ $product->business_id }}</td>
-            <td>{{ $product->name }}</td>
-            <td>{{ $product->ingredients }}</td>
-            <td>{{ $product->description }}</td>
-            <td>{{ $product->price }}</td>
-            <td>{{ $product->visible }}</td>
-            <td><img src="{{ asset($product->img) }}" width="150px" height="150px"></td>
-            <td>
-              <button type="button" class="btn btn-primary" @click="add({{$product->id}}, '{{$product->name}}', {{$product->price}})">Add</button>
-              <br><br>
-              <button type="button" class="btn btn-warning" @click="quantityUp({{$product->id}}, {{$product->price}})">+</button>
-              <br><br>
-              <button type="button" class="btn btn-warning" @click="quantintyDown({{$product->id}}, {{$product->price}})">-</button>
-              <br><br>
-              <button type="button" class="btn btn-danger" @click="remove({{$product->id}})">x</button>
-            </td>
-          </tr>
-        @endforeach
-      </tbody>
-    </table>
-</div>
-<script src="{{ asset('js/cart.js') }}"></script>
-@endsection
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrap-dropdownhover.min.js"></script>
+</body>
+</html>
