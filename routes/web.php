@@ -17,12 +17,20 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::get('', 'PublicController@index')->name('public-index');
+// visualizzazione homepage
+Route::get('', 'Guest\PublicController@index')->name('businesses-list');;
+// visualizzazione lista prodotti per ristorante
+Route::get('businesses/{business}', 'Guest\PublicController@show')->name('business-menu');
+// visualizzazione ordine
+Route::get('order/create', 'Guest\PublicController@orderCreate')->name('order');
 
-Route::prefix('admin')
+
+Route::prefix('dashboard')
 ->namespace('Admin')
 ->middleware('auth')
 ->group(function () {
-  Route::resource('businesses', BusinessController::Class);
-  Route::resource('products', ProductsController::Class);
+  Route::get('', 'DashboardController@index')->name('dashboard');
+  Route::resource('business', BusinessController::Class);
+  Route::resource('product', ProductController::Class);
+  Route::get('business/{id}/add', 'ProductController@add')->name('add-prod');
 });
