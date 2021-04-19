@@ -37,5 +37,7 @@ class OrderSeed extends Seeder
                 $product->orders()->save($orders[rand(0, 19)]);
             }
         }
+
+
     }
 }

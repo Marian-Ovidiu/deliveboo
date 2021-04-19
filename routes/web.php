@@ -33,3 +33,5 @@ Route::prefix('dashboard')
   Route::resource('product', ProductController::Class);
   Route::get('business/{id}/add', 'ProductController@add')->name('add-prod');
 });
+
+Route::get('/charts', 'Admin\ChartController@index')->name('charts');
