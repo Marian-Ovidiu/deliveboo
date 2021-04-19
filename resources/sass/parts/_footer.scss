@@ -1,0 +1,34 @@
+footer {
+
+    color: lightgray;
+    .row{
+        background-color: #282C35;
+        &-body-row{
+            &-card{
+                &-title{
+                    font-size: 20px;
+                    font-weight: bold;
+                    margin: 10px 0;
+                }
+                &-text{
+                    margin: 10px 0;
+                }
+                &-ul{
+                    list-style: none;
+                    li{
+                        margin: 7px 0;
+                    }
+                }
+                &-box{
+                    padding-left: 10px;
+                    margin: 15px 0;
+                    &-img {
+                        margin-right: 10px;
+                    }
+                }
+            }
+        }
+
+    }
+
+}

@@ -2,10 +2,19 @@
 @import url('https://fonts.googleapis.com/css?family=Nunito');
 
 // Variables
-@import 'variables';
+@import 'partials/variables';
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
 // Custom (Home, Dahsboard)
 @import "partials/custom";
+
+@import "home";
+@import "restaurant";
+@import "parts/_header";
+@import "parts/_footer";
+
+
+// FontAwesome
+@import '~@fortawesome/fontawesome-free/css/all.min.css';
