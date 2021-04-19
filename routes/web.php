@@ -17,12 +17,14 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-// visualizzazione homepage
-Route::get('', 'Guest\PublicController@index')->name('businesses-list');;
-// visualizzazione lista prodotti per ristorante
+// Layout Homepage
+Route::get('', 'Guest\HomeController@index')->name('home');
+// Layout ristorante
+Route::get('restaurant', 'Guest\RestaurantController@index')->name('restaurant');
+
+// Carrello
+Route::get('businesses', 'Guest\PublicController@index')->name('businesses-list');;
 Route::get('businesses/{business}', 'Guest\PublicController@show')->name('business-menu');
-// visualizzazione ordine
-Route::get('order/create', 'Guest\PublicController@orderCreate')->name('order');
 
 
 Route::prefix('dashboard')
