@@ -20,7 +20,7 @@
         @foreach ($businesses as $business)
             <tr>
                 <th scope="row">{{ $business->id }}</th>
-                <td><a href="{{ route('business-menu', compact('business')) }}"><img src="{{ asset($business->logo) }}" width="150px" height="150px"></a></td>
+                <td><a href="{{ route('cart-business-menu', compact('business')) }}"><img src="{{ asset($business->logo) }}" width="150px" height="150px"></a></td>
                 <td><b>{{ $business->name }}</b></td>
                 <td>{{ $business->description }}</td>
                 <td>{{ $business->address }}</td>
