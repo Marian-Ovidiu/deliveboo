@@ -17,3 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/businesses', 'Api\ApiController@getBusinessesApi');
+Route::get('/types', 'Api\ApiController@getTypesApi');
+Route::get('/type/{name}','Api\ApiController@filterBusinessesByTypes');
