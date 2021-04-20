@@ -1902,7 +1902,8 @@ var app = new Vue({
     businesses: [],
     businessesForType: [],
     query: '',
-    types: []
+    types: [],
+    cart: []
   },
   mounted: function mounted() {
     var _this = this;
@@ -1940,6 +1941,58 @@ var app = new Vue({
       if (flag && this.businessesForType.length === 0) {
         return true;
       }
+    },
+    add: function add(product_id, product_name, product_price) {
+      for (var i = 0; i < this.cart.length; i++) {
+        if (this.cart[i].id === product_id) {
+          this.cart[i].quantity++;
+          this.cart[i].price += product_price;
+          return; // la funzione si ferma qui, non aggiungendo l'id
+        }
+      }
+
+      this.cart.push({
+        'id': product_id,
+        'name': product_name,
+        'quantity': 1,
+        'price': product_price
+      });
+    },
+    remove: function remove(product_id) {
+      for (var i = 0; i < this.cart.length; i++) {
+        if (this.cart[i].id === product_id) {
+          this.cart.splice(i, 1);
+        }
+      }
+    },
+    quantityUp: function quantityUp(product_id, product_price) {
+      this.cart.forEach(function (item) {
+        if (item.id === product_id) {
+          item.quantity++;
+          item.price += product_price;
+        }
+      });
+    },
+    quantintyDown: function quantintyDown(product_id, product_price) {
+      var _this3 = this;
+
+      this.cart.forEach(function (item) {
+        if (item.id === product_id) {
+          if (item.quantity === 1) {
+            _this3.remove(product_id);
+          } else {
+            item.quantity--;
+            item.price = item.price - product_price;
+          }
+        }
+      });
+    },
+    amount: function amount() {
+      var sum = 0;
+      this.cart.forEach(function (item) {
+        sum += item.price;
+      });
+      return sum;
     }
   }
 });

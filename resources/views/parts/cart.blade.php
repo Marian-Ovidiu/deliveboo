@@ -1,4 +1,4 @@
-<div class="container mt-5 p-3 rounded cart">
+<div id="app" class="container mt-5 p-3 rounded cart">
     <div class="row no-gutters">
         <div class="col-md-7">
             <div class="product-details mr-2">
@@ -20,6 +20,15 @@
                         <span class="d-block ml-5 font-weight-bold">{{ $product->price }}</span>
                         {{-- <a href=""><i class="far fa-trash-alt ml-3 text-black-50"></i></a> --}}
                     </div>
+                    <div>
+                        <button type="button" class="btn btn-primary" @click="add({{$product->id}}, '{{$product->name}}', {{$product->price}})">Add</button>
+                <br><br>
+                <button type="button" class="btn btn-warning" @click="quantityUp({{$product->id}}, {{$product->price}})">+</button>
+                <br><br>
+                <button type="button" class="btn btn-warning" @click="quantintyDown({{$product->id}}, {{$product->price}})">-</button>
+                <br><br>
+                <button type="button" class="btn btn-danger" @click="remove({{$product->id}})">x</button>
+                    </div>
                 </div>
                 @endforeach
             </div>
@@ -28,6 +37,17 @@
         <div class="col-md-1"></div>
 
         <div class="col-md-4">
+            <div v-show="cart.length > 0">
+                <div v-for="product in cart">
+                  <hr>
+                  [ #@{{product.id}} | @{{product.name}} | Qt. @{{product.quantity}} | Eur. @{{product.price}} ]
+                  <br>
+                  <br>
+                  @{{amount()}}
+                  <br>
+                  <hr>
+                </div>
+              </div>
             <div class="payment-info">
                 <div class="d-flex justify-content-between align-items-center">
                     <span>Card details</span>
@@ -84,4 +104,5 @@
             </div>
         </div>
     </div>
+    <script src="{{ asset('js/app.js') }}"></script>
 </div>

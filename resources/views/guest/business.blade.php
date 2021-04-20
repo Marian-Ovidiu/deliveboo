@@ -8,7 +8,7 @@
     {{-- font awesome --}}
 	{{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"/> --}}
     {{-- vuejs --}}
-    {{-- <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script> --}}
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
     {{-- style --}}
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
     <title>{{ config('app.name', 'Deliveboo') }}</title>
