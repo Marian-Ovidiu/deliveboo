@@ -54,6 +54,9 @@ class BusinessSeeder extends Seeder
         'https://www.logodesign.net/logo-new/prawn-with-sun-8406ld.png?size=1&industry=All&bg=0',
         'https://www.logodesign.net/logo-new/fish-on-two-ended-forks-inside-cloche-8023ld.png?size=1&industry=All&bg=0'
         ]);
+        $business->telephone = $faker->numerify('##########');
+        $business->email = $faker->unique()->safeEmail();
+        $business->website = $faker->url();
         $user->business()->save($business);
       }
     }
