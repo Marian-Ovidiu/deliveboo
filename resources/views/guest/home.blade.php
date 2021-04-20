@@ -17,7 +17,7 @@
 <body>
     <div class="wrapper">
 
-    @include('parts.header')
+    @include('parts.navbar')
 
     <main id="app" class="main-home">
         <div class="row">
