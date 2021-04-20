@@ -80,13 +80,20 @@
                     <div class="col-8 row-restaurants-row-cards fl">
                         <div class="row-restaurants-row-cards-row row">
 
-                            <div class="col-4 row-restaurants-row-cards-row-card" v-for="(business, i) in businesses" v-bind:key="i" v-if="searchFunction(business.name)">
+                            <div class="col-4 row-restaurants-row-cards-row-card"
+                                v-for="(business, i) in businesses"
+                                v-bind:key="i"
+                                v-if="searchFunction(business.name)">
                                 <div class="row-restaurants-row-cards-row-card-img">
                                     <img :src="business.logo" alt="business.name" :value="business.id">
                                 </div>
                                 <div class="row-restaurants-row-cards-row-card-body">
-                                    <div class="row-restaurants-row-cards-row-card-body-name">@{{ business.name }}</div>
-                                    <div class="row-restaurants-row-cards-row-card-body-type">@{{ business.description }}</div>
+                                    <div class="row-restaurants-row-cards-row-card-body-name">
+                                        @{{ business.name }}
+                                    </div>
+                                    <div class="row-restaurants-row-cards-row-card-body-type">
+                                        @{{ business.description }}
+                                    </div>
                                     <div class="row-restaurants-row-cards-row-card-body-address">
                                         <i class="fa fa-map-marker" aria-hidden="true"></i>
                                         @{{ business.address }}
@@ -94,13 +101,20 @@
                                 </div>
                             </div>
 
-                            <div class="col-4 row-restaurants-row-cards-row-card" v-for="(business, i) in businessesForType" v-if="businessesForType.length > 0">
+                            <div class="col-4 row-restaurants-row-cards-row-card"
+                            v-for="(business, i) in businessesForType"
+                            v-bind:key="i"
+                            v-if="businessesForType.length > 0">
                                 <div class="row-restaurants-row-cards-row-card-img">
                                     <img :src="business.logo" alt="business.name" :value="business.id">
                                 </div>
                                 <div class="row-restaurants-row-cards-row-card-body">
-                                    <div class="row-restaurants-row-cards-row-card-body-name">@{{ business.name }}</div>
-                                    <div class="row-restaurants-row-cards-row-card-body-type">@{{ business.description }}</div>
+                                    <div class="row-restaurants-row-cards-row-card-body-name">
+                                        @{{ business.name }}
+                                    </div>
+                                    <div class="row-restaurants-row-cards-row-card-body-type">
+                                        @{{ business.description }}
+                                    </div>
                                     <div class="row-restaurants-row-cards-row-card-body-address">
                                         <i class="fa fa-map-marker" aria-hidden="true"></i>
                                         @{{ business.address }}

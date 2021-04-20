@@ -31,8 +31,8 @@ class ApiController extends Controller
 
     public function filterBusinessesByTypes($name)
     {
-        $businessType = Business::with(['getTypes'])
-            ->whereHas('getTypes', function($query) use($name) {
+        $businessType = Business::with(['types'])
+            ->whereHas('types', function($query) use($name) {
                 $query->where('name', $name);
             })->get();
         return response()->json($businessType);

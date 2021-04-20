@@ -32,6 +32,7 @@ const app = new Vue({
 
             })
             .then(resp => {
+                console.log(resp.data);
                 this.businessesForType = [];
                 this.businessesForType = resp.data;
             })

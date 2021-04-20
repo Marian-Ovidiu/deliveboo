@@ -1925,6 +1925,7 @@ var app = new Vue({
       var _this2 = this;
 
       axios.get('http://localhost:8000/api/type/' + type, {}).then(function (resp) {
+        console.log(resp.data);
         _this2.businessesForType = [];
         _this2.businessesForType = resp.data;
       });
