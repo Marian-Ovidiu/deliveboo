@@ -89,49 +89,53 @@
                             v-for="(business, i) in businesses"
                             v-bind:key="i"
                             v-if="searchFunction(business.name)">
-                            <div class="row-restaurants-row-cards-card-img" :style="{ 'background-image': 'url(' + business.logo + ')' }"></div>
-                            <div class="row-restaurants-row-cards-card-body">
-                                <div class="row-restaurants-row-cards-card-body-name">
-                                    @{{ business.name }}
+                            <a v-bind:href="'business/'+ business.id">
+                                <div class="row-restaurants-row-cards-card-img" :style="{ 'background-image': 'url(' + business.logo + ')' }"></div>
+                                <div class="row-restaurants-row-cards-card-body">
+                                    <div class="row-restaurants-row-cards-card-body-name">
+                                        @{{ business.name }}
+                                    </div>
+                                    <div class="row-restaurants-row-cards-card-body-description">
+                                        @{{ business.description }}
+                                    </div>
+                                    <div class="row-restaurants-row-cards-card-body-title">Orari</div>
+                                    <div class="row-restaurants-row-cards-card-body-hours">
+                                    <span>Dalle: @{{ business.opening_time }}</span><br>
+                                    <span>Alle: @{{ business.closing_time }}</span>
+                                    </div>
+                                    <div class="row-restaurants-row-cards-card-body-address">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                        @{{ business.address }}
+                                    </div>
                                 </div>
-                                <div class="row-restaurants-row-cards-card-body-description">
-                                    @{{ business.description }}
-                                  </div>
-                                  <div class="row-restaurants-row-cards-card-body-title">Orari</div>
-                                <div class="row-restaurants-row-cards-card-body-hours">
-                                  <span>Dalle: @{{ business.opening_time }}</span><br>
-                                  <span>Alle: @{{ business.closing_time }}</span>
-                                </div>
-                                <div class="row-restaurants-row-cards-card-body-address">
-                                    <i class="fas fa-map-marker-alt"></i>
-                                    @{{ business.address }}
-                                </div>
-                            </div>
+                            </a>
                         </div>
 
                         <div class="row-restaurants-row-cards-card"
-                        v-for="(business, i) in businessesForType"
-                        v-bind:key="i"
-                        v-if="businessesForType.length > 0">
-                            <div class="row-restaurants-row-cards-card-img" :style="{ 'background-image': 'url(' + business.logo + ')' }"></div>
-                            <div class="row-restaurants-row-cards-card-body">
-                                <div class="row-restaurants-row-cards-card-body-name">
-                                    @{{ business.name }}
+                            v-for="(business, i) in businessesForType"
+                            v-bind:key="i"
+                            v-if="businessesForType.length > 0">
+                            <a v-bind:href="'business/'+ business.id">
+                                <div class="row-restaurants-row-cards-card-img" :style="{ 'background-image': 'url(' + business.logo + ')' }"></div>
+                                <div class="row-restaurants-row-cards-card-body">
+                                    <div class="row-restaurants-row-cards-card-body-name">
+                                        @{{ business.name }}
+                                    </div>
+                                    <div class="row-restaurants-row-cards-card-body-description">
+                                        @{{ business.description }}
+                                    </div>
+                                    <div class="row-restaurants-row-cards-card-body-title">Orari</div>
+                                    <div class="row-restaurants-row-cards-card-body-hours">
+                                    <span>Dalle: @{{ business.opening_time }}</span><br>
+                                    <span>Alle: @{{ business.closing_time }}</span>
+                                    </div>
+                                    <div class="row-restaurants-row-cards-card-body-address">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                        @{{ business.address }}
+                                    </div>
                                 </div>
-                                <div class="row-restaurants-row-cards-card-body-title">Orari</div>
-                                <div class="row-restaurants-row-cards-card-body-hours">
-                                    @{{ business.opening_time }}
-                                </div>
-                                <div class="row-restaurants-row-cards-card-body-hours">
-                                    @{{ business.closing_time }}
-                                </div>
-                                <div class="row-restaurants-row-cards-card-body-address">
-                                    <i class="fa fa-map-marker" aria-hidden="true"></i>
-                                    @{{ business.address }}
-                                </div>
-                            </div>
+                            </a>
                         </div>
-
                     </div>
                     <div class="col-1 row-restaurants-row-space fl"></div>
                 </div>
