@@ -1842,6 +1842,8 @@ module.exports = {
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
+__webpack_require__(/*! ./script */ "./resources/js/script.js");
+
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":
@@ -1885,6 +1887,63 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     forceTLS: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/script.js":
+/*!********************************!*\
+  !*** ./resources/js/script.js ***!
+  \********************************/
+/***/ (() => {
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    businesses: [],
+    businessesForType: [],
+    query: '',
+    types: []
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    axios.get('http://localhost:8000/api/businesses', {// params: {
+      //     query: this.searchByType
+      // }
+    }).then(function (resp) {
+      _this.businesses = resp.data.data.businesses;
+    }); // .catch(err => {
+    //     console.log(err);
+    // })
+
+    axios.get('http://localhost:8000/api/types', {}).then(function (resp) {
+      _this.types = resp.data.data.types;
+    });
+  },
+  methods: {
+    filterBusinessesByTypes: function filterBusinessesByTypes(type) {
+      var _this2 = this;
+
+      axios.get('http://localhost:8000/api/type/' + type, {}).then(function (resp) {
+        console.log(resp.data);
+        _this2.businessesForType = [];
+        _this2.businessesForType = resp.data;
+      });
+    },
+    emptyBussinessesForType: function emptyBussinessesForType() {
+      return this.businessesForType = [];
+    },
+    searchFunction: function searchFunction(variabile) {
+      var flag = false;
+      flag = variabile.toLowerCase().startsWith(this.query.toLowerCase());
+
+      if (flag && this.businessesForType.length === 0) {
+        return true;
+      }
+    }
+  }
+});
+Vue.config.devtools = true;
 
 /***/ }),
 

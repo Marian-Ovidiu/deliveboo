@@ -2,20 +2,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;700&display=swap" rel="stylesheet">
-    <title>Home</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    {{-- font awesome --}}
+	{{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"/> --}}
+    {{-- vuejs --}}
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    {{-- style --}}
+    <link rel="stylesheet" href="{{asset('css/app.css')}}">
+    <title>{{ config('app.name', 'Deliveboo') }}</title>
 </head>
 <body>
     <div class="wrapper">
-        @include('parts.header')
 
+    @include('parts.header')
 
-    <main class="main-home">
+    <main id="app" class="main-home">
         <div class="row">
             <div class="col-12 row-jumbotronn">
                 <div class="row-jumbotronn-row row">
@@ -28,44 +32,48 @@
                         Delivered fresh and hot at your doorstep
                     </div>
                 </div>
+
                 <div class="row-jumbotronn-row row">
                     <div class="col-2 row-jumbotronn-row-space fl"></div>
                     <div class="col-8 row-jumbotronn-row-search fl">
                         <div class="input-group border rounded-pill p-3">
-                            <div class="input-group-prepend">
-                              <span class="btn form-control"><i class="fa fa-search"></i></span>
-                            </div>
-                            <input type="search" placeholder="What're you searching for?" class="form-control">
-                            <div class="input-group-prepend">
-                                <button type="submit" class="btn btn-primary rounded-pill">Search</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-2 row-jumbotronn-row-space fl"></div>
-                </div>
-                <div class="row-jumbotronn-row row">
-                    <div class="col-2 row-jumbotronn-row-space fl"></div>
-                    <div class="col-8 row-jumbotronn-row-types fl">
-                        <div class="row-jumbotronn-row-types-row row">
-                            <div class="col-3 row-jumbotronn-row-types-row-type">
-                                <div class="row-jumbotronn-row-types-row-type-t"><a href="http://foodbakery.chimpgroup.com/foodstop/listings/?foodbakery_restaurant_category=breakfast"><img alt="" src="http://foodbakery.chimpgroup.com/foodstop/wp-content/uploads/top-icon-1.png"><h6 style="color:#ffffff !important;"><span>BreakFast</span></h6></a></div>
-                            </div>
-                            <div class="col-3 row-jumbotronn-row-types-row-type">
-                                <div class="row-jumbotronn-row-types-row-type-t"><a href="http://foodbakery.chimpgroup.com/foodstop/listings/?foodbakery_restaurant_category=dinner"><img alt="" src="http://foodbakery.chimpgroup.com/foodstop/wp-content/uploads/top-icon-1-03.png"><h6 style="color:#ffffff !important;"><span>Dinner</span></h6></a></div>
-                            </div>
-                            <div class="col-3 row-jumbotronn-row-types-row-type">
-                                <div class="row-jumbotronn-row-types-row-type-t"><a href="http://foodbakery.chimpgroup.com/foodstop/listings/?foodbakery_restaurant_category=lunch"><img alt="" src="http://foodbakery.chimpgroup.com/foodstop/wp-content/uploads/top-icon-1-02.png"><h6 style="color:#ffffff !important;"><span>Lunch</span></h6></a></div>
-                            </div>
-                            <div class="col-3 row-jumbotronn-row-types-row-type">
-                                <div class="row-jumbotronn-row-types-row-type-t"><a href="http://foodbakery.chimpgroup.com/foodstop/listings/?foodbakery_restaurant_category=delivery"><img alt="" src="http://foodbakery.chimpgroup.com/foodstop/wp-content/uploads/top-icon-1-04.png"><h6 style="color:#ffffff !important;"><span>Delivery</span></h6></a></div>
-                            </div>
+                            <input type="search" placeholder="Cerca per nome" class="form-control" @keyup="emptyBussinessesForType()" class="form-control" v-model="query" >
                         </div>
                     </div>
                     <div class="col-2 row-jumbotronn-row-space fl"></div>
                 </div>
             </div>
         </div>
+
         <div class="row">
+            <div class="col-12 row-types">
+                <div class="row-types-row row">
+                    <div class="col-12 row-types-row-title fl">
+                        Scegli per categoria
+                    </div>
+                </div>
+                <div class="row-types-row row">
+                    <div class="col-2 row-types-row-space fl"></div>
+                    <div class="col-8 row-types-row-types fl">
+                        <div class="row-types-row-types-row row">
+                            <div class="col-3 row-types-row-types-row-type" v-for="(type, i) in types">
+                                <div class="row-types-row-types-row-type-t">
+                                    <a href="#restaurants-row" v-on:click="filterBusinessesByTypes(type.name)">
+                                        <img alt="type.name" v-bind:src="type.img" class="rounded" width="200" height="100">
+                                        <h6>
+                                            <span style="color:black;">@{{ type.name }}</span>
+                                        </h6>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-2 row-types-row-space fl"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row" id="restaurants-row">
             <div class="col-12 row-restaurants">
                 <div class="row-restaurants-row row">
                     <div class="col-12 row-restaurants-row-title">Choose From Most Popular</div>
@@ -73,75 +81,67 @@
                 <div class="row-restaurants-row row">
                     <div class="col-12 row-restaurants-row-subtitle">All the top restaurant in your city</div>
                 </div>
-                <div class="row-restaurants-row row">
-                    <div class="col-2 row-restaurants-row-space fl"></div>
-                    <div class="col-8 row-restaurants-row-cards fl">
-                        <div class="row-restaurants-row-cards-row row">
-                            <div class="col-4 row-restaurants-row-cards-row-card ">
-                                <div class="row-restaurants-row-cards-row-card-img">
-                                    <img src="http://foodbakery.chimpgroup.com/foodstop/wp-content/uploads/cover-photo03-1-359x212.jpg" alt="">
+                <div id="restaurants" data-spy="restaurants" data-target="#restaurants" class="row-restaurants-row row">
+                    <div class="col-1 row-restaurants-row-space fl"></div>
+                    <div class="col-10 row-restaurants-row-cards fl">
+
+                        <div class="row-restaurants-row-cards-card"
+                            v-for="(business, i) in businesses"
+                            v-bind:key="i"
+                            v-if="searchFunction(business.name)">
+                            <div class="row-restaurants-row-cards-card-img" :style="{ 'background-image': 'url(' + business.logo + ')' }"></div>
+                            <div class="row-restaurants-row-cards-card-body">
+                                <div class="row-restaurants-row-cards-card-body-name">
+                                    @{{ business.name }}
                                 </div>
-                                <div class="row-restaurants-row-cards-row-card-body">
-                                    <div class="row-restaurants-row-cards-row-card-body-name">Natural Food</div>
-                                    <div class="row-restaurants-row-cards-row-card-body-type">Type of food : Apple Juice, Carrot Juice</div>
-                                    <div class="row-restaurants-row-cards-row-card-body-address"><i class="fa fa-map-marker" aria-hidden="true"></i> Italy, Legnano</div>
-                                    <div class="row-restaurants-row-cards-row-card-body-stars">
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                    </div>
-                                    <div class="row-restaurants-row-cards-row-card-body-status">
-                                        OPEN
-                                    </div>
+                                <div class="row-restaurants-row-cards-card-body-description">
+                                    @{{ business.description }}
+                                  </div>
+                                  <div class="row-restaurants-row-cards-card-body-title">Orari</div>
+                                <div class="row-restaurants-row-cards-card-body-hours">
+                                  <span>Dalle: @{{ business.opening_time }}</span><br>
+                                  <span>Alle: @{{ business.closing_time }}</span>
                                 </div>
-                            </div>
-                            <div class="col-4 row-restaurants-row-cards-row-card ">
-                                <div class="row-restaurants-row-cards-row-card-img">
-                                    <img src="http://foodbakery.chimpgroup.com/foodstop/wp-content/uploads/cover-photo01-1-359x212.jpg" alt="">
-                                </div>
-                                <div class="row-restaurants-row-cards-row-card-body">
-                                    <div class="row-restaurants-row-cards-row-card-body-name">Kfc – Kentucky</div>
-                                    <div class="row-restaurants-row-cards-row-card-body-type">Type of food : Hot Dogs, Pizza, Stakes</div>
-                                    <div class="row-restaurants-row-cards-row-card-body-address"><i class="fa fa-map-marker" aria-hidden="true"></i> Italy, Legnano</div>
-                                    <div class="row-restaurants-row-cards-row-card-body-stars">
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                    </div>
-                                    <div class="row-restaurants-row-cards-row-card-body-status">
-                                        CLOSE
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-4 row-restaurants-row-cards-row-card ">
-                                <div class="row-restaurants-row-cards-row-card-img">
-                                    <img src="http://foodbakery.chimpgroup.com/foodstop/wp-content/uploads/cover-photo09-1-359x212.jpg" alt="">
-                                </div>
-                                <div class="row-restaurants-row-cards-row-card-body">
-                                    <div class="row-restaurants-row-cards-row-card-body-name">McDonalds</div>
-                                    <div class="row-restaurants-row-cards-row-card-body-type">Type of food : BreakFast, Delivery</div>
-                                    <div class="row-restaurants-row-cards-row-card-body-address"><i class="fa fa-map-marker" aria-hidden="true"></i> Italy, Legnano</div>
-                                    <div class="row-restaurants-row-cards-row-card-body-stars">
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                    </div>
-                                    <div class="row-restaurants-row-cards-row-card-body-status">
-                                        OPEN
-                                    </div>
+                                <div class="row-restaurants-row-cards-card-body-address">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    @{{ business.address }}
                                 </div>
                             </div>
                         </div>
+
+                        <div class="row-restaurants-row-cards-card"
+                        v-for="(business, i) in businessesForType"
+                        v-bind:key="i"
+                        v-if="businessesForType.length > 0">
+                            <div class="row-restaurants-row-cards-card-img" :style="{ 'background-image': 'url(' + business.logo + ')' }"></div>
+                            <div class="row-restaurants-row-cards-card-body">
+                                <div class="row-restaurants-row-cards-card-body-name">
+                                    @{{ business.name }}
+                                </div>
+                                <div class="row-restaurants-row-cards-card-body-title">Orari</div>
+                                <div class="row-restaurants-row-cards-card-body-hours">
+                                    @{{ business.opening_time }}
+                                </div>
+                                <div class="row-restaurants-row-cards-card-body-hours">
+                                    @{{ business.closing_time }}
+                                </div>
+                                <div class="row-restaurants-row-cards-card-body-address">
+                                    <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                    @{{ business.address }}
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
-                    <div class="col-2 row-restaurants-row-space fl"></div>
+                    <div class="col-1 row-restaurants-row-space fl"></div>
                 </div>
             </div>
         </div>
     </main>
     @include('parts.footer')
     </div>
+
+    <script src="{{ asset('js/app.js') }}"></script>
+
 </body>
 </html>
