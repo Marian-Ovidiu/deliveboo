@@ -26,7 +26,7 @@ class ProductSeeder extends Seeder
                 $product->description = $faker->text(rand(100, 300));
                 $product->price = $faker->randomFloat(2, 6, 70);
                 $product->visible = rand(0, 1);
-                $product->img = $product->img = 'https://source.unsplash.com/1600x900/?food/';
+                $product->img = $product->img = 'https://source.unsplash.com/1600x900/?food/' . rand(1, 1000);
                 $business->products()->save($product);
             }
 

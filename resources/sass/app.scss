@@ -12,9 +12,14 @@
 
 @import "home";
 @import "restaurant";
+@import "cart";
 @import "parts/header";
 @import "parts/footer";
 
 
 // FontAwesome
 @import '~@fortawesome/fontawesome-free/css/all.min.css';
+
+body {
+    background-color: #fff;
+}

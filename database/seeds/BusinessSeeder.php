@@ -46,7 +46,7 @@ class BusinessSeeder extends Seeder
         ]);
         $business->opening_time = $faker->time;
         $business->closing_time = $faker->time;
-        $business->logo = $business->logo = 'https://source.unsplash.com/1600x900/?restaurant/';;
+        $business->logo = $business->logo = 'https://source.unsplash.com/1600x900/?restaurant/' . rand(1, 1000);
         $business->telephone = $faker->numerify('##########');
         $business->email = $faker->unique()->safeEmail();
         $business->website = $faker->url();
