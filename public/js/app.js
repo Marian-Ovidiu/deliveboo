@@ -1919,7 +1919,13 @@ var app = new Vue({
 
     axios.get('http://localhost:8000/api/types', {}).then(function (resp) {
       _this.types = resp.data.data.types;
-    });
+    }); // mounted: function() {
+    //     if(localStorage.getItem('cart')) {
+    //       try {
+    //         this.cart = JSON.parse(localStorage.getItem('cart'));
+    //       } catch(e) {
+    //       localStorage.removeItem('cart');
+    //    },
   },
   methods: {
     filterBusinessesByTypes: function filterBusinessesByTypes(type) {
@@ -1993,6 +1999,10 @@ var app = new Vue({
         sum += item.price;
       });
       return sum;
+    },
+    saveCart: function saveCart() {
+      var cartJSON = JSON.stringify(this.cart);
+      localStorage.setItem('cart', cartJSON);
     }
   }
 });

@@ -47,6 +47,7 @@
                   <br>
                   <hr>
                 </div>
+                <a class="btn btn-primary" @click="saveCart()" href="{{asset(route('cart-checkout', compact('business')))}}">Checkout</a>
               </div>
             <div class="payment-info">
                 <div class="d-flex justify-content-between align-items-center">

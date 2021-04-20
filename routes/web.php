@@ -15,6 +15,9 @@ Route::get('business/{business}', 'Guest\PublicController@show_business')->name(
 Route::get('cart/businesses', 'Guest\PublicController@cart_businesses_list')->name('cart-businesses-list');;
 Route::get('cart/businesses/{business}', 'Guest\PublicController@cart_business_menu')->name('cart-business-menu');
 
+//checkout
+Route::get('/checkout/{business}', 'Guest\OrderController@checkout')->name('cart-checkout');
+
 // Dashboard Ristoratore
 // Route::prefix('dashboard')
 // ->namespace('Admin')

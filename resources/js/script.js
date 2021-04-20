@@ -26,7 +26,16 @@ const app = new Vue({
             this.types = resp.data.data.types
         })
 
+
+            if(localStorage.getItem('cart')) {
+            try {
+            this.cart = JSON.parse(localStorage.getItem('cart'));
+            } catch(e) {
+            localStorage.removeItem('cart');
+        }
+        }
     },
+
     methods: {
         filterBusinessesByTypes: function(type) {
             axios.get('http://localhost:8000/api/type/' + type, {
@@ -105,22 +114,11 @@ const app = new Vue({
             return sum;
         },
 
-        setCookie(name, value, days) {
-            let expires = "";
-            if (days) {
-                let date = new Date();
-                date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
-                expires = "; expires=" + date.toUTCString();
-            }
-            document.cookie = name + "=" + (value || "") + expires + "; path=/";
+        saveCart() {
+            let cartJSON = JSON.stringify(this.cart);
+            localStorage.setItem('cart', cartJSON);
         },
 
-        localStorage() {
-            window.localStorage.setItem("Cart", JSON.stringify(this.orderCart));
-            window.localStorage.setItem("cartTotalPrice", this.totalPrice);
-            let myItem = localStorage.getItem("Cart");
-            this.setCookie("cookieCart", myItem, 7);
-        }
     }
 });
 
