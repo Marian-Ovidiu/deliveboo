@@ -1,11 +1,11 @@
-{{-- MARIAN --}}
+{{-- @dump($businesses) --}}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    {{-- <meta name="csrf-token" content="{{ csrf_token() }}"> --}}
     {{-- font awesome --}}
 	{{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"/> --}}
     {{-- vuejs --}}
@@ -80,26 +80,31 @@
                     <div class="col-8 row-restaurants-row-cards fl">
                         <div class="row-restaurants-row-cards-row row">
 
-                            <div class="col-4 row-restaurants-row-cards-row-card"
-                                v-for="(business, i) in businesses"
-                                v-bind:key="i"
-                                v-if="searchFunction(business.name)">
-                                <div class="row-restaurants-row-cards-row-card-img">
-                                    <img :src="business.logo" alt="business.name" :value="business.id">
+
+                                <div class="col-4 row-restaurants-row-cards-row-card"
+                                    v-for="(business, i) in businesses"
+                                    v-bind:key="i"
+                                    v-if="searchFunction(business.name)">
+                                    {{-- <a href="{{ route('public-business', ['business' => $business->id]) }}"> --}}
+                                    <a v-bind:href="'business/'+ business.id">
+                                        <div class="row-restaurants-row-cards-row-card-img">
+                                            <img :src="business.logo" alt="business.name" :value="business.id">
+                                        </div>
+
+                                        <div class="row-restaurants-row-cards-row-card-body">
+                                            <div class="row-restaurants-row-cards-row-card-body-name">
+                                                @{{ business.name }}
+                                            </div>
+                                            <div class="row-restaurants-row-cards-row-card-body-type">
+                                                @{{ business.description }}
+                                            </div>
+                                            <div class="row-restaurants-row-cards-row-card-body-address">
+                                                <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                                @{{ business.address }}
+                                            </div>
+                                        </div>
+                                    </a>
                                 </div>
-                                <div class="row-restaurants-row-cards-row-card-body">
-                                    <div class="row-restaurants-row-cards-row-card-body-name">
-                                        @{{ business.name }}
-                                    </div>
-                                    <div class="row-restaurants-row-cards-row-card-body-type">
-                                        @{{ business.description }}
-                                    </div>
-                                    <div class="row-restaurants-row-cards-row-card-body-address">
-                                        <i class="fa fa-map-marker" aria-hidden="true"></i>
-                                        @{{ business.address }}
-                                    </div>
-                                </div>
-                            </div>
 
                             <div class="col-4 row-restaurants-row-cards-row-card"
                             v-for="(business, i) in businessesForType"

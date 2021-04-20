@@ -14,12 +14,13 @@ class PublicController extends Controller
   // Homepage
   public function index()
   {
-    return view('guest.home');
+    $businesses = Business::all();
+    return view('guest.home', compact('businesses'));
   }
   // Pagina ristorante
-  public function show_business ()
+  public function show_business(Business $business)
   {
-    return view('guest.business');
+    return view('guest.business', compact('business'));
   }
 
 
