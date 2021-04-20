@@ -14,10 +14,13 @@ class Business extends Model
       'user_id',
       'description',
       'address',
-      'logo',
       'closing_day',
       'opening_time',
-      'closing_time'
+      'closing_time',
+      'telephone',
+      'email',
+      'website'
+
   ];
 
     public function user()
