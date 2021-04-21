@@ -1844,6 +1844,8 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 __webpack_require__(/*! ./script */ "./resources/js/script.js");
 
+__webpack_require__(/*! ./hamburger-menu */ "./resources/js/hamburger-menu.js");
+
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":
@@ -1887,6 +1889,21 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     forceTLS: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/hamburger-menu.js":
+/*!****************************************!*\
+  !*** ./resources/js/hamburger-menu.js ***!
+  \****************************************/
+/***/ (() => {
+
+$('.fa-bars').click(function () {
+  $('.hamburger-menu').fadeIn(1500);
+});
+$('.fa-times').click(function () {
+  $('.hamburger-menu').fadeOut(1000);
+});
 
 /***/ }),
 

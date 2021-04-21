@@ -11,11 +11,10 @@
 @import "partials/custom";
 
 @import "home";
-@import "restaurant";
-@import "cart";
+@import "parts/navbar";
 @import "parts/header";
 @import "parts/footer";
-
+@import "cart";
 
 // FontAwesome
 @import '~@fortawesome/fontawesome-free/css/all.min.css';

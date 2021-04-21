@@ -30,17 +30,34 @@
                     font-family: 'Roboto', sans-serif;
                 }
                 &-title {
-                    margin-top: 5.5%;
+                    transition: 1s;
+                    margin-top: 6%;
                     color:white;
                     font-size: 2rem;
                     text-align: center;
                     font-family: 'Roboto', sans-serif;
                     text-shadow: 2px 2px black;
                 }
+                @media (max-width: 950px) {
+                    &-title{
+                        margin-top: 10%;
+                    }
+                }
+                @media (max-width: 650px) {
+                    &-title{
+                        margin-top: 13%;
+                    }
+                }
+                &-search {
+                    .input-group{
+                        input{
+                            transition: 1s;
+                        }
+                    }
+                }
             }
         }
         &-types{
-            height: 500px;
             padding: 35px;
             text-align: center;
             &-row {
@@ -52,6 +69,7 @@
                     margin-bottom: 20px;
                 }
                 &-type {
+                    transition: 1s;
                     &-t {
                         width: 100%;
                         transition: 1s;
@@ -83,62 +101,83 @@
                     color: #3d4d67;
                     margin-bottom: 20px;
                  }
+                @media (max-width: 950px) {
+                    &-cards{
+                        justify-content: space-between;
+                    }
+                }
                 &-cards{
                     display: flex;
                     justify-content: space-around;
                     align-items: center;
                     flex-wrap: wrap;
+                    &-row {
+                        background-color:  white;
+                        &-card{
+                            min-height: 400px;
+                            transition: 0.5s;
+                            &-click {
+                                text-decoration: none;
+                                &-product{
+                                    width: 90%;
+                                    height: 90%;
+                                    margin: auto;
+                                    transition: 1s;
+                                    &-img{
+                                        width: 100%;
+                                        height: 90px;
+                                        text-align: center;
+                                        background-size: contain;
+                                        background-repeat: no-repeat;
+                                        background-position: center;
+                                        border-bottom: 1px solid lightgray;
+                                    }
+                                    &-body{
+                                        position: relative;
+                                        text-align: center;
+                                        height: 235px;
+                                        &-name {
+                                            font-weight: bold;
+                                            font-size: 17px;
+                                            margin: 7px auto;
+                                            color: #3d4d67;
+                                        }
+                                        &-description{
+                                            color: #3d4d67;
+                                        }
+                                        &-hours {
+                                            position: absolute;
+                                            bottom: 20%;
+                                            left: 50%;
+                                            transform: translate(-50%, 40%);
+                                            color: #3d4d67;
+                                        }
+                                        &-title {
+                                            font-family: 'Roboto', sans-serif;
+                                            color: #3d4d67;
+                                            font-weight: bold;
+                                            position: absolute;
+                                            bottom: 40%;
+                                            left: 50%;
+                                            transform: translate(-50%, 65%);
+                                        }
+                                        &-address {
+                                            position: absolute;
+                                            bottom: 0;
+                                            transform: translate(0%, 50%);
+                                            font-size: 10px;
+                                            margin: 7px 30px;
+                                            color: #3d4d67;
+                                        }
+                                    }
+                                }
+                                &-product:hover{
+                                    transform: scale(1.05);
+                                    box-shadow: 5px 10px 14px black;
+                                }
+                            }
 
-                    &-card{
-                        margin-bottom: 20px;
-                        width: 23%;
-                        min-height: 325px;
-                        transition: 1s;
-                        background-color: white;
-                        &-img{
-                            width: 100%;
-                            height: 90px;
-                            text-align: center;
-                            background-size: contain;
-                            background-repeat: no-repeat;
-                            background-position: center;
-                            border-bottom: 1px solid lightgray;
                         }
-                        &-body{
-                            position: relative;
-                            text-align: center;
-                            height: 235px;
-                            &-name {
-                                font-weight: bold;
-                                font-size: 17px;
-                                margin: 7px auto;
-                            }
-                            &-hours {
-                                position: absolute;
-                                bottom: 20%;
-                                left: 50%;
-                                transform: translate(-50%, 0);
-                            }
-                            &-title {
-                                font-family: 'Roboto', sans-serif;
-                                color: #3d4d67;
-                                font-weight: bold;
-                                position: absolute;
-                                bottom: 40%;
-                                left: 50%;
-                                transform: translate(-50%, 0);
-                            }
-                            &-address {
-                                position: absolute;
-                                bottom: 0;
-                                font-size: 10px;
-                                margin: 7px 30px;
-                            }
-                        }
-                    }
-                    &-card:hover{
-                        transform: scale(1.05);
-                        box-shadow: 5px 10px 14px black;
                     }
                 }
             }

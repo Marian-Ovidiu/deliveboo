@@ -16,12 +16,12 @@ Route::get('/checkout/{business}', 'Guest\OrderController@checkout')->name('cart
 Route::post('/checkout/payment', 'Guest\OrderController@store')->name('order-payment');
 
 // Dashboard Ristoratore
-// Route::prefix('dashboard')
-// ->namespace('Admin')
-// ->middleware('auth')
-// ->group(function () {
-//   Route::get('', 'DashboardController@index')->name('dashboard');
-//   Route::resource('business', BusinessController::Class);
-//   Route::resource('product', ProductController::Class);
-//   Route::get('business/{id}/add', 'ProductController@add')->name('add-prod');
-// });
+ Route::prefix('dashboard')
+ ->namespace('Admin')
+ ->middleware('auth')
+ ->group(function () {
+   Route::get('', 'DashboardController@index')->name('dashboard');
+   Route::resource('business', BusinessController::Class);
+   Route::resource('product', ProductController::Class);
+   Route::get('business/{id}/add', 'ProductController@add')->name('add-prod');
+ });
