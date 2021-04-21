@@ -8,8 +8,17 @@
 @import "partials/custom";
 @import "home";
 @import "restaurant";
+<<<<<<< HEAD
 @import "dashboard";
 @import "parts/navbar";
+=======
+@import "cart";
+@import "parts/header";
+>>>>>>> refs/remotes/origin/master
 @import "parts/footer";
 // FontAwesome
 @import '~@fortawesome/fontawesome-free/css/all.min.css';
+
+body {
+    background-color: #fff;
+}

@@ -1,16 +1,25 @@
 <header class="main-restaurant">
     <div class="main-restaurant-row">
-        <div class="col-12 main-restaurant-row-jumbotronn"
-            style="background-image: url('https://wallpaperaccess.com/full/1306153.jpg')">
+        <div class="col-12 main-restaurant-row-jumbotronn" style="background-image: url('{{ $business->logo }}')">
             <div class="main-restaurant-row-jumbotronn-cover row">
                 <div class="col-1 main-restaurant-row-jumbotronn-cover-space"></div>
                 <div class="col-5 main-restaurant-row-jumbotronn-cover-logo">
                     <div class="main-restaurant-row-jumbotronn-cover-logo-img fl">
-                        <img src="http://foodbakery.chimpgroup.com/foodstop/wp-content/uploads/kfc-1.png" alt="logo">
+                        <img src="{{ $business->logo }}" alt="logo" width="60" height="60">
                     </div>
                     <div class="main-restaurant-row-jumbotronn-cover-logo-box fl">
-                        <div class="main-restaurant-row-jumbotronn-cover-logo-box-title">Kfc – Kentucky</div>
-                        <div class="main-restaurant-row-jumbotronn-cover-logo-box-types">Hot Dogs, Pizza & Stakes</div>
+                        <div class="main-restaurant-row-jumbotronn-cover-logo-box-title">{{ $business->name }}</div>
+                        {{-- @foreach ($business->types()->get() as $type)
+                        <div class="main-restaurant-row-jumbotronn-cover-logo-box-types">{{ $type->name }}</div>
+                        @endforeach --}}
+                        <div class="main-restaurant-row-jumbotronn-cover-logo-box-types">
+                            @foreach ($business->types as $id => $type)
+                                {{ $type->name }}
+                                @if ($id != (count($business->types) - 1))
+                                |
+                                @endif
+                            @endforeach
+                        </div>
                     </div>
                 </div>
                 <div class="col-5 main-restaurant-row-jumbotronn-cover-info">
