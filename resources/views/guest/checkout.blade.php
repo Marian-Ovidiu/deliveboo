@@ -83,15 +83,11 @@
     {{-- / row: notes --}}
 
     {{-- row: success --}}
-
       <input type="hidden" value="1" name="success">
-
     {{-- / row: success --}}
 
     {{-- row: amount --}}
-
       <input type="hidden" :value="amount" name="amount">
-
     {{-- / row: amount --}}
 
     <br>
@@ -105,37 +101,37 @@
 
     <input type="submit" value="Procedi all'ordine">
 
-    <script src="https://js.braintreegateway.com/web/dropin/1.13.0/js/dropin.min.js"></script>
-      <script>
-          var form = document.querySelector('#payment-form');
-          var client_token = "{{ $token }}";
-          var onBox = $("#loading");
-          onBox.addClass("not-active")
-          braintree.dropin.create({
-            authorization: client_token,
-            selector: '#bt-dropin',
-            paypal: {
-              flow: 'vault'
-            }
-          }, function (createErr, instance) {
-            if (createErr) {
-              console.log('Create Error', createErr);
+    <div class="bt-drop-in-wrapper">
+      <div id="bt-dropin"></div>
+    </div>
+
+    <script src="https://js.braintreegateway.com/web/dropin/1.26.1/js/dropin.min.js"></script>
+    <script src="https://js.braintreegateway.com/web/3.73.1/js/hosted-fields.min.js"></script>
+    <script>
+      var form = document.querySelector('#payment-form');
+      var client_token = "{{ $token }}";
+      braintree.dropin.create({
+        authorization: client_token,
+        selector: '#bt-dropin',
+        paypal: {
+          flow: 'vault'
+        }
+      }, function (createErr, instance) {
+        if (createErr) {
+          console.log('Create Error', createErr);
+          return;
+        }
+        form.addEventListener('submit', function (event) {
+          event.preventDefault();
+          instance.requestPaymentMethod(function (err, payload) {
+            if (err) {
+              console.log('Request Payment Method Error', err);
               return;
             }
-            form.addEventListener('submit', function (event) {
-              onBox.removeClass('not-active').addClass('active-container').fadeIn('slow');
-              event.preventDefault();
-              instance.requestPaymentMethod(function (err, payload) {
-                if (err) {
-                  onBox.removeClass('active-container').addClass('not-active').fadeIn('slow');
-                  console.log('Request Payment Method Error', err);
-                  return;
-                }
-                // Add the nonce to the form and submit
-                document.querySelector('#nonce').value = payload.nonce;
-                form.submit();
-              });
-            });
+            // Add the nonce to the form and submit
+            form.submit();
           });
-      </script>
+        });
+      });
+    </script>
   </form>
