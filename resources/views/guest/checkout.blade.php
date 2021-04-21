@@ -8,7 +8,7 @@
     @{{item.id}}, @{{item.name}}, @{{item.quantity}}, @{{item.price}} <br>
   </div>
   <div>
-    @{{totalPrice}}
+    @{{amount}}
   </div>
 
   <br>
@@ -88,6 +88,12 @@
 
     {{-- / row: success --}}
 
+    {{-- row: amount --}}
+
+      <input type="hidden" :value="amount" name="amount">
+
+    {{-- / row: amount --}}
+
     <br>
     <br>
     <hr>
@@ -95,6 +101,7 @@
     <br>
 
     <input v-for ="product in cartSaved" type = "hidden" name = "products[]" :value = "product.id"/>
+    <input v-for ="product in cartSaved" type = "hidden" name = "quantities[]" :value = "product.quantity"/>
+
     <input type="submit" value="Procedi all'ordine">
-    {{-- <input v-for ="dish in cart" type = "hidden" name = "quantity[]" :value = "dish.quantity"/>  --}}
   </form>

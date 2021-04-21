@@ -43,7 +43,7 @@
                   [ #@{{product.id}} | @{{product.name}} | Qt. @{{product.quantity}} | Eur. @{{product.price}} ]
                   <br>
                   <br>
-                  @{{amount()}}
+                  @{{getAmount()}}
                   <br>
                   <hr>
                 </div>

@@ -21,8 +21,10 @@ class OrderController extends Controller
 
       $products= [];
 
-      foreach ($data['products'] as $product_id) {
-        $products[] = Product::where('id', $product_id)->get();
+      foreach ($data['products'] as $id => $product) {
+        for ($i=0; $i < $data['quantities'][$id] ; $i++) {
+          $products[] = $product;
+        }
       }
 
       $order = new Order();
@@ -30,8 +32,6 @@ class OrderController extends Controller
       $order->save();
       $order->products()->attach($products);
 
-      dd($order);
-
-        return view('guest.checkout');
+      return view('guest.success');
     }
 }
