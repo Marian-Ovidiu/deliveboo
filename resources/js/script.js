@@ -5,7 +5,9 @@ const app = new Vue({
         businessesForType: [],
         query: '',
         types: [],
-        cart: []
+        cart: [],
+        cartSaved: [],
+        amount: 0
     },
     mounted() {
         axios.get('http://localhost:8000/api/businesses', {
@@ -24,16 +26,10 @@ const app = new Vue({
         })
         .then(resp => {
             this.types = resp.data.data.types
-        })
+        }),
 
-
-            if(localStorage.getItem('cart')) {
-            try {
-            this.cart = JSON.parse(localStorage.getItem('cart'));
-            } catch(e) {
-            localStorage.removeItem('cart');
-        }
-        }
+        this.cartSaved = JSON.parse(localStorage.getItem('cart'));
+        this.amount = localStorage.getItem('amount');
     },
 
     methods: {
@@ -106,19 +102,30 @@ const app = new Vue({
             });
           },
 
-          amount () {
+          getAmount () {
             let sum = 0;
             this.cart.forEach((item) => {
               sum += item.price;
             });
-            return sum;
+            this.amount = sum.toFixed(2);
+            return this.amount;
         },
 
         saveCart() {
             let cartJSON = JSON.stringify(this.cart);
             localStorage.setItem('cart', cartJSON);
+            localStorage.setItem('amount', this.amount );
         },
 
+        // mounted: function() {
+        //     if(localStorage.getItem('cart')) {
+        //       try {
+        //         this.cart = JSON.parse(localStorage.getItem('cart'));
+        //       } catch(e) {
+        //         localStorage.removeItem('cart');
+        //     }
+        //     }
+        // }
     }
 });
 
