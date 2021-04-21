@@ -1905,7 +1905,7 @@ var app = new Vue({
     types: [],
     cart: [],
     cartSaved: [],
-    totalPrice: 0
+    amount: 0
   },
   mounted: function mounted() {
     var _this = this;
@@ -1922,7 +1922,7 @@ var app = new Vue({
     axios.get('http://localhost:8000/api/types', {}).then(function (resp) {
       _this.types = resp.data.data.types;
     }), this.cartSaved = JSON.parse(localStorage.getItem('cart'));
-    this.totalPrice = localStorage.getItem('totalPrice');
+    this.amount = localStorage.getItem('amount');
   },
   methods: {
     filterBusinessesByTypes: function filterBusinessesByTypes(type) {
@@ -1990,18 +1990,18 @@ var app = new Vue({
         }
       });
     },
-    amount: function amount() {
-      var _this4 = this;
-
+    getAmount: function getAmount() {
+      var sum = 0;
       this.cart.forEach(function (item) {
-        _this4.totalPrice += item.price;
+        sum += item.price;
       });
-      return this.totalPrice;
+      this.amount = sum.toFixed(2);
+      return this.amount;
     },
     saveCart: function saveCart() {
       var cartJSON = JSON.stringify(this.cart);
       localStorage.setItem('cart', cartJSON);
-      localStorage.setItem('totalPrice', this.totalPrice);
+      localStorage.setItem('amount', this.amount);
     } // mounted: function() {
     //     if(localStorage.getItem('cart')) {
     //       try {

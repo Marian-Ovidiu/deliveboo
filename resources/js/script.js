@@ -7,7 +7,7 @@ const app = new Vue({
         types: [],
         cart: [],
         cartSaved: [],
-        totalPrice: 0
+        amount: 0
     },
     mounted() {
         axios.get('http://localhost:8000/api/businesses', {
@@ -29,7 +29,7 @@ const app = new Vue({
         }),
 
         this.cartSaved = JSON.parse(localStorage.getItem('cart'));
-        this.totalPrice = localStorage.getItem('totalPrice');
+        this.amount = localStorage.getItem('amount');
     },
 
     methods: {
@@ -102,18 +102,19 @@ const app = new Vue({
             });
           },
 
-          amount () {
-
+          getAmount () {
+            let sum = 0;
             this.cart.forEach((item) => {
-              this.totalPrice += item.price;
+              sum += item.price;
             });
-            return this.totalPrice;
+            this.amount = sum.toFixed(2);
+            return this.amount;
         },
 
         saveCart() {
             let cartJSON = JSON.stringify(this.cart);
             localStorage.setItem('cart', cartJSON);
-            localStorage.setItem('totalPrice', this.totalPrice );
+            localStorage.setItem('amount', this.amount );
         },
 
         // mounted: function() {
