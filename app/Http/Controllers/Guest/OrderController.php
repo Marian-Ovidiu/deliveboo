@@ -10,66 +10,70 @@ use App\Order;
 
 class OrderController extends Controller
 {
-    public function checkout(Business $business)
-    {
+  public function checkout(Business $business)
+  {
 
-        $gateway = new Gateway([
-        'environment' => 'sandbox',
-        'merchantId' => 'nyfdp2wz77gqqj29',
-        'publicKey' => '8bdc65hxyy4pg56f',
-        'privateKey' => 'e16fd716976555b304d8b2d18ad5ce55'
-        ]);
+    $gateway = new Gateway([
+      'environment' => 'sandbox',
+      'merchantId' => 'nyfdp2wz77gqqj29',
+      'publicKey' => '8bdc65hxyy4pg56f',
+      'privateKey' => 'e16fd716976555b304d8b2d18ad5ce55'
+    ]);
 
-        $token = $gateway->ClientToken()->generate();
-        return view('guest.checkout', compact('business', 'token', 'gateway'));
-    }
+    $token = $gateway->ClientToken()->generate();
+    return view('guest.checkout', compact('business', 'token', 'gateway'));
+  }
 
-    public function store(Request $request)
-    {
+  public function store(Request $request)
+  {
+    $data = $request->all();
 
-      $data = $request->all();
+    $products= [];
 
-      $products= [];
-
-      foreach ($data['products'] as $id => $product) {
-        for ($i=0; $i < $data['quantities'][$id] ; $i++) {
-          $products[] = $product;
-        }
+    foreach ($data['products'] as $id => $product) {
+      for ($i=0; $i < $data['quantities'][$id] ; $i++) {
+        $products[] = $product;
       }
-
-
-      $order = new Order();
-      $order->fill($data);
-      $gateway = new Gateway([
-        'environment' => 'sandbox',
-        'merchantId' => 'nyfdp2wz77gqqj29',
-        'publicKey' => '8bdc65hxyy4pg56f',
-        'privateKey' => 'e16fd716976555b304d8b2d18ad5ce55'
-        ]);
-      $order->save();
-      $order->products()->attach($products);
-
-        $nonce = true;
-
-        $result = $gateway->transaction()->sale([
-        'amount' => $order->amount,
-        'paymentMethodNonce' => $nonce,
-        'options' => [
-            'submitForSettlement' => true
-            ]
-        ]);
-        dd($result);
-        if ($result->success) {
-            $transaction = $result->transaction;
-            return redirect()->route('purchase-made', ['transaction'=>$transaction,'order'=>$order]);
-        } else {
-            $errorString = "";
-
-            foreach ($result->errors->deepAll() as $error) {
-                $errorString .= 'Error: ' . $error->code . ": " . $error->message . "\n";
-            }
-        }
-
-      return view('guest.success');
     }
+
+    $order = new Order();
+    $order->fill($data);
+    $gateway = new Gateway([
+      'environment' => 'sandbox',
+      'merchantId' => 'nyfdp2wz77gqqj29',
+      'publicKey' => '8bdc65hxyy4pg56f',
+      'privateKey' => 'e16fd716976555b304d8b2d18ad5ce55'
+    ]);
+    $order->save();
+    $order->products()->attach($products);
+
+    $gateway = new Gateway([
+    'environment' => 'sandbox',
+    'merchantId' => 'nyfdp2wz77gqqj29',
+    'publicKey' => '8bdc65hxyy4pg56f',
+    'privateKey' => 'e16fd716976555b304d8b2d18ad5ce55'
+    ]);
+    $result = $gateway->transaction()->sale([
+    'amount' => $order->amount,
+    'paymentMethodNonce' => 'fake-valid-nonce',
+    'options' => [
+    'submitForSettlement' => true
+    ]
+    ]);
+    
+    dd($result);
+
+    if ($result->success || !is_null($result->transaction)) {
+      $transaction = $result->transaction;
+      //redirect da qualche parte;
+    } else {
+      $errors = [];
+      foreach($result->errors->deepAll() as $error) {
+        $errors[$error->code] = $error->message;
+      }
+      Router::redirect(SITE_URL . 'payment/?' . http_build_query($errors));
+    }
+
+    return view('guest.success');
+  }
 }
