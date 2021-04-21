@@ -4,60 +4,58 @@
     box-sizing: border-box;
 }
 
-
-.wrapper{
+.wrapper {
     max-width: 100%;
     width: 100vw;
 }
 
-.main-restaurant{
+.header-restaurant {
     &-row {
-        &-jumbotronn{
+        &-jumbotronn {
             height: 40vh;
-            background-size:100%;
+            background-size: 100%;
             background-position: bottom;
             background-repeat: no-repeat;
             &-cover {
                 height: 100%;
                 width: 100%;
                 background-color: rgba(0, 0, 0, 0.5);
-                &-logo{
+                &-logo {
                     margin-top: 8%;
-                    &-img{
+                    &-img {
                         padding: 5px;
                         background-color: white;
                         border-radius: 10px;
                         transform: scale(1.3);
                         margin-top: 15px;
                     }
-                    &-box{
+                    &-box {
                         margin: 15px 35px;
                         &-title {
                             font-size: 35px;
                             color: white;
                         }
-                        &-types{
+                        &-types {
                             font-size: 15px;
                             color: white;
                         }
                     }
-
                 }
-                &-info{
+                &-info {
                     margin-top: 8%;
-                    color:white;
-                    &-box{
-                        &-icon{
+                    color: white;
+                    &-box {
+                        &-icon {
                             i {
                                 margin: 10px 20px;
                                 font-size: 30px;
-                                color:white;
+                                color: white;
                             }
                         }
-                        &-select{
+                        &-select {
                             display: block;
                             margin-top: 13px;
-                            border:none;
+                            border: none;
                             padding: 5px 10px;
                         }
                         &-select:after {
@@ -69,17 +67,17 @@
                             height: 0;
                             border: 6px solid transparent;
                             border-color: #fff transparent transparent transparent;
-                          }
-                          &-select {
+                        }
+                        &-select {
                             background-color: #333;
                             color: white;
-                          }
-                          &-select-items div:hover, .same-as-selected {
+                        }
+                        &-select-items div:hover,
+                        .same-as-selected {
                             background-color: rgba(0, 0, 0, 0.1);
-                          }
-                        &-select:hover{
-                            border:none;
-
+                        }
+                        &-select:hover {
+                            border: none;
                         }
                     }
                 }
@@ -87,4 +85,3 @@
         }
     }
 }
-

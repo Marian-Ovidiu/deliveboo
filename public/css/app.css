@@ -10209,54 +10209,54 @@ h3 {
   width: 100vw;
 }
 
-.main-restaurant-row-jumbotronn {
+.header-restaurant-row-jumbotronn {
   height: 40vh;
   background-size: 100%;
   background-position: bottom;
   background-repeat: no-repeat;
 }
-.main-restaurant-row-jumbotronn-cover {
+.header-restaurant-row-jumbotronn-cover {
   height: 100%;
   width: 100%;
   background-color: rgba(0, 0, 0, 0.5);
 }
-.main-restaurant-row-jumbotronn-cover-logo {
+.header-restaurant-row-jumbotronn-cover-logo {
   margin-top: 8%;
 }
-.main-restaurant-row-jumbotronn-cover-logo-img {
+.header-restaurant-row-jumbotronn-cover-logo-img {
   padding: 5px;
   background-color: white;
   border-radius: 10px;
   transform: scale(1.3);
   margin-top: 15px;
 }
-.main-restaurant-row-jumbotronn-cover-logo-box {
+.header-restaurant-row-jumbotronn-cover-logo-box {
   margin: 15px 35px;
 }
-.main-restaurant-row-jumbotronn-cover-logo-box-title {
+.header-restaurant-row-jumbotronn-cover-logo-box-title {
   font-size: 35px;
   color: white;
 }
-.main-restaurant-row-jumbotronn-cover-logo-box-types {
+.header-restaurant-row-jumbotronn-cover-logo-box-types {
   font-size: 15px;
   color: white;
 }
-.main-restaurant-row-jumbotronn-cover-info {
+.header-restaurant-row-jumbotronn-cover-info {
   margin-top: 8%;
   color: white;
 }
-.main-restaurant-row-jumbotronn-cover-info-box-icon i {
+.header-restaurant-row-jumbotronn-cover-info-box-icon i {
   margin: 10px 20px;
   font-size: 30px;
   color: white;
 }
-.main-restaurant-row-jumbotronn-cover-info-box-select {
+.header-restaurant-row-jumbotronn-cover-info-box-select {
   display: block;
   margin-top: 13px;
   border: none;
   padding: 5px 10px;
 }
-.main-restaurant-row-jumbotronn-cover-info-box-select:after {
+.header-restaurant-row-jumbotronn-cover-info-box-select:after {
   position: absolute;
   content: "";
   top: 14px;
@@ -10266,50 +10266,159 @@ h3 {
   border: 6px solid transparent;
   border-color: #fff transparent transparent transparent;
 }
-.main-restaurant-row-jumbotronn-cover-info-box-select {
+.header-restaurant-row-jumbotronn-cover-info-box-select {
   background-color: #333;
   color: white;
 }
-.main-restaurant-row-jumbotronn-cover-info-box-select-items div:hover, .main-restaurant-row-jumbotronn-cover-info-box .same-as-selected {
+.header-restaurant-row-jumbotronn-cover-info-box-select-items div:hover,
+.header-restaurant-row-jumbotronn-cover-info-box .same-as-selected {
   background-color: rgba(0, 0, 0, 0.1);
 }
-.main-restaurant-row-jumbotronn-cover-info-box-select:hover {
+.header-restaurant-row-jumbotronn-cover-info-box-select:hover {
   border: none;
 }
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+}
+
+.wrapper {
+  max-width: 100%;
+  width: 100vw;
+}
+
+.header-restaurant-row-jumbotronn {
+  height: 40vh;
+  background-size: 100%;
+  background-position: bottom;
+  background-repeat: no-repeat;
+}
+.header-restaurant-row-jumbotronn-cover {
+  height: 100%;
+  width: 101.6%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.header-restaurant-row-jumbotronn-cover-logo {
+  margin-top: 8%;
+  color: white;
+}
+.header-restaurant-row-jumbotronn-cover-logo-img {
+  margin-top: 30px;
+  padding: 5px;
+  background-color: white;
+  border-radius: 10px;
+  transform: scale(1.3);
+}
+.header-restaurant-row-jumbotronn-cover-logo-box {
+  margin: 15px 30px;
+}
+.header-restaurant-row-jumbotronn-cover-logo-box-title {
+  font-size: 35px;
+  color: white;
+}
+.header-restaurant-row-jumbotronn-cover-logo-box-types {
+  font-size: 15px;
+  color: white;
+}
+.header-restaurant-row-jumbotronn-cover-btn {
+  margin-top: 6%;
+}
+.header-restaurant-row-jumbotronn-cover-btn button {
+  background: none;
+  border: none;
+  border-radius: 20px;
+  font-size: 18px;
+  padding: 10px;
+  transition: 0.5s;
+  color: white;
+}
+.header-restaurant-row-jumbotronn-cover-btn button:hover {
+  transform: scale(1);
+  background-color: rgba(175, 175, 175, 0.3);
+  padding: 7px 12px;
+}
+
+.main-dashboard-title {
+  font-weight: bold;
+  text-align: center;
+}
+.main-dashboard-row-container-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.main-dashboard-row-container-row-card {
+  padding: 10px;
+}
+.main-dashboard-row-container-row-card-restaurant {
+  margin: 0 auto;
+  width: 75%;
+  border-radius: 10px;
+  height: 400px;
+  padding: 0px;
+  transition: 1s;
+}
+.main-dashboard-row-container-row-card-restaurant-img {
+  border-radius: 10px 10px 0px 0px;
+  height: 150px;
+  background-size: cover;
+  background-position: center;
+}
+.main-dashboard-row-container-row-card-restaurant span {
+  font-weight: bold;
+}
+.main-dashboard-row-container-row-card-restaurant:hover {
+  background-color: rgba(175, 175, 175, 0.3);
+  padding: 7px 12px;
+  box-shadow: 5px 10px 14px black;
+}
+
 header {
-  position: absolute;
   z-index: 1;
-  height: 50px;
   width: 100%;
 }
 header nav {
   width: 100%;
   height: 100%;
 }
-header nav .col-12 .row {
+header nav .col-xl-12 .row {
   padding-top: 18px;
-  text-align: center;
 }
-header nav .col-12 .row span {
+header nav .col-xl-12 .row .links {
+  display: flex;
+  justify-content: space-between;
+}
+@media (max-width: 465px) {
+  header nav .col-xl-12 .row .links span {
+    font-size: 13px;
+  }
+}
+header nav .col-xl-12 .row .links span {
   font-size: 18px;
-  margin: 20px 10px;
   color: white;
   font-family: "Roboto", sans-serif;
   transition: 0.5s;
   border-radius: 50px;
 }
-header nav .col-12 .row span:hover {
+header nav .col-xl-12 .row span:hover, header nav .col-xl-12 .row .top-right a:hover {
   transform: scale(1.08);
   background-color: rgba(175, 175, 175, 0.3);
   padding: 7px 12px;
 }
-header nav .col-12 .row .top-right a {
+header nav .col-xl-12 .row .top-right {
+  display: flex;
+  justify-content: flex-end;
+}
+header nav .col-xl-12 .row .top-right a {
   font-size: 18px;
   color: white;
-  float: right;
   margin: 0 10px;
   font-family: "Roboto", sans-serif;
+  transition: 0.5s;
+  border-radius: 50px;
 }
 
 footer {
