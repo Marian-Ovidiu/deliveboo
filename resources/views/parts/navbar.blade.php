@@ -1,4 +1,4 @@
-    <header>
+    <div class="navbar">
         <nav class="row">
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 row-content">
                 <div class="row">
@@ -56,6 +56,6 @@
                 </div>
             </div>
         </nav>
-    </header>
+    </div>
 
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
