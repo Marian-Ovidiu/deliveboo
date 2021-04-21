@@ -21,42 +21,42 @@
 
     <main id="app" class="main-home">
         <div class="row">
-            <div class="col-12 row-jumbotronn">
+            <div class="col-xl-12  col-lg-12 col-md-12 col-sm-12 row-jumbotronn">
                 <div class="row-jumbotronn-row row">
-                    <div class="col-12 row-jumbotronn-row-title fl">
+                    <div class="col-xl-12  col-lg-12 col-md-12 row-jumbotronn-row-title fl">
                         Deliveboo
                     </div>
                 </div>
                 <div class="row-jumbotronn-row row">
-                    <div class="col-12 row-jumbotronn-row-subtitle fl">
+                    <div class="col-xl-12 col-lg-12 col-md-12 row-jumbotronn-row-subtitle fl">
                         Delivered fresh and hot at your doorstep
                     </div>
                 </div>
 
                 <div class="row-jumbotronn-row row">
-                    <div class="col-2 row-jumbotronn-row-space fl"></div>
-                    <div class="col-8 row-jumbotronn-row-search fl">
+                    <div class="col-xl-2 col-lg-2 col-md-2 row-jumbotronn-row-space fl"></div>
+                    <div class="col-xl-8 col-lg-8 col-md-8 row-jumbotronn-row-search fl">
                         <div class="input-group border rounded-pill p-3">
                             <input type="search" placeholder="Cerca per nome" class="form-control" @keyup="emptyBussinessesForType()" class="form-control" v-model="query" >
                         </div>
                     </div>
-                    <div class="col-2 row-jumbotronn-row-space fl"></div>
+                    <div class="col-xl-2 col-lg-2 col-md-2 row-jumbotronn-row-space fl"></div>
                 </div>
             </div>
         </div>
 
         <div class="row">
-            <div class="col-12 row-types">
+            <div class="col-xl-12 col-lg-12 col-md-12 row-types">
                 <div class="row-types-row row">
-                    <div class="col-12 row-types-row-title fl">
+                    <div class="col-xl-12 col-lg-12 col-md-12 row-types-row-title fl">
                         Scegli per categoria
                     </div>
                 </div>
                 <div class="row-types-row row">
-                    <div class="col-2 row-types-row-space fl"></div>
-                    <div class="col-8 row-types-row-types fl">
+                    <div class="col-xl-2 col-lg-2 col-md-2 row-types-row-space fl"></div>
+                    <div class="col-xl-8 col-lg-8 col-md-8 row-types-row-types fl">
                         <div class="row-types-row-types-row row">
-                            <div class="col-3 row-types-row-types-row-type" v-for="(type, i) in types">
+                            <div class="col-xl-3 col-lg-4 col-md-5 row-types-row-types-row-type" v-for="(type, i) in types">
                                 <div class="row-types-row-types-row-type-t">
                                     <a href="#restaurants-row" v-on:click="filterBusinessesByTypes(type.name)">
                                         <img alt="type.name" v-bind:src="type.img" class="rounded" width="200" height="100">
@@ -68,22 +68,22 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-2 row-types-row-space fl"></div>
+                    <div class="col-xl-2 col-lg-2 col-md-2 row-types-row-space fl"></div>
                 </div>
             </div>
         </div>
 
         <div class="row" id="restaurants-row">
-            <div class="col-12 row-restaurants">
+            <div class="col-xl-12 row-restaurants">
                 <div class="row-restaurants-row row">
-                    <div class="col-12 row-restaurants-row-title">Choose From Most Popular</div>
+                    <div class="col-xl-12 row-restaurants-row-title">Choose From Most Popular</div>
                 </div>
                 <div class="row-restaurants-row row">
-                    <div class="col-12 row-restaurants-row-subtitle">All the top restaurant in your city</div>
+                    <div class="col-xl-12 row-restaurants-row-subtitle">All the top restaurant in your city</div>
                 </div>
                 <div id="restaurants" data-spy="restaurants" data-target="#restaurants" class="row-restaurants-row row">
-                    <div class="col-1 row-restaurants-row-space fl"></div>
-                    <div class="col-10 row-restaurants-row-cards fl">
+                    <div class="col-xl-1 row-restaurants-row-space fl"></div>
+                    <div class="col-xl-10 row-restaurants-row-cards fl">
 
                         <div class="row-restaurants-row-cards-card"
                             v-for="(business, i) in businesses"
@@ -137,7 +137,7 @@
                             </a>
                         </div>
                     </div>
-                    <div class="col-1 row-restaurants-row-space fl"></div>
+                    <div class="col-xl-1 row-restaurants-row-space fl"></div>
                 </div>
             </div>
         </div>

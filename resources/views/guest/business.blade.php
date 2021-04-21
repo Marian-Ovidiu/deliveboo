@@ -21,6 +21,21 @@
         @include('parts.navbar')
         @include('parts.header')
 
+        <main class="main-restaurant">
+             <div class="row">
+                <div class="col-12 row-content">
+                    <div class="row-content-row row">
+                        <div class="col-3 row-content-row-sidebar">
+
+                        </div>
+                        <div class="col-9 row-content-row-menu">
+                        </div>
+                    </div>
+                </div>
+
+             </div>
+        </main>
+
     </div>
 
 </body>

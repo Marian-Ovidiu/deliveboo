@@ -29,8 +29,13 @@
                     text-align: center;
                     font-family: 'Roboto', sans-serif;
                 }
+                @media (max-width: 950px) {
+                    &-title{
+                        margin-top: 10%;
+                    }
+                }
                 &-title {
-                    margin-top: 5.5%;
+                    margin-top: 6%;
                     color:white;
                     font-size: 2rem;
                     text-align: center;
@@ -40,7 +45,6 @@
             }
         }
         &-types{
-            height: 500px;
             padding: 35px;
             text-align: center;
             &-row {
@@ -83,6 +87,11 @@
                     color: #3d4d67;
                     margin-bottom: 20px;
                  }
+                @media (max-width: 950px) {
+                    &-cards{
+                        justify-content: space-between;
+                    }
+                }
                 &-cards{
                     display: flex;
                     justify-content: space-around;
