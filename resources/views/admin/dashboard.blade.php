@@ -8,12 +8,12 @@
 
 {{-- User Header --}}
 <div class="wrap">
+    @include('parts.navbar')
     <header class="header-restaurant">
         <div class="header-restaurant-row">
             <div class=" header-restaurant-row-jumbotronn" style="background-image: url('https://wallpaperaccess.com/full/1306153.jpg')">
                 <div class="  header-restaurant-row-jumbotronn-cover row">
                     <div class="col-1 header-restaurant-row-jumbotronn-cover-space"></div>
-                    {{--immagine--}}
                     <div class="col-5 header-restaurant-row-jumbotronn-cover-logo">
                         <div class="header-restaurant-row-jumbotronn-cover-logo-img fl">
                             <img src="{{ asset('img/00-user-dash.png') }}" alt="{{ Auth::user()->name }}"" style="width:50px ">
@@ -33,12 +33,8 @@
                                     <button> Crea Nuovo Ristorante</button>
                                 </a>
                             </div>
-
-                            {{----}}
-                            {{-- <div class="col-1 header-restaurant-row-jumbotronn-cover-space"></div> --}}
                         </div>
                     </div>
-
                 </div>
                 <div class="col-1 header-restaurant-row-jumbotronn-cover-space"></div>
             </div>
