@@ -1903,7 +1903,9 @@ var app = new Vue({
     businessesForType: [],
     query: '',
     types: [],
-    cart: []
+    cart: [],
+    cartSaved: [],
+    totalPrice: 0
   },
   mounted: function mounted() {
     var _this = this;
@@ -1919,13 +1921,8 @@ var app = new Vue({
 
     axios.get('http://localhost:8000/api/types', {}).then(function (resp) {
       _this.types = resp.data.data.types;
-    }); // mounted: function() {
-    //     if(localStorage.getItem('cart')) {
-    //       try {
-    //         this.cart = JSON.parse(localStorage.getItem('cart'));
-    //       } catch(e) {
-    //       localStorage.removeItem('cart');
-    //    },
+    }), this.cartSaved = JSON.parse(localStorage.getItem('cart'));
+    this.totalPrice = localStorage.getItem('totalPrice');
   },
   methods: {
     filterBusinessesByTypes: function filterBusinessesByTypes(type) {
@@ -1994,16 +1991,27 @@ var app = new Vue({
       });
     },
     amount: function amount() {
-      var sum = 0;
+      var _this4 = this;
+
       this.cart.forEach(function (item) {
-        sum += item.price;
+        _this4.totalPrice += item.price;
       });
-      return sum;
+      return this.totalPrice;
     },
     saveCart: function saveCart() {
       var cartJSON = JSON.stringify(this.cart);
       localStorage.setItem('cart', cartJSON);
-    }
+      localStorage.setItem('totalPrice', this.totalPrice);
+    } // mounted: function() {
+    //     if(localStorage.getItem('cart')) {
+    //       try {
+    //         this.cart = JSON.parse(localStorage.getItem('cart'));
+    //       } catch(e) {
+    //         localStorage.removeItem('cart');
+    //     }
+    //     }
+    // }
+
   }
 });
 Vue.config.devtools = true;

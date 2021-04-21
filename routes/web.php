@@ -11,12 +11,9 @@ Route::get('', 'Guest\PublicController@index')->name('public-home');
 // Layout ristorante Guest
 Route::get('business/{business}', 'Guest\PublicController@show_business')->name('public-business');
 
-//Test Carrello
-Route::get('cart/businesses', 'Guest\PublicController@cart_businesses_list')->name('cart-businesses-list');;
-Route::get('cart/businesses/{business}', 'Guest\PublicController@cart_business_menu')->name('cart-business-menu');
-
 //checkout
 Route::get('/checkout/{business}', 'Guest\OrderController@checkout')->name('cart-checkout');
+Route::post('/checkout/payment', 'Guest\OrderController@store')->name('order-payment');
 
 // Dashboard Ristoratore
 // Route::prefix('dashboard')
