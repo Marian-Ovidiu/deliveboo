@@ -1,64 +1,75 @@
 <?php
 
 namespace App\Http\Controllers\Guest;
-
+use Braintree\Gateway as Gateway;
+use Braintree\Transaction as Transaction;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Business;
-use App\Product;
+use App\Order;
 
 class OrderController extends Controller
 {
-    public function index(Request $request)
+    public function checkout(Business $business)
     {
-        $business = Business::where('slug', $request->slug)->first();
-        return view('cart.index', compact('restaurant'));
-    }
 
-    public function store(Request $request, Faker $faker){
-        $dishesList = [];
-        $quantityList = [];
-        $cookieCart = json_decode($_COOKIE["cookieCart"]);
-        $business_id = $cookieCart[0]->restaurant_id;
-        $request["restaurant_id"] = $business_id;
-        $request["exp_date"] = $faker->dateTimeInInterval($startDate = 'now', $endDate = '+ 1 hour');
-        foreach ($cookieCart as $cook) {
-            array_push ($dishesList , $cook->id);
-            array_push ($quantityList , $cook->quantity);
-        }
-
-
-        $validateData = $request->validate([
-            'special_requests' => 'nullable',
-            'name' => 'required',
-            'lastname' => 'required',
-            'address' => 'required',
-            'phone_number' => 'required',
-            'email' => 'required',
-            'restaurant_id' => 'required|exists:restaurants,id',
-            'dishes' => 'exists:dishes,id',
-            'exp_date' => '',
-            'quantity' => '',
+        $gateway = new Gateway([
+        'environment' => 'sandbox',
+        'merchantId' => 'nyfdp2wz77gqqj29',
+        'publicKey' => '8bdc65hxyy4pg56f',
+        'privateKey' => 'e16fd716976555b304d8b2d18ad5ce55'
         ]);
 
-        Order::create($validateData);
-
-        $new_order = Order::orderBy("id", "desc")->first();
-
-        foreach ($cookieCart as $cook) {
-            $new_order->dishes()->attach([$cook->id => ['quantity' => $cook->quantity]]);
-        }
-
-
-        $to = $new_order->email;
-        Mail::to($to)->send(new Email);
-
-        return redirect()->route('guests.success', compact('new_order'));
+        $token = $gateway->ClientToken()->generate();
+        return view('guest.checkout', compact('business', 'token', 'gateway'));
     }
 
-    public function success(Order $order)
+    public function store(Request $request)
     {
-        $order = Order::orderBy("id", "desc")->first();
-        return view('guests.success', compact('order'));
+
+      $data = $request->all();
+
+      $products= [];
+
+      foreach ($data['products'] as $id => $product) {
+        for ($i=0; $i < $data['quantities'][$id] ; $i++) {
+          $products[] = $product;
+        }
+      }
+
+
+      $order = new Order();
+      $order->fill($data);
+      $gateway = new Gateway([
+        'environment' => 'sandbox',
+        'merchantId' => 'nyfdp2wz77gqqj29',
+        'publicKey' => '8bdc65hxyy4pg56f',
+        'privateKey' => 'e16fd716976555b304d8b2d18ad5ce55'
+        ]);
+      $order->save();
+      $order->products()->attach($products);
+
+        $nonce = true;
+
+        $result = $gateway->transaction()->sale([
+        'amount' => $order->amount,
+        'paymentMethodNonce' => $nonce,
+        'options' => [
+            'submitForSettlement' => true
+            ]
+        ]);
+        dd($result);
+        if ($result->success) {
+            $transaction = $result->transaction;
+            return redirect()->route('purchase-made', ['transaction'=>$transaction,'order'=>$order]);
+        } else {
+            $errorString = "";
+
+            foreach ($result->errors->deepAll() as $error) {
+                $errorString .= 'Error: ' . $error->code . ": " . $error->message . "\n";
+            }
+        }
+
+      return view('guest.success');
     }
 }

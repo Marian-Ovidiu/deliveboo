@@ -1,9 +1,9 @@
 <footer>
     <div class="row">
-        <div class="col-2 row-space"></div>
-        <div  class="col-8 row-body">
+        <div class="col-xl-2 col-lg-2 col-md-1 row-space"></div>
+        <div  class="col-xl-8 col-lg-8 col-md-10 row-body">
             <div class="row-body-row row">
-                <div class="col-4 row-body-row-card">
+                <div class="col-xl-4 col-lg-4 col-md-12 row-body-row-card">
                     <div class="row-body-row-card-title">About Us</div>
                     <div class="row-body-row-card-text">Lorem ipsum dolor sit amet,
                         consectetuer adipiscing elit.Donec
@@ -15,7 +15,7 @@
                     </div>
                 </div>
 
-                <div class="col-4 row-body-row-card" style="padding-left: 50px;">
+                <div class="col-xl-4 col-lg-4 col-md-6 row-body-row-card" style="padding-left: 50px;">
                     <div class="row-body-row-card-title">Popular Cities</div>
                     <ul class="row-body-row-card-ul">
                         <li>Torino</li>
@@ -28,7 +28,7 @@
                     </ul>
                 </div>
 
-                <div class="col-4 row-body-row-card">
+                <div class="col-xl-4 col-lg-4 col-md-6 row-body-row-card">
                     <div class="row-body-row-card-title">Connect Us</div>
                     <div class="row-body-row-card-box">
                         <div class="row-body-row-card-box-img fl">
@@ -52,6 +52,6 @@
                 </div>
             </div>
         </div>
-        <div class="col-2 row-space"></div>
+        <div class="col-xl-2 col-lg-2 col-md-1 row-space"></div>
     </div>
 </footer>

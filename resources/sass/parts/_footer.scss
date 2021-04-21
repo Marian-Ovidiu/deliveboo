@@ -4,7 +4,10 @@ footer {
     .row{
         background-color: #282C35;
         &-body-row{
+            display: flex;
+            flex-wrap: wrap;
             &-card{
+                transition: 1s;
                 &-title{
                     font-size: 20px;
                     font-weight: bold;
@@ -12,6 +15,29 @@ footer {
                 }
                 &-text{
                     margin: 10px 0;
+                }
+                @media (max-width: 1150px) {
+                    &-img{
+                    transition: 0.1s;
+                        img {
+                            width: 95%;
+                        }
+                    }
+                }
+                @media (max-width: 991px) {
+                    &-text{
+                        float: left;
+                        width: 70%;
+                    }
+                    &-img{
+                    float: right;
+                    margin-top: 10px;
+                    width: 30%;
+                    transition: 0.3s;
+                        img {
+                            width: 40%;
+                        }
+                    }
                 }
                 &-ul{
                     list-style: none;
