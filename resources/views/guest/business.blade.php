@@ -8,34 +8,19 @@
     {{-- font awesome --}}
 	{{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"/> --}}
     {{-- vuejs --}}
-    {{-- <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script> --}}
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
     {{-- style --}}
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
     <title>{{ config('app.name', 'Deliveboo') }}</title>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;700&display=swap" rel="stylesheet">
-    <title>RIstoranti</title>
+    <title>Ristoranti</title>
 </head>
 <body>
     <div class="wrapper">
         @include('parts.navbar')
-        @include('parts.header')
-
-        <main class="main-restaurant">
-             <div class="row">
-                <div class="col-12 row-content">
-                    <div class="row-content-row row">
-                        <div class="col-3 row-content-row-sidebar">
-
-                        </div>
-                        <div class="col-9 row-content-row-menu">
-                        </div>
-                    </div>
-                </div>
-
-             </div>
-        </main>
-
+        @include('parts.business-header')
+        @include('parts.cart')
     </div>
 
 </body>

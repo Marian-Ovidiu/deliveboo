@@ -10351,6 +10351,151 @@ header nav .col-xl-12 .row .top-right a {
   border: none;
 }
 
+.payment-info {
+  background: blue;
+  padding: 10px;
+  border-radius: 6px;
+  color: #fff;
+  font-weight: bold;
+}
+
+.product-details {
+  padding: 10px;
+}
+
+.cart {
+  background: #fff;
+}
+
+.p-about {
+  font-size: 12px;
+}
+
+.table-shadow {
+  box-shadow: 5px 5px 15px -2px #0000006b;
+}
+
+.type {
+  font-weight: 400;
+  font-size: 10px;
+}
+
+label.radio {
+  cursor: pointer;
+}
+
+label.radio input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+label.radio span {
+  padding: 1px 12px;
+  border: 2px solid #ada9a9;
+  display: inline-block;
+  color: #8f37aa;
+  border-radius: 3px;
+  text-transform: uppercase;
+  font-size: 11px;
+  font-weight: 300;
+}
+
+label.radio input:checked + span {
+  border-color: #fff;
+  background-color: blue;
+  color: #fff;
+}
+
+.credit-inputs {
+  background: #6666dd;
+  color: #fff;
+  border-color: #6666dd;
+}
+
+.credit-inputs::-moz-placeholder {
+  color: #fff;
+  font-size: 13px;
+}
+
+.credit-inputs:-ms-input-placeholder {
+  color: #fff;
+  font-size: 13px;
+}
+
+.credit-inputs::placeholder {
+  color: #fff;
+  font-size: 13px;
+}
+
+.credit-card-label {
+  font-size: 9px;
+  font-weight: 300;
+}
+
+.form-control.credit-inputs:focus {
+  background: #6666dd;
+  border: #6666dd;
+}
+
+.line {
+  border-bottom: 1px solid #6666dd;
+}
+
+.information span {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.information {
+  margin-bottom: 5px;
+}
+
+.items {
+  box-shadow: 5px 5px 4px -1px #00000014;
+}
+
+.spec {
+  font-size: 11px;
+}
+
+header {
+  position: absolute;
+  z-index: 1;
+  height: 50px;
+  width: 100%;
+}
+header nav {
+  width: 100%;
+  height: 100%;
+}
+header nav .col-12 .row {
+  padding-top: 18px;
+  text-align: center;
+}
+header nav .col-12 .row span {
+  font-size: 18px;
+  margin: 20px 10px;
+  color: white;
+  font-family: "Roboto", sans-serif;
+  transition: 0.5s;
+  border-radius: 50px;
+}
+header nav .col-12 .row span:hover {
+  transform: scale(1.08);
+  background-color: rgba(175, 175, 175, 0.3);
+  padding: 7px 12px;
+}
+header nav .col-12 .row .top-right a {
+  font-size: 18px;
+  color: white;
+  float: right;
+  margin: 0 10px;
+  font-family: "Roboto", sans-serif;
+}
+
 footer {
   color: lightgray;
 }
@@ -10377,4 +10522,8 @@ footer .row-body-row-card-box {
 }
 footer .row-body-row-card-box-img {
   margin-right: 10px;
+}
+
+body {
+  background-color: #fff;
 }

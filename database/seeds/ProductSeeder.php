@@ -26,17 +26,7 @@ class ProductSeeder extends Seeder
                 $product->description = $faker->text(rand(100, 300));
                 $product->price = $faker->randomFloat(2, 6, 70);
                 $product->visible = rand(0, 1);
-                $product->img = $faker->randomElement([
-                  'https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fimages.media-allrecipes.com%2Fuserphotos%2F1122495.jpg&w=272&h=272&c=sc&poi=face&q=85',
-                  'https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fimages.media-allrecipes.com%2Fuserphotos%2F7251995.jpg&w=272&h=272&c=sc&poi=face&q=85',
-                  'https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fimages.media-allrecipes.com%2Fuserphotos%2F7234883.jpg&w=272&h=272&c=sc&poi=face&q=85',
-                  'https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fimages.media-allrecipes.com%2Fuserphotos%2F7193347.jpg&w=272&h=272&c=sc&poi=face&q=85',
-                  'https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fimages.media-allrecipes.com%2Fuserphotos%2F7219742.jpg&w=272&h=272&c=sc&poi=face&q=85',
-                  'https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fimages.media-allrecipes.com%2Fuserphotos%2F7159025.jpg&w=272&h=272&c=sc&poi=face&q=85',
-                  'https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fimages.media-allrecipes.com%2Fuserphotos%2F8716309.jpg&w=272&h=272&c=sc&poi=face&q=85',
-                  'https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fimages.media-allrecipes.com%2Fuserphotos%2F7818569.jpg&w=272&h=272&c=sc&poi=face&q=85',
-                  'https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fimages.media-allrecipes.com%2Fuserphotos%2F7234883.jpg&w=272&h=272&c=sc&poi=face&q=85'
-                  ]);
+                $product->img = $product->img = 'https://source.unsplash.com/1600x900/?food/' . rand(1, 1000);
                 $business->products()->save($product);
             }
 
