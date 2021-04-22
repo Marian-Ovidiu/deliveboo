@@ -1,5 +1,5 @@
 @extends('admin.layout')
 
 @section('content')
-  @dump($cart)
+  @dump($errors)
 @endsection

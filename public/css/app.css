@@ -10062,22 +10062,6 @@ h3 {
   margin: 20px;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-.wrapper {
-  width: 100vw;
-  max-width: 100%;
-  font-family: "Open Sans";
-}
-
-.fl {
-  float: left;
-}
-
 .home-container .row-jumbotron {
   height: 275px;
   background-image: url(/images/backg-jumbo.jpg?c010a262cd7cbe250d8927e2a9ea1bc8);
