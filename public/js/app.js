@@ -1973,6 +1973,7 @@ new Vue({
           this.cart[i].quantity++;
           tot_price = product_price * this.cart[i].quantity;
           this.cart[i].price = tot_price.toFixed(2);
+          this.getAmount();
           return; // la funzione si ferma qui, non aggiungendo l'id
         }
       }

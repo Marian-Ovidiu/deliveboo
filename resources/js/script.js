@@ -57,11 +57,13 @@ new Vue({
 
     add (product_id, product_name, product_price) {
       let tot_price;
+
       for (let i = 0; i < this.cart.length; i++) {
         if (this.cart[i].id === product_id) {
           this.cart[i].quantity++;
           tot_price = product_price * this.cart[i].quantity;
           this.cart[i].price = tot_price.toFixed(2);
+          this.getAmount();
           return; // la funzione si ferma qui, non aggiungendo l'id
         }
       }

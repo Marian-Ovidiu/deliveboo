@@ -81,8 +81,8 @@
                                     </div>
                                     <div class="col-1 business-main-row-content-row-products-row-product-row-price"><strong>Prezzo</strong> <br><br> {{ $product->price }}€</div>
                                     <div class="col-2 business-main-row-content-row-products-row-product-row-options" style="text-align: center">
-                                        <button type="button" class="btn btn-primary" v-on:click = "add({{$product->id}}, '{{$product->name}}', {{$product->price}}), getAmount" style="width: 95%; margin-top: 20px;">+</button><br><br>
-                                        <button type="button" class="btn btn-danger" v-on:click = "remove({{$product->id}}, {{$product->price}}), getAmount" style="width: 95%;">-</button>
+                                        <button type="button" class="btn btn-primary" v-on:click = "add({{$product->id}}, '{{$product->name}}', {{$product->price}})" style="width: 95%; margin-top: 20px;">+</button><br><br>
+                                        <button type="button" class="btn btn-danger" v-on:click = "remove({{$product->id}}, {{$product->price}})" style="width: 95%;">-</button>
                                     </div>
                                 </div>
 
