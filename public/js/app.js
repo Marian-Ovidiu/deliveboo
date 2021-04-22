@@ -1922,7 +1922,8 @@ new Vue({
     types: [],
     cart: [],
     cartSaved: [],
-    amount: 0
+    amount: 0,
+    amountSaved: 0
   },
   mounted: function mounted() {
     var _this = this;
@@ -1939,7 +1940,7 @@ new Vue({
     axios.get('http://localhost:8000/api/types', {}).then(function (resp) {
       _this.types = resp.data.data.types;
     }), this.cartSaved = JSON.parse(localStorage.getItem('cart'));
-    this.amount = localStorage.getItem('amount');
+    this.amountSaved = localStorage.getItem('amount');
   },
   methods: {
     filterBusinessesByTypes: function filterBusinessesByTypes(type) {
@@ -1980,6 +1981,7 @@ new Vue({
         'quantity': 1,
         'price': product_price
       });
+      this.getAmount();
     },
     remove: function remove(product_id, product_price) {
       var _this3 = this;
@@ -1997,14 +1999,14 @@ new Vue({
           }
         }
       });
+      this.getAmount();
     },
     getAmount: function getAmount() {
       var sum = 0;
       this.cart.forEach(function (item) {
         sum += item.price;
       });
-      this.amount = sum.toFixed(2);
-      return this.amount;
+      this.amount = sum;
     },
     saveCart: function saveCart() {
       var cartJSON = JSON.stringify(this.cart);
