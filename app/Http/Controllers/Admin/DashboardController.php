@@ -12,6 +12,6 @@ class DashboardController extends Controller
   public function index()
   {
     $businesses = Business::where('user_id', Auth::user()->id)->get();
-    return view('admin.dashboard', compact('businesses'));
+    return view('admin.business.dashboard', compact('businesses'));
   }
 }
