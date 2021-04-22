@@ -10235,52 +10235,153 @@ h3 {
   box-shadow: 5px 10px 14px black;
 }
 
-header {
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+}
+
+.wrapper {
+  max-width: 100%;
+  width: 100vw;
+}
+
+.header-restaurant-row-jumbotronn {
+  height: 40vh;
+  background-size: 100%;
+  background-position: bottom;
+  background-repeat: no-repeat;
+}
+.header-restaurant-row-jumbotronn-cover {
+  height: 100%;
+  width: 101.6%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.header-restaurant-row-jumbotronn-cover-logo {
+  margin-top: 8%;
+  color: white;
+}
+.header-restaurant-row-jumbotronn-cover-logo-img {
+  margin-top: 30px;
+  padding: 5px;
+  background-color: white;
+  border-radius: 10px;
+  transform: scale(1.3);
+}
+.header-restaurant-row-jumbotronn-cover-logo-box {
+  margin: 15px 30px;
+}
+.header-restaurant-row-jumbotronn-cover-logo-box-title {
+  font-size: 35px;
+  color: white;
+}
+.header-restaurant-row-jumbotronn-cover-logo-box-types {
+  font-size: 15px;
+  color: white;
+}
+.header-restaurant-row-jumbotronn-cover-btn {
+  margin-top: 6%;
+}
+.header-restaurant-row-jumbotronn-cover-btn button {
+  background: none;
+  border: none;
+  border-radius: 20px;
+  font-size: 18px;
+  padding: 10px;
+  transition: 0.5s;
+  color: white;
+}
+.header-restaurant-row-jumbotronn-cover-btn button:hover {
+  transform: scale(1);
+  background-color: rgba(175, 175, 175, 0.3);
+  padding: 7px 12px;
+}
+
+.main-dashboard {
+  background-color: red;
+}
+.main-dashboard-title {
+  font-weight: bold;
+  text-align: center;
+}
+.main-dashboard-row-container-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.main-dashboard-row-container-row-card {
+  padding: 10px;
+}
+.main-dashboard-row-container-row-card-restaurant {
+  margin: 0 auto;
+  width: 75%;
+  border-radius: 10px;
+  height: 400px;
+  padding: 0px;
+  transition: 1s;
+}
+.main-dashboard-row-container-row-card-restaurant-img {
+  border-radius: 10px 10px 0px 0px;
+  height: 150px;
+  background-size: cover;
+  background-position: center;
+}
+.main-dashboard-row-container-row-card-restaurant span {
+  font-weight: bold;
+}
+.main-dashboard-row-container-row-card-restaurant:hover {
+  background-color: rgba(175, 175, 175, 0.3);
+  padding: 7px 12px;
+  box-shadow: 5px 10px 14px black;
+}
+
+.navbar {
   position: absolute;
   z-index: 1;
   height: 50px;
   width: 100%;
 }
-header nav {
+.navbar nav {
   width: 100%;
   height: 100%;
 }
 @media screen and (max-width: 576px) {
-  header nav .row-content {
+  .navbar nav .row-content {
     display: none;
   }
 }
-header nav .row-content .row {
+.navbar nav .row-content .row {
   padding-top: 18px;
 }
-header nav .row-content .row .links {
+.navbar nav .row-content .row .links {
   transition: 0.2s;
   display: flex;
   justify-content: space-between;
 }
 @media (max-width: 465px) {
-  header nav .row-content .row .links span {
+  .navbar nav .row-content .row .links span {
     font-size: 13px;
   }
 }
-header nav .row-content .row .links span {
+.navbar nav .row-content .row .links span {
   font-size: 18px;
   color: white;
   font-family: "Roboto", sans-serif;
   transition: 0.5s;
   border-radius: 50px;
 }
-header nav .row-content .row span:hover, header nav .row-content .row .top-right a:hover {
+.navbar nav .row-content .row span:hover, .navbar nav .row-content .row .top-right a:hover {
   transform: scale(1.08);
   background-color: rgba(175, 175, 175, 0.3);
   padding: 7px 12px;
 }
-header nav .row-content .row .top-right {
+.navbar nav .row-content .row .top-right {
   transition: 1s;
   display: flex;
   justify-content: flex-end;
 }
-header nav .row-content .row .top-right a {
+.navbar nav .row-content .row .top-right a {
   font-size: 18px;
   color: white;
   margin: 0 10px;
@@ -10288,10 +10389,10 @@ header nav .row-content .row .top-right a {
   transition: 0.5s;
   border-radius: 50px;
 }
-header nav .row-menu .bars {
+.navbar nav .row-menu .bars {
   display: none;
 }
-header nav .row-menu .hamburger-menu {
+.navbar nav .row-menu .hamburger-menu {
   position: fixed;
   top: 0;
   right: 0;
@@ -10303,7 +10404,7 @@ header nav .row-menu .hamburger-menu {
   min-height: 100vh;
   background: #2B3F58;
 }
-header nav .row-menu .hamburger-menu ul {
+.navbar nav .row-menu .hamburger-menu ul {
   display: flex;
   height: 50%;
   flex-direction: column;
@@ -10311,13 +10412,13 @@ header nav .row-menu .hamburger-menu ul {
   align-items: flex-start;
   list-style: none;
 }
-header nav .row-menu .hamburger-menu ul li a {
+.navbar nav .row-menu .hamburger-menu ul li a {
   color: white;
   text-decoration: none;
   list-style: none;
   font-size: 20px;
 }
-header nav .row-menu .close {
+.navbar nav .row-menu .close {
   display: block;
   position: absolute;
   right: 20px;
@@ -10327,15 +10428,321 @@ header nav .row-menu .close {
   text-decoration: none;
 }
 @media screen and (max-width: 576px) {
-  header nav .row-menu .bars {
+  .navbar nav .row-menu .bars {
     display: block;
     float: right;
     margin-top: 10px;
   }
-  header nav .row-menu .bars a i {
+  .navbar nav .row-menu .bars a i {
     font-size: 30px;
   }
-  header nav .row-menu .hamburger-menu.active {
+  .navbar nav .row-menu .hamburger-menu.active {
+    display: block;
+  }
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.business-main {
+  padding-top: 20px;
+}
+.business-main-row-content-row-products-row {
+  display: flex;
+  flex-wrap: wrap;
+}
+.business-main-row-content-row-products-row-title {
+  height: 45px;
+  font-size: 25px;
+  color: #3d4d67;
+  font-weight: bold;
+  border-bottom: 1px solid #3d4d67;
+  font-family: "Roboto", sans-serif;
+}
+.business-main-row-content-row-products-row-product {
+  height: 200px;
+  margin: 10px 0;
+  transition: 0.5s;
+}
+.business-main-row-content-row-products-row-product-row {
+  height: 100%;
+}
+.business-main-row-content-row-products-row-product-row-name {
+  display: flex;
+}
+.business-main-row-content-row-products-row-product-row-name-img {
+  margin-right: 10px;
+  width: 40%;
+  background-position: center;
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+.business-main-row-content-row-products-row-product-row-name-container {
+  width: 60%;
+}
+.business-main-row-content-row-products-row-product-row-name-container-title {
+  font-size: 20px;
+  color: #3d4d67;
+  font-weight: bold;
+  font-family: "Roboto", sans-serif;
+}
+.business-main-row-content-row-products-row-product-row-name-container-description {
+  font-size: 15px;
+  color: #3d4d67;
+  font-family: "Roboto", sans-serif;
+}
+.business-main-row-content-row-products-row-product-row-price {
+  color: #3d4d67;
+  font-size: 13px;
+}
+.business-main-row-content-row-products-row-product:hover {
+  transform: scale(1.05);
+  box-shadow: 5px 10px 14px black;
+}
+.business-main-row-content-container-row-cart .title {
+  margin-bottom: 5vh;
+}
+.business-main-row-content-container-row-cart .card {
+  margin: auto;
+  max-width: 950px;
+  width: 90%;
+  box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 1rem;
+  border: transparent;
+}
+@media (max-width: 767px) {
+  .business-main-row-content-container-row-cart .card {
+    margin: 3vh auto;
+  }
+}
+.business-main-row-content-container-row-cart .cart {
+  background-color: #fff;
+  padding: 4vh 5vh;
+  border-bottom-left-radius: 1rem;
+  border-top-left-radius: 1rem;
+}
+@media (max-width: 767px) {
+  .business-main-row-content-container-row-cart .cart {
+    padding: 4vh;
+    border-bottom-left-radius: unset;
+    border-top-right-radius: 1rem;
+  }
+}
+.business-main-row-content-container-row-cart .summary {
+  background-color: #ddd;
+  border-top-right-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  padding: 4vh;
+  color: #414141;
+}
+@media (max-width: 767px) {
+  .business-main-row-content-container-row-cart .summary {
+    border-top-right-radius: unset;
+    border-bottom-left-radius: 1rem;
+  }
+}
+.business-main-row-content-container-row-cart .summary .col-2 {
+  padding: 0;
+}
+.business-main-row-content-container-row-cart .summary .col-10 {
+  padding: 0;
+}
+.business-main-row-content-container-row-cart .row {
+  margin: 0;
+}
+.business-main-row-content-container-row-cart .title b {
+  font-size: 1.5rem;
+}
+.business-main-row-content-container-row-cart .main {
+  margin: 0;
+  padding: 2vh 0;
+  width: 100%;
+}
+.business-main-row-content-container-row-cart .col-2,
+.business-main-row-content-container-row-cart .col {
+  padding: 0 1vh;
+}
+.business-main-row-content-container-row-cart a {
+  padding: 0 1vh;
+}
+.business-main-row-content-container-row-cart .close {
+  margin-left: auto;
+  font-size: 0.7rem;
+}
+.business-main-row-content-container-row-cart img {
+  width: 3.5rem;
+}
+.business-main-row-content-container-row-cart .back-to-shop {
+  margin-top: 4.5rem;
+}
+.business-main-row-content-container-row-cart h5 {
+  margin-top: 4vh;
+}
+.business-main-row-content-container-row-cart hr {
+  margin-top: 1.25rem;
+}
+.business-main-row-content-container-row-cart form {
+  padding: 2vh 0;
+}
+.business-main-row-content-container-row-cart select {
+  border: 1px solid rgba(0, 0, 0, 0.137);
+  padding: 1.5vh 1vh;
+  margin-bottom: 4vh;
+  outline: none;
+  width: 100%;
+  background-color: #f7f7f7;
+}
+.business-main-row-content-container-row-cart input {
+  border: 1px solid rgba(0, 0, 0, 0.137);
+  padding: 1vh;
+  margin-bottom: 4vh;
+  outline: none;
+  width: 100%;
+  background-color: #f7f7f7;
+}
+.business-main-row-content-container-row-cart input:focus::-webkit-input-placeholder {
+  color: transparent;
+}
+.business-main-row-content-container-row-cart .btn {
+  background-color: #000;
+  border-color: #000;
+  color: white;
+  width: 100%;
+  font-size: 0.7rem;
+  margin-top: 4vh;
+  padding: 1vh;
+  border-radius: 0;
+}
+.business-main-row-content-container-row-cart .btn:focus {
+  box-shadow: none;
+  outline: none;
+  box-shadow: none;
+  color: white;
+  -webkit-box-shadow: none;
+  -webkit-user-select: none;
+  transition: none;
+}
+.business-main-row-content-container-row-cart .btn:hover {
+  color: white;
+}
+.business-main-row-content-container-row-cart a {
+  color: black;
+}
+.business-main-row-content-container-row-cart a:hover {
+  color: black;
+  text-decoration: none;
+}
+.business-main-row-content-container-row-cart #code {
+  background-image: linear-gradient(to left, rgba(255, 255, 255, 0.253), rgba(255, 255, 255, 0.185)), url("https://img.icons8.com/small/16/000000/long-arrow-right.png");
+  background-repeat: no-repeat;
+  background-position-x: 95%;
+  background-position-y: center;
+}
+
+.navbar {
+  position: absolute;
+  z-index: 1;
+  height: 50px;
+  width: 100%;
+}
+.navbar nav {
+  width: 100%;
+  height: 100%;
+}
+@media screen and (max-width: 576px) {
+  .navbar nav .row-content {
+    display: none;
+  }
+}
+.navbar nav .row-content .row {
+  padding-top: 18px;
+}
+.navbar nav .row-content .row .links {
+  transition: 0.2s;
+  display: flex;
+  justify-content: space-between;
+}
+@media (max-width: 465px) {
+  .navbar nav .row-content .row .links span {
+    font-size: 13px;
+  }
+}
+.navbar nav .row-content .row .links span {
+  font-size: 18px;
+  color: white;
+  font-family: "Roboto", sans-serif;
+  transition: 0.5s;
+  border-radius: 50px;
+}
+.navbar nav .row-content .row span:hover, .navbar nav .row-content .row .top-right a:hover {
+  transform: scale(1.08);
+  background-color: rgba(175, 175, 175, 0.3);
+  padding: 7px 12px;
+}
+.navbar nav .row-content .row .top-right {
+  transition: 1s;
+  display: flex;
+  justify-content: flex-end;
+}
+.navbar nav .row-content .row .top-right a {
+  font-size: 18px;
+  color: white;
+  margin: 0 10px;
+  font-family: "Roboto", sans-serif;
+  transition: 0.5s;
+  border-radius: 50px;
+}
+.navbar nav .row-menu .bars {
+  display: none;
+}
+.navbar nav .row-menu .hamburger-menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  display: none;
+  padding: 20px;
+  width: 100%;
+  height: 100%;
+  max-width: 40vw;
+  min-height: 100vh;
+  background: #2B3F58;
+}
+.navbar nav .row-menu .hamburger-menu ul {
+  display: flex;
+  height: 50%;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: flex-start;
+  list-style: none;
+}
+.navbar nav .row-menu .hamburger-menu ul li a {
+  color: white;
+  text-decoration: none;
+  list-style: none;
+  font-size: 20px;
+}
+.navbar nav .row-menu .close {
+  display: block;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  color: white;
+  font-size: 35px;
+  text-decoration: none;
+}
+@media screen and (max-width: 576px) {
+  .navbar nav .row-menu .bars {
+    display: block;
+    float: right;
+    margin-top: 10px;
+  }
+  .navbar nav .row-menu .bars a i {
+    font-size: 30px;
+  }
+  .navbar nav .row-menu .hamburger-menu.active {
     display: block;
   }
 }
@@ -10462,116 +10869,6 @@ footer .row-body-row-card-box {
 }
 footer .row-body-row-card-box-img {
   margin-right: 10px;
-}
-
-.payment-info {
-  background: blue;
-  padding: 10px;
-  border-radius: 6px;
-  color: #fff;
-  font-weight: bold;
-}
-
-.product-details {
-  padding: 10px;
-}
-
-.cart {
-  background: #fff;
-}
-
-.p-about {
-  font-size: 12px;
-}
-
-.table-shadow {
-  box-shadow: 5px 5px 15px -2px #0000006b;
-}
-
-.type {
-  font-weight: 400;
-  font-size: 10px;
-}
-
-label.radio {
-  cursor: pointer;
-}
-
-label.radio input {
-  position: absolute;
-  top: 0;
-  left: 0;
-  visibility: hidden;
-  pointer-events: none;
-}
-
-label.radio span {
-  padding: 1px 12px;
-  border: 2px solid #ada9a9;
-  display: inline-block;
-  color: #8f37aa;
-  border-radius: 3px;
-  text-transform: uppercase;
-  font-size: 11px;
-  font-weight: 300;
-}
-
-label.radio input:checked + span {
-  border-color: #fff;
-  background-color: blue;
-  color: #fff;
-}
-
-.credit-inputs {
-  background: #6666dd;
-  color: #fff;
-  border-color: #6666dd;
-}
-
-.credit-inputs::-moz-placeholder {
-  color: #fff;
-  font-size: 13px;
-}
-
-.credit-inputs:-ms-input-placeholder {
-  color: #fff;
-  font-size: 13px;
-}
-
-.credit-inputs::placeholder {
-  color: #fff;
-  font-size: 13px;
-}
-
-.credit-card-label {
-  font-size: 9px;
-  font-weight: 300;
-}
-
-.form-control.credit-inputs:focus {
-  background: #6666dd;
-  border: #6666dd;
-}
-
-.line {
-  border-bottom: 1px solid #6666dd;
-}
-
-.information span {
-  font-size: 12px;
-  font-weight: 500;
-}
-
-.information {
-  margin-bottom: 5px;
-}
-
-.items {
-  box-shadow: 5px 5px 4px -1px #00000014;
-}
-
-.spec {
-  font-size: 11px;
 }
 
 body {

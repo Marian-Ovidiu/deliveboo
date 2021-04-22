@@ -3,65 +3,84 @@
   $timestamp = strtotime(Auth::user()->created_at);
   $user_date = date("d m Y", $timestamp);
 @endphp
-
 @extends('admin.layout')
-
 @section('content')
 
-  <div class="dashboard container">
+{{-- User Header --}}
+<div class="wrap">
+    @include('parts.navbar')
+    <header class="header-restaurant">
+        <div class="header-restaurant-row">
+            <div class=" header-restaurant-row-jumbotronn" style="background-image: url('https://wallpaperaccess.com/full/1306153.jpg')">
+                <div class="  header-restaurant-row-jumbotronn-cover row">
+                    <div class="col-1 header-restaurant-row-jumbotronn-cover-space"></div>
+                    <div class="col-5 header-restaurant-row-jumbotronn-cover-logo">
+                        <div class="header-restaurant-row-jumbotronn-cover-logo-img fl">
+                            <img src="{{ asset('img/00-user-dash.png') }}" alt="{{ Auth::user()->name }}"" style="width:50px ">
+                        </div>
 
-    {{-- User Header --}}
-    <div class="user-header">
-      <div class="user-header-avatar">
-        <img src="{{ asset('img/00-user-dash.png') }}" alt="{{ Auth::user()->name }}">
-      </div>
-      <div class="user-header-data">
-        <h3>{{ Auth::user()->name }} {{ Auth::user()->last_name }}</h3>
-        <h5>{{ Auth::user()->email }}</h5>
-        <h5>P.IVA: {{ Auth::user()->vat }}</h5>
-        <h6>Utente dal {{$user_date}}</h6>
-      </div>
-      <div class="user-header-button">
-        <a href="{{ route('business.create') }}" class="btn btn-primary btn-lg">
-          <i class="bi bi-plus-circle-fill"></i>
-        Crea Nuovo Ristorante
-      </a>
-      </div>
-    </div>
+                        <div class="header-restaurant-row-jumbotronn-cover-logo-box fl">
+                            <h3>{{ Auth::user()->name }} {{ Auth::user()->last_name }}</h3>
+                            <h5>{{ Auth::user()->email }}</h5>
+                            <h5>P.IVA: {{ Auth::user()->vat }}</h5>
+                            <h6>Utente dal {{ $user_date }}</h6>
+                        </div>
+                    </div>
+                    <div class="col-5 header-restaurant-row-jumbotronn-cover-btn">
+                        <div class="header-restaurant-row-jumbotronn-cover-btn fl">
+                            <div class="header-restaurant-row-jumbotronn-cover-btn ">
+                                <a href="{{ route('business.create') }}">
+                                    <button> Crea Nuovo Ristorante</button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-1 header-restaurant-row-jumbotronn-cover-space"></div>
+            </div>
+        </div>
+    </header>
+
+
     {{-- /User Header --}}
 
-    @if (!empty($businesses))
-      <h4 class="user-businesses-title">I tuoi Ristoranti</h4>
-      <table class="table table-striped">
-        <tbody>
-          @foreach ($businesses as $business)
-            <tr>
-              <td><img src="{{ asset($business->logo) }}" width="150px" height="150px"></td>
-              <td>
-                <b>{{ $business->name }}</b>
-                <hr>
-                [
-                @foreach ($business->types as $id=>$type)
-                  {{ $type->name }}
-                  @if ($id != (count($business->types) - 1))
-                    |
-                  @endif
-                @endforeach
-                ]
-              </td>
-              <td>{{ $business->address }}</td>
-              <td>
-                <a href="{{ route('business.show', compact('business')) }}" class="btn btn-primary btn-sm">Visualizza</a>
-                <br>
-                <br>
-                <br>
-                <a href="{{ route('business.edit', compact('business')) }}" class="btn btn-secondary btn-sm">Modifica</a>
-              </td>
-            </tr>
-          @endforeach
-        </tbody>
-      </table>
-    @endif
-  </div>
+        <div class="container-fluid">
+            <main class="main-dashboard">
+                <h2 class="main-dashboard-title ">I tuoi Ristoranti</h2>
+                <div class="main-dashboard-row row">
+                    <div class="col-2 main-dashboard-row-space"></div>
+                    <div class="col-8 main-dashboard-row-container">
+                        <div class="main-dashboard-row-container-row row">
+                            @if (!empty($businesses))
+                                    @foreach ($businesses as $business)
+                                        <div class="col-4 main-dashboard-row-container-row-card">
+                                            <div class="main-dashboard-row-container-row-card-restaurant">
+                                                <div class="main-dashboard-row-container-row-card-restaurant-img" style="background-image:url({{ asset($business->logo) }})"></div>
+                                                <h2>{{ $business->name }}</h2>
+                                                    <hr>
+                                                    <span>
+                                                        @foreach ($business->types as $id=>$type)
+                                                        {{ $type->name }}
+                                                        @if ($id != (count($business->types) - 1))
+                                                        |
+                                                        @endif
+                                                        @endforeach
+                                                        <div>{{ $business->address }}</div>
+                                                    </span>
+                                                    <div>
+                                                        <a href="{{ route('business.show', compact('business')) }}" class="btn btn-sm"><i class="fa fa-eye" aria-hidden="true"></i></a>
+                                                        <a href="{{ route('business.edit', compact('business')) }}" class="btn  btn-sm"><i class="fa fa-edit" aria-hidden="true"></i></a>
+                                                    </div>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            @endif
+                        </div>
+                    <div class="col-2 main-dashboard-row-space"></div>
+                </div>
+            </main>
+        </div>
 
-@endsection
+
+    @endsection

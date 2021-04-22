@@ -1,101 +1,244 @@
-.payment-info {
-    background: blue;
-    padding: 10px;
-    border-radius: 6px;
-    color: #fff;
-    font-weight: bold
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
 }
 
-.product-details {
-    padding: 10px
+.business-main{
+    padding-top: 20px;
+    &-row{
+        &-content{
+            &-row{
+                &-products{
+                    &-row{
+                        display: flex;
+                        flex-wrap: wrap;
+                        &-title{
+                            height: 45px;
+                            font-size: 25px;
+                            color: #3d4d67;
+                            font-weight: bold;
+                            border-bottom: 1px solid #3d4d67;
+                            font-family: 'Roboto', sans-serif;
+                        }
+                        &-product {
+                            height: 200px;
+                            margin: 10px 0;
+                            transition: 0.5s;
+                            &-row{
+                                height: 100%;
+                                &-name{
+                                    display: flex;
+                                    &-img {
+                                        margin-right: 10px;
+                                        width: 40%;
+                                        background-position: center;
+                                        background-size: 100%;
+                                        background-repeat: no-repeat;
+                                    }
+                                    &-container{
+                                        width: 60%;
+                                        &-title{
+                                            font-size: 20px;
+                                            color: #3d4d67;
+                                            font-weight: bold;
+                                            font-family: 'Roboto', sans-serif;
+                                        }
+                                        &-description{
+                                            font-size: 15px;
+                                            color: #3d4d67;
+                                            font-family: 'Roboto', sans-serif;
+                                        }
+                                    }
+                                }
+                                &-price{
+                                    color: #3d4d67;
+                                    font-size: 13px;
+                                }
+                            }
+                        }
+                        &-product:hover{
+                            transform: scale(1.05);
+                            box-shadow: 5px 10px 14px black;
+                        }
+                    }
+                }
+            }
+            &-container{
+                &-row {
+                    &-cart{
+                        .title {
+                            margin-bottom: 5vh
+                        }
+
+                        .card {
+                            margin: auto;
+                            max-width: 950px;
+                            width: 90%;
+                            box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+                            border-radius: 1rem;
+                            border: transparent
+                        }
+
+                        @media(max-width:767px) {
+                            .card {
+                                margin: 3vh auto
+                            }
+                        }
+
+                        .cart {
+                            background-color: #fff;
+                            padding: 4vh 5vh;
+                            border-bottom-left-radius: 1rem;
+                            border-top-left-radius: 1rem
+                        }
+
+                        @media(max-width:767px) {
+                            .cart {
+                                padding: 4vh;
+                                border-bottom-left-radius: unset;
+                                border-top-right-radius: 1rem
+                            }
+                        }
+
+                        .summary {
+                            background-color: #ddd;
+                            border-top-right-radius: 1rem;
+                            border-bottom-right-radius: 1rem;
+                            padding: 4vh;
+                            color: rgb(65, 65, 65)
+                        }
+
+                        @media(max-width:767px) {
+                            .summary {
+                                border-top-right-radius: unset;
+                                border-bottom-left-radius: 1rem
+                            }
+                        }
+
+                        .summary .col-2 {
+                            padding: 0
+                        }
+
+                        .summary .col-10 {
+                            padding: 0
+                        }
+
+                        .row {
+                            margin: 0
+                        }
+
+                        .title b {
+                            font-size: 1.5rem
+                        }
+
+                        .main {
+                            margin: 0;
+                            padding: 2vh 0;
+                            width: 100%
+                        }
+
+                        .col-2,
+                        .col {
+                            padding: 0 1vh
+                        }
+
+                        a {
+                            padding: 0 1vh
+                        }
+
+                        .close {
+                            margin-left: auto;
+                            font-size: 0.7rem
+                        }
+
+                        img {
+                            width: 3.5rem
+                        }
+
+                        .back-to-shop {
+                            margin-top: 4.5rem
+                        }
+
+                        h5 {
+                            margin-top: 4vh
+                        }
+
+                        hr {
+                            margin-top: 1.25rem
+                        }
+
+                        form {
+                            padding: 2vh 0
+                        }
+
+                        select {
+                            border: 1px solid rgba(0, 0, 0, 0.137);
+                            padding: 1.5vh 1vh;
+                            margin-bottom: 4vh;
+                            outline: none;
+                            width: 100%;
+                            background-color: rgb(247, 247, 247)
+                        }
+
+                        input {
+                            border: 1px solid rgba(0, 0, 0, 0.137);
+                            padding: 1vh;
+                            margin-bottom: 4vh;
+                            outline: none;
+                            width: 100%;
+                            background-color: rgb(247, 247, 247)
+                        }
+
+                        input:focus::-webkit-input-placeholder {
+                            color: transparent
+                        }
+
+                        .btn {
+                            background-color: #000;
+                            border-color: #000;
+                            color: white;
+                            width: 100%;
+                            font-size: 0.7rem;
+                            margin-top: 4vh;
+                            padding: 1vh;
+                            border-radius: 0
+                        }
+
+                        .btn:focus {
+                            box-shadow: none;
+                            outline: none;
+                            box-shadow: none;
+                            color: white;
+                            -webkit-box-shadow: none;
+                            -webkit-user-select: none;
+                            transition: none
+                        }
+
+                        .btn:hover {
+                            color: white
+                        }
+
+                        a {
+                            color: black
+                        }
+
+                        a:hover {
+                            color: black;
+                            text-decoration: none
+                        }
+
+                        #code {
+                            background-image: linear-gradient(to left, rgba(255, 255, 255, 0.253), rgba(255, 255, 255, 0.185)), url("https://img.icons8.com/small/16/000000/long-arrow-right.png");
+                            background-repeat: no-repeat;
+                            background-position-x: 95%;
+                            background-position-y: center
+                        }
+                    }
+                }
+            }
+
+        }
+    }
 }
 
-.cart {
-    background: #fff
-}
-
-.p-about {
-    font-size: 12px
-}
-
-.table-shadow {
-    -webkit-box-shadow: 5px 5px 15px -2px #0000006b;
-    box-shadow: 5px 5px 15px -2px #0000006b
-}
-
-.type {
-    font-weight: 400;
-    font-size: 10px
-}
-
-label.radio {
-    cursor: pointer
-}
-
-label.radio input {
-    position: absolute;
-    top: 0;
-    left: 0;
-    visibility: hidden;
-    pointer-events: none
-}
-
-label.radio span {
-    padding: 1px 12px;
-    border: 2px solid #ada9a9;
-    display: inline-block;
-    color: #8f37aa;
-    border-radius: 3px;
-    text-transform: uppercase;
-    font-size: 11px;
-    font-weight: 300
-}
-
-label.radio input:checked+span {
-    border-color: #fff;
-    background-color: blue;
-    color: #fff
-}
-
-.credit-inputs {
-    background: #6666dd;
-    color: #fff;
-    border-color: #6666dd
-}
-
-.credit-inputs::placeholder {
-    color: #fff;
-    font-size: 13px
-}
-
-.credit-card-label {
-    font-size: 9px;
-    font-weight: 300
-}
-
-.form-control.credit-inputs:focus {
-    background: #6666dd;
-    border: #6666dd
-}
-
-.line {
-    border-bottom: 1px solid #6666dd
-}
-
-.information span {
-    font-size: 12px;
-    font-weight: 500
-}
-
-.information {
-    margin-bottom: 5px
-}
-
-.items {
-    -webkit-box-shadow: 5px 5px 4px -1px #00000040;
-    box-shadow: 5px 5px 4px -1px #00000014
-}
-
-.spec {
-    font-size: 11px
-}

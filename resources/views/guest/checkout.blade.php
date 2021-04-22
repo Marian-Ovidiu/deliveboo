@@ -83,15 +83,11 @@
     {{-- / row: notes --}}
 
     {{-- row: success --}}
-
       <input type="hidden" value="1" name="success">
-
     {{-- / row: success --}}
 
     {{-- row: amount --}}
-
       <input type="hidden" :value="amount" name="amount">
-
     {{-- / row: amount --}}
 
     <br>
@@ -104,4 +100,38 @@
     <input v-for ="product in cartSaved" type = "hidden" name = "quantities[]" :value = "product.quantity"/>
 
     <input type="submit" value="Procedi all'ordine">
+
+    <div class="bt-drop-in-wrapper">
+      <div id="bt-dropin"></div>
+    </div>
+
+    <script src="https://js.braintreegateway.com/web/dropin/1.26.1/js/dropin.min.js"></script>
+    <script src="https://js.braintreegateway.com/web/3.73.1/js/hosted-fields.min.js"></script>
+    <script>
+      var form = document.querySelector('#payment-form');
+      var client_token = "{{ $token }}";
+      braintree.dropin.create({
+        authorization: client_token,
+        selector: '#bt-dropin',
+        paypal: {
+          flow: 'vault'
+        }
+      }, function (createErr, instance) {
+        if (createErr) {
+          console.log('Create Error', createErr);
+          return;
+        }
+        form.addEventListener('submit', function (event) {
+          event.preventDefault();
+          instance.requestPaymentMethod(function (err, payload) {
+            if (err) {
+              console.log('Request Payment Method Error', err);
+              return;
+            }
+            // Add the nonce to the form and submit
+            form.submit();
+          });
+        });
+      });
+    </script>
   </form>

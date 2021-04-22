@@ -1,21 +1,22 @@
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito');
-
 // Variables
 @import 'partials/variables';
-
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
-
 // Custom (Home, Dahsboard)
 @import "partials/custom";
-
 @import "home";
+@import "dashboard";
 @import "parts/navbar";
-@import "parts/header";
-@import "parts/footer";
+
 @import "cart";
 
+@import "parts/navbar";
+
+@import "parts/header";
+
+@import "parts/footer";
 // FontAwesome
 @import '~@fortawesome/fontawesome-free/css/all.min.css';
 
