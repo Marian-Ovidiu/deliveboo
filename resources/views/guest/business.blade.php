@@ -60,7 +60,7 @@
         <div class="business-main-row row">
             <div class="col-xl-1 col-lg-1 col-md-1 business-main-row-space"></div>
             {{-- Main Menu --}}
-            <div class="col-xl-6 col-lg-6 col-md-7 business-main-row-content">
+            <div class="col-xl-6 col-lg-6 col-md-6 business-main-row-content">
                 <div class="business-main-row-content-row row">
                     <div class="col-xl-12 col-lg-12 col-md-12 business-main-row-content-row-products">
                         <div class="business-main-row-content-row-products-row row">
@@ -79,8 +79,8 @@
                                     </div>
                                     <div class="col-xl-1 col-lg-1 col-md-1 business-main-row-content-row-products-row-product-row-price"><strong>Prezzo</strong> <br><br> {{ $product->price }}€</div>
                                     <div class="col-xl-2 col-lg-3 col-md-3 business-main-row-content-row-products-row-product-row-options" style="text-align: center">
-                                        <button type="button" class="btn btn-primary" v-on:click = "add({{$product->id}}, '{{$product->name}}', {{$product->price}})" style="width: 95%; margin-top: 20px;">+</button><br><br>
-                                        <button type="button" class="btn btn-danger" v-on:click = "remove({{$product->id}}, {{$product->price}})" style="width: 95%;">-</button>
+                                        <button type="button" class="business-main-row-content-row-products-row-product-row-options-btn" v-on:click = "add({{$product->id}}, '{{$product->name}}', {{$product->price}})">+</button><br><br>
+                                        <button type="button" class="business-main-row-content-row-products-row-product-row-options-btn" v-on:click = "remove({{$product->id}}, {{$product->price}})">-</button>
                                     </div>
                                 </div>
                             </div>
@@ -90,12 +90,11 @@
                 </div>
             </div>
             {{--End Main Menu --}}
-            <div class="col-xl-1 col-lg-1 col-md-0 business-main-row-space"></div>
             {{-- Main Cart --}}
-            <div class="col-xl-3 col-lg-3 col-md-3 business-main-row-content">
+            <div class="col-xl-4 col-lg-4 col-md-4 business-main-row-content">
                 <div class="business-main-row-content-row row">
-                    <div class="col-1 business-main-row-content-row-space"></div>
-                    <div class="col-xl-12 col-lg-12 col-md-12 business-main-row-content-row-cart">
+                    <div class="col-xl-2 col-lg-2 col-md-2 business-main-row-content-row-space"></div>
+                    <div class="col-xl-10 col-lg-10 col-md-10 business-main-row-content-row-cart">
                         <div class="business-main-row-content-row-cart-row row">
                             <div class="col-xl-12 col-lg-12 col-md-12 business-main-row-content-row-cart-row-current">
                                 <div class="business-main-row-content-row-cart-row-current-row row">
@@ -103,8 +102,8 @@
                                 </div>
                                 <div v-for="product in cart" style="display: flex;" class="business-main-row-content-row-cart-row-current-row row">
                                     <div class="col-5">@{{product.name}}</div>
-                                    <div class="col-3" style="">@{{product.quantity}}</div>
-                                    <div class="col-4" style="background-color: ">&euro; @{{product.price}}</div>
+                                    <div class="col-2" style="">@{{product.quantity}}</div>
+                                    <div class="col-5" style="background-color: ">&euro; @{{product.price}}</div>
                                 </div>
                             </div>
                         </div>
@@ -113,16 +112,17 @@
                 {{-- End Items in cart --}}
                 {{-- Summary --}}
                 <div class="business-main-row-content-row row">
-                    <div class="col-xl-12 col-lg-12 col-md-12 business-main-row-content-row-summary">
+                    <div class="col-xl-2 col-lg-2 col-md-2 business-main-row-content-row-space"></div>
+                    <div class="col-xl-10 col-lg-10 col-md-10 business-main-row-content-row-summary">
                         <div class="business-main-row-content-row-summary-row row">
                             <div class="col-12 business-main-row-content-row-summary-row-title"><strong>Summary</strong></div>
                         </div>
                         <div class="business-main-row-content-row-summary-row row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
-                            <div class="col-6 business-main-row-content-row-summary-row-subtitle">TOTAL ITEMS</div>
-                            <div class="col-6 business-main-row-content-row-summary-row-totItems">@{{quantity}} Items</div>
+                            <div class="col-7 business-main-row-content-row-summary-row-subtitle">Total items</div>
+                            <div class="col-5 business-main-row-content-row-summary-row-totItems">@{{quantity}} Items</div>
                         </div>
                         <div class="business-main-row-content-row-summary-row row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
-                            <div class="col-6 business-main-row-content-row-summary-row-total">TOTAL PRICE</div>
+                            <div class="col-6 business-main-row-content-row-summary-row-total">Total price</div>
                             <div class="col-6 business-main-row-content-row-summary-row-price">&euro; @{{amount}}</div>
                         </div>
                         <a class="btn business-main-row-content-row-summary-btn" v-on:click="saveCart()" href="{{asset(route('cart-checkout', compact('business')))}}">Checkout</a>

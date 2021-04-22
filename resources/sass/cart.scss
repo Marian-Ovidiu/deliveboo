@@ -52,9 +52,33 @@
                                         }
                                     }
                                 }
+                                @media (max-width: 950px) {
+                                    &-name{
+                                        text-align: center;
+                                        flex-direction: column;
+                                        &-img{
+                                            height: 60px;
+                                            margin: auto;
+                                            width: 50%;
+                                        }
+                                        &-container{
+                                            width: 100%;
+                                        }
+                                    }
+                                }
                                 &-price{
+                                    margin: auto;
                                     color: #3d4d67;
                                     font-size: 13px;
+                                }
+                                &-options{
+                                    &-btn{
+                                        margin: auto;
+                                        height: 30px;
+                                        width: 80%;
+                                        background-color: gray;
+                                        border: none;
+                                    }
                                 }
                             }
                         }
@@ -71,16 +95,10 @@
                 &-cart{
                     border-bottom: 1px solid lightgray;
                     &-row{
-                        &-subcart{
+                        &-current{
                             &-row{
-                                &-current{
-                                    &-row{
-                                        border-bottom: 1px solid lightgrey;
-                                        padding: 5px 0;
-
-                                    }
-
-                                }
+                                border-bottom: 1px solid lightgrey;
+                                padding: 10px 0;
                             }
                         }
                     }

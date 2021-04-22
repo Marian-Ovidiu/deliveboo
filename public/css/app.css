@@ -10524,9 +10524,31 @@ h3 {
   color: #3d4d67;
   font-family: "Roboto", sans-serif;
 }
+@media (max-width: 950px) {
+  .business-main-row-content-row-products-row-product-row-name {
+    text-align: center;
+    flex-direction: column;
+  }
+  .business-main-row-content-row-products-row-product-row-name-img {
+    height: 60px;
+    margin: auto;
+    width: 50%;
+  }
+  .business-main-row-content-row-products-row-product-row-name-container {
+    width: 100%;
+  }
+}
 .business-main-row-content-row-products-row-product-row-price {
+  margin: auto;
   color: #3d4d67;
   font-size: 13px;
+}
+.business-main-row-content-row-products-row-product-row-options-btn {
+  margin: auto;
+  height: 30px;
+  width: 80%;
+  background-color: gray;
+  border: none;
 }
 .business-main-row-content-row-products-row-product:hover {
   transform: scale(1.05);
@@ -10535,9 +10557,9 @@ h3 {
 .business-main-row-content-row-cart {
   border-bottom: 1px solid lightgray;
 }
-.business-main-row-content-row-cart-row-subcart-row-current-row {
+.business-main-row-content-row-cart-row-current-row {
   border-bottom: 1px solid lightgrey;
-  padding: 5px 0;
+  padding: 10px 0;
 }
 
 .navbar {
@@ -10867,9 +10889,31 @@ footer .row-body-row-card-box-img {
   color: #3d4d67;
   font-family: "Roboto", sans-serif;
 }
+@media (max-width: 950px) {
+  .business-main-row-content-row-products-row-product-row-name {
+    text-align: center;
+    flex-direction: column;
+  }
+  .business-main-row-content-row-products-row-product-row-name-img {
+    height: 60px;
+    margin: auto;
+    width: 50%;
+  }
+  .business-main-row-content-row-products-row-product-row-name-container {
+    width: 100%;
+  }
+}
 .business-main-row-content-row-products-row-product-row-price {
+  margin: auto;
   color: #3d4d67;
   font-size: 13px;
+}
+.business-main-row-content-row-products-row-product-row-options-btn {
+  margin: auto;
+  height: 30px;
+  width: 80%;
+  background-color: gray;
+  border: none;
 }
 .business-main-row-content-row-products-row-product:hover {
   transform: scale(1.05);
@@ -10878,9 +10922,9 @@ footer .row-body-row-card-box-img {
 .business-main-row-content-row-cart {
   border-bottom: 1px solid lightgray;
 }
-.business-main-row-content-row-cart-row-subcart-row-current-row {
+.business-main-row-content-row-cart-row-current-row {
   border-bottom: 1px solid lightgrey;
-  padding: 5px 0;
+  padding: 10px 0;
 }
 
 body {
