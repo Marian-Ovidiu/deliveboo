@@ -115,7 +115,7 @@
                                 </div>
                                 <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
                                     <div class="col">TOTAL ITEMS</div>
-                                    <div class="col text-right">@{{cart.length}}</div>
+                                    <div class="col text-right">@{{quantity}}</div>
                                 </div>
                                 <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
                                     <div class="col">TOTAL PRICE</div>

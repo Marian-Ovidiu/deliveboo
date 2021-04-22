@@ -1925,7 +1925,8 @@ new Vue({
     cart: [],
     cartSaved: [],
     amount: 0,
-    amountSaved: 0
+    amountSaved: 0,
+    quantity: 0
   },
   mounted: function mounted() {
     var _this = this;
@@ -1975,6 +1976,7 @@ new Vue({
           tot_price = product_price * this.cart[i].quantity;
           this.cart[i].price = tot_price.toFixed(2);
           this.getAmount();
+          this.getQuantity();
           return; // la funzione si ferma qui, non aggiungendo l'id
         }
       }
@@ -1986,6 +1988,7 @@ new Vue({
         'price': product_price
       });
       this.getAmount();
+      this.getQuantity();
     },
     remove: function remove(product_id, product_price) {
       var _this4 = this;
@@ -2004,13 +2007,21 @@ new Vue({
         }
       });
       this.getAmount();
+      this.getQuantity();
+    },
+    getQuantity: function getQuantity() {
+      var tot = 0;
+      this.cart.forEach(function (item) {
+        tot += item.quantity;
+      });
+      this.quantity = tot;
     },
     getAmount: function getAmount() {
       var sum = 0;
       this.cart.forEach(function (item) {
         sum += item.price;
       });
-      this.amount = sum;
+      this.amount = parseFloat(sum);
     },
     saveCart: function saveCart() {
       var cartJSON = JSON.stringify(this.cart);

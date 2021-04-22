@@ -10,7 +10,8 @@ new Vue({
     cart: [],
     cartSaved: [],
     amount: 0,
-    amountSaved: 0
+    amountSaved: 0,
+    quantity: 0
   },
   mounted() {
     axios.get('http://localhost:8000/api/businesses')
@@ -65,6 +66,7 @@ new Vue({
           tot_price = product_price * this.cart[i].quantity;
           this.cart[i].price = tot_price.toFixed(2);
           this.getAmount();
+          this.getQuantity();
           return; // la funzione si ferma qui, non aggiungendo l'id
         }
       }
@@ -75,6 +77,7 @@ new Vue({
         'price' : product_price
       });
       this.getAmount();
+      this.getQuantity();
     },
 
     remove (product_id, product_price) {
@@ -92,6 +95,15 @@ new Vue({
         }
       });
       this.getAmount();
+      this.getQuantity();
+    },
+
+    getQuantity() {
+      let tot = 0;
+      this.cart.forEach((item) => {
+        tot += item.quantity;
+      });
+      this.quantity = tot;
     },
 
     getAmount() {
@@ -99,7 +111,7 @@ new Vue({
       this.cart.forEach((item) => {
         sum += item.price;
       });
-      this.amount = sum;
+      this.amount = parseFloat(sum);
     },
 
     saveCart() {
