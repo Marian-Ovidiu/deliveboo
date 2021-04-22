@@ -1,7 +1,8 @@
-<link rel="stylesheet" href="{{ asset('css/app.css') }}">
-<script src="{{ asset('js/app.js') }}" defer></script>
+@extends('layouts.base')
+@section('title', 'Il tuo ordine')
 
-<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+@section('content')
+<script src="https://js.braintreegateway.com/web/dropin/1.27.0/js/dropin.min.js"></script>
 
 <div class="container" id="app">
   <div v-for="item in cartSaved">
@@ -106,7 +107,6 @@
     </div>
 
     <script src="https://js.braintreegateway.com/web/dropin/1.26.1/js/dropin.min.js"></script>
-    <script src="https://js.braintreegateway.com/web/3.73.1/js/hosted-fields.min.js"></script>
     <script>
       var form = document.querySelector('#payment-form');
       var client_token = "{{ $token }}";
@@ -135,3 +135,4 @@
       });
     </script>
   </form>
+@endsection
