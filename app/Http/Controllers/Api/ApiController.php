@@ -3,15 +3,14 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Business;
 use App\Type;
 
 class ApiController extends Controller
 {
-    public function getBusinessesApi(Request $request)
+    public function getBusinessesApi()
     {
-        $businesses = Business::all();
+        $businesses = Business::where('id', '<=', 8)->get();
         return response()->json([
             'data' => [
                 'businesses' => $businesses
@@ -19,7 +18,7 @@ class ApiController extends Controller
         ]);
     }
 
-    public function getTypesApi(Request $request)
+    public function getTypesApi()
     {
         $types = Type::all();
         return response()->json([
@@ -27,6 +26,16 @@ class ApiController extends Controller
                 'types' => $types
             ]
         ]);
+    }
+
+    public function filterBusinessesByName ($query)
+    {
+
+        $toLowerQuery = strtolower($query);
+        $businessName = Business::where("name", 'LIKE', "%$toLowerQuery%")->get();
+
+        return response()->json($businessName);
+
     }
 
     public function filterBusinessesByTypes($name)
@@ -37,4 +46,5 @@ class ApiController extends Controller
             })->get();
         return response()->json($businessType);
     }
+
 }

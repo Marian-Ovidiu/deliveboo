@@ -21,3 +21,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('/businesses', 'Api\ApiController@getBusinessesApi');
 Route::get('/types', 'Api\ApiController@getTypesApi');
 Route::get('/type/{name}','Api\ApiController@filterBusinessesByTypes');
+Route::get('/businesses/{query}','Api\ApiController@filterBusinessesByName');

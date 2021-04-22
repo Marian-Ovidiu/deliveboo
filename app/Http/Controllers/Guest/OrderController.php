@@ -45,6 +45,7 @@ class OrderController extends Controller
     'publicKey' => '8bdc65hxyy4pg56f',
     'privateKey' => 'e16fd716976555b304d8b2d18ad5ce55'
     ]);
+    
     $result = $gateway->transaction()->sale([
     'amount' => $order->amount,
     'paymentMethodNonce' => 'fake-valid-nonce',
@@ -64,6 +65,9 @@ class OrderController extends Controller
       foreach($result->errors->deepAll() as $error) {
         $errors[$error->code] = $error->message;
       }
+      $order->success = 0;
+      $order->save();
+      $order->products()->attach($products);
       return view('guest.order-error');;
     }
   }
