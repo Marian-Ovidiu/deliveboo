@@ -1,31 +1,27 @@
 new Vue({
   el: '#app',
   data: {
-    businesses: [],
+    businessesToRender: [],
     businessesForType: [],
+    allBusinesses: [],
+    allTypes: [],
+    showBusinessesToRender: true,
     query: '',
-    types: [],
     cart: [],
     cartSaved: [],
     amount: 0
   },
   mounted() {
-    axios.get('http://localhost:8000/api/businesses', {
-      // params: {
-      //     query: this.searchByType
-      // }
-    })
+    axios.get('http://localhost:8000/api/businesses')
     .then(resp => {
-      this.businesses = resp.data.data.businesses
-    })
-    // .catch(err => {
-    //     console.log(err);
-    // })
-    axios.get('http://localhost:8000/api/types', {
+        this.businnessesForType = [];
+        this.allBusinesses = resp.data.data.businesses;
+        this.businessesToRender = this.allBusinesses;
+    }),
 
-    })
+    axios.get('http://localhost:8000/api/types')
     .then(resp => {
-      this.types = resp.data.data.types
+        this.allTypes = resp.data.data.types;
     }),
 
     this.cartSaved = JSON.parse(localStorage.getItem('cart'));
@@ -34,26 +30,28 @@ new Vue({
 
   methods: {
     filterBusinessesByTypes: function(type) {
-      axios.get('http://localhost:8000/api/type/' + type, {
-
-      })
-      .then(resp => {
-        console.log(resp.data);
-        this.businessesForType = [];
-        this.businessesForType = resp.data;
-      })
+        axios.get('http://localhost:8000/api/type/' + type)
+        .then(resp => {
+            console.log(resp.data);
+            this.businessesForType = [];
+            this.businessesForType = resp.data;
+            this.showBusinessesToRender = false;
+        })
     },
 
-    emptyBussinessesForType: function() {
-      return this.businessesForType = [];
-    },
+    filterBusinessesByName: function(query) {
+        axios.get('http://localhost:8000/api/businesses/' + query )
+        .then(resp => {
+            this.businessesForType = [];
+            this.businessesToRender = [];
+            this.showBusinessesToRender = true;
 
-    searchFunction: function(variabile) {
-      let flag = false;
-      flag = variabile.toLowerCase().startsWith(this.query.toLowerCase())
-      if(flag && this.businessesForType.length === 0) {
-        return true;
-      }
+            if(this.query === '') {
+                this.businessesToRender = this.allBusinesses;
+            } else {
+                this.businessesToRender = resp.data;
+            }
+        })
     },
 
     add (product_id, product_name, product_price) {
@@ -68,7 +66,7 @@ new Vue({
           return; // la funzione si ferma qui, non aggiungendo l'id
         }
       }
-      
+
       this.cart.push({
         'id' : product_id,
         'name' : product_name,
