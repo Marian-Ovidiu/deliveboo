@@ -1945,6 +1945,7 @@ new Vue({
       axios.get('http://localhost:8000/api/type/' + type).then(function (resp) {
         console.log(resp.data);
         _this2.businessesForType = [];
+        _this2.query = '';
         _this2.businessesForType = resp.data;
         _this2.showBusinessesToRender = false;
       });
