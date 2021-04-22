@@ -1,119 +1,117 @@
 new Vue({
   el: '#app',
   data: {
-    businesses: [],
+    businessesToRender: [],
     businessesForType: [],
+    allBusinesses: [],
+    allTypes: [],
+    showBusinessesToRender: true,
     query: '',
-    types: [],
     cart: [],
     cartSaved: [],
-    amount: 0
+    amount: 0,
+    amountSaved: 0,
+    quantity: 0
   },
   mounted() {
-    axios.get('http://localhost:8000/api/businesses', {
-      // params: {
-      //     query: this.searchByType
-      // }
-    })
+    axios.get('http://localhost:8000/api/businesses')
     .then(resp => {
-      this.businesses = resp.data.data.businesses
-    })
-    // .catch(err => {
-    //     console.log(err);
-    // })
-    axios.get('http://localhost:8000/api/types', {
+        this.businnessesForType = [];
+        this.allBusinesses = resp.data.data.businesses;
+        this.businessesToRender = this.allBusinesses;
+    }),
 
-    })
+    axios.get('http://localhost:8000/api/types')
     .then(resp => {
-      this.types = resp.data.data.types
+        this.allTypes = resp.data.data.types;
     }),
 
     this.cartSaved = JSON.parse(localStorage.getItem('cart'));
-    this.amount = localStorage.getItem('amount');
+    this.amountSaved = localStorage.getItem('amount');
   },
 
   methods: {
     filterBusinessesByTypes: function(type) {
-      axios.get('http://localhost:8000/api/type/' + type, {
-
-      })
-      .then(resp => {
-        console.log(resp.data);
-        this.businessesForType = [];
-        this.businessesForType = resp.data;
-      })
+        axios.get('http://localhost:8000/api/type/' + type)
+        .then(resp => {
+            console.log(resp.data);
+            this.businessesForType = [];
+            this.query = '';
+            this.businessesForType = resp.data;
+            this.showBusinessesToRender = false;
+        })
     },
 
-    emptyBussinessesForType: function() {
-      return this.businessesForType = [];
-    },
+    filterBusinessesByName: function(query) {
+        axios.get('http://localhost:8000/api/businesses/' + query )
+        .then(resp => {
+            this.businessesForType = [];
+            this.businessesToRender = [];
+            this.showBusinessesToRender = true;
 
-    searchFunction: function(variabile) {
-      let flag = false;
-      flag = variabile.toLowerCase().startsWith(this.query.toLowerCase())
-      if(flag && this.businessesForType.length === 0) {
-        return true;
-      }
+            if(this.query === '') {
+                this.businessesToRender = this.allBusinesses;
+            } else {
+                this.businessesToRender = resp.data;
+            }
+        })
     },
 
     add (product_id, product_name, product_price) {
-
-      let tot_price = product_price;
+      let tot_price;
 
       for (let i = 0; i < this.cart.length; i++) {
         if (this.cart[i].id === product_id) {
           this.cart[i].quantity++;
-          tot_price += product_price;
+          tot_price = product_price * this.cart[i].quantity;
           this.cart[i].price = tot_price.toFixed(2);
+          this.getAmount();
+          this.getQuantity();
           return; // la funzione si ferma qui, non aggiungendo l'id
         }
       }
-      
       this.cart.push({
         'id' : product_id,
         'name' : product_name,
         'quantity' : 1,
-        'price' : tot_price
+        'price' : product_price
       });
+      this.getAmount();
+      this.getQuantity();
     },
 
-    remove (product_id) {
-      for (let i = 0; i < this.cart.length; i++) {
-        if (this.cart[i].id === product_id) {
-          this.cart.splice(i, 1);
-        }
-      }
-    },
-
-    quantityUp (product_id, product_price) {
-      this.cart.forEach((item) => {
-        if (item.id === product_id) {
-          item.quantity++;
-          item.price += product_price;
-        }
-      });
-    },
-
-    quantintyDown (product_id, product_price) {
-      this.cart.forEach((item) => {
+    remove (product_id, product_price) {
+      let tot_price;
+      this.cart.forEach((item, i) => {
         if (item.id === product_id) {
           if(item.quantity === 1) {
-            this.remove(product_id);
+            this.cart.splice(i, 1);
           } else {
             item.quantity--;
-            item.price = item.price - product_price;
+            tot_price = product_price;
+            tot_price = item.price - product_price;
+            item.price = tot_price.toFixed(2);
           }
         }
       });
+      this.getAmount();
+      this.getQuantity();
     },
 
-    getAmount () {
+    getQuantity() {
+      let tot = 0;
+      this.cart.forEach((item) => {
+        tot += item.quantity;
+      });
+      this.quantity = tot;
+    },
+
+    getAmount() {
       let sum = 0;
       this.cart.forEach((item) => {
         sum += item.price;
       });
-      this.amount = sum.toFixed(2);
-      return this.amount;
+      this.amount = parseFloat(sum);
     },
 
     saveCart() {

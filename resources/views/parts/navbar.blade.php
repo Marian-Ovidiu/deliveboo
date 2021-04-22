@@ -4,15 +4,13 @@
                 <div class="row">
                     <div class="col-xl-2 col-lg-2 col-md-1 col-sm-1 col-0"></div>
                     <div class="col-xl-4 col-lg-4 col-md-5 col-sm-7 col-8 links">
-                        <span>Contacts</span>
-                        <span>Restaurants</span>
-                        <span>Pages</span>
+                        <a href="{{ route('public-home') }}"><span>Home</span></a>
                     </div>
                     <div class="col-xl-4 col-lg-4 col-md-5 col-sm-4 col-4">
                         @if (Route::has('login'))
                         <div class="top-right">
                             @auth
-                                <a href="{{ url('/') }}">Home</a>
+                                <a href="{{ route('dashboard') }}">Area ristoratore [{{ Auth::user()->name }}]</a>
                             @else
                                 <a href="{{ route('login') }}">Login</a>
 

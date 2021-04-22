@@ -1,38 +1,66 @@
 .header-restaurant{
     &-row {
         &-jumbotronn {
-            height: 40vh;
+            height: 275px;
             background-size:100%;
             background-position: bottom;
             background-repeat: no-repeat;
             &-cover {
+                padding-top: 10%;
                 height: 100%;
-                width: 100%;
+                width: 100vw;
                 background-color: rgba(0, 0, 0, 0.5);
                 &-logo{
-                    margin-top: 8%;
+                    transition: 1s;
+                    color:white;
                     &-img{
-                        padding: 5px;
-                        background-color: white;
-                        border-radius: 10px;
+                        height: 45%;
+                        width: 22%;
+                        transition: 1s;
+                        padding: 1px;
                         transform: scale(1.3);
                         margin-top: 15px;
+                        background-size: cover;
+                        background-position: center;
+                        flex: 150px 0px;
+                    }
+                    @media (max-width: 900px) {
+                        &-img{
+                            height: 35%;
+                        }
+                    }
+                    @media (max-width: 635px) {
+                        &-img{
+                           margin: 15px auto;
+                           height: 45%;
+                           width: 22%;
+                        }
                     }
                     &-box{
-                        margin: 15px 35px;
+                        transition: 1s;
+                        margin: 15px 0;
+                        padding-left: 27px;
                         &-title {
-                            font-size: 35px;
-                            color: white;
+                            transition: 1s;
+                            font-size: 25px;
                         }
                         &-types{
+                            transition: 1s;
                             font-size: 15px;
-                            color: white;
                         }
                     }
-
+                }
+                @media (max-width: 635px) {
+                    &-logo{
+                        text-align: center;
+                        display: flex;
+                        flex-direction: column;
+                        flex-grow: 0;
+                        justify-items: center;
+                    }
                 }
                 &-info{
-                    margin-top: 8%;
+                    transition: 0.2s;
                     color:white;
                     &-box{
                         text-align: right;
@@ -49,21 +77,32 @@
                                 }
                             }
                         &-select{
-                            display: block;
-                            margin-top: 13px;
+                            margin: 13px 10px;
                             border:none;
                             padding: 5px 10px;
                             background-color: #333;
                             color: white;
+                            font-size: 13px;
                         }
-                          &-select-items div:hover, .same-as-selected {
+                        &-select-items div:hover, .same-as-selected {
                             background-color: rgba(0, 0, 0, 0.1);
-                          }
-                        &-select:hover{
-                            border:none;
-
+                        }
+                        @media (max-width: 768px) {
+                            &-select{
+                                display:none;
+                            }
                         }
                     }
+                }
+            }
+            @media (max-width: 768px) {
+                &-cover{
+                    padding-top: 15%;
+                }
+            }
+            @media (max-width: 992px) {
+                &-cover{
+                    padding-top: 13%;
                 }
             }
         }
