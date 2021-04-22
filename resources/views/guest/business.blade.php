@@ -81,10 +81,8 @@
                                     </div>
                                     <div class="col-1 business-main-row-content-row-products-row-product-row-price"><strong>Prezzo</strong> <br><br> {{ $product->price }}€</div>
                                     <div class="col-2 business-main-row-content-row-products-row-product-row-options" style="text-align: center">
-                                        <button type="button" class="btn btn-primary" v-on:click = "add({{$product->id}}, '{{$product->name}}', {{$product->price}})" style="width: 95%; margin-top: 20px;">Add</button><br><br>
-                                        <button type="button" class="btn btn-warning" v-on:click = "quantityUp({{$product->id}}, {{$product->price}})" style="width: 45%;" >+</button>
-                                        <button type="button" class="btn btn-warning" v-on:click = "quantintyDown({{$product->id}}, {{$product->price}})" style="width: 45%;">-</button><br><br>
-                                        <button type="button" class="btn btn-danger" v-on:click = "remove({{$product->id}})" style="width: 95%;">Remove</button>
+                                        <button type="button" class="btn btn-primary" v-on:click = "add({{$product->id}}, '{{$product->name}}', {{$product->price}})" style="width: 95%; margin-top: 20px;">+</button><br><br>
+                                        <button type="button" class="btn btn-danger" v-on:click = "remove({{$product->id}}, {{$product->price}})" style="width: 95%;">-</button>
                                     </div>
                                 </div>
 

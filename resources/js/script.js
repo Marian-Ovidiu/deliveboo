@@ -56,12 +56,12 @@ new Vue({
 
     add (product_id, product_name, product_price) {
 
-      let tot_price = product_price;
+      let tot_price;
 
       for (let i = 0; i < this.cart.length; i++) {
         if (this.cart[i].id === product_id) {
           this.cart[i].quantity++;
-          tot_price += product_price;
+          tot_price = product_price * this.cart[i].quantity;
           this.cart[i].price = tot_price.toFixed(2);
           return; // la funzione si ferma qui, non aggiungendo l'id
         }
@@ -71,35 +71,23 @@ new Vue({
         'id' : product_id,
         'name' : product_name,
         'quantity' : 1,
-        'price' : tot_price
+        'price' : product_price
       });
     },
 
-    remove (product_id) {
-      for (let i = 0; i < this.cart.length; i++) {
-        if (this.cart[i].id === product_id) {
-          this.cart.splice(i, 1);
-        }
-      }
-    },
+    remove (product_id, product_price) {
 
-    quantityUp (product_id, product_price) {
-      this.cart.forEach((item) => {
-        if (item.id === product_id) {
-          item.quantity++;
-          item.price += product_price;
-        }
-      });
-    },
+      let tot_price;
 
-    quantintyDown (product_id, product_price) {
-      this.cart.forEach((item) => {
+      this.cart.forEach((item, i) => {
         if (item.id === product_id) {
           if(item.quantity === 1) {
-            this.remove(product_id);
+            this.cart.splice(i, 1);
           } else {
             item.quantity--;
-            item.price = item.price - product_price;
+            tot_price = product_price;
+            tot_price = item.price - product_price;
+            item.price = tot_price.toFixed(2);
           }
         }
       });
