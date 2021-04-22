@@ -16,16 +16,16 @@
                             <img src="{{ asset('img/00-user-dash.png') }}" alt="{{ Auth::user()->name }}"" style="width:50px ">
                         </div>
 
-                        <div class="header-restaurant-row-jumbotronn-cover-logo-box fl">
+                        <div class="header-dashboard-row-jumbotronn-cover-logo-box fl">
                             <h3>{{ Auth::user()->name }} {{ Auth::user()->last_name }}</h3>
                             <h5>{{ Auth::user()->email }}</h5>
                             <h5>P.IVA: {{ Auth::user()->vat }}</h5>
                             <h6>Utente dal {{ $user_date }}</h6>
                         </div>
                     </div>
-                    <div class="col-5 header-restaurant-row-jumbotronn-cover-btn">
-                        <div class="header-restaurant-row-jumbotronn-cover-btn fl">
-                            <div class="header-restaurant-row-jumbotronn-cover-btn ">
+                    <div class="col-5 header-dashboard-row-jumbotronn-cover-btn">
+                        <div class="header-dashboard-row-jumbotronn-cover-btn fl">
+                            <div class="header-dashboard-row-jumbotronn-cover-btn ">
                                 <a href="{{ route('business.create') }}">
                                     <button> Crea Nuovo Ristorante</button>
                                 </a>
@@ -33,7 +33,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-1 header-restaurant-row-jumbotronn-cover-space"></div>
+                <div class="col-1 header-dashboard-row-jumbotronn-cover-space"></div>
             </div>
         </div>
     </header>
@@ -43,7 +43,7 @@
 
         <div class="container-fluid">
             <main class="main-dashboard">
-                <h2 class="main-dashboard-title ">I tuoi Ristoranti</h2>
+                <h2 class="main-dashboard-title">I tuoi Ristoranti</h2>
                 <div class="main-dashboard-row row">
                     <div class="col-2 main-dashboard-row-space"></div>
                     <div class="col-8 main-dashboard-row-container">
@@ -77,6 +77,5 @@
                     <div class="col-2 main-dashboard-row-space"></div>
                 </div>
             </main>
-
 
     @endsection

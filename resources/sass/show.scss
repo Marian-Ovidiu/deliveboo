@@ -1,0 +1,28 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+.wrapper {
+    max-width: 100%;
+    width: 100vw;
+}
+
+.header-show {
+    &-row {
+        &-jumbotronn {
+            height: 40vh;
+            background-size: 100%;
+            background-position: bottom;
+            background-repeat: no-repeat;
+            margin-left: 0px;
+            margin-right: 0px;
+            &-cover {
+               height: 100%;
+               background-color: rgba(0, 0, 0, 0.5);
+            }
+        }
+    }
+}

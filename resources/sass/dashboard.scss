@@ -10,7 +10,7 @@
     width: 100vw;
 }
 
-.header-restaurant {
+.header-dashboard {
     &-row {
         &-jumbotronn {
             height: 40vh;
@@ -18,8 +18,10 @@
             background-position: bottom;
             background-repeat: no-repeat;
             &-cover {
+               margin-left: 0px;
+               margin-right: 0px;
+
                 height: 100%;
-                width: 101.6%;
                 background-color: rgba(0, 0, 0, 0.5);
                 &-logo {
                     margin-top: 8%;
@@ -64,10 +66,10 @@
         }
     }
 }
-
 .main-dashboard{
-    background-color: red;
+    margin-bottom: 20px;
     &-title{
+        margin-top: 20px;
         font-weight: bold;
         text-align: center;
     }
@@ -110,3 +112,4 @@
         }
     }
 }
+
