@@ -3,12 +3,9 @@
   $timestamp = strtotime(Auth::user()->created_at);
   $user_date = date("d m Y", $timestamp);
 @endphp
-@extends('admin.layout')
+@extends('layouts.base')
 @section('content')
 
-{{-- User Header --}}
-<div class="wrap">
-    @include('parts.navbar')
     <header class="header-restaurant">
         <div class="header-restaurant-row">
             <div class=" header-restaurant-row-jumbotronn" style="background-image: url('https://wallpaperaccess.com/full/1306153.jpg')">
@@ -80,7 +77,6 @@
                     <div class="col-2 main-dashboard-row-space"></div>
                 </div>
             </main>
-        </div>
 
 
     @endsection

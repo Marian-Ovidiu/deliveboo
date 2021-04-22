@@ -1,30 +1,159 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.base')
+@section('title', 'Home Page')
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- CSRF Token -->
-    {{-- <meta name="csrf-token" content="{{ csrf_token() }}"> --}}
-    {{-- font awesome --}}
-    {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"/> --}}
-    {{-- vuejs --}}
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
-    {{-- style --}}
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-    <title>{{ config('app.name', 'Deliveboo') }}</title>
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;700&display=swap" rel="stylesheet">
-    <title>Ristoranti</title>
-</head>
+@section('content')
+        {{-- Header --}}
+        <div class="header-restaurant">
+            <div class="header-restaurant-row">
+                <div class="col-12 header-restaurant-row-jumbotronn" style="background-image: url('{{ $business->logo }}')">
+                    <div class="header-restaurant-row-jumbotronn-cover row">
+                        <div class="col-1 header-restaurant-row-jumbotronn-cover-space"></div>
+                        <div class="col-5 header-restaurant-row-jumbotronn-cover-logo">
+                            <div class="header-restaurant-row-jumbotronn-cover-logo-img fl">
+                                <img src="{{ $business->logo }}" alt="logo" width="60" height="60">
+                            </div>
+                            <div class="header-restaurant-row-jumbotronn-cover-logo-box fl">
+                                <div class="header-restaurant-row-jumbotronn-cover-logo-box-title">{{ $business->name }}</div>
+                                {{-- @foreach ($business->types()->get() as $type)
+                                <div class="header-restaurant-row-jumbotronn-cover-logo-box-types">{{ $type->name }}</div>
+                                @endforeach --}}
+                                <div class="header-restaurant-row-jumbotronn-cover-logo-box-types">
+                                    @foreach ($business->types as $id => $type)
+                                        {{ $type->name }}
+                                        @if ($id != (count($business->types) - 1))
+                                        |
+                                        @endif
+                                    @endforeach
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-5 header-restaurant-row-jumbotronn-cover-info">
+                            <div class="header-restaurant-row-jumbotronn-cover-info-box">
+                                <div class="header-restaurant-row-jumbotronn-cover-info-box-icon"><i class="fas fa-motorcycle"></i></div>
+                            </div>
+                            <div class="header-restaurant-row-jumbotronn-cover-info-box-fee">
+                                <div class="header-restaurant-row-jumbotronn-cover-info-box">Delivery fee: €5.00</div>
+                                <div class="header-restaurant-row-jumbotronn-cover-info-box">Min Order : €10.00</div>
+                            </div>
+                            <div class="header-restaurant-row-jumbotronn-cover-info-box">
+                                <select class="header-restaurant-row-jumbotronn-cover-info-box-select">
+                                    <option value="">Today : 09:00 am - 09:30 pm</option>
+                                    <option value="">Monday:09:00 am - 09:30 pm</option>
+                                    <option value="">Tuesday:09:00 am - 09:45 pm</option>
+                                    <option value="">Wednesday:09:00 am - 04:15 pm</option>
+                                    <option value="">Thursday:09:00 am - 07:45 pm</option>
+                                    <option value="">Friday:06:00 am - 11:00 pm</option>
+                                    <option value="">Saturday:09:00 am - 04:00 pm</option>
+                                    <option value="">Sunday:12:00 am - 12:00 am</option>
+                                </select>
+                            </div>
 
-<body>
-    <div class="wrapper">
-        @include('parts.navbar')
-        @include('parts.business-header')
-        @include('parts.cart')
+                        <div class="col-1 header-restaurant-row-jumbotronn-cover-space"></div>
+                    </div>
+                </div>
+            </div>
+        <div>
+
+
+        {{-- Main --}}
+        <div id="app" class="col-12 business-main">
+            <div class="business-main-row row">
+                <div class="col-1 business-main-row-space"></div>
+                <div class="business-main-row-content col-5">
+                    <div class="business-main-row-content-row row">
+                        <div class="col-12 business-main-row-content-row-products">
+                            <div class="business-main-row-content-row-products-row row">
+                                <div class="col-12 business-main-row-content-row-products-row-title">I nostri piatti</div>
+                            </div>
+                            <div class="business-main-row-content-row-products-row row">
+                                @foreach ($business->products()->get() as $product)
+                                <div class="col-12 business-main-row-content-row-products-row-product">
+                                    <div class="business-main-row-content-row-products-row-product-row row">
+                                        <div class="col-9 business-main-row-content-row-products-row-product-row-name">
+                                            <div class="business-main-row-content-row-products-row-product-row-name-img"  style="background-image: url({{ $product->img }});"></div>
+                                            <div class="business-main-row-content-row-products-row-product-row-name-container">
+                                                <span class="business-main-row-content-row-products-row-product-row-name-container-title">{{ $product->name }}</span><br>
+                                                <span class="business-main-row-content-row-products-row-product-row-name-container-description">{{ $product->description }}</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-1 business-main-row-content-row-products-row-product-row-price"><strong>Prezzo</strong> <br><br> {{ $product->price }}€</div>
+                                        <div class="col-2 business-main-row-content-row-products-row-product-row-options" style="text-align: center">
+                                            <button type="button" class="btn btn-primary" v-on:click = "add({{$product->id}}, '{{$product->name}}', {{$product->price}})" style="width: 95%; margin-top: 20px;">Add</button><br><br>
+                                            <button type="button" class="btn btn-warning" v-on:click = "quantityUp({{$product->id}}, {{$product->price}})" style="width: 45%;" >+</button>
+                                            <button type="button" class="btn btn-warning" v-on:click = "quantintyDown({{$product->id}}, {{$product->price}})" style="width: 45%;">-</button><br><br>
+                                            <button type="button" class="btn btn-danger" v-on:click = "remove({{$product->id}})" style="width: 95%;">Remove</button>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-5 business-main-row-container">
+                    <div class="business-main-row-container-row row">
+                        <div class="col-1 business-main-row-container-row-space"></div>
+                        <div class="col-10 business-main-row-container-row-cart">
+                            {{-- <div v-show="cart.length > 0">
+                                <div v-for="product in cart">
+                                  X@{{product.quantity}}  @{{product.name}} €@{{product.price}}
+                                  <br>
+
+                                </div>
+                                <a class="btn btn-primary" v-on:click="saveCart()" href="{{asset(route('cart-checkout', compact('business')))}}">Checkout</a>
+                            </div> --}}
+                            <div class="row">
+                                <div class="col-md-8 cart">
+                                    <div class="title">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <h4><b>Shopping Cart</b></h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="border-top border-bottom">
+                                        <div v-for="product in cart" class="row main align-items-center" style="display: flex;">
+
+                                                <div class="col-5" style="background-color: ">
+                                                    <div class="row">@{{product.name}}</div>
+                                                </div>
+                                                <div class="col-3" style="">X @{{product.quantity}}</div>
+                                                <div class="col-4" style="background-color: ">&euro; @{{product.price}}</div>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="col-md-4 summary">
+                                    <div>
+                                        <h5><b>Summary</b></h5>
+                                    </div>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col" style="padding-left:0;">ITEMS 3</div>
+                                        <div class="col text-right">&euro; 132.00</div>
+                                    </div>
+                                    <form>
+                                        <p>SHIPPING</p>
+                                        <select>
+                                            <option class="text-muted">Standard-Delivery- &euro;5.00</option>
+                                        </select>
+                                    </form>
+                                    <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
+                                        <div class="col">TOTAL PRICE</div>
+                                        <div class="col text-right">&euro; 137.00</div>
+                                    </div>
+                                    <a class="btn btn-primary" v-on:click="saveCart()" href="{{asset(route('cart-checkout', compact('business')))}}">Checkout</a>
+
+                                </div>
+                            </div>
+
+                </div>
+                <div class="col-1 business-main-row-space"></div>
+            </div>
+        </div>
     </div>
 
-</body>
-
-</html>
+@endsection
