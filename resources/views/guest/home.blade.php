@@ -3,8 +3,9 @@
 
 @section('content')
 
-{{-- HOME CONTAINER  --}}
+  {{-- HOME CONTAINER  --}}
   <div id="app" class="home-container">
+
     {{-- Jumbotron --}}
     <div class="row">
       <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 row-jumbotron">
@@ -18,7 +19,6 @@
             Delivered fresh and hot at your doorstep
           </div>
         </div>
-
         <div class="row-jumbotron-row row">
           <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-2 row-jumbotron-row-space fl"></div>
           <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-8 row-jumbotron-row-search fl">
@@ -30,7 +30,9 @@
         </div>
       </div>
     </div>
+    {{-- / Jumbotron --}}
 
+    {{-- Search by type --}}
     <div class="row">
       <div class="col-xl-12 col-lg-12 col-md-12 row-types">
         <div class="row-types-row row">
@@ -58,7 +60,9 @@
         </div>
       </div>
     </div>
+    {{-- / Search by type --}}
 
+    {{-- Restaurant List --}}
     <div class="row" id="restaurants-row">
       <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 row-restaurants">
         <div class="row-restaurants-row row">
@@ -139,12 +143,10 @@
         </div>
       </div>
     </div>
-    <div class="col-xl-1 col-lg-1 col-md-1 col-sm-0 col-3 row-restaurants-row-space fl"></div>
+    <div class="col-xl-1 col-lg-1 col-md-1 col-sm-0 col-3 row-restaurants-row-space fl">
+    </div>
+    {{-- / Restaurant List --}}
+
   </div>
-
-
-</div>
-</div>
-</div>
 
 @endsection
