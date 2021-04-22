@@ -58,7 +58,9 @@
     {{-- Main --}}
     <div id="app" class="col-xl-12 col-lg-12 col-md-12 business-main">
         <div class="business-main-row row">
+
             <div class="col-xl-1 col-lg-1 col-md-1 business-main-row-space"></div>
+
             {{-- Main Menu --}}
             <div class="col-xl-6 col-lg-6 col-md-7 business-main-row-content">
                 <div class="business-main-row-content-row row">
@@ -90,21 +92,20 @@
                 </div>
             </div>
             {{--End Main Menu --}}
-            <div class="col-xl-1 col-lg-1 col-md-0 business-main-row-space"></div>
+
+            {{-- <div class="col-xl-1 col-lg-1 col-md-0 business-main-row-space"></div> --}}
+
             {{-- Main Cart --}}
-            <div class="col-xl-3 col-lg-3 col-md-3 business-main-row-content">
+            {{-- <div class="col-xl-3 col-lg-3 col-md-3 business-main-row-content">
                 <div class="business-main-row-content-row row">
                     <div class="col-1 business-main-row-content-row-space"></div>
                     <div class="col-xl-12 col-lg-12 col-md-12 business-main-row-content-row-cart">
                         <div class="business-main-row-content-row-cart-row row">
                             <div class="col-xl-12 col-lg-12 col-md-12 business-main-row-content-row-cart-row-current">
                                 <div class="business-main-row-content-row-cart-row-current-row row">
-                                    <div class="col-12 business-main-row-content-row-cart-row-current-row-title"><strong>Shopping Cart</strong></div>
-                                </div>
-                                <div v-for="product in cart" style="display: flex;" class="business-main-row-content-row-cart-row-current-row row">
-                                    <div class="col-5">@{{product.name}}</div>
-                                    <div class="col-3" style="">@{{product.quantity}}</div>
-                                    <div class="col-4" style="background-color: ">&euro; @{{product.price}}</div>
+                                    <div class="col-md-12 business-main-row-content-row-cart-row-current-row-title">
+                                        <strong>Shopping Cart</strong>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -112,7 +113,7 @@
                 </div>
                 {{-- End Items in cart --}}
                 {{-- Summary --}}
-                <div class="business-main-row-content-row row">
+                {{-- <div class="business-main-row-content-row row">
                     <div class="col-xl-12 col-lg-12 col-md-12 business-main-row-content-row-summary">
                         <div class="business-main-row-content-row-summary-row row">
                             <div class="col-12 business-main-row-content-row-summary-row-title"><strong>Summary</strong></div>
@@ -128,10 +129,49 @@
                         <a class="btn business-main-row-content-row-summary-btn" v-on:click="saveCart()" href="{{asset(route('cart-checkout', compact('business')))}}">Checkout</a>
                     </div>
                 </div>
-                {{-- End Summary --}}
-            </div>
-            {{-- End Main Cart --}}
-            <div class="col-xl-1 col-lg-1 col-md-1 business-main-row-space"></div>
+            </div> --}}
+
+            {{-- <div class="col-xl-1 col-lg-1 col-md-1 business-main-row-space"></div> --}}
+
+            <aside class="col-md-3">
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <form>
+                            <div class="form-group">
+                                <label>Have coupon?</label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control coupon" name="" placeholder="Coupon code">
+                                    <span class="input-group-append">
+                                        <button class="btn btn-primary btn-apply coupon">
+                                            Apply
+                                        </button>
+                                    </span>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body" v-for="item in cartSaved">
+                        <dl>
+                            <dt>Total price:</dt>
+                            <dd class="text-right ml-3">&euro; @{{amount}}</dd>
+                        </dl>
+                        <dl>
+                            <dt>Discount:</dt>
+                            <dd class="text-right text-danger ml-3"></dd>
+                        </dl>
+                        <dl>
+                            <dt>Total:</dt>
+                            <dd class="text-right text-dark b ml-3"><strong></strong></dd>
+                        </dl>
+                        <hr>
+                        <a v-on:click="saveCart()" href="{{ asset(route('cart-checkout', compact('business')))}}" class="btn btn-out btn-primary btn-square btn-main" data-abc="true">Checkout</a>
+                        {{-- <a href="#" class="btn btn-out btn-success btn-square btn-main" data-abc="true">Continue Shopping</a> --}}
+                    </div>
+                </div>
+            </aside>
+
         </div>
     </div>
     {{-- End Main --}}
