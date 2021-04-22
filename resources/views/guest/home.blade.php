@@ -67,6 +67,8 @@
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 row-restaurants-row-subtitle">
                     All the top restaurant in your city
                 </div>
+
+                {{-- compare se non ci sono ristoranti che appartengono alla categoria cliccata --}}
                 <div v-if="businessesForType.length === 0 && !showBusinessesToRender"
                 class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 row-restaurants-row-subtitle">
                     Non sono presenti ristoranti in questa categoria!

@@ -10,7 +10,7 @@ class ApiController extends Controller
 {
     public function getBusinessesApi()
     {
-        $businesses = Business::where('id', '<=', 9)->get();
+        $businesses = Business::where('id', '<=', 8)->get();
         return response()->json([
             'data' => [
                 'businesses' => $businesses

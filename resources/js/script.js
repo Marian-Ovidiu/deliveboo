@@ -35,6 +35,7 @@ new Vue({
         .then(resp => {
             console.log(resp.data);
             this.businessesForType = [];
+            this.query = '';
             this.businessesForType = resp.data;
             this.showBusinessesToRender = false;
         })
