@@ -55,7 +55,7 @@ class TypeSeeder extends Seeder
         $types = Type::all();
 
         foreach($businesses as $business){
-          $indexes = [];
+            $indexes = [];
             for($i = 0; $i < rand(1, 3); $i++){
               $business->types()->save($types[$this->uniqueId(0, 11, $indexes)]);
             }
@@ -64,10 +64,10 @@ class TypeSeeder extends Seeder
 
     // Funzione di assegnazione id univoco relativo a Types
     public function uniqueId($min, $max, $nums) {
-        $num = rand ($min, $max);
+        $num = rand($min, $max);
         if(!in_array($num, $nums)) {
           $nums[] = $num;
         }
         return $num;
-      }
+    }
 }
