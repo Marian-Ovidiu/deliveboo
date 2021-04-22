@@ -2019,9 +2019,10 @@ new Vue({
     getAmount: function getAmount() {
       var sum = 0;
       this.cart.forEach(function (item) {
-        sum += item.price;
+        sum += parseFloat(item.price);
       });
-      this.amount = parseFloat(sum);
+      fixedSum = sum.toFixed(2);
+      this.amount = fixedSum;
     },
     saveCart: function saveCart() {
       var cartJSON = JSON.stringify(this.cart);

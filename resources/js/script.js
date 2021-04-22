@@ -109,9 +109,10 @@ new Vue({
     getAmount() {
       let sum = 0;
       this.cart.forEach((item) => {
-        sum += item.price;
+        sum += parseFloat(item.price);
       });
-      this.amount = parseFloat(sum);
+      fixedSum = sum.toFixed(2);
+      this.amount = fixedSum;
     },
 
     saveCart() {

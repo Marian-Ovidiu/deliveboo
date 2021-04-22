@@ -9,7 +9,7 @@
     @{{item.id}}, @{{item.name}}, @{{item.quantity}}, @{{item.price}} <br>
   </div>
   <div>
-    @{{amount}}
+    @{{amountSaved}}
   </div>
 
   <br>
@@ -84,11 +84,11 @@
     {{-- / row: notes --}}
 
     {{-- row: success --}}
-      <input type="hidden" value="1" name="success">
+      <input type="hidden" value="" name="success">
     {{-- / row: success --}}
 
     {{-- row: amount --}}
-      <input type="hidden" :value="amount" name="amount">
+      <input type="hidden" :value="amountSaved" name="amount">
     {{-- / row: amount --}}
 
     <br>
@@ -112,10 +112,7 @@
       var client_token = "{{ $token }}";
       braintree.dropin.create({
         authorization: client_token,
-        selector: '#bt-dropin',
-        paypal: {
-          flow: 'vault'
-        }
+        selector: '#bt-dropin'
       }, function (createErr, instance) {
         if (createErr) {
           console.log('Create Error', createErr);
