@@ -9,7 +9,8 @@ new Vue({
     query: '',
     cart: [],
     cartSaved: [],
-    amount: 0
+    amount: 0,
+    amountSaved: 0
   },
   mounted() {
     axios.get('http://localhost:8000/api/businesses')
@@ -25,7 +26,7 @@ new Vue({
     }),
 
     this.cartSaved = JSON.parse(localStorage.getItem('cart'));
-    this.amount = localStorage.getItem('amount');
+    this.amountSaved = localStorage.getItem('amount');
   },
 
   methods: {
@@ -56,9 +57,7 @@ new Vue({
     },
 
     add (product_id, product_name, product_price) {
-
       let tot_price;
-
       for (let i = 0; i < this.cart.length; i++) {
         if (this.cart[i].id === product_id) {
           this.cart[i].quantity++;
@@ -67,19 +66,17 @@ new Vue({
           return; // la funzione si ferma qui, non aggiungendo l'id
         }
       }
-
       this.cart.push({
         'id' : product_id,
         'name' : product_name,
         'quantity' : 1,
         'price' : product_price
       });
+      this.getAmount();
     },
 
     remove (product_id, product_price) {
-
       let tot_price;
-
       this.cart.forEach((item, i) => {
         if (item.id === product_id) {
           if(item.quantity === 1) {
@@ -92,15 +89,15 @@ new Vue({
           }
         }
       });
+      this.getAmount();
     },
 
-    getAmount () {
+    getAmount() {
       let sum = 0;
       this.cart.forEach((item) => {
         sum += item.price;
       });
-      this.amount = sum.toFixed(2);
-      return this.amount;
+      this.amount = sum;
     },
 
     saveCart() {
