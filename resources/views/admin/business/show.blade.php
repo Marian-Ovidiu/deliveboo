@@ -6,7 +6,7 @@
     <header class="header-show">
         <div class="header-show-row">
              <div class=" header-show-row-jumbotronn" style="background-image: url('{{asset($business->logo)}}">
-                <div class=" header-show-row-jumbotronn-cover">
+                <div class="header-show-row-jumbotronn-cover">
                     {{$business->name}}
 
 

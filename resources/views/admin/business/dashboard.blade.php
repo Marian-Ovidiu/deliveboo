@@ -3,7 +3,7 @@
   $timestamp = strtotime(Auth::user()->created_at);
   $user_date = date("d m Y", $timestamp);
 @endphp
-@extends('admin.layout')
+@extends('layouts.base')
 @section('content')
 
 {{-- User Header --}}
@@ -36,7 +36,6 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
                 <div class="col-1 header-dashboard-row-jumbotronn-cover-space"></div>
             </div>
@@ -83,6 +82,5 @@
                 </div>
             </main>
         </div>
-        @include('parts.footer')
 
     @endsection

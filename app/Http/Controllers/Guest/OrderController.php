@@ -10,66 +10,61 @@ use App\Order;
 
 class OrderController extends Controller
 {
-    public function checkout(Business $business)
-    {
+  public function checkout(Business $business)
+  {
 
-        $gateway = new Gateway([
-        'environment' => 'sandbox',
-        'merchantId' => 'nyfdp2wz77gqqj29',
-        'publicKey' => '8bdc65hxyy4pg56f',
-        'privateKey' => 'e16fd716976555b304d8b2d18ad5ce55'
-        ]);
+    $gateway = new Gateway([
+      'environment' => 'sandbox',
+      'merchantId' => 'nyfdp2wz77gqqj29',
+      'publicKey' => '8bdc65hxyy4pg56f',
+      'privateKey' => 'e16fd716976555b304d8b2d18ad5ce55'
+    ]);
 
-        $token = $gateway->ClientToken()->generate();
-        return view('guest.checkout', compact('business', 'token', 'gateway'));
+    $token = $gateway->ClientToken()->generate();
+    return view('guest.order-summary', compact('business', 'token', 'gateway'));
+  }
+
+  public function store(Request $request)
+  {
+    $data = $request->all();
+
+    $order = new Order();
+    $order->fill($data);
+
+    $products= [];
+
+    foreach ($data['products'] as $id => $product) {
+      for ($i=0; $i < $data['quantities'][$id] ; $i++) {
+        $products[] = $product;
+      }
     }
 
-    public function store(Request $request)
-    {
+    $gateway = new Gateway([
+    'environment' => 'sandbox',
+    'merchantId' => 'nyfdp2wz77gqqj29',
+    'publicKey' => '8bdc65hxyy4pg56f',
+    'privateKey' => 'e16fd716976555b304d8b2d18ad5ce55'
+    ]);
+    $result = $gateway->transaction()->sale([
+    'amount' => $order->amount,
+    'paymentMethodNonce' => 'fake-valid-nonce',
+    'options' => [
+    'submitForSettlement' => true
+    ]
+    ]);
 
-      $data = $request->all();
-
-      $products= [];
-
-      foreach ($data['products'] as $id => $product) {
-        for ($i=0; $i < $data['quantities'][$id] ; $i++) {
-          $products[] = $product;
-        }
-      }
-
-
-      $order = new Order();
-      $order->fill($data);
-      $gateway = new Gateway([
-        'environment' => 'sandbox',
-        'merchantId' => 'nyfdp2wz77gqqj29',
-        'publicKey' => '8bdc65hxyy4pg56f',
-        'privateKey' => 'e16fd716976555b304d8b2d18ad5ce55'
-        ]);
+    if ($result->success || !is_null($result->transaction)) {
+      $transaction = $result->transaction;
+      $order->success = 1;
       $order->save();
       $order->products()->attach($products);
-
-        $nonce = true;
-
-        $result = $gateway->transaction()->sale([
-        'amount' => $order->amount,
-        'paymentMethodNonce' => $nonce,
-        'options' => [
-            'submitForSettlement' => true
-            ]
-        ]);
-        dd($result);
-        if ($result->success) {
-            $transaction = $result->transaction;
-            return redirect()->route('purchase-made', ['transaction'=>$transaction,'order'=>$order]);
-        } else {
-            $errorString = "";
-
-            foreach ($result->errors->deepAll() as $error) {
-                $errorString .= 'Error: ' . $error->code . ": " . $error->message . "\n";
-            }
-        }
-
-      return view('guest.success');
+      return view('guest.order-success');
+    } else {
+      $errors = [];
+      foreach($result->errors->deepAll() as $error) {
+        $errors[$error->code] = $error->message;
+      }
+      return view('guest.order-error');;
     }
+  }
 }
