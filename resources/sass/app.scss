@@ -7,24 +7,20 @@
 // Custom (Home, Dahsboard)
 @import "partials/custom";
 @import "home";
-<<<<<<< HEAD
 @import "restaurant";
-<<<<<<< HEAD
+
 @import "dashboard";
+@import "show";
 @import "parts/navbar";
-=======
-@import "cart";
-=======
-@import "parts/navbar";
->>>>>>> 4c94fc04a99944bc254cb6a215aeec2a3b190a62
-@import "parts/header";
->>>>>>> refs/remotes/origin/master
-@import "parts/footer";
-<<<<<<< HEAD
-=======
+
 @import "cart";
 
->>>>>>> 4c94fc04a99944bc254cb6a215aeec2a3b190a62
+@import "parts/navbar";
+@import "parts/header";
+
+@import "parts/footer";
+
+@import "cart";
 // FontAwesome
 @import '~@fortawesome/fontawesome-free/css/all.min.css';
 

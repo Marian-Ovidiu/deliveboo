@@ -1,4 +1,4 @@
-    <header>
+    <div class="navbar">
         <nav class="row">
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 row-content">
                 <div class="row">
@@ -12,7 +12,7 @@
                         @if (Route::has('login'))
                         <div class="top-right">
                             @auth
-                                <a href="{{ url('/home') }}">Home</a>
+                                <a href="{{ url('/') }}">Home</a>
                             @else
                                 <a href="{{ route('login') }}">Login</a>
 
@@ -47,7 +47,7 @@
                         </li>
                     @endif
                         <li><a>Contacts</a></li>
-                        <li><a>Restaurants</a></li>
+                        <li><a href="/business">Restaurants</a></li>
                         <li><a>Pages</a></li>
                     </ul>
                     <a href="#" class="close">
@@ -56,6 +56,6 @@
                 </div>
             </div>
         </nav>
-    </header>
+    </div>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
