@@ -87,7 +87,6 @@
                                         <button type="button" class="btn btn-danger" v-on:click = "remove({{$product->id}})" style="width: 95%;">Remove</button>
                                     </div>
                                 </div>
-
                             </div>
                             @endforeach
                         </div>
