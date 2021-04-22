@@ -37,13 +37,7 @@ class OrderController extends Controller
     }
 
     $order = new Order();
-    $order->fill($data);
-    $gateway = new Gateway([
-      'environment' => 'sandbox',
-      'merchantId' => 'nyfdp2wz77gqqj29',
-      'publicKey' => '8bdc65hxyy4pg56f',
-      'privateKey' => 'e16fd716976555b304d8b2d18ad5ce55'
-    ]);
+    $order->fill($data);y
     $order->save();
     $order->products()->attach($products);
 
@@ -60,7 +54,7 @@ class OrderController extends Controller
     'submitForSettlement' => true
     ]
     ]);
-    
+
     dd($result);
 
     if ($result->success || !is_null($result->transaction)) {
