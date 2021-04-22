@@ -8,6 +8,7 @@
             <div class="col-12 header-restaurant-row-jumbotronn" style="background-image: url('{{ $business->logo }}')">
                 <div class="header-restaurant-row-jumbotronn-cover row">
                     <div class="col-1 header-restaurant-row-jumbotronn-cover-space"></div>
+                    {{-- Header Left --}}
                     <div class="col-5 header-restaurant-row-jumbotronn-cover-logo">
                         <div class="header-restaurant-row-jumbotronn-cover-logo-img fl">
                             <img src="{{ $business->logo }}" alt="logo" width="60" height="60">
@@ -27,6 +28,7 @@
                             </div>
                         </div>
                     </div>
+                    {{-- Header Right --}}
                     <div class="col-5 header-restaurant-row-jumbotronn-cover-info">
                         <div class="header-restaurant-row-jumbotronn-cover-info-box">
                             <div class="header-restaurant-row-jumbotronn-cover-info-box-icon"><i class="fas fa-motorcycle"></i></div>
@@ -53,11 +55,13 @@
             </div>
         </div>
     </div>
+    {{--  End Header --}}
 
     {{-- Main --}}
     <div id="app" class="col-12 business-main">
         <div class="business-main-row row">
             <div class="col-1 business-main-row-space"></div>
+            {{-- Main Menu --}}
             <div class="business-main-row-content col-5">
                 <div class="business-main-row-content-row row">
                     <div class="col-12 business-main-row-content-row-products">
@@ -89,20 +93,13 @@
                         </div>
                     </div>
                 </div>
-
             </div>
+            {{--End Main Menu --}}
+            {{-- Main Cart --}}
             <div class="col-5 business-main-row-container">
                 <div class="business-main-row-container-row row">
                     <div class="col-1 business-main-row-container-row-space"></div>
                     <div class="col-10 business-main-row-container-row-cart">
-                        {{-- <div v-show="cart.length > 0">
-                            <div v-for="product in cart">
-                                X@{{product.quantity}}  @{{product.name}} €@{{product.price}}
-                                <br>
-
-                            </div>
-                            <a class="btn btn-primary" v-on:click="saveCart()" href="{{asset(route('cart-checkout', compact('business')))}}">Checkout</a>
-                        </div> --}}
                         <div class="row">
                             <div class="col-md-8 cart">
                                 <div class="row">
@@ -133,7 +130,8 @@
                     <div class="col-1 business-main-row-space"></div>
                 </div>
             </div>
+            {{-- End Main Cart --}}
         </div>
     </div>
-
+    {{-- End Main --}}
 @endsection
