@@ -8,15 +8,17 @@
 @import "partials/custom";
 @import "home";
 @import "dashboard";
+@import "show";
 @import "parts/navbar";
 
 @import "cart";
 
 @import "parts/navbar";
-
 @import "parts/header";
 
 @import "parts/footer";
+
+@import "cart";
 // FontAwesome
 @import '~@fortawesome/fontawesome-free/css/all.min.css';
 

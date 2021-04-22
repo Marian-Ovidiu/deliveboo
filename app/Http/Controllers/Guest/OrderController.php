@@ -21,12 +21,15 @@ class OrderController extends Controller
     ]);
 
     $token = $gateway->ClientToken()->generate();
-    return view('guest.checkout', compact('business', 'token', 'gateway'));
+    return view('guest.order-summary', compact('business', 'token', 'gateway'));
   }
 
   public function store(Request $request)
   {
     $data = $request->all();
+
+    $order = new Order();
+    $order->fill($data);
 
     $products= [];
 
@@ -36,23 +39,13 @@ class OrderController extends Controller
       }
     }
 
-    $order = new Order();
-    $order->fill($data);
-    $gateway = new Gateway([
-      'environment' => 'sandbox',
-      'merchantId' => 'nyfdp2wz77gqqj29',
-      'publicKey' => '8bdc65hxyy4pg56f',
-      'privateKey' => 'e16fd716976555b304d8b2d18ad5ce55'
-    ]);
-    $order->save();
-    $order->products()->attach($products);
-
     $gateway = new Gateway([
     'environment' => 'sandbox',
     'merchantId' => 'nyfdp2wz77gqqj29',
     'publicKey' => '8bdc65hxyy4pg56f',
     'privateKey' => 'e16fd716976555b304d8b2d18ad5ce55'
     ]);
+    
     $result = $gateway->transaction()->sale([
     'amount' => $order->amount,
     'paymentMethodNonce' => 'fake-valid-nonce',
@@ -60,20 +53,22 @@ class OrderController extends Controller
     'submitForSettlement' => true
     ]
     ]);
-    
-    dd($result);
 
     if ($result->success || !is_null($result->transaction)) {
       $transaction = $result->transaction;
-      //redirect da qualche parte;
+      $order->success = 1;
+      $order->save();
+      $order->products()->attach($products);
+      return view('guest.order-success');
     } else {
       $errors = [];
       foreach($result->errors->deepAll() as $error) {
         $errors[$error->code] = $error->message;
       }
-      Router::redirect(SITE_URL . 'payment/?' . http_build_query($errors));
+      $order->success = 0;
+      $order->save();
+      $order->products()->attach($products);
+      return view('guest.order-error');;
     }
-
-    return view('guest.success');
   }
 }

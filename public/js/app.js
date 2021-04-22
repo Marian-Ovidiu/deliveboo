@@ -1913,7 +1913,7 @@ $('.fa-times').click(function () {
   \********************************/
 /***/ (() => {
 
-var app = new Vue({
+new Vue({
   el: '#app',
   data: {
     businesses: [],
@@ -1963,10 +1963,13 @@ var app = new Vue({
       }
     },
     add: function add(product_id, product_name, product_price) {
+      var tot_price = product_price;
+
       for (var i = 0; i < this.cart.length; i++) {
         if (this.cart[i].id === product_id) {
           this.cart[i].quantity++;
-          this.cart[i].price += product_price;
+          tot_price += product_price;
+          this.cart[i].price = tot_price.toFixed(2);
           return; // la funzione si ferma qui, non aggiungendo l'id
         }
       }
@@ -1975,7 +1978,7 @@ var app = new Vue({
         'id': product_id,
         'name': product_name,
         'quantity': 1,
-        'price': product_price
+        'price': tot_price
       });
     },
     remove: function remove(product_id) {
@@ -2019,16 +2022,7 @@ var app = new Vue({
       var cartJSON = JSON.stringify(this.cart);
       localStorage.setItem('cart', cartJSON);
       localStorage.setItem('amount', this.amount);
-    } // mounted: function() {
-    //     if(localStorage.getItem('cart')) {
-    //       try {
-    //         this.cart = JSON.parse(localStorage.getItem('cart'));
-    //       } catch(e) {
-    //         localStorage.removeItem('cart');
-    //     }
-    //     }
-    // }
-
+    }
   }
 });
 Vue.config.devtools = true;

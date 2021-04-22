@@ -26,7 +26,6 @@ class ProductSeeder extends Seeder
                 'price' => $faker->randomFloat(2, 6, 20),
                 'img' => 'https://bit.ly/3tTJSDb',
                 'visible' => 1
-
             ],
             [
                 'name' => 'Tortellini alla panna',
@@ -35,7 +34,6 @@ class ProductSeeder extends Seeder
                 'price' => $faker->randomFloat(2, 6, 20),
                 'img' => 'https://bit.ly/3enxWTp',
                 'visible' => 1
-
             ],
             [
                 'name' => 'Ravioli di burrata',
@@ -44,7 +42,6 @@ class ProductSeeder extends Seeder
                 'price' => $faker->randomFloat(2, 6, 20),
                 'img' => 'https://bit.ly/3sGZhVZ',
                 'visible' => 1
-
             ],
             [
                 'name' => 'Tagliolini al tartufo',
@@ -53,7 +50,6 @@ class ProductSeeder extends Seeder
                 'price' => $faker->randomFloat(2, 6, 20),
                 'img' => 'https://bit.ly/3eiB570',
                 'visible' => 1
-
             ],
             [
                 'name' => 'Spaghetti con pesce e zucchine',
@@ -62,7 +58,6 @@ class ProductSeeder extends Seeder
                 'price' => $faker->randomFloat(2, 6, 20),
                 'img' => 'https://bit.ly/3avN4wY',
                 'visible' => 1
-
             ],
             [
                 'name' => 'Lasagne ai frutti di mare',
@@ -71,7 +66,6 @@ class ProductSeeder extends Seeder
                 'price' => $faker->randomFloat(2, 6, 20),
                 'img' => 'https://bit.ly/2RVYyn5',
                 'visible' => 1
-
             ],
             [
                 'name' => 'Pasta al granchio e pomodorini',
@@ -80,7 +74,6 @@ class ProductSeeder extends Seeder
                 'price' => $faker->randomFloat(2, 6, 20),
                 'img' => 'https://bit.ly/3asq7dR',
                 'visible' => 1
-
             ],
             [
                 'name' => 'Casoncelli alla bresciana',
@@ -89,7 +82,6 @@ class ProductSeeder extends Seeder
                 'price' => $faker->randomFloat(2, 6, 20),
                 'img' => 'https://bit.ly/32DnKRm',
                 'visible' => 1
-
             ],
             [
                 'name' => 'Pasta salsiccia e funghi',
@@ -98,7 +90,6 @@ class ProductSeeder extends Seeder
                 'price' => $faker->randomFloat(2, 6, 20),
                 'img' => 'https://bit.ly/3vbIvzE',
                 'visible' => 1
-
             ],
             [
                 'name' => 'Calamarata ai frutti di mare',
@@ -107,7 +98,6 @@ class ProductSeeder extends Seeder
                 'price' => $faker->randomFloat(2, 6, 20),
                 'img' => 'https://media.cucinarefacile.com/wp-content/uploads/2020/10/10093032/calamarata-ai-frutti-di-mare.jpg',
                 'visible' => 1
-
             ],
             // 10
             [
@@ -117,7 +107,6 @@ class ProductSeeder extends Seeder
                 'price' => $faker->randomFloat(2, 6, 20),
                 'img' => 'https://bit.ly/2PeAZ80',
                 'visible' => 1
-
             ],
             [
                 'name' => 'Torta Arcobaleno o Rainbow Cake',
@@ -126,7 +115,6 @@ class ProductSeeder extends Seeder
                 'price' => $faker->randomFloat(2, 6, 20),
                 'img' => 'https://bit.ly/3grGcEF',
                 'visible' => 1
-
             ],
             [
                 'name' => 'Ciambella classica',
@@ -135,7 +123,6 @@ class ProductSeeder extends Seeder
                 'price' => $faker->randomFloat(2, 6, 20),
                 'img' => 'https://bit.ly/3eoz3SJ',
                 'visible' => 1
-
             ],
             [
                 'name' => 'Risotto pere e gorgonzola',
@@ -144,7 +131,6 @@ class ProductSeeder extends Seeder
                 'price' => $faker->randomFloat(2, 6, 20),
                 'img' => 'https://bit.ly/3guVjgp',
                 'visible' => 1
-
             ],
             [
                 'name' => 'Polpette di broccoli al forno',
@@ -153,7 +139,6 @@ class ProductSeeder extends Seeder
                 'price' => $faker->randomFloat(2, 6, 20),
                 'img' => 'https://bit.ly/3gAdWzF',
                 'visible' => 1
-
             ],
             [
                 'name' => 'Frittelle di mais',
@@ -162,7 +147,6 @@ class ProductSeeder extends Seeder
                 'price' => $faker->randomFloat(2, 6, 20),
                 'img' => 'https://bit.ly/3au0yJq',
                 'visible' => 1
-
             ],
             [
                 'name' => 'Torta al cioccolato fondente e Panna Meggle',
@@ -171,7 +155,6 @@ class ProductSeeder extends Seeder
                 'price' => $faker->randomFloat(2, 6, 20),
                 'img' => 'https://bit.ly/2Qp3i3Z',
                 'visible' => 1
-
             ],
             [
                 'name' => 'Pancake con frutta e Burro Tradizionale Fiore Bavarese',
@@ -180,7 +163,6 @@ class ProductSeeder extends Seeder
                 'price' => $faker->randomFloat(2, 6, 20),
                 'img' => 'https://bit.ly/3tJ3vNU',
                 'visible' => 1
-
             ],
             [
                 'name' => 'Arancinette con piselli, mozzarella e Dado allo Zafferano',
@@ -189,7 +171,6 @@ class ProductSeeder extends Seeder
                 'price' => $faker->randomFloat(2, 6, 20),
                 'img' => 'https://bit.ly/3neW26P',
                 'visible' => 1
-
             ],
             [
                 'name' => 'Zuppa di cavolo nero e patate',
@@ -198,12 +179,11 @@ class ProductSeeder extends Seeder
                 'price' => $faker->randomFloat(2, 6, 20),
                 'img' => 'https://bit.ly/3vfxUE7',
                 'visible' => 1
-
-            ],
+            ]
         ];
 
-        foreach($businesses as $key => $b){
-            for($i = 1; $i < rand(4, 8); $i++){
+        foreach ($businesses as $business) {
+            for ($i = 0; $i < rand(4, 10); $i++) {
                 $randomProductIdx = rand(0, 19);
                 $product = new Product();
                 $product->name = $products[$randomProductIdx]['name'];
@@ -211,9 +191,8 @@ class ProductSeeder extends Seeder
                 $product->description = $products[$randomProductIdx]['description'];
                 $product->price = $products[$randomProductIdx]['price'];
                 $product->img = $products[$randomProductIdx]['img'];
-                $product->visible = 1;
-                $product->business_id = $key + 1;
-                $product->save();
+                $product->visible = $products[$randomProductIdx]['visible'];
+                $business->products()->save($product);
             }
         }
 

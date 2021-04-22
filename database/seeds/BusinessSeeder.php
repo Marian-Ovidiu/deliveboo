@@ -14,6 +14,8 @@ class BusinessSeeder extends Seeder
     */
     public function run(Faker $faker) {
 
+        $users = User::all();
+
         $closingDays = [
             'Domenica',
             'Sabato',
@@ -24,7 +26,7 @@ class BusinessSeeder extends Seeder
             'Lunedì'
         ];
 
-        $businesses = [
+        $data = [
             [
                 'name' => 'Ristorane Cinese DI Sichuan',
                 'description' => 'Piatti buoni e di qualità, con grande varietà di portate che spaziano dai classici alle ricette tradizionali della regione di Sichuan. Qui si respira la vera aria del tipico ristorante cinese.',
@@ -147,21 +149,20 @@ class BusinessSeeder extends Seeder
             ],
         ];
 
-        foreach ($businesses as $key => $value) {
+        foreach ($users as $key => $user) {
 
             $business = new Business();
-            $business->name = $value['name'];
-            $business->description = $value['description'];
-            $business->address = $value['address'];
-            $business->closing_day = $value['closing_day'];
-            $business->opening_time = $value['opening_time'];
-            $business->closing_time = $value['closing_time'];
-            $business->logo = $value['logo'];
-            $business->telephone = $value['telephone'];
-            $business->email = $value['email'];
-            $business->website = $value['website'];
-            $business->user_id = $key + 1;
-            $business->save();
+            $business->name = $data[$key]['name'];
+            $business->description = $data[$key]['description'];
+            $business->address = $data[$key]['address'];
+            $business->closing_day = $data[$key]['closing_day'];
+            $business->opening_time = $data[$key]['opening_time'];
+            $business->closing_time = $data[$key]['closing_time'];
+            $business->logo = $data[$key]['logo'];
+            $business->telephone = $data[$key]['telephone'];
+            $business->email = $data[$key]['email'];
+            $business->website = $data[$key]['website'];
+            $user->business()->save($business);
 
         }
     }
