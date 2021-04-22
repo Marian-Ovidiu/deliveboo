@@ -21,12 +21,15 @@ class OrderController extends Controller
     ]);
 
     $token = $gateway->ClientToken()->generate();
-    return view('guest.checkout', compact('business', 'token', 'gateway'));
+    return view('guest.order-summary', compact('business', 'token', 'gateway'));
   }
 
   public function store(Request $request)
   {
     $data = $request->all();
+
+    $order = new Order();
+    $order->fill($data);
 
     $products= [];
 
@@ -35,11 +38,6 @@ class OrderController extends Controller
         $products[] = $product;
       }
     }
-
-    $order = new Order();
-    $order->fill($data);y
-    $order->save();
-    $order->products()->attach($products);
 
     $gateway = new Gateway([
     'environment' => 'sandbox',
@@ -55,19 +53,18 @@ class OrderController extends Controller
     ]
     ]);
 
-    dd($result);
-
     if ($result->success || !is_null($result->transaction)) {
       $transaction = $result->transaction;
-      //redirect da qualche parte;
+      $order->success = 1;
+      $order->save();
+      $order->products()->attach($products);
+      return view('guest.order-success');
     } else {
       $errors = [];
       foreach($result->errors->deepAll() as $error) {
         $errors[$error->code] = $error->message;
       }
-      Router::redirect(SITE_URL . 'payment/?' . http_build_query($errors));
+      return view('guest.order-error');;
     }
-
-    return view('guest.success');
   }
 }
