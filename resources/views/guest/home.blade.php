@@ -12,7 +12,7 @@
     <div class="row-jumbotron">
       <div class="row">
 
-        <div class="row-jumbotron-left col-md-6 col-sm-12">
+        <div class="row-jumbotron-left col-md-8 col-sm-12">
           <div class="row-jumbotron-row row">
             <div class="col-sm-12 row-jumbotron-row-title fl">
               Deliveboo
@@ -33,7 +33,7 @@
             <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-2 row-jumbotron-row-space fl"></div>
           </div>
         </div>
-        <div class="row-jumbotron-right col-md-6 col-sm-12">
+        <div class="row-jumbotron-right col-md-4 col-sm-12">
           <img src="{{asset('img/01-logo.png')}}" alt="Deliveboo">
 
         </div>

@@ -10161,7 +10161,11 @@ h3 {
   margin: auto;
 }
 .home-container .row-jumbotron-right {
-  padding: 50px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 25px;
 }
 .home-container .row-jumbotron-right img {
   max-height: 220px;
@@ -10169,18 +10173,18 @@ h3 {
 .home-container .row-jumbotron-row-subtitle {
   margin-bottom: 10px;
   text-align: center;
-  color: white;
-  font-size: 1.1rem;
-  text-shadow: 2px 2px black;
+  font-size: 1.2em;
+  font-weight: 500;
+  color: #000250;
   text-align: center;
 }
 .home-container .row-jumbotron-row-title {
   transition: 1s;
   margin-top: 6%;
-  color: white;
+  color: #00BE43;
+  font-weight: 800;
   font-size: 2rem;
   text-align: center;
-  text-shadow: 2px 2px black;
 }
 @media (max-width: 950px) {
   .home-container .row-jumbotron-row-title {
@@ -10191,6 +10195,9 @@ h3 {
   .home-container .row-jumbotron-row-title {
     margin-top: 13%;
   }
+}
+.home-container .row-jumbotron-row-search .input-group {
+  background-color: rgba(0, 0, 0, 0.2);
 }
 .home-container .row-jumbotron-row-search .input-group input {
   transition: 1s;
@@ -10894,8 +10901,4 @@ footer .row-body-row-card-box-img {
   .business-main-row .cart {
     display: none;
   }
-}
-
-body {
-  background-color: #fff;
 }

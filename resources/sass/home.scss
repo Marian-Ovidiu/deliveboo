@@ -11,11 +11,13 @@
       margin: auto;
     }
 
-
     &-left {
     }
     &-right {
-      padding: 50px;
+      @include flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding: 0 25px;
 
       img {
         max-height: 220px;
@@ -25,19 +27,18 @@
       &-subtitle {
         margin-bottom: 10px;
         text-align: center;
-        color:white;
-        font-size: 1.1rem;
-        text-shadow: 2px 2px black;
+        font-size: 1.2em;
+        font-weight: 500;
+        color: $subtitle-col;
         text-align: center;
       }
       &-title {
         transition: 1s;
         margin-top: 6%;
-        color:white;
+        color:$title-col;
+        font-weight: 800;
         font-size: 2rem;
         text-align: center;
-
-        text-shadow: 2px 2px black;
       }
       @media (max-width: 950px) {
         &-title{
@@ -51,6 +52,7 @@
       }
       &-search {
         .input-group{
+          background-color: rgba(0, 0, 0, 0.2);
           input{
             transition: 1s;
           }
