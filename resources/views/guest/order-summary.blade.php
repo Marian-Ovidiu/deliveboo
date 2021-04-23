@@ -19,7 +19,7 @@
             </div>
             <div class="row-container-row row">
                 <div class="col-12 row-container-row-amount">
-                    Totale Ordine € @{{amount}}
+                    Totale Ordine € @{{amountSaved}}
                 </div>
             </div>
             <hr>
@@ -66,64 +66,64 @@
                             {{-- / row: city --}}
                         </div>
                         <div class="col-2">
-                            {{-- row: postal_code --}}
+                            {{-- row: customer_address --}}
                             <div class="form-group">
                                 <label for="customer_address"><b>Numero</b></label>
-                                <input type="text" class="form-control {{ $errors->has('customer_address') ? 'is-invalid' : '' }}" id="customer_address_number" name="customer_address_number">
+                                <input type="text" class="form-control {{ $errors->has('customer_address') ? 'is-invalid' : '' }}" id="customer_address" name="customer_address">
                                 <div class="invalid-feedback">
-                                    {{ $errors->first('address') }}
+                                    {{ $errors->first('customer_address') }}
                                 </div>
                             </div>
-                            {{-- / row: postal_code --}}
+                            {{-- / row: customer_address --}}
                         </div>
                     </div>
 
-                     {{-- row: address --}}
+                     {{-- row: postal_code --}}
                      <div class="form-group">
-                        <label for="customer_address"><b>Numero</b></label>
-                        <input type="text" class="form-control {{ $errors->has('customer_address') ? 'is-invalid' : '' }}" id="customer_address_number" name="customer_address_number">
+                        <label for="postal_code"><b>CAP</b></label>
+                        <input type="text" class="form-control {{ $errors->has('postal_code') ? 'is-invalid' : '' }}" id="postal_code" name="postal_code">
                         <div class="invalid-feedback">
-                            {{ $errors->first('address') }}
+                            {{ $errors->first('postal_code') }}
                         </div>
                     </div>
-                    {{-- / row: address --}}
+                    {{-- / row: postal_code --}}
 
                     {{-- row: email --}}
                     <div class="form-group">
-                    <label for="customer_email"><b>Email</b></label>
-                    <input type="text" class="form-control {{ $errors->has('customer_email') ? 'is-invalid' : '' }}" id="customer_email" name="customer_email">
-                    <div class="invalid-feedback">
-                        {{ $errors->first('email') }}
-                    </div>
+                        <label for="customer_email"><b>Email</b></label>
+                        <input type="text" class="form-control {{ $errors->has('customer_email') ? 'is-invalid' : '' }}" id="customer_email" name="customer_email">
+                        <div class="invalid-feedback">
+                            {{ $errors->first('email') }}
+                        </div>
                     </div>
                     {{-- / row: email --}}
 
                     {{-- row: telephone --}}
                     <div class="form-group">
-                    <label for="customer_telephone"><b>Telefono</b></label>
-                    <input type="text" class="form-control {{ $errors->has('customer_telephone') ? 'is-invalid' : '' }}" id="customer_telephone" name="customer_telephone">
-                    <div class="invalid-feedback">
-                        {{ $errors->first('telephone') }}
-                    </div>
+                        <label for="customer_telephone"><b>Telefono</b></label>
+                        <input type="text" class="form-control {{ $errors->has('customer_telephone') ? 'is-invalid' : '' }}" id="customer_telephone" name="customer_telephone">
+                        <div class="invalid-feedback">
+                            {{ $errors->first('telephone') }}
+                        </div>
                     </div>
                     {{-- / row: telephone --}}
 
                     {{-- row: notes --}}
                     <div class="form-group">
-                    <label for="notes"><b>Annotazioni (facoltativo)</b></label>
-                    <input type="text" class="form-control {{ $errors->has('notes') ? 'is-invalid' : '' }}" id="notes" name="notes">
-                    <div class="invalid-feedback">
-                        {{ $errors->first('notes') }}
-                    </div>
+                        <label for="notes"><b>Annotazioni (facoltativo)</b></label>
+                        <input type="text" class="form-control {{ $errors->has('notes') ? 'is-invalid' : '' }}" id="notes" name="notes">
+                        <div class="invalid-feedback">
+                            {{ $errors->first('notes') }}
+                        </div>
                     </div>
                     {{-- / row: notes --}}
 
                     {{-- row: success --}}
-                    <input type="hidden" value="1" name="success">
+                    <input type="hidden" value="" name="success">
                     {{-- / row: success --}}
 
                     {{-- row: amount --}}
-                    <input type="hidden" :value="amount" name="amount">
+                    <input type="hidden" :value="amountSaved" name="amount">
                     {{-- / row: amount --}}
 
                     <br>
@@ -157,9 +157,6 @@ var client_token = "{{ $token }}";
 braintree.dropin.create({
     authorization: client_token,
     selector: '#bt-dropin',
-    paypal: {
-    flow: 'vault'
-    }
 }, function (createErr, instance) {
     if (createErr) {
     console.log('Create Error', createErr);

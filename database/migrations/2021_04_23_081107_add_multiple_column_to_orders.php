@@ -15,7 +15,7 @@ class AddMultipleColumnToOrders extends Migration
     {
         Schema::table('orders', function (Blueprint $table) {
             $table->string('city', 64);
-            $table->Integer('postal_code');
+            $table->integer('postal_code');
         });
     }
 

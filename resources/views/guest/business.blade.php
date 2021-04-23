@@ -136,7 +136,7 @@
                                 <input type="text" class="form-control coupon" name="" placeholder="Coupon code">
                                 <span class="input-group-append">
                                     <button class="btn btn-primary btn-apply coupon">
-                                        Appica
+                                        Applica
                                     </button>
                                 </span>
                             </div>
