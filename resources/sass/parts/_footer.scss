@@ -1,5 +1,4 @@
 footer {
-
     color: lightgray;
     .row{
         background-color: #282C35;
@@ -31,13 +30,7 @@ footer {
                         width: 70%;
                     }
                     &-img{
-                    float: right;
-                    margin-top: 10px;
-                    width: 30%;
-                    transition: 0.3s;
-                        img {
-                            width: 40%;
-                        }
+                        display: none;
                     }
                 }
                 &-ul{

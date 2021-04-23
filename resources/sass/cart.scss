@@ -24,7 +24,7 @@
                         }
                         &-product {
                             height: 200px;
-                            margin: 10px 0;
+                            margin: 25px 0;
                             transition: 0.5s;
                             &-row{
                                 height: 100%;
@@ -67,17 +67,25 @@
                                     }
                                 }
                                 &-price{
-                                    margin: auto;
+                                    margin: 0 auto;
                                     color: #3d4d67;
                                     font-size: 13px;
                                 }
                                 &-options{
                                     &-btn{
+                                        font-size: 25px;
+                                        padding-bottom: 5px;
+                                        border-radius: 50%;
                                         margin: auto;
-                                        height: 30px;
-                                        width: 80%;
-                                        background-color: gray;
+                                        height: 45px;
+                                        width: 45px;
+                                        color: white;
+                                        background-color: #4CAF50;
                                         border: none;
+                                    }
+                                    &-btn:last-child{
+                                        background-color: #f44336;
+
                                     }
                                 }
                             }
@@ -103,8 +111,22 @@
                         }
                     }
                 }
+                &-summary{
+                    &-btn {
+                        text-align: center;
+                        background-color: #2d58ff;
+                        color:white;
+                        padding: 5px;
+                        border-radius: 5px;
+                    }
+                }
             }
 
+        }
+        @media (max-width: 767px) {
+            .cart{
+                display: none;
+            }
         }
     }
 }

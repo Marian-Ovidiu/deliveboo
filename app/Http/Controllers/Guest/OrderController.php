@@ -26,6 +26,8 @@ class OrderController extends Controller
 
   public function store(Request $request)
   {
+    $this->isValid($request);
+
     $data = $request->all();
 
     $order = new Order();
@@ -45,7 +47,7 @@ class OrderController extends Controller
     'publicKey' => '8bdc65hxyy4pg56f',
     'privateKey' => 'e16fd716976555b304d8b2d18ad5ce55'
     ]);
-    
+
     $result = $gateway->transaction()->sale([
     'amount' => $order->amount,
     'paymentMethodNonce' => 'fake-valid-nonce',
@@ -70,5 +72,18 @@ class OrderController extends Controller
       $order->products()->attach($products);
       return view('guest.order-error');;
     }
+  }
+  // Gestione VALIDAZIONE campi
+  protected function isValid($data)
+  {
+    $data->validate([
+      'customer_name' => 'required|max:255',
+      'customer_last' => 'required|max:255',
+      'city' => 'required|max:255',
+      'postal_code' => 'required|min:5|max:5',
+      'address' => 'required|max:255',
+      'customer_email' => 'required|max:128',
+      'customer_telephone' => 'required|min:10|max:10',
+    ]);
   }
 }
