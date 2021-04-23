@@ -26,12 +26,10 @@ new Vue({
     axios.get('http://localhost:8000/api/types')
     .then(resp => {
         this.allTypes = resp.data;
-        console.log(this.allTypes);
     }),
 
     this.cartSaved = JSON.parse(localStorage.getItem('cart'));
     this.amountSaved = localStorage.getItem('amount');
-    console.log(this.amountSaved);
   },
 
   methods: {

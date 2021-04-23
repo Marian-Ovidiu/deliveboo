@@ -27,7 +27,7 @@
                         </div>
                     </div>
                     {{-- Header Right --}}
-                    <div class="col-xl-5 col-lg-5 col-md-4 col-sm-4 col-4 header-restaurant-row-jumbotronn-cover-info">
+                    {{-- <div class="col-xl-5 col-lg-5 col-md-4 col-sm-4 col-4 header-restaurant-row-jumbotronn-cover-info">
                         <div class="header-restaurant-row-jumbotronn-cover-info-box">
                             <div class="header-restaurant-row-jumbotronn-cover-info-box-icon"><i class="fas fa-motorcycle"></i></div>
                         </div>
@@ -48,7 +48,7 @@
                             </select>
                         </div>
                         <div class="col-xl-1 col-lg-1 col-md-1 col-sm-0 col-0 header-restaurant-row-jumbotronn-cover-space"></div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>
@@ -149,35 +149,33 @@
                     <div class="card-body">
                         <dl v-for="item in cart">
                             <dt>
-                                @{{item.id}}
-                                @{{item.name}},
-                                @{{item.quantity}},
-                                @{{item.price}}
-                                @{{amountSaved}}
+                                @{{item.name}} x
+                                @{{item.quantity}} <br>
+                                @{{item.price}} €
                             </dt>
                         </dl>
                     </div>
                 </div>
-            </div>
-
-            <div class="card">
-                <div class="card-body">
-                    <dl>
-                        <span><strong>Prezzo totale:</strong></span>
-                        <span class="text-right ml-3">&euro; @{{amount}}</span>
-                    </dl>
-                    {{-- <dl>
-                        <dt><strong>Sconto:</strong></dt>
-                        <dd class="text-right text-danger ml-3"></dd>
-                    </dl>
-                    <dl>
-                        <dt><strong>Prezzo scotanto:</strong></dt>
-                        <dd class="text-right text-dark ml-3"></dd>
-                    </dl> --}}
-                    <hr>
-                    <a v-on:click="saveCart()" href="{{ asset(route('cart-checkout', compact('business')))}}" class="btn btn-out btn-primary btn-square btn-main" data-abc="true">Checkout</a>
+                <div class="card">
+                    <div class="card-body">
+                        <dl>
+                            <span><strong>Prezzo totale:</strong></span>
+                            <span class="text-right ml-3">&euro; @{{amount}}</span>
+                        </dl>
+                        {{-- <dl>
+                            <dt><strong>Sconto:</strong></dt>
+                            <dd class="text-right text-danger ml-3"></dd>
+                        </dl>
+                        <dl>
+                            <dt><strong>Prezzo scotanto:</strong></dt>
+                            <dd class="text-right text-dark ml-3"></dd>
+                        </dl> --}}
+                        <hr>
+                        <a v-on:click="saveCart()" href="{{ asset(route('cart-checkout', compact('business')))}}" class="btn btn-out btn-primary btn-square btn-main" data-abc="true">Checkout</a>
+                    </div>
                 </div>
             </div>
+
         </aside>
     </div>
     {{-- End Main --}}
