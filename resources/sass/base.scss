@@ -8,6 +8,7 @@
 .wrapper{
   width: 100vw;
   max-width: 100%;
+  background-color: $main-bg;
   font-family: $main-font;
 
   ul {
@@ -31,7 +32,7 @@
   width: 100%;
   max-width: 1200px;
   margin: auto;
-  padding: 20px 30px;
+  padding: 16px 30px;
 
   //Header: logo
   &-logo {
@@ -76,9 +77,8 @@
         width: 100vw;
         height: 100vh;
         text-align: right;
-        background: #FFF;
+        background: $main-bg;
         padding: 35px;
-        box-shadow: -1px 1px 5px rgba(0, 0, 0, .4);
         & > * {
           margin: 15px 0;
         }
