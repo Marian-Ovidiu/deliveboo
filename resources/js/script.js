@@ -1,6 +1,7 @@
 new Vue({
   el: '#app',
   data: {
+    hambMenu: false,
     businessesToRender: [],
     businessesForType: [],
     allBusinesses: [],
@@ -13,6 +14,7 @@ new Vue({
     amountSaved: 0,
     quantity: 0
   },
+
   mounted() {
     axios.get('http://localhost:8000/api/businesses')
     .then(resp => {
@@ -31,7 +33,14 @@ new Vue({
   },
 
   methods: {
-    filterBusinessesByTypes: function(type) {
+
+    // Visualizzazione Hamburger menu
+    viewHambMenu () {
+      this.hambMenu = !this.hambMenu;
+    },
+
+    // RICERCA: Filtro ristoranti per tipo (API)
+    filterBusinessesByTypes (type) {
         axios.get('http://localhost:8000/api/type/' + type)
         .then(resp => {
             console.log(resp.data);
@@ -42,7 +51,8 @@ new Vue({
         })
     },
 
-    filterBusinessesByName: function(query) {
+    // RICERCA: Filtro ristoranti per nome (API)
+    filterBusinessesByName (query) {
         axios.get('http://localhost:8000/api/businesses/' + query )
         .then(resp => {
             this.businessesForType = [];
@@ -57,6 +67,7 @@ new Vue({
         })
     },
 
+    // CARRELLO: Aggiungi prodotto
     add (product_id, product_name, product_price) {
       let tot_price;
 
@@ -80,6 +91,7 @@ new Vue({
       this.getQuantity();
     },
 
+    // CARRELLO: Rimuovi prodotto
     remove (product_id, product_price) {
       let tot_price;
       this.cart.forEach((item, i) => {
@@ -98,6 +110,7 @@ new Vue({
       this.getQuantity();
     },
 
+    // CARRELLO: Calcola totale prezzo
     getQuantity() {
       let tot = 0;
       this.cart.forEach((item) => {
@@ -106,6 +119,7 @@ new Vue({
       this.quantity = tot;
     },
 
+    // CARRELLO: Calcola totale quantità prodotti
     getAmount() {
       let sum = 0;
       this.cart.forEach((item) => {
@@ -115,6 +129,7 @@ new Vue({
       this.amount = fixedSum;
     },
 
+    // CARRELLO: Salva in localStorage
     saveCart() {
       let cartJSON = JSON.stringify(this.cart);
       localStorage.setItem('cart', cartJSON);

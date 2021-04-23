@@ -8,7 +8,7 @@
 @import '~bootstrap/scss/bootstrap';
 // Custom (Home, Dahsboard)
 @import "partials/custom";
-//@import "base";
+@import "base";
 @import "home";
 @import "dashboard";
 @import "show";

@@ -1916,6 +1916,7 @@ $('.fa-times').click(function () {
 new Vue({
   el: '#app',
   data: {
+    hambMenu: false,
     businessesToRender: [],
     businessesForType: [],
     allBusinesses: [],
@@ -1941,6 +1942,11 @@ new Vue({
     this.amountSaved = localStorage.getItem('amount');
   },
   methods: {
+    // Visualizzazione Hamburger menu
+    viewHambMenu: function viewHambMenu() {
+      this.hambMenu = !this.hambMenu;
+    },
+    // RICERCA: Filtro ristoranti per tipo (API)
     filterBusinessesByTypes: function filterBusinessesByTypes(type) {
       var _this2 = this;
 
@@ -1952,6 +1958,7 @@ new Vue({
         _this2.showBusinessesToRender = false;
       });
     },
+    // RICERCA: Filtro ristoranti per nome (API)
     filterBusinessesByName: function filterBusinessesByName(query) {
       var _this3 = this;
 
@@ -1967,6 +1974,7 @@ new Vue({
         }
       });
     },
+    // CARRELLO: Aggiungi prodotto
     add: function add(product_id, product_name, product_price) {
       var tot_price;
 
@@ -1990,6 +1998,7 @@ new Vue({
       this.getAmount();
       this.getQuantity();
     },
+    // CARRELLO: Rimuovi prodotto
     remove: function remove(product_id, product_price) {
       var _this4 = this;
 
@@ -2009,6 +2018,7 @@ new Vue({
       this.getAmount();
       this.getQuantity();
     },
+    // CARRELLO: Calcola totale prezzo
     getQuantity: function getQuantity() {
       var tot = 0;
       this.cart.forEach(function (item) {
@@ -2016,6 +2026,7 @@ new Vue({
       });
       this.quantity = tot;
     },
+    // CARRELLO: Calcola totale quantità prodotti
     getAmount: function getAmount() {
       var sum = 0;
       this.cart.forEach(function (item) {
@@ -2024,6 +2035,7 @@ new Vue({
       fixedSum = sum.toFixed(2);
       this.amount = fixedSum;
     },
+    // CARRELLO: Salva in localStorage
     saveCart: function saveCart() {
       var cartJSON = JSON.stringify(this.cart);
       localStorage.setItem('cart', cartJSON);
