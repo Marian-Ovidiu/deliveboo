@@ -7,7 +7,13 @@
 .wrapper{
   width: 100vw;
   max-width: 100%;
-  font-family: 'Open Sans';
+  font-family: $main-font;
+
+    .top-header {
+      width: 100%;
+      padding: 25px;
+      @include flex;
+    }
 }
 
 .fl{
