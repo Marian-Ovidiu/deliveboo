@@ -1921,10 +1921,8 @@ new Vue({
       _this.businessesToRender = _this.allBusinesses;
     }), axios.get('http://localhost:8000/api/types').then(function (resp) {
       _this.allTypes = resp.data;
-      console.log(_this.allTypes);
     }), this.cartSaved = JSON.parse(localStorage.getItem('cart'));
     this.amountSaved = localStorage.getItem('amount');
-    console.log(this.amountSaved);
   },
   methods: {
     // Visualizzazione Hamburger menu
