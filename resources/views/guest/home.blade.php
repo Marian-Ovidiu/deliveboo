@@ -7,29 +7,40 @@
   <div id="app" class="home-container">
 
     {{-- Jumbotron --}}
-    <div class="row">
-      <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 row-jumbotron">
-        <div class="row-jumbotron-row row">
-          <div class="col-xl-12 col-lg-12 col-md-12 col-12 row-jumbotron-row-title fl">
-            Deliveboo
-          </div>
-        </div>
-        <div class="row-jumbotron-row row">
-          <div class="col-xl-12 col-lg-12 col-md-12 col-12 row-jumbotron-row-subtitle fl">
-            Delivered fresh and hot at your doorstep
-          </div>
-        </div>
-        <div class="row-jumbotron-row row">
-          <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-2 row-jumbotron-row-space fl"></div>
-          <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-8 row-jumbotron-row-search fl">
-            <div class="input-group border rounded-pill p-3">
-              <input type="search" placeholder="Cerca per nome" class="form-control" @keyup = "filterBusinessesByName(query)" class="form-control" v-model="query" >
+
+
+    <div class="row-jumbotron">
+      <div class="row">
+
+        <div class="row-jumbotron-left col-md-6 col-sm-12">
+          <div class="row-jumbotron-row row">
+            <div class="col-sm-12 row-jumbotron-row-title fl">
+              Deliveboo
             </div>
           </div>
-          <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-2 row-jumbotron-row-space fl"></div>
+          <div class="row-jumbotron-row row">
+            <div class="col-xl-12 col-lg-12 col-md-12 row-jumbotron-row-subtitle fl">
+              Delivered fresh and hot at your doorstep
+            </div>
+          </div>
+          <div class="row-jumbotron-row row">
+            <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-2 row-jumbotron-row-space fl"></div>
+            <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-8 row-jumbotron-row-search fl">
+              <div class="input-group border rounded-pill p-3">
+                <input type="search" placeholder="Cerca per nome" class="form-control" @keyup = "filterBusinessesByName(query)" class="form-control" v-model="query" >
+              </div>
+            </div>
+            <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-2 row-jumbotron-row-space fl"></div>
+          </div>
+        </div>
+        <div class="row-jumbotron-right col-md-6 col-sm-12">
+          <img src="{{asset('img/01-logo.png')}}" alt="Deliveboo">
+
         </div>
       </div>
     </div>
+
+
     {{-- / Jumbotron --}}
 
     {{-- Search by type --}}
@@ -64,18 +75,18 @@
 
     {{-- Restaurant List --}}
     <div class="row" id="restaurants-row">
-      <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 row-restaurants">
+      <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 row-restaurants">
         <div class="row-restaurants-row row">
-          <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 row-restaurants-row-title">Choose From Most Popular</div>
+          <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 row-restaurants-row-title">Choose From Most Popular</div>
         </div>
         <div class="row-restaurants-row row">
-          <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 row-restaurants-row-subtitle">
+          <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 row-restaurants-row-subtitle">
             All the top restaurant in your city
           </div>
 
           {{-- compare se non ci sono ristoranti che appartengono alla categoria cliccata --}}
           <div v-if="businessesForType.length === 0 && !showBusinessesToRender"
-          class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 row-restaurants-row-subtitle">
+          class="col-xl-12 col-lg-12 col-md-12 col-sm-12 row-restaurants-row-subtitle">
           Non sono presenti ristoranti in questa categoria!
         </div>
       </div>
@@ -86,7 +97,7 @@
         <div class="col-xl-10 col-lg-10 col-md-10 col-sm-12 col-6 row-restaurants-row-cards fl">
 
           <div class="row-restaurants-row-cards-row row">
-            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 row-restaurants-row-cards-row-card"
+            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 row-restaurants-row-cards-row-card"
             v-for="(business, i) in businessesToRender"
             v-bind:key="i"
             v-if="businessesForType.length === 0 && showBusinessesToRender">
@@ -116,7 +127,7 @@
         </div>
 
         <div class="row-restaurants-row-cards-row row">
-          <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 row-restaurants-row-cards-row-card"
+          <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 row-restaurants-row-cards-row-card"
           v-for="(business, i) in businessesForType"
           v-bind:key="i"
           v-if="businessesForType.length > 0">
