@@ -19,13 +19,15 @@ new Vue({
     axios.get('http://localhost:8000/api/businesses')
     .then(resp => {
         this.businnessesForType = [];
-        this.allBusinesses = resp.data.data.businesses;
+        this.allBusinesses = resp.data;
+        console.log(this.allBusinesses);
         this.businessesToRender = this.allBusinesses;
     }),
 
     axios.get('http://localhost:8000/api/types')
     .then(resp => {
-        this.allTypes = resp.data.data.types;
+        this.allTypes = resp.data;
+        console.log(this.allTypes);
     }),
 
     this.cartSaved = JSON.parse(localStorage.getItem('cart'));

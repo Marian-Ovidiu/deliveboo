@@ -24,6 +24,8 @@ class OrderSeed extends Seeder
             $order->customer_address = $faker->address();
             $order->notes = $faker->text(50);
             $order->amount = $faker->randomFloat(2, 8, 150);
+            $order->city = $faker->city;
+            $order->postal_code = rand(10000, 99999);
             $order->success = rand(0, 1);
             $order->save();
         }

@@ -1934,10 +1934,12 @@ new Vue({
 
     axios.get('http://localhost:8000/api/businesses').then(function (resp) {
       _this.businnessesForType = [];
-      _this.allBusinesses = resp.data.data.businesses;
+      _this.allBusinesses = resp.data;
+      console.log(_this.allBusinesses);
       _this.businessesToRender = _this.allBusinesses;
     }), axios.get('http://localhost:8000/api/types').then(function (resp) {
-      _this.allTypes = resp.data.data.types;
+      _this.allTypes = resp.data;
+      console.log(_this.allTypes);
     }), this.cartSaved = JSON.parse(localStorage.getItem('cart'));
     this.amountSaved = localStorage.getItem('amount');
   },
