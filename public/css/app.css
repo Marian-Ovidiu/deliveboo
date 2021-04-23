@@ -10378,9 +10378,16 @@ h3 {
   margin: 0 auto;
   width: 75%;
   border-radius: 10px;
+  box-shadow: 5px 8px 12px rgba(0, 0, 0, 0.4);
   height: 400px;
   padding: 0px;
   transition: 1s;
+}
+.main-dashboard-row-container-row-card-restaurant-img {
+  border-radius: 10px 10px 0px 0px;
+  height: 150px;
+  background-size: cover;
+  background-position: center;
 }
 .main-dashboard-row-container-row-card-restaurant-img {
   border-radius: 10px 10px 0px 0px;
@@ -10404,15 +10411,101 @@ h3 {
 
 .header-show-row-jumbotronn {
   height: 40vh;
-  background-size: 100%;
-  background-position: bottom;
-  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  margin-left: 0px;
+  margin-right: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.header-show-row-jumbotronn-cover {
+  color: white;
+  border-radius: 10px 10px 10px 2px;
+  font-size: 30px;
+  font-weight: bold;
+  border: 1px solid white;
+}
+
+.container-fluid, .container-sm, .container-md, .container-lg, .container-xl {
+  padding: 0px;
+}
+
+.title {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+  text-align: left;
+  padding-left: 0px;
+  padding-right: 0px;
+  margin-top: 50px;
+  padding-bottom: 30px;
+}
+.title .btn {
+  box-shadow: 5px 8px 10px rgba(0, 0, 0, 0.3);
+}
+
+.create {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.create-contain {
   margin-left: 0px;
   margin-right: 0px;
 }
-.header-show-row-jumbotronn-cover {
+.create-contain-row-sidebar {
+  line-height: 2.5;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+.create-contain-row-sidebar-info {
+  border-radius: 10px 10px 10px 2px;
+  margin: 10px 0 10px 0;
+  box-shadow: 5px 8px 12px rgba(0, 0, 0, 0.4);
+  padding: 10px;
+  font-size: 14px;
+  font-weight: bold;
+}
+.create-contain-row-sidebar-description {
+  overflow-y: auto;
+  height: 90px;
+  border-radius: 10px 10px 10px 2px;
+  margin: 10px 0 10px 0;
+  padding-left: 10px;
+  box-shadow: 5px 8px 12px rgba(0, 0, 0, 0.4);
+  font-size: 14px;
+  font-weight: bold;
+}
+.create-contain-product-row {
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 15px;
+}
+.create-contain-product-row-item {
+  height: 500px;
+  padding: 10px;
+}
+.create-contain-product-row-item-img {
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 160px;
+  padding: 0px;
+  border-radius: 10px 10px 0 0;
+}
+.create-contain-product-row-item-content {
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  box-shadow: 5px 8px 12px rgba(0, 0, 0, 0.4);
+  border-radius: 10px;
+  padding: 5px;
+}
+.create-contain-product-row-item-content-description {
+  overflow-y: auto;
+  height: 180px;
+  font-size: 14px;
+}
+.create-contain-product-row-item-content .btn {
+  margin-bottom: 5px;
+  box-shadow: 5px 8px 10px rgba(0, 0, 0, 0.3);
 }
 
 * {
