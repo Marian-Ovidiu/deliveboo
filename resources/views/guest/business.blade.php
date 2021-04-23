@@ -154,7 +154,7 @@
 
                 <div class="card mb-3">
                     <div class="card-body">
-                        <dl v-for="item in cartSaved">
+                        <dl v-for="item in cart">
                             <dt>
                                 @{{item.id}}
                                 @{{item.name}},
