@@ -76,9 +76,10 @@ class ProductSeeder extends Seeder
                 'visible' => 1
             ],
             [
-                'name' => 'Casoncelli alla bresciana',
+                // by chef Marcello Rota
+                'name' => 'Casoncelli alla bergamasca',
                 'ingredients' => 'uova, pane grattuggiato, formaggio, brodo di carne, aglio, prezzemolo, noce moscata, pepe, buro, salvia',
-                'description' => 'I casoncelli alla bresciana portano in tavola un tipico piatto lombardo nella variante tipica di Brescia.',
+                'description' => 'I casoncelli alla bergamasca portano in tavola un tipico piatto lombardo nella variante tipica di Bergamo.',
                 'price' => $faker->randomFloat(2, 6, 20),
                 'img' => 'https://bit.ly/32DnKRm',
                 'visible' => 1
@@ -182,19 +183,27 @@ class ProductSeeder extends Seeder
             ]
         ];
 
-        foreach ($businesses as $business) {
-            for ($i = 0; $i < rand(4, 10); $i++) {
-                $randomProductIdx = rand(0, 19);
+        foreach($businesses as $business){
+            $indexes = $this->uniqueIds(0, 19, rand(3, 6));
+            for ($y = 0; $y < count($indexes); $y++) {
                 $product = new Product();
-                $product->name = $products[$randomProductIdx]['name'];
-                $product->ingredients = $products[$randomProductIdx]['ingredients'];
-                $product->description = $products[$randomProductIdx]['description'];
-                $product->price = $products[$randomProductIdx]['price'];
-                $product->img = $products[$randomProductIdx]['img'];
-                $product->visible = $products[$randomProductIdx]['visible'];
+                $product->name = $products[$indexes[$y]]['name'];
+                $product->ingredients = $products[$indexes[$y]]['ingredients'];
+                $product->description = $products[$indexes[$y]]['description'];
+                $product->price = $products[$indexes[$y]]['price'];
+                $product->img = $products[$indexes[$y]]['img'];
+                $product->visible = $products[$indexes[$y]]['visible'];
                 $business->products()->save($product);
             }
         }
-
     }
+
+    public function uniqueIds($min, $max, $quantity) {
+        for ($z = 0; $z < $quantity; $z++) {
+            $numbers = range($min, $max);
+            shuffle($numbers);
+        }
+        return array_slice($numbers, 0, $quantity);
+    }
+
 }

@@ -59,7 +59,6 @@
     <div id="app" class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 business-main">
         <div class="business-main-row row">
             <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1 business-main-row-space"></div>
-            {{-- Main Menu --}}
             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-10 col-10 business-main-row-content">
                 <div class="business-main-row-content-row row">
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-10 business-main-row-content-row-products">
@@ -89,9 +88,7 @@
                     </div>
                 </div>
             </div>
-            {{--End Main Menu --}}
-            {{-- Main Cart --}}
-            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-0 business-main-row-content cart">
+           {{--  <div class="col-xl-4 col-lg-4 col-md-4 col-sm-0 business-main-row-content cart">
                 <div class="business-main-row-content-row row">
                     <div class="col-xl-2 col-lg-2 col-md-2 business-main-row-content-row-space"></div>
                     <div class="col-xl-10 col-lg-10 col-md-10 business-main-row-content-row-cart">
@@ -109,8 +106,6 @@
                         </div>
                     </div>
                 </div>
-                {{-- End Items in cart --}}
-                {{-- Summary --}}
                 <div class="business-main-row-content-row row">
                     <div class="col-xl-2 col-lg-2 col-md-2 business-main-row-content-row-space"></div>
                     <div class="col-xl-10 col-lg-10 col-md-10 business-main-row-content-row-summary">
@@ -128,11 +123,64 @@
                         <a class="btn business-main-row-content-row-summary-btn" v-on:click="saveCart()" href="{{asset(route('cart-checkout', compact('business')))}}">Checkout</a>
                     </div>
                 </div>
-                {{-- End Summary --}}
             </div>
-            {{-- End Main Cart --}}
-            <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 business-main-row-space"></div>
         </div>
+        <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 business-main-row-space"></div> --}}
+        <aside class="col-md-3 mt-5 ml-5">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <form>
+                        <div class="form-group">
+                            <label>Coupon</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control coupon" name="" placeholder="Coupon code">
+                                <span class="input-group-append">
+                                    <button class="btn btn-primary btn-apply coupon">
+                                        Appica
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="card mb-3">
+                <div class="card-body">
+                    <dl v-for="item in cartSaved">
+                        <dt>
+                            @{{item.id}}
+                            @{{item.name}},
+                            @{{item.quantity}},
+                            @{{item.price}}
+                            @{{amountSaved}}
+                        </dt>
+                    </dl>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-body">
+                    <dl>
+                        <span><strong>Prezzo totale:</strong></span>
+                        <span class="text-right ml-3">&euro; @{{amount}}</span>
+                    </dl>
+                    {{-- <dl>
+                        <dt><strong>Sconto:</strong></dt>
+                        <dd class="text-right text-danger ml-3"></dd>
+                    </dl>
+                    <dl>
+                        <dt><strong>Prezzo scotanto:</strong></dt>
+                        <dd class="text-right text-dark ml-3"></dd>
+                    </dl> --}}
+                    <hr>
+                    <a v-on:click="saveCart()" href="{{ asset(route('cart-checkout', compact('business')))}}" class="btn btn-out btn-primary btn-square btn-main" data-abc="true">Checkout</a>
+                </div>
+            </div>
+        </aside>
     </div>
     {{-- End Main --}}
+
+
+
 @endsection
