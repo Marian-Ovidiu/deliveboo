@@ -1,132 +1,143 @@
-const app = new Vue({
-    el: '#app',
-    data: {
-        businesses: [],
-        businessesForType: [],
-        query: '',
-        types: [],
-        cart: [],
-        cartSaved: [],
-        amount: 0
+new Vue({
+  el: '#app',
+  data: {
+    hambMenu: false,
+    businessesToRender: [],
+    businessesForType: [],
+    allBusinesses: [],
+    allTypes: [],
+    showBusinessesToRender: true,
+    query: '',
+    cart: [],
+    cartSaved: [],
+    amount: 0,
+    amountSaved: 0,
+    quantity: 0
+  },
+
+  mounted() {
+    axios.get('http://localhost:8000/api/businesses')
+    .then(resp => {
+        this.businnessesForType = [];
+        this.allBusinesses = resp.data;
+        console.log(this.allBusinesses);
+        this.businessesToRender = this.allBusinesses;
+    }),
+
+    axios.get('http://localhost:8000/api/types')
+    .then(resp => {
+        this.allTypes = resp.data;
+        console.log(this.allTypes);
+    }),
+
+    this.cartSaved = JSON.parse(localStorage.getItem('cart'));
+    this.amountSaved = localStorage.getItem('amount');
+  },
+
+  methods: {
+
+    // Visualizzazione Hamburger menu
+    viewHambMenu () {
+      this.hambMenu = !this.hambMenu;
     },
-    mounted() {
-        axios.get('http://localhost:8000/api/businesses', {
-            // params: {
-            //     query: this.searchByType
-            // }
-        })
-        .then(resp => {
-            this.businesses = resp.data.data.businesses
-        })
-            // .catch(err => {
-            //     console.log(err);
-            // })
-        axios.get('http://localhost:8000/api/types', {
 
-        })
+    // RICERCA: Filtro ristoranti per tipo (API)
+    filterBusinessesByTypes (type) {
+        axios.get('http://localhost:8000/api/type/' + type)
         .then(resp => {
-            this.types = resp.data.data.types
-        }),
-
-        this.cartSaved = JSON.parse(localStorage.getItem('cart'));
-        this.amount = localStorage.getItem('amount');
+            console.log(resp.data);
+            this.businessesForType = [];
+            this.query = '';
+            this.businessesForType = resp.data;
+            this.showBusinessesToRender = false;
+        })
     },
 
-    methods: {
-        filterBusinessesByTypes: function(type) {
-            axios.get('http://localhost:8000/api/type/' + type, {
+    // RICERCA: Filtro ristoranti per nome (API)
+    filterBusinessesByName (query) {
+        axios.get('http://localhost:8000/api/businesses/' + query )
+        .then(resp => {
+            this.businessesForType = [];
+            this.businessesToRender = [];
+            this.showBusinessesToRender = true;
 
-            })
-            .then(resp => {
-                console.log(resp.data);
-                this.businessesForType = [];
-                this.businessesForType = resp.data;
-            })
-        },
-
-        emptyBussinessesForType: function() {
-            return this.businessesForType = [];
-        },
-
-        searchFunction: function(variabile) {
-            let flag = false;
-            flag = variabile.toLowerCase().startsWith(this.query.toLowerCase())
-            if(flag && this.businessesForType.length === 0) {
-                return true;
+            if(this.query === '') {
+                this.businessesToRender = this.allBusinesses;
+            } else {
+                this.businessesToRender = resp.data;
             }
-        },
+        })
+    },
 
-        add (product_id, product_name, product_price) {
-            for (let i = 0; i < this.cart.length; i++) {
-              if (this.cart[i].id === product_id) {
-                this.cart[i].quantity++;
-                this.cart[i].price += product_price;
-                return; // la funzione si ferma qui, non aggiungendo l'id
-              }
-            }
-            this.cart.push({
-              'id' : product_id,
-              'name' : product_name,
-              'quantity' : 1,
-              'price' : product_price
-            });
-          },
+    // CARRELLO: Aggiungi prodotto
+    add (product_id, product_name, product_price) {
+      let tot_price;
 
-          remove (product_id) {
-            for (let i = 0; i < this.cart.length; i++) {
-              if (this.cart[i].id === product_id) {
-                this.cart.splice(i, 1);
-              }
-            }
-          },
+      for (let i = 0; i < this.cart.length; i++) {
+        if (this.cart[i].id === product_id) {
+          this.cart[i].quantity++;
+          tot_price = product_price * this.cart[i].quantity;
+          this.cart[i].price = tot_price.toFixed(2);
+          this.getAmount();
+          this.getQuantity();
+          return; // la funzione si ferma qui, non aggiungendo l'id
+        }
+      }
+      this.cart.push({
+        'id' : product_id,
+        'name' : product_name,
+        'quantity' : 1,
+        'price' : product_price
+      });
+      this.getAmount();
+      this.getQuantity();
+    },
 
-          quantityUp (product_id, product_price) {
-            this.cart.forEach((item) => {
-              if (item.id === product_id) {
-                item.quantity++;
-                item.price += product_price;
-              }
-            });
-          },
+    // CARRELLO: Rimuovi prodotto
+    remove (product_id, product_price) {
+      let tot_price;
+      this.cart.forEach((item, i) => {
+        if (item.id === product_id) {
+          if(item.quantity === 1) {
+            this.cart.splice(i, 1);
+          } else {
+            item.quantity--;
+            tot_price = product_price;
+            tot_price = item.price - product_price;
+            item.price = tot_price.toFixed(2);
+          }
+        }
+      });
+      this.getAmount();
+      this.getQuantity();
+    },
 
-          quantintyDown (product_id, product_price) {
-            this.cart.forEach((item) => {
-              if (item.id === product_id) {
-                if(item.quantity === 1) {
-                  this.remove(product_id);
-                } else {
-                item.quantity--;
-                item.price = item.price - product_price;
-                }
-              }
-            });
-          },
+    // CARRELLO: Calcola totale prezzo
+    getQuantity() {
+      let tot = 0;
+      this.cart.forEach((item) => {
+        tot += item.quantity;
+      });
+      this.quantity = tot;
+    },
 
-          getAmount () {
-            let sum = 0;
-            this.cart.forEach((item) => {
-              sum += item.price;
-            });
-            this.amount = sum.toFixed(2);
-            return this.amount;
-        },
+    // CARRELLO: Calcola totale quantità prodotti
+    getAmount() {
+      let sum = 0;
+      this.cart.forEach((item) => {
+        sum += parseFloat(item.price);
+      });
+      fixedSum = sum.toFixed(2);
+      this.amount = fixedSum;
+    },
 
-        saveCart() {
-            let cartJSON = JSON.stringify(this.cart);
-            localStorage.setItem('cart', cartJSON);
-            localStorage.setItem('amount', this.amount );
-        },
-
-        // mounted: function() {
-        //     if(localStorage.getItem('cart')) {
-        //       try {
-        //         this.cart = JSON.parse(localStorage.getItem('cart'));
-        //       } catch(e) {
-        //         localStorage.removeItem('cart');
-        //     }
-        //     }
-        // }
+    // CARRELLO: Salva in localStorage
+    saveCart() {
+      let cartJSON = JSON.stringify(this.cart);
+      localStorage.setItem('cart', cartJSON);
+      localStorage.setItem('amount', this.amount );
     }
+  }
 });
 
 Vue.config.devtools = true

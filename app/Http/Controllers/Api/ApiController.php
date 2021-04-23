@@ -3,30 +3,51 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Business;
 use App\Type;
 
 class ApiController extends Controller
 {
-    public function getBusinessesApi(Request $request)
+    public function getBusinessesApi()
     {
-        $businesses = Business::all();
-        return response()->json([
-            'data' => [
-                'businesses' => $businesses
-            ]
-        ]);
+        $arrayIdBusinesses = [];
+        $allIdBusinesses = Business::all();
+        foreach($allIdBusinesses as $business) {
+            $arrayIdBusinesses[] = $business->id;
+        }
+
+        shuffle($arrayIdBusinesses);
+
+        $shuffledId = array_slice($arrayIdBusinesses, 0, 8);
+
+        $randomSearchDB = [];
+        $finalArray = [];
+
+        foreach($shuffledId as $id ) {
+            $randomSearchDB[] = Business::where('id', '=', $id)->get();
+        }
+
+        for ($i=0; $i < count($randomSearchDB); $i++) {
+            $finalArray[] = $randomSearchDB[$i]['0'];
+        }
+
+        return response()->json($finalArray);
     }
 
-    public function getTypesApi(Request $request)
+    public function getTypesApi()
     {
         $types = Type::all();
-        return response()->json([
-            'data' => [
-                'types' => $types
-            ]
-        ]);
+        return response()->json($types);
+    }
+
+    public function filterBusinessesByName ($query)
+    {
+
+        $toLowerQuery = strtolower($query);
+        $businessName = Business::where("name", 'LIKE', "%$toLowerQuery%")->get();
+
+        return response()->json($businessName);
+
     }
 
     public function filterBusinessesByTypes($name)
@@ -37,4 +58,5 @@ class ApiController extends Controller
             })->get();
         return response()->json($businessType);
     }
+
 }

@@ -1913,60 +1913,80 @@ $('.fa-times').click(function () {
   \********************************/
 /***/ (() => {
 
-var app = new Vue({
+new Vue({
   el: '#app',
   data: {
-    businesses: [],
+    hambMenu: false,
+    businessesToRender: [],
     businessesForType: [],
+    allBusinesses: [],
+    allTypes: [],
+    showBusinessesToRender: true,
     query: '',
-    types: [],
     cart: [],
     cartSaved: [],
-    amount: 0
+    amount: 0,
+    amountSaved: 0,
+    quantity: 0
   },
   mounted: function mounted() {
     var _this = this;
 
-    axios.get('http://localhost:8000/api/businesses', {// params: {
-      //     query: this.searchByType
-      // }
-    }).then(function (resp) {
-      _this.businesses = resp.data.data.businesses;
-    }); // .catch(err => {
-    //     console.log(err);
-    // })
-
-    axios.get('http://localhost:8000/api/types', {}).then(function (resp) {
-      _this.types = resp.data.data.types;
+    axios.get('http://localhost:8000/api/businesses').then(function (resp) {
+      _this.businnessesForType = [];
+      _this.allBusinesses = resp.data;
+      console.log(_this.allBusinesses);
+      _this.businessesToRender = _this.allBusinesses;
+    }), axios.get('http://localhost:8000/api/types').then(function (resp) {
+      _this.allTypes = resp.data;
+      console.log(_this.allTypes);
     }), this.cartSaved = JSON.parse(localStorage.getItem('cart'));
-    this.amount = localStorage.getItem('amount');
+    this.amountSaved = localStorage.getItem('amount');
   },
   methods: {
+    // Visualizzazione Hamburger menu
+    viewHambMenu: function viewHambMenu() {
+      this.hambMenu = !this.hambMenu;
+    },
+    // RICERCA: Filtro ristoranti per tipo (API)
     filterBusinessesByTypes: function filterBusinessesByTypes(type) {
       var _this2 = this;
 
-      axios.get('http://localhost:8000/api/type/' + type, {}).then(function (resp) {
+      axios.get('http://localhost:8000/api/type/' + type).then(function (resp) {
         console.log(resp.data);
         _this2.businessesForType = [];
+        _this2.query = '';
         _this2.businessesForType = resp.data;
+        _this2.showBusinessesToRender = false;
       });
     },
-    emptyBussinessesForType: function emptyBussinessesForType() {
-      return this.businessesForType = [];
-    },
-    searchFunction: function searchFunction(variabile) {
-      var flag = false;
-      flag = variabile.toLowerCase().startsWith(this.query.toLowerCase());
+    // RICERCA: Filtro ristoranti per nome (API)
+    filterBusinessesByName: function filterBusinessesByName(query) {
+      var _this3 = this;
 
-      if (flag && this.businessesForType.length === 0) {
-        return true;
-      }
+      axios.get('http://localhost:8000/api/businesses/' + query).then(function (resp) {
+        _this3.businessesForType = [];
+        _this3.businessesToRender = [];
+        _this3.showBusinessesToRender = true;
+
+        if (_this3.query === '') {
+          _this3.businessesToRender = _this3.allBusinesses;
+        } else {
+          _this3.businessesToRender = resp.data;
+        }
+      });
     },
+    // CARRELLO: Aggiungi prodotto
     add: function add(product_id, product_name, product_price) {
+      var tot_price;
+
       for (var i = 0; i < this.cart.length; i++) {
         if (this.cart[i].id === product_id) {
           this.cart[i].quantity++;
-          this.cart[i].price += product_price;
+          tot_price = product_price * this.cart[i].quantity;
+          this.cart[i].price = tot_price.toFixed(2);
+          this.getAmount();
+          this.getQuantity();
           return; // la funzione si ferma qui, non aggiungendo l'id
         }
       }
@@ -1977,58 +1997,52 @@ var app = new Vue({
         'quantity': 1,
         'price': product_price
       });
+      this.getAmount();
+      this.getQuantity();
     },
-    remove: function remove(product_id) {
-      for (var i = 0; i < this.cart.length; i++) {
-        if (this.cart[i].id === product_id) {
-          this.cart.splice(i, 1);
-        }
-      }
-    },
-    quantityUp: function quantityUp(product_id, product_price) {
-      this.cart.forEach(function (item) {
-        if (item.id === product_id) {
-          item.quantity++;
-          item.price += product_price;
-        }
-      });
-    },
-    quantintyDown: function quantintyDown(product_id, product_price) {
-      var _this3 = this;
+    // CARRELLO: Rimuovi prodotto
+    remove: function remove(product_id, product_price) {
+      var _this4 = this;
 
-      this.cart.forEach(function (item) {
+      var tot_price;
+      this.cart.forEach(function (item, i) {
         if (item.id === product_id) {
           if (item.quantity === 1) {
-            _this3.remove(product_id);
+            _this4.cart.splice(i, 1);
           } else {
             item.quantity--;
-            item.price = item.price - product_price;
+            tot_price = product_price;
+            tot_price = item.price - product_price;
+            item.price = tot_price.toFixed(2);
           }
         }
       });
+      this.getAmount();
+      this.getQuantity();
     },
+    // CARRELLO: Calcola totale prezzo
+    getQuantity: function getQuantity() {
+      var tot = 0;
+      this.cart.forEach(function (item) {
+        tot += item.quantity;
+      });
+      this.quantity = tot;
+    },
+    // CARRELLO: Calcola totale quantità prodotti
     getAmount: function getAmount() {
       var sum = 0;
       this.cart.forEach(function (item) {
-        sum += item.price;
+        sum += parseFloat(item.price);
       });
-      this.amount = sum.toFixed(2);
-      return this.amount;
+      fixedSum = sum.toFixed(2);
+      this.amount = fixedSum;
     },
+    // CARRELLO: Salva in localStorage
     saveCart: function saveCart() {
       var cartJSON = JSON.stringify(this.cart);
       localStorage.setItem('cart', cartJSON);
       localStorage.setItem('amount', this.amount);
-    } // mounted: function() {
-    //     if(localStorage.getItem('cart')) {
-    //       try {
-    //         this.cart = JSON.parse(localStorage.getItem('cart'));
-    //       } catch(e) {
-    //         localStorage.removeItem('cart');
-    //     }
-    //     }
-    // }
-
+    }
   }
 });
 Vue.config.devtools = true;
