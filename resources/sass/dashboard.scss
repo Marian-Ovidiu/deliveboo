@@ -60,27 +60,35 @@
   }
 }
 .main-dashboard{
-  margin-bottom: 20px;
-  &-title{
-    margin-top: 20px;
-    font-weight: bold;
-    text-align: center;
-  }
-  &-row{
-    &-container{
-      &-row{
-        display:flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        &-card{
-          padding: 10px;
-          &-restaurant{
-            margin: 0 auto;
-            width: 75%;
-            border-radius: 10px;
-            height: 400px;
-            padding: 0px;
-            transition: 1s;
+    margin-bottom: 20px;
+    &-title{
+        margin-top: 20px;
+        font-weight: bold;
+        text-align: center;
+    }
+    &-row{
+        &-container{
+            &-row{
+                display:flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                &-card{
+                    padding: 10px;
+                    &-restaurant{
+                        margin: 0 auto;
+                        width: 75%;
+                        border-radius: 10px;
+                        box-shadow: 5px 8px 12px  rgba($color: #000000, $alpha: 0.4);
+                        height: 400px;
+                        padding: 0px;
+                        transition: 1s;
+
+                        &-img {
+                            border-radius: 10px 10px 0px 0px;
+                            height: 150px;
+                            background-size: cover;
+                            background-position: center;
+                        }
 
             &-img {
               border-radius: 10px 10px 0px 0px;

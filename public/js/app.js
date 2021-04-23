@@ -1844,8 +1844,6 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 __webpack_require__(/*! ./script */ "./resources/js/script.js");
 
-__webpack_require__(/*! ./hamburger-menu */ "./resources/js/hamburger-menu.js");
-
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":
@@ -1892,21 +1890,6 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 /***/ }),
 
-/***/ "./resources/js/hamburger-menu.js":
-/*!****************************************!*\
-  !*** ./resources/js/hamburger-menu.js ***!
-  \****************************************/
-/***/ (() => {
-
-$('.fa-bars').click(function () {
-  $('.hamburger-menu').fadeIn(1500);
-});
-$('.fa-times').click(function () {
-  $('.hamburger-menu').fadeOut(1000);
-});
-
-/***/ }),
-
 /***/ "./resources/js/script.js":
 /*!********************************!*\
   !*** ./resources/js/script.js ***!
@@ -1916,6 +1899,7 @@ $('.fa-times').click(function () {
 new Vue({
   el: '#app',
   data: {
+    hambMenu: false,
     businessesToRender: [],
     businessesForType: [],
     allBusinesses: [],
@@ -1934,15 +1918,18 @@ new Vue({
     axios.get('http://localhost:8000/api/businesses').then(function (resp) {
       _this.businnessesForType = [];
       _this.allBusinesses = resp.data;
-      console.log(_this.allBusinesses);
       _this.businessesToRender = _this.allBusinesses;
     }), axios.get('http://localhost:8000/api/types').then(function (resp) {
       _this.allTypes = resp.data;
-      console.log(_this.allTypes);
     }), this.cartSaved = JSON.parse(localStorage.getItem('cart'));
     this.amountSaved = localStorage.getItem('amount');
   },
   methods: {
+    // Visualizzazione Hamburger menu
+    viewHambMenu: function viewHambMenu() {
+      this.hambMenu = !this.hambMenu;
+    },
+    // RICERCA: Filtro ristoranti per tipo (API)
     filterBusinessesByTypes: function filterBusinessesByTypes(type) {
       var _this2 = this;
 
@@ -1954,6 +1941,7 @@ new Vue({
         _this2.showBusinessesToRender = false;
       });
     },
+    // RICERCA: Filtro ristoranti per nome (API)
     filterBusinessesByName: function filterBusinessesByName(query) {
       var _this3 = this;
 
@@ -1969,6 +1957,7 @@ new Vue({
         }
       });
     },
+    // CARRELLO: Aggiungi prodotto
     add: function add(product_id, product_name, product_price) {
       var tot_price;
 
@@ -1992,6 +1981,7 @@ new Vue({
       this.getAmount();
       this.getQuantity();
     },
+    // CARRELLO: Rimuovi prodotto
     remove: function remove(product_id, product_price) {
       var _this4 = this;
 
@@ -2011,6 +2001,7 @@ new Vue({
       this.getAmount();
       this.getQuantity();
     },
+    // CARRELLO: Calcola totale prezzo
     getQuantity: function getQuantity() {
       var tot = 0;
       this.cart.forEach(function (item) {
@@ -2018,6 +2009,7 @@ new Vue({
       });
       this.quantity = tot;
     },
+    // CARRELLO: Calcola totale quantità prodotti
     getAmount: function getAmount() {
       var sum = 0;
       this.cart.forEach(function (item) {
@@ -2026,6 +2018,7 @@ new Vue({
       fixedSum = sum.toFixed(2);
       this.amount = fixedSum;
     },
+    // CARRELLO: Salva in localStorage
     saveCart: function saveCart() {
       var cartJSON = JSON.stringify(this.cart);
       localStorage.setItem('cart', cartJSON);

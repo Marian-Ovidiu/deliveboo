@@ -4,10 +4,88 @@
   box-sizing: border-box;
 }
 
+// Main wrapper
 .wrapper{
   width: 100vw;
   max-width: 100%;
-  font-family: 'Open Sans';
+  background-color: $main-bg;
+  font-family: $main-font-family;
+  font-size: $main-font-size;
+
+  ul {
+    list-style: none;
+  }
+  a {
+    color: $link-col;
+    text-decoration: none;
+  }
+  a:hover {
+    color: $link-hover-col;
+    text-decoration: underline;
+  }
+}
+
+// Header
+.top-header {
+  @include flex-sp-btw;
+  position: relative;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+  padding: 16px 30px;
+
+  //Header: logo
+  &-logo {
+    min-width: 160px;
+    width: 18%;
+    img {
+      max-width: 100%;
+    }
+  }
+
+  //Header: menu
+  &-menu {
+    .fas {
+      cursor: pointer;
+    }
+    @media screen and (min-width: 576px){
+      &.lg {
+        display: block;
+      }
+      &.sm {
+        display: none;
+      }
+      &-lg {
+        @include flex;
+        & > * {
+          margin: 0 15px;
+        }
+      }
+    }
+    @media screen and (max-width: 576px){
+      &.lg {
+        display: none;
+      }
+      &.sm {
+        display: block;
+      }
+      &-sm {
+        position: absolute;
+        z-index: 100;
+        top: 0;
+        right: 0;
+        width: 100vw;
+        height: 100vh;
+        text-align: right;
+        background: $main-bg;
+        padding: 35px;
+        & > * {
+          margin: 15px 0;
+        }
+      }
+    }
+  }
 }
 
 .fl{

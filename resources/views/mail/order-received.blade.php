@@ -1,5 +1,5 @@
 @component('mail::message')
-Hai ricevuto un pagamento da un cliente Deliveboo!
+Hai ricevuto un nuovo pagamento da un cliente Deliveboo!
 
 ID ordine: {{$order->id}}
 

@@ -62,7 +62,6 @@ class OrderController extends Controller
       $order->success = 1;
       $order->save();
       $order->products()->attach($products);
-
       $mailableObject = new NewOrderReceived($order);
       Mail::to('prova@mail.it')->send($mailableObject);
       return view('guest.order-success', compact('transaction'));
@@ -78,16 +77,16 @@ class OrderController extends Controller
     }
   }
   // Gestione VALIDAZIONE campi
-  protected function isValid($data)
+  protected function isValid(Request $request)
   {
-    $data->validate([
+    $request->validate([
       'customer_name' => 'required|max:255',
-      'customer_last' => 'required|max:255',
+      'customer_last_name' => 'required|max:255',
       'city' => 'required|max:255',
       'postal_code' => 'required|min:5|max:5',
-      'address' => 'required|max:255',
+      'customer_address' => 'required|max:255',
       'customer_email' => 'required|max:128',
-      'customer_telephone' => 'required|min:10|max:10',
+      'customer_telephone' => 'required|min:8|max:12',
     ]);
   }
 }

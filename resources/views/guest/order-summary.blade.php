@@ -19,7 +19,7 @@
             </div>
             <div class="row-container-row row">
                 <div class="col-12 row-container-row-amount">
-                    Totale Ordine € @{{amount}}
+                    Totale Ordine € @{{amountSaved}}
                 </div>
             </div>
             <hr>
@@ -36,7 +36,7 @@
                                 <label for="customer_name"><b>Nome</b></label>
                                 <input type="text" class="form-control {{ $errors->has('customer_name') ? 'is-invalid' : '' }}" id="customer_name" name="customer_name" placeholder="Nome">
                                 <div class="invalid-feedback">
-                                    {{ $errors->first('name') }}
+                                    {{ $errors->first('customer_name') }}
                                 </div>
                             </div>
                             {{-- / row: name --}}
@@ -45,9 +45,9 @@
                             {{-- row: last name --}}
                             <div class="form-group">
                                 <label for="customer_last_name"><b>Cognome</b></label>
-                                <input type="text" class="form-control {{ $errors->has('customer_last') ? 'is-invalid' : '' }}" id="customer_last_name" name="customer_last_name" placeholder="Cognome">
+                                <input type="text" class="form-control {{ $errors->has('customer_last_name') ? 'is-invalid' : '' }}" id="customer_last_name" name="customer_last_name" placeholder="Cognome">
                                 <div class="invalid-feedback">
-                                    {{ $errors->first('customer_last') }}
+                                    {{ $errors->first('customer_last_name') }}
                                 </div>
                             </div>
                             {{-- / row: last name --}}
@@ -77,15 +77,17 @@
                             {{-- / row: postal_code --}}
                         </div>
                     </div>
+                    {{-- / row: customer_address --}}
+
 
                     <div class="row">
                         <div class="col-12">
                             {{-- row: address --}}
                             <div class="form-group">
                                 <label for="customer_address"><b>Indirizzo</b></label>
-                                <input type="text" class="form-control {{ $errors->has('address') ? 'is-invalid' : '' }}" id="customer_address_number" name="customer_address_number" placeholder="Indirizzo">
+                                <input type="text" class="form-control {{ $errors->has('customer_address') ? 'is-invalid' : '' }}" id="customer_address_number" name="customer_address_number" placeholder="Indirizzo">
                                 <div class="invalid-feedback">
-                                    {{ $errors->first('address') }}
+                                    {{ $errors->first('customer_address') }}
                                 </div>
                             </div>
                             {{-- / row: address --}}
@@ -100,7 +102,7 @@
                                 <label for="customer_email"><b>Email</b></label>
                                 <input type="text" class="form-control {{ $errors->has('customer_email') ? 'is-invalid' : '' }}" id="customer_email" name="customer_email" placeholder="Email">
                                 <div class="invalid-feedback">
-                                    {{ $errors->first('email') }}
+                                    {{ $errors->first('customer_email') }}
                                 </div>
                             </div>
                             {{-- / row: email --}}
@@ -133,11 +135,11 @@
                     </div>
 
                     {{-- row: success --}}
-                    <input type="hidden" value="1" name="success">
+                    <input type="hidden" value="" name="success">
                     {{-- / row: success --}}
 
                     {{-- row: amount --}}
-                    <input type="hidden" :value="amount" name="amount">
+                    <input type="hidden" :value="amountSaved" name="amount">
                     {{-- / row: amount --}}
 
                     <input v-for ="product in cartSaved" type = "hidden" name = "products[]" :value = "product.id"/>
@@ -165,9 +167,6 @@ var client_token = "{{ $token }}";
 braintree.dropin.create({
     authorization: client_token,
     selector: '#bt-dropin',
-    paypal: {
-    flow: 'vault'
-    }
 }, function (createErr, instance) {
     if (createErr) {
     console.log('Create Error', createErr);
