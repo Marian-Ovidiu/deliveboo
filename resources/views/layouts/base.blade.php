@@ -16,6 +16,8 @@
   <script src="{{ asset('js/app.js') }}" defer></script>
 
   <title>Deliveboo - @yield('title')</title>
+
+  <link rel="icon" href="img/00-fav.png">
 </head>
 
 <body>
@@ -41,7 +43,7 @@
           </li>
           <li><a href="{{ route('public-home') }}"><span>Home</span></a></li>
           @auth
-            <li><a href="{{ route('dashboard') }}">Area ristoratore [{{ Auth::user()->name }}]</a></li>
+            <li><a href="{{ route('dashboard') }}">Area ristoratore &nbsp; <small>[{{ Auth::user()->name }}]</small></a></li>
           @else
             <li><a href="{{ route('login') }}">Login</a></li>
             <li><a href="{{ route('register') }}">Registrati</a></li>
@@ -55,7 +57,7 @@
         <ul class="top-header-menu-lg">
           <li><a href="{{ route('public-home') }}"><span>Home</span></a></li>
           @auth
-            <li><a href="{{ route('dashboard') }}">Area ristoratore [{{ Auth::user()->name }}]</a></li>
+            <li><a href="{{ route('dashboard') }}">Area ristoratore &nbsp; <small>[{{ Auth::user()->name }}]</small></a></li>
           @else
             <li><a href="{{ route('login') }}">Login</a></li>
             <li><a href="{{ route('register') }}">Registrati</a></li>
