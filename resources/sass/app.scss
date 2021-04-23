@@ -1,5 +1,7 @@
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
+// FontAwesome
+@import '~@fortawesome/fontawesome-free/css/all.min.css';
 // Variables
 @import 'partials/variables';
 // Variables
@@ -16,5 +18,3 @@
 @import "parts/header";
 @import "parts/footer";
 @import "cart";
-// FontAwesome
-@import '~@fortawesome/fontawesome-free/css/all.min.css';
