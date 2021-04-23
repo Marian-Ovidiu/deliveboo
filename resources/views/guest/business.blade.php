@@ -145,17 +145,18 @@
                 </div>
             </div>
 
-            <div class="card mb-3">
-                <div class="card-body">
-                    <dl v-for="item in cartSaved">
-                        <dt>
-                            @{{item.id}}
-                            @{{item.name}},
-                            @{{item.quantity}},
-                            @{{item.price}}
-                            @{{amountSaved}}
-                        </dt>
-                    </dl>
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <dl v-for="item in cart">
+                            <dt>
+                                @{{item.id}}
+                                @{{item.name}},
+                                @{{item.quantity}},
+                                @{{item.price}}
+                                @{{amountSaved}}
+                            </dt>
+                        </dl>
+                    </div>
                 </div>
             </div>
 

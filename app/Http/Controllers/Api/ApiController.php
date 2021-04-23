@@ -10,22 +10,34 @@ class ApiController extends Controller
 {
     public function getBusinessesApi()
     {
-        $businesses = Business::where('id', '<=', 8)->get();
-        return response()->json([
-            'data' => [
-                'businesses' => $businesses
-            ]
-        ]);
+        $arrayIdBusinesses = [];
+        $allIdBusinesses = Business::all();
+        foreach($allIdBusinesses as $business) {
+            $arrayIdBusinesses[] = $business->id;
+        }
+
+        shuffle($arrayIdBusinesses);
+
+        $shuffledId = array_slice($arrayIdBusinesses, 0, 8);
+
+        $randomSearchDB = [];
+        $finalArray = [];
+
+        foreach($shuffledId as $id ) {
+            $randomSearchDB[] = Business::where('id', '=', $id)->get();
+        }
+
+        for ($i=0; $i < count($randomSearchDB); $i++) {
+            $finalArray[] = $randomSearchDB[$i]['0'];
+        }
+
+        return response()->json($finalArray);
     }
 
     public function getTypesApi()
     {
         $types = Type::all();
-        return response()->json([
-            'data' => [
-                'types' => $types
-            ]
-        ]);
+        return response()->json($types);
     }
 
     public function filterBusinessesByName ($query)
