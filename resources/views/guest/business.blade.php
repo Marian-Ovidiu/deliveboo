@@ -133,17 +133,17 @@
 
             {{-- <div class="col-xl-1 col-lg-1 col-md-1 business-main-row-space"></div> --}}
 
-            <aside class="col-md-3">
+            <aside class="col-md-3 mt-5 ml-5">
                 <div class="card mb-3">
                     <div class="card-body">
                         <form>
                             <div class="form-group">
-                                <label>Have coupon?</label>
+                                <label>Coupon</label>
                                 <div class="input-group">
                                     <input type="text" class="form-control coupon" name="" placeholder="Coupon code">
                                     <span class="input-group-append">
                                         <button class="btn btn-primary btn-apply coupon">
-                                            Apply
+                                            Appica
                                         </button>
                                     </span>
                                 </div>
@@ -151,26 +151,42 @@
                         </form>
                     </div>
                 </div>
-                <div class="card">
-                    <div class="card-body" v-for="item in cartSaved">
-                        <dl>
-                            <dt>Total price:</dt>
-                            <dd class="text-right ml-3">&euro; @{{amount}}</dd>
+
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <dl v-for="item in cartSaved">
+                            <dt>
+                                @{{item.id}}
+                                @{{item.name}},
+                                @{{item.quantity}},
+                                @{{item.price}}
+                                @{{amountSaved}}
+                            </dt>
                         </dl>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-body">
                         <dl>
-                            <dt>Discount:</dt>
+                            <span><strong>Prezzo totale:</strong></span>
+                            <span class="text-right ml-3">&euro; @{{amount}}</span>
+                        </dl>
+                        {{-- <dl>
+                            <dt><strong>Sconto:</strong></dt>
                             <dd class="text-right text-danger ml-3"></dd>
                         </dl>
                         <dl>
-                            <dt>Total:</dt>
-                            <dd class="text-right text-dark b ml-3"><strong></strong></dd>
-                        </dl>
+                            <dt><strong>Prezzo scotanto:</strong></dt>
+                            <dd class="text-right text-dark ml-3"></dd>
+                        </dl> --}}
                         <hr>
                         <a v-on:click="saveCart()" href="{{ asset(route('cart-checkout', compact('business')))}}" class="btn btn-out btn-primary btn-square btn-main" data-abc="true">Checkout</a>
-                        {{-- <a href="#" class="btn btn-out btn-success btn-square btn-main" data-abc="true">Continue Shopping</a> --}}
                     </div>
                 </div>
             </aside>
+
+
 
         </div>
     </div>
