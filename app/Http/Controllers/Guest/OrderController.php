@@ -28,7 +28,7 @@ class OrderController extends Controller
 
   public function store(Request $request)
   {
-    $this->isValid($request);
+    //$this->isValid($request);
 
     $data = $request->all();
 
@@ -62,7 +62,6 @@ class OrderController extends Controller
       $order->success = 1;
       $order->save();
       $order->products()->attach($products);
-
       $mailableObject = new NewOrderReceived($order);
       Mail::to('prova@mail.it')->send($mailableObject);
       return view('guest.order-success', compact('transaction'));

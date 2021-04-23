@@ -20,7 +20,6 @@ new Vue({
     .then(resp => {
         this.businnessesForType = [];
         this.allBusinesses = resp.data;
-        console.log(this.allBusinesses);
         this.businessesToRender = this.allBusinesses;
     }),
 
@@ -32,6 +31,7 @@ new Vue({
 
     this.cartSaved = JSON.parse(localStorage.getItem('cart'));
     this.amountSaved = localStorage.getItem('amount');
+    console.log(this.amountSaved);
   },
 
   methods: {
