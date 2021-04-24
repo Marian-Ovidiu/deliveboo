@@ -1908,6 +1908,10 @@ new Vue({
     query: '',
     cart: [],
     cartSaved: [],
+    coupon: ['BLACKFRIDAY', 'CHICKENFREE', 'HAMBSPECIAL'],
+    couponCode: '',
+    couponDiscount: 0.20,
+    flagVerificaCoupon: false,
     amount: 0,
     amountSaved: 0,
     quantity: 0
@@ -1934,7 +1938,6 @@ new Vue({
       var _this2 = this;
 
       axios.get('http://localhost:8000/api/type/' + type).then(function (resp) {
-        console.log(resp.data);
         _this2.businessesForType = [];
         _this2.query = '';
         _this2.businessesForType = resp.data;
@@ -1948,13 +1951,14 @@ new Vue({
       axios.get('http://localhost:8000/api/businesses/' + query).then(function (resp) {
         _this3.businessesForType = [];
         _this3.businessesToRender = [];
+        _this3.businessesToRender = resp.data;
         _this3.showBusinessesToRender = true;
 
         if (_this3.query === '') {
-          _this3.businessesToRender = _this3.allBusinesses;
-        } else {
-          _this3.businessesToRender = resp.data;
+          _this3.businessesToRender = [];
         }
+
+        document.documentElement.scrollTop = 1100;
       });
     },
     // RICERCA: Visualizzazione risultati per nome
@@ -1965,13 +1969,13 @@ new Vue({
     viewTypesResults: function viewTypesResults() {
       return this.businessesForType.length > 0;
     },
-    // RICERCA: Visualizzazione nessun risultato
-    viewNoResults: function viewNoResults() {
+    // RICERCA: Visualizzazione nessun risultato per categoria
+    viewNoResultsType: function viewNoResultsType() {
       return this.businessesForType.length === 0 && !this.showBusinessesToRender;
     },
-    //RICERCA: scroll automatico in fondo alla pagina
-    scrollToBottom: function scrollToBottom() {
-      document.documentElement.scrollIntoView(false);
+    // RICERCA: Visualizzazione nessun risultato per nome
+    viewNoResultsName: function viewNoResultsName() {
+      return this.businessesToRender.length === 0;
     },
     // CARRELLO: Aggiungi prodotto
     add: function add(product_id, product_name, product_price) {
@@ -2024,6 +2028,22 @@ new Vue({
         tot += item.quantity;
       });
       this.quantity = tot;
+    },
+    discountCoupon: function discountCoupon() {
+      var discountedAmount = 0;
+
+      for (var i = 0; i < this.coupon.length; i++) {
+        if (this.couponCode === this.coupon[i]) {
+          discountedAmount -= this.amount * this.couponDiscount;
+          flagVerificaCoupon = true;
+        }
+
+        return this.amount = discountedAmount;
+      }
+
+      if (!flagVerificaCoupon && this.couponCode.length > 0) {
+        this.couponCode = 'Inserire un codice coupon valido';
+      }
     },
     // CARRELLO: Calcola totale quantità prodotti
     getAmount: function getAmount() {

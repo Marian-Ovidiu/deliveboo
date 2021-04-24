@@ -10,6 +10,10 @@ new Vue({
     query: '',
     cart: [],
     cartSaved: [],
+    coupon: ['BLACKFRIDAY', 'CHICKENFREE', 'HAMBSPECIAL'],
+    couponCode: '',
+    couponDiscount: 0.20,
+    flagVerificaCoupon: false,
     amount: 0,
     amountSaved: 0,
     quantity: 0
@@ -43,7 +47,6 @@ new Vue({
     filterBusinessesByTypes (type) {
         axios.get('http://localhost:8000/api/type/' + type)
         .then(resp => {
-            console.log(resp.data);
             this.businessesForType = [];
             this.query = '';
             this.businessesForType = resp.data;
@@ -57,13 +60,14 @@ new Vue({
         .then(resp => {
             this.businessesForType = [];
             this.businessesToRender = [];
+            this.businessesToRender = resp.data;
             this.showBusinessesToRender = true;
 
             if(this.query === '') {
-                this.businessesToRender = this.allBusinesses;
-            } else {
-                this.businessesToRender = resp.data;
+              this.businessesToRender = []
             }
+
+            document.documentElement.scrollTop = 1100;
         })
     },
 
@@ -77,14 +81,14 @@ new Vue({
       return this.businessesForType.length > 0;
     },
 
-    // RICERCA: Visualizzazione nessun risultato
-    viewNoResults () {
+    // RICERCA: Visualizzazione nessun risultato per categoria
+    viewNoResultsType () {
       return this.businessesForType.length === 0 && !this.showBusinessesToRender;
     },
 
-    //RICERCA: scroll automatico in fondo alla pagina
-    scrollToBottom(){
-      document.documentElement.scrollIntoView(false);
+    // RICERCA: Visualizzazione nessun risultato per nome
+    viewNoResultsName () {
+      return this.businessesToRender.length === 0;
     },
 
     // CARRELLO: Aggiungi prodotto
@@ -137,6 +141,21 @@ new Vue({
         tot += item.quantity;
       });
       this.quantity = tot;
+    },
+
+    discountCoupon() {
+      let discountedAmount = 0;
+      for(let i = 0; i < this.coupon.length; i++) {
+        if(this.couponCode === this.coupon[i]) {
+          discountedAmount -= (this.amount * this.couponDiscount);
+          flagVerificaCoupon = true;
+        }
+        return this.amount = discountedAmount;
+      }
+  
+      if(!flagVerificaCoupon && this.couponCode.length > 0) {
+        this.couponCode = 'Inserire un codice coupon valido'
+      }
     },
 
     // CARRELLO: Calcola totale quantità prodotti

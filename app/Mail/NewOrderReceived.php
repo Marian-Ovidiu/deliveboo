@@ -32,6 +32,8 @@ class NewOrderReceived extends Mailable
     public function build()
     {
         $order = $this->order;
-        return $this->markdown('mail.order-received', compact('order'));
+        return $this->from('info@deliveboo.com', 'Deliveboo')
+                    ->subject('Mailtrap Confirmation')
+                    ->markdown('mail.order-received', compact('order'));
     }
 }
