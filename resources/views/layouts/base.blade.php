@@ -71,8 +71,56 @@
 
     {{-- Main content --}}
     @yield('content')
-    @include('parts.footer')
     {{-- / Main content --}}
+
+    {{-- Footer --}}
+    <footer class="bottom-footer">
+      <div class="bottom-footer-columns content">
+        <ul>
+          <li class="bottom-footer-columns-title">
+            Città popolari
+          </li>
+          <li>Roma</li>
+          <li>Torino</li>
+          <li>Milano</li>
+          <li>Napoli</li>
+          <li>Firenze</li>
+          <li>Venezia</li>
+          <li>Rimini</li>
+        </ul>
+        <ul>
+          <li class="bottom-footer-columns-title">
+            About
+          </li>
+          <li>Faq</li>
+          <li>Termini & condizioni</li>
+          <li>Lavora con noi</li>
+          <li>Contatti</li>
+        </ul>
+        <ul>
+          <li class="bottom-footer-columns-title">
+            deliveboo
+          </li>
+          <li>Sede Operativa</li>
+          <li>Via Carducci 12 20123 Milano</li>
+          <li>02 40031288</li>
+        </ul>
+        <ul class="logo">
+          <li>
+            <img src="{{asset('img/01-logo.png')}}" alt="Deliveboo">
+            <br />
+            <br />
+          </li>
+          <li>
+            Copyright (c) 2021
+            <br />
+          </li>
+          <li>
+            <small>Boolean [ #Classe25 | Team 5 ]</small>
+          </li>
+        </ul>
+    </footer>
+    {{-- / Footer --}}
 
   </div>
   {{-- / WRAPPER CONTAINER --}}
