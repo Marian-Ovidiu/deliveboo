@@ -20,7 +20,7 @@ Route::post('/checkout/payment', 'Guest\OrderController@store')->name('order-pay
  ->namespace('Admin')
  ->middleware('auth')
  ->group(function () {
-   Route::get('', 'DashboardController@index')->name('dashboard');
+   Route::get('', 'DashboardController@chartjs')->name('dashboard');
    Route::resource('business', BusinessController::Class);
    Route::resource('product', ProductController::Class);
    Route::get('business/{id}/add', 'ProductController@add')->name('add-prod');
