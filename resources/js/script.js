@@ -82,6 +82,11 @@ new Vue({
       return this.businessesForType.length === 0 && !this.showBusinessesToRender;
     },
 
+    //RICERCA: scroll automatico in fondo alla pagina
+    scrollToBottom(){
+      document.documentElement.scrollIntoView(false);
+    },
+
     // CARRELLO: Aggiungi prodotto
     add (product_id, product_name, product_price) {
       let tot_price;
