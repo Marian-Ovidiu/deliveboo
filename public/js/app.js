@@ -1969,6 +1969,10 @@ new Vue({
     viewNoResults: function viewNoResults() {
       return this.businessesForType.length === 0 && !this.showBusinessesToRender;
     },
+    //RICERCA: scroll automatico in fondo alla pagina
+    scrollToBottom: function scrollToBottom() {
+      document.documentElement.scrollIntoView(false);
+    },
     // CARRELLO: Aggiungi prodotto
     add: function add(product_id, product_name, product_price) {
       var tot_price;
