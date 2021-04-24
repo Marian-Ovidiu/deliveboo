@@ -1,52 +1,63 @@
 .home-container {
 
+  .titles {
+    font-size: 2.4em;
+    font-weight: 800;
+    margin-bottom: 20px;
+    text-align: center;
+    @media (max-width: 800px) {
+      font-size: 2em;
+      margin-bottom: 14px;
+    }
+  }
+
+  .subtitles {
+    font-size: 1.7em;
+    font-weight: 700;
+    margin-bottom: 10px;
+    text-align: center;
+    @media (max-width: 800px) {
+      font-size: 1.2em;
+      margin-bottom: 8px;
+    }
+  }
+
   .row-jumbotron {
-    min-height: 350px;
+    min-height: 380px;
     background-image: url("/img/00-bg.jpg");
     background-position: bottom right;
     background-repeat: no-repeat;
     background-size: 100%;
 
-    & > .row {
-      max-width: 1200px;
-      height: 100%;
-      margin: auto;
+    .content {
+      padding: 0;
     }
+
     &-right {
-      @include flex;
+      height: 380px;
+      display: flex;
       justify-content: center;
+      align-items: flex-end;
       padding: 0 25px;
+      @media (max-width: 700px) {
+        height: 280px;
+      }
 
       img {
-        max-height: 350px;
+        max-height: 320px;
+        @media (max-width: 700px) {
+          max-height: 250px;
+        }
       }
     }
     &-row {
-      &-subtitle {
-        margin-bottom: 10px;
-        text-align: center;
-        font-size: 1.6em;
-        font-weight: 700;
+      .subtitles {
         color: $subtitle-col;
-        text-align: center;
       }
-      &-title {
-        transition: 1s;
+      .titles {
         margin-top: 6%;
         color:$title-col;
-        font-weight: 800;
-        font-size: 2.4rem;
-        text-align: center;
-      }
-      @media (max-width: 950px) {
-        &-title{
-          margin-top: 10%;
-        }
-      }
-      @media (max-width: 650px) {
-        &-title{
-          margin-top: 13%;
-        }
+        transition: 1s;
       }
       &-search {
         .input-group{
@@ -60,20 +71,16 @@
   }
 
   .types{
-    background: #33D16B;
+    background: $types-bg;
     padding: 30px 0;
     text-align: center;
-    h2 {
-      color: #1828F6;
-      font-size: 2.4em;
-      font-weight: 800;
-      margin-bottom: 20px;
+
+    .titles {
+      color: $types-title-col;
     }
     ul {
       @include flex;
       justify-content: center;
-      max-width: 1200px;
-      margin: auto;
 
       li {
         width: calc(100% / 4);
@@ -99,16 +106,16 @@
           }
         }
         .type-name {
-          background-color: #06AE41;
+          background-color: $types-link-bg;
           padding: 5px;
           transition: 0.4s;
         }
         a {
-          color: #FFFFFF;
+          color: $types-link-col;
           &:hover {
             text-decoration: none;
             & .type-name {
-              background-color: #000796;
+              background-color: $types-title-col;
             }
           }
         }
@@ -116,102 +123,69 @@
     }
   }
 
-  .row-restaurants{
-    background-color: rgba(200,200,200, 0.2);
+  .businesses {
+    background-color: $businesses-bg;
+    min-height: 380px;
+    background-image: url("/img/01-bg.jpg");
+    background-position: bottom left;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    .titles {
+      color: #FFFFFF;
+    }
+    .subtitles {
+      color: #B9C0FF;
+    }
+    .business {
+      @include flex;
+      font-size: 0.9em;
 
-    &-row{
-      text-align: center;
-      &-title {
-        font-size: 30px;
-        font-weight: bold;
+      li {
+        width: calc(100% / 3 - 80px);
+        margin: 20px 40px;
+        padding: 20px;
+        background-color: #EFEFFF;
+        box-shadow: 2px 2px 4px rgba(0, 0, 0, .4);
+        transition: 0.5s;
 
-        color: #3d4d67;
-        margin: 20px 0;
-      }
-      &-subtitle {
-        font-size: 20px;
-
-        color: #3d4d67;
-        margin-bottom: 20px;
-      }
-      @media (max-width: 950px) {
-        &-cards{
-          justify-content: space-between;
+        &:hover {
+          background-color: #FFFFFF;
+          transform: scale(1.06);
+          box-shadow: 2px 2px 4px rgba(0, 0, 0, .6);
         }
-      }
-      &-cards{
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        flex-wrap: wrap;
-        &-row {
-          background-color:  white;
-          &-card{
-            min-height: 475px;
-            transition: 0.4s;
-            &-click {
-              text-decoration: none;
-              &-product{
-                position: relative;
-                width: 90%;
-                height: 90%;
-                margin: auto;
-                transition: 0.4s;
-                &-img{
-                  width: 100%;
-                  height: 90px;
-                  text-align: center;
-                  background-size: contain;
-                  background-repeat: no-repeat;
-                  background-position: center;
-                  border-bottom: 1px solid lightgray;
-                }
-                &-body{
-                  text-align: center;
-                  height: calc(100% - 90px);
-                  &-name {
-                    font-weight: bold;
-                    font-size: 17px;
-                    margin: 7px auto;
-                    color: #3d4d67;
-                  }
-                  &-description{
-                    color: #3d4d67;
-                    text-decoration: none;
-                  }
-                  &-hours {
-                    position: absolute;
-                    bottom: 15%;
-                    left: 50%;
-                    transform: translate(-50%, 40%);
-                    color: #3d4d67;
-                  }
-                  &-title {
-                    color: #3d4d67;
-                    font-weight: bold;
-                    position: absolute;
-                    bottom: 25%;
-                    left: 50%;
-                    transform: translate(-50%, 65%);
-                  }
-                  &-address {
-                    position: absolute;
-                    bottom: 10px;
-                    transform: translate(0%, 50%);
-                    font-size: 10px;
-                    margin: 7px 30px;
-                    color: #3d4d67;
-                  }
-                }
-              }
-              &-product:hover{
-                transform: scale(1.05);
-                box-shadow: 3px 3px 3px black;
-              }
-            }
+
+        @media (max-width: 800px) {
+          width: 90%;
+        }
+
+        a {
+          @include flex-sp-btw;
+          flex-direction: column;
+          min-height: 450px;
+          color: #404040;
+          &:hover{
+            text-decoration: none;
           }
         }
       }
+      h3 {
+        margin: 14px 0;
+        font-size: 1.2em;
+        font-weight: 700;
+        text-transform: uppercase;
+      }
+      &-logo {
+        position: relative;
+        width: 100%;
+        height: 200px;
+        overflow: hidden;
+
+        img {
+          position: absolute;
+          width: 100%;
+          min-height: 200px;
+        }
+      }
     }
-  }
+    }
 }

@@ -12,6 +12,12 @@
   font-family: $main-font-family;
   font-size: $main-font-size;
 
+  .content {
+    max-width: $max-width-content;
+    margin: auto;
+    padding: 30px 0;
+  }
+
   ul {
     list-style: none;
   }

@@ -67,6 +67,21 @@ new Vue({
         })
     },
 
+    // RICERCA: Visualizzazione risultati per nome
+    viewNamesResults () {
+      return this.businessesForType.length === 0 && this.showBusinessesToRender;
+    },
+
+    // RICERCA: Visualizzazione risultati per tipo
+    viewTypesResults () {
+      return this.businessesForType.length > 0;
+    },
+
+    // RICERCA: Visualizzazione nessun risultato
+    viewNoResults () {
+      return this.businessesForType.length === 0 && !this.showBusinessesToRender;
+    },
+
     // CARRELLO: Aggiungi prodotto
     add (product_id, product_name, product_price) {
       let tot_price;
