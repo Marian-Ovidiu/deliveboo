@@ -74,7 +74,6 @@
                                 &-options{
                                     &-btn{
                                         font-size: 25px;
-                                        padding-bottom: 5px;
                                         border-radius: 50%;
                                         margin: auto;
                                         height: 45px;
@@ -87,6 +86,13 @@
                                         background-color: #f44336;
 
                                     }
+                                    @media (max-width: 500px) {
+                                        &-btn{
+                                        padding-bottom: 10px;
+                                        height: 30px;
+                                        width: 30px;
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -96,36 +102,6 @@
                         }
                     }
                 }
-            }
-        }
-        &-content {
-            &-row{
-                &-cart{
-                    border-bottom: 1px solid lightgray;
-                    &-row{
-                        &-current{
-                            &-row{
-                                border-bottom: 1px solid lightgrey;
-                                padding: 10px 0;
-                            }
-                        }
-                    }
-                }
-                &-summary{
-                    &-btn {
-                        text-align: center;
-                        background-color: #2d58ff;
-                        color:white;
-                        padding: 5px;
-                        border-radius: 5px;
-                    }
-                }
-            }
-
-        }
-        @media (max-width: 767px) {
-            .cart{
-                display: none;
             }
         }
     }

@@ -1,19 +1,20 @@
 footer {
-    color: lightgray;
-    .row{
-        background-color: #282C35;
-        margin-right: 0px;
+    color: #3d4d67;
+    font-family: "Monsterrat";
+    .row {
+        background-color: #33D16B;
         &-body-row{
             display: flex;
             flex-wrap: wrap;
             &-card{
                 transition: 1s;
                 &-title{
-                    font-size: 20px;
+                    font-size: 25px;
                     font-weight: bold;
                     margin: 10px 0;
                 }
                 &-text{
+                    font-size: 17px;
                     margin: 10px 0;
                 }
                 @media (max-width: 1150px) {
@@ -36,15 +37,38 @@ footer {
                 &-ul{
                     list-style: none;
                     li{
+                        font-size: 17px;
                         margin: 7px 0;
                     }
                 }
                 &-box{
-                    padding-left: 10px;
-                    margin: 15px 0;
+                    width: 100%;
+                    font-size: 17px;
+                    line-height: 35px;
                     &-img {
-                        margin-right: 10px;
+                        width: 15%;
+                        float: left;
                     }
+                    &-contact {
+                        float: left;
+                        width: 85%;
+                    }
+                    @media (max-width: 768px) {
+                        &-img{
+                        width: 5%;
+                        }
+                        &-contact{
+                            width: 95%;
+                        }
+                    }
+                }
+            }
+            &-card:nth-child(2){
+                padding-left: 30px;
+            }
+            @media (max-width: 575px) {
+                &-card:nth-child(2){
+                    padding: 0;
                 }
             }
         }

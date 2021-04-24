@@ -10140,10 +10140,10 @@ h3 {
     z-index: 100;
     top: 0;
     right: 0;
-    width: 100vw;
+    width: 35vh;
     height: 100vh;
     text-align: right;
-    background: #FFFFFF;
+    background: rgba(250, 250, 250, 0.7);
     padding: 35px;
   }
   .top-header-menu-sm > * {
@@ -10621,7 +10621,6 @@ h3 {
 }
 .business-main-row-content-row-products-row-product-row-options-btn {
   font-size: 25px;
-  padding-bottom: 5px;
   border-radius: 50%;
   margin: auto;
   height: 45px;
@@ -10633,28 +10632,16 @@ h3 {
 .business-main-row-content-row-products-row-product-row-options-btn:last-child {
   background-color: #f44336;
 }
+@media (max-width: 500px) {
+  .business-main-row-content-row-products-row-product-row-options-btn {
+    padding-bottom: 10px;
+    height: 30px;
+    width: 30px;
+  }
+}
 .business-main-row-content-row-products-row-product:hover {
   transform: scale(1.05);
   box-shadow: 5px 10px 14px black;
-}
-.business-main-row-content-row-cart {
-  border-bottom: 1px solid lightgray;
-}
-.business-main-row-content-row-cart-row-current-row {
-  border-bottom: 1px solid lightgrey;
-  padding: 10px 0;
-}
-.business-main-row-content-row-summary-btn {
-  text-align: center;
-  background-color: #2d58ff;
-  color: white;
-  padding: 5px;
-  border-radius: 5px;
-}
-@media (max-width: 767px) {
-  .business-main-row .cart {
-    display: none;
-  }
 }
 
 .header-restaurant-row-jumbotronn {
@@ -10664,42 +10651,46 @@ h3 {
   background-repeat: no-repeat;
 }
 .header-restaurant-row-jumbotronn-cover {
-  padding-top: 10%;
   height: 100%;
   width: 100vw;
   background-color: rgba(0, 0, 0, 0.5);
 }
 .header-restaurant-row-jumbotronn-cover-logo {
+  padding-top: 3%;
   transition: 1s;
   color: white;
   display: flex;
-  justify-items: center;
   flex-direction: column;
 }
 .header-restaurant-row-jumbotronn-cover-logo-img {
-  margin: 15px auto;
   width: 22%;
-  height: 45px;
+  height: 125px;
+  margin-left: 59px;
   transition: 1s;
   transform: scale(1.5);
   background-size: cover;
   background-position: center;
 }
-@media (max-width: 900px) {
+@media (max-width: 768px) {
   .header-restaurant-row-jumbotronn-cover-logo-img {
-    height: 35%;
+    width: 33%;
+    margin: auto;
+  }
+  .header-restaurant-row-jumbotronn-cover-logo-box {
+    text-align: center;
+    margin: 35px auto 0;
   }
 }
-@media (max-width: 635px) {
+@media (max-width: 532px) {
   .header-restaurant-row-jumbotronn-cover-logo-img {
-    margin: 15px auto;
-    height: 45px;
-    width: 22%;
+    width: 40%;
+    margin: auto;
   }
 }
 .header-restaurant-row-jumbotronn-cover-logo-box {
   transition: 1s;
-  margin: auto;
+  text-align: left;
+  margin-top: 35px;
 }
 .header-restaurant-row-jumbotronn-cover-logo-box-title {
   transition: 1s;
@@ -10709,58 +10700,22 @@ h3 {
   transition: 1s;
   font-size: 15px;
 }
-.header-restaurant-row-jumbotronn-cover-info {
-  transition: 0.2s;
-  color: white;
-}
-.header-restaurant-row-jumbotronn-cover-info-box {
-  text-align: right;
-}
-.header-restaurant-row-jumbotronn-cover-info-box-fee {
-  text-align: right;
-  float: right;
-}
-.header-restaurant-row-jumbotronn-cover-info-box-icon {
-  float: right;
-}
-.header-restaurant-row-jumbotronn-cover-info-box-icon i {
-  margin: 10px 20px;
-  font-size: 30px;
-  color: white;
-}
-.header-restaurant-row-jumbotronn-cover-info-box-select {
-  margin: 13px 10px;
-  border: none;
-  padding: 5px 10px;
-  background-color: #333;
-  color: white;
-  font-size: 13px;
-}
-.header-restaurant-row-jumbotronn-cover-info-box-select-items div:hover, .header-restaurant-row-jumbotronn-cover-info-box .same-as-selected {
-  background-color: rgba(0, 0, 0, 0.1);
-}
-@media (max-width: 768px) {
-  .header-restaurant-row-jumbotronn-cover-info-box-select {
-    display: none;
-  }
-}
-@media (max-width: 768px) {
-  .header-restaurant-row-jumbotronn-cover {
-    padding-top: 15%;
-  }
-}
 @media (max-width: 992px) {
-  .header-restaurant-row-jumbotronn-cover {
-    padding-top: 13%;
+  .header-restaurant-row-jumbotronn-cover-logo {
+    padding-top: 5%;
   }
 }
-
+@media (max-width: 768px) {
+  .header-restaurant-row-jumbotronn-cover-logo {
+    padding-top: 7%;
+  }
+}
 footer {
-  color: lightgray;
+  color: #3d4d67;
+  font-family: "Monsterrat";
 }
 footer .row {
-  background-color: #282C35;
-  margin-right: 0px;
+  background-color: #33D16B;
 }
 footer .row-body-row {
   display: flex;
@@ -10770,11 +10725,12 @@ footer .row-body-row-card {
   transition: 1s;
 }
 footer .row-body-row-card-title {
-  font-size: 20px;
+  font-size: 25px;
   font-weight: bold;
   margin: 10px 0;
 }
 footer .row-body-row-card-text {
+  font-size: 17px;
   margin: 10px 0;
 }
 @media (max-width: 1150px) {
@@ -10798,14 +10754,37 @@ footer .row-body-row-card-ul {
   list-style: none;
 }
 footer .row-body-row-card-ul li {
+  font-size: 17px;
   margin: 7px 0;
 }
 footer .row-body-row-card-box {
-  padding-left: 10px;
-  margin: 15px 0;
+  width: 100%;
+  font-size: 17px;
+  line-height: 35px;
 }
 footer .row-body-row-card-box-img {
-  margin-right: 10px;
+  width: 15%;
+  float: left;
+}
+footer .row-body-row-card-box-contact {
+  float: left;
+  width: 85%;
+}
+@media (max-width: 768px) {
+  footer .row-body-row-card-box-img {
+    width: 5%;
+  }
+  footer .row-body-row-card-box-contact {
+    width: 95%;
+  }
+}
+footer .row-body-row-card:nth-child(2) {
+  padding-left: 30px;
+}
+@media (max-width: 575px) {
+  footer .row-body-row-card:nth-child(2) {
+    padding: 0;
+  }
 }
 
 * {
@@ -10885,7 +10864,6 @@ footer .row-body-row-card-box-img {
 }
 .business-main-row-content-row-products-row-product-row-options-btn {
   font-size: 25px;
-  padding-bottom: 5px;
   border-radius: 50%;
   margin: auto;
   height: 45px;
@@ -10897,26 +10875,14 @@ footer .row-body-row-card-box-img {
 .business-main-row-content-row-products-row-product-row-options-btn:last-child {
   background-color: #f44336;
 }
+@media (max-width: 500px) {
+  .business-main-row-content-row-products-row-product-row-options-btn {
+    padding-bottom: 10px;
+    height: 30px;
+    width: 30px;
+  }
+}
 .business-main-row-content-row-products-row-product:hover {
   transform: scale(1.05);
   box-shadow: 5px 10px 14px black;
-}
-.business-main-row-content-row-cart {
-  border-bottom: 1px solid lightgray;
-}
-.business-main-row-content-row-cart-row-current-row {
-  border-bottom: 1px solid lightgrey;
-  padding: 10px 0;
-}
-.business-main-row-content-row-summary-btn {
-  text-align: center;
-  background-color: #2d58ff;
-  color: white;
-  padding: 5px;
-  border-radius: 5px;
-}
-@media (max-width: 767px) {
-  .business-main-row .cart {
-    display: none;
-  }
 }

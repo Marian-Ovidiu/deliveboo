@@ -6,40 +6,44 @@
             background-position: bottom;
             background-repeat: no-repeat;
             &-cover {
-                padding-top: 10%;
                 height: 100%;
                 width: 100vw;
                 background-color: rgba(0, 0, 0, 0.5);
                 &-logo{
+                    padding-top: 3%;
                     transition: 1s;
                     color:white;
                     display: flex;
-                    justify-items: center;
                     flex-direction: column;
                     &-img{
-                        margin: 15px auto;
                         width: 22%;
-                        height: 45px;
+                        height: 125px;
+                        margin-left: 59px;
                         transition: 1s;
                         transform: scale(1.5);
                         background-size: cover;
                         background-position: center;
                     }
-                    @media (max-width: 900px) {
-                        &-img{
-                            height: 35%;
+                    @media (max-width: 768px) {
+                        &-img {
+                            width:33%;
+                            margin: auto;
+                        }
+                        &-box{
+                            text-align: center;
+                            margin: 35px auto 0;
                         }
                     }
-                    @media (max-width: 635px) {
-                        &-img{
-                           margin: 15px auto;
-                           height: 45px;
-                           width: 22%;
+                    @media (max-width: 532px) {
+                        &-img {
+                            width:40%;
+                            margin: auto;
                         }
                     }
-                    &-box{
+                    &-box {
                         transition: 1s;
-                        margin: auto;
+                        text-align: left;
+                        margin-top: 35px;
                         &-title {
                             transition: 1s;
                             font-size: 25px;
@@ -50,51 +54,20 @@
                         }
                     }
                 }
-
-                &-info{
-                    transition: 0.2s;
-                    color:white;
-                    &-box{
-                        text-align: right;
-                        &-fee{
-                        text-align: right;
-                        float: right;
-                        }
-                        &-icon{
-                            float: right;
-                                i {
-                                    margin: 10px 20px;
-                                    font-size: 30px;
-                                    color:white;
-                                }
-                            }
-                        &-select{
-                            margin: 13px 10px;
-                            border:none;
-                            padding: 5px 10px;
-                            background-color: #333;
-                            color: white;
-                            font-size: 13px;
-                        }
-                        &-select-items div:hover, .same-as-selected {
-                            background-color: rgba(0, 0, 0, 0.1);
-                        }
-                        @media (max-width: 768px) {
-                            &-select{
-                                display:none;
-                            }
-                        }
+                @media (max-width: 992px) {
+                    &-logo{
+                        padding-top: 5%;
                     }
                 }
-            }
-            @media (max-width: 768px) {
-                &-cover{
-                    padding-top: 15%;
+                @media (max-width: 768px) {
+                    &-logo{
+                        padding-top: 7%;
+                    }
                 }
-            }
-            @media (max-width: 992px) {
-                &-cover{
-                    padding-top: 13%;
+                @media (max-width: 532px) {
+                    &-logo {
+
+                    }
                 }
             }
         }
