@@ -1,18 +1,7 @@
-// Body
-$body-bg: #f8fafc;
+// BGColors
 $main-bg: #FFFFFF;
-
-// Colors
-$blue: #3490dc;
-$indigo: #6574cd;
-$purple: #9561e2;
-$pink: #f66d9b;
-$red: #e3342f;
-$orange: #f6993f;
-$yellow: #ffed4a;
-$green: #38c172;
-$teal: #4dc0b5;
-$cyan: #6cb2eb;
+$types-bg: linear-gradient(#62D284, #2DCD65);
+$businesses-bg: #000048;
 
 // Text
 $main-font-family: 'Montserrat';
@@ -21,3 +10,9 @@ $link-col: #000138;
 $link-hover-col: #00BE43;
 $title-col: #00BE43;
 $subtitle-col: #000250;
+$types-title-col: #000BA0;
+$types-link-col: #FFFFFF;
+$types-link-bg: #06AE41;
+
+// Sizes
+$max-width-content: 1200px;

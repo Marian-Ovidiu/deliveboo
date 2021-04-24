@@ -1957,6 +1957,18 @@ new Vue({
         }
       });
     },
+    // RICERCA: Visualizzazione risultati per nome
+    viewNamesResults: function viewNamesResults() {
+      return this.businessesForType.length === 0 && this.showBusinessesToRender;
+    },
+    // RICERCA: Visualizzazione risultati per tipo
+    viewTypesResults: function viewTypesResults() {
+      return this.businessesForType.length > 0;
+    },
+    // RICERCA: Visualizzazione nessun risultato
+    viewNoResults: function viewNoResults() {
+      return this.businessesForType.length === 0 && !this.showBusinessesToRender;
+    },
     // CARRELLO: Aggiungi prodotto
     add: function add(product_id, product_name, product_price) {
       var tot_price;
