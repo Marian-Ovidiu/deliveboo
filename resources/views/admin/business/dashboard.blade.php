@@ -1,18 +1,17 @@
-@php
+{{-- @php
   $timestamp = strtotime(Auth::user()->created_at);
   $user_date = date("d m Y", $timestamp);
-@endphp
+@endphp --}}
 
 @extends('layouts.base')
-@section('content')
+{{-- @section('content') --}}
 
-{{-- User Header --}}
-<header class="header-dashboard">
+{{-- <header class="header-dashboard">
     <div class="header-dashboard-row">
             <div class=" header-dashboard-row-jumbotronn" style="background-image: url('https://wallpaperaccess.com/full/1306153.jpg')">
             <div class="  header-dashboard-row-jumbotronn-cover row">
                 <div class="col-1 header-dashboard-row-jumbotronn-cover-space"></div>
-                {{--immagine--}}
+
                 <div class="col-5 header-dashboard-row-jumbotronn-cover-logo">
                     <div class="header-dashboard-row-jumbotronn-cover-logo-img fl">
                         <img src="{{ asset('img/00-user-dash.png') }}" alt="{{ Auth::user()->name }}"" style="width:50px ">
@@ -25,6 +24,7 @@
                         <h6>Utente dal {{ $user_date }}</h6>
                     </div>
                 </div>
+
                 <div class="col-5 header-dashboard-row-jumbotronn-cover-btn">
                     <div class="header-dashboard-row-jumbotronn-cover-btn fl">
                         <div class="header-dashboard-row-jumbotronn-cover-btn ">
@@ -34,12 +34,12 @@
                         </div>
                     </div>
                 </div>
+
             </div>
             <div class="col-1 header-dashboard-row-jumbotronn-cover-space"></div>
         </div>
     </div>
 </header>
-{{-- /User Header --}}
 
 <div class="container-fluid">
     <main class="main-dashboard">
@@ -78,5 +78,4 @@
         </div>
     </main>
 </div>
-{{-- </div> --}}
-@endsection
+@endsection --}}
