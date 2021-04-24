@@ -10135,10 +10135,10 @@ h3 {
     z-index: 100;
     top: 0;
     right: 0;
-    width: 100vw;
+    width: 35vh;
     height: 100vh;
     text-align: right;
-    background: #FFFFFF;
+    background: rgba(250, 250, 250, 0.7);
     padding: 35px;
   }
   .top-header-menu-sm > * {
@@ -10288,17 +10288,18 @@ h3 {
   background-color: white;
 }
 .home-container .row-restaurants-row-cards-row-card {
-  min-height: 400px;
-  transition: 0.5s;
+  min-height: 475px;
+  transition: 0.4s;
 }
 .home-container .row-restaurants-row-cards-row-card-click {
   text-decoration: none;
 }
 .home-container .row-restaurants-row-cards-row-card-click-product {
+  position: relative;
   width: 90%;
   height: 90%;
   margin: auto;
-  transition: 1s;
+  transition: 0.4s;
 }
 .home-container .row-restaurants-row-cards-row-card-click-product-img {
   width: 100%;
@@ -10310,9 +10311,8 @@ h3 {
   border-bottom: 1px solid lightgray;
 }
 .home-container .row-restaurants-row-cards-row-card-click-product-body {
-  position: relative;
   text-align: center;
-  height: 235px;
+  height: calc(100% - 90px);
 }
 .home-container .row-restaurants-row-cards-row-card-click-product-body-name {
   font-weight: bold;
@@ -10322,10 +10322,11 @@ h3 {
 }
 .home-container .row-restaurants-row-cards-row-card-click-product-body-description {
   color: #3d4d67;
+  text-decoration: none;
 }
 .home-container .row-restaurants-row-cards-row-card-click-product-body-hours {
   position: absolute;
-  bottom: 20%;
+  bottom: 15%;
   left: 50%;
   transform: translate(-50%, 40%);
   color: #3d4d67;
@@ -10334,13 +10335,13 @@ h3 {
   color: #3d4d67;
   font-weight: bold;
   position: absolute;
-  bottom: 40%;
+  bottom: 25%;
   left: 50%;
   transform: translate(-50%, 65%);
 }
 .home-container .row-restaurants-row-cards-row-card-click-product-body-address {
   position: absolute;
-  bottom: 0;
+  bottom: 10px;
   transform: translate(0%, 50%);
   font-size: 10px;
   margin: 7px 30px;
@@ -10348,7 +10349,7 @@ h3 {
 }
 .home-container .row-restaurants-row-cards-row-card-click-product:hover {
   transform: scale(1.05);
-  box-shadow: 5px 10px 14px black;
+  box-shadow: 3px 3px 3px black;
 }
 
 .wrapper {
