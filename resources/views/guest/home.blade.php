@@ -2,6 +2,7 @@
 @section('title', 'Home')
 
 @section('content')
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
   {{-- HOME CONTAINER  --}}
   <div id="app" class="home-container">
@@ -14,27 +15,27 @@
 
         <div class="row-jumbotron-left col-md-8 col-sm-12">
           <div class="row-jumbotron-row row">
-            <div class="col-sm-12 row-jumbotron-row-title fl">
-              Deliveboo
+            <div class="col-sm-12 row-jumbotron-row-title">
+              Cerca. Scegli. Ordina.
             </div>
           </div>
           <div class="row-jumbotron-row row">
-            <div class="col-xl-12 col-lg-12 col-md-12 row-jumbotron-row-subtitle fl">
-              Delivered fresh and hot at your doorstep
+            <div class="col-xl-12 col-lg-12 col-md-12 row-jumbotron-row-subtitle">
+              Il tuo ristorante preferito a casa con un click.
             </div>
           </div>
           <div class="row-jumbotron-row row">
-            <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-2 row-jumbotron-row-space fl"></div>
-            <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-8 row-jumbotron-row-search fl">
+            <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-2 row-jumbotron-row-space"></div>
+            <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-8 row-jumbotron-row-search">
               <div class="input-group border rounded-pill p-3">
-                <input type="search" placeholder="Cerca per nome" class="form-control" @keyup = "filterBusinessesByName(query)" class="form-control" v-model="query" >
+                <input type="search" placeholder="Inserisci il nome del ristorante..." class="form-control" @keyup = "filterBusinessesByName(query)" class="form-control" v-model="query" >
               </div>
             </div>
-            <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-2 row-jumbotron-row-space fl"></div>
+            <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-2 row-jumbotron-row-space"></div>
           </div>
         </div>
         <div class="row-jumbotron-right col-md-4 col-sm-12">
-          <img src="{{asset('img/01-logo.png')}}" alt="Deliveboo">
+          <img src="{{asset('img/01-home.png')}}" alt="Deliveboo">
 
         </div>
       </div>
@@ -44,33 +45,18 @@
     {{-- / Jumbotron --}}
 
     {{-- Search by type --}}
-    <div class="row">
-      <div class="col-xl-12 col-lg-12 col-md-12 row-types">
-        <div class="row-types-row row">
-          <div class="col-xl-12 col-lg-12 col-md-12 row-types-row-title fl">
-            Scegli per categoria
-          </div>
-        </div>
-        <div class="row-types-row row">
-          <div class="col-xl-2 col-lg-2 col-md-2 row-types-row-space fl"></div>
-          <div class="col-xl-8 col-lg-8 col-md-8 row-types-row-types fl">
-            <div class="row-types-row-types-row row">
-              <div class="col-xl-3 col-lg-4 col-md-5 row-types-row-types-row-type" v-for="(type, i) in allTypes">
-                <div class="row-types-row-types-row-type-t">
-                  <a href="#restaurants-row" v-on:click="filterBusinessesByTypes(type.name)">
-                    <img alt="type.name" v-bind:src="type.img" class="rounded" width="200" height="100">
-                    <h6>
-                      <span style="color:black;">@{{ type.name }}</span>
-                    </h6>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-xl-2 col-lg-2 col-md-2 row-types-row-space fl"></div>
-        </div>
-      </div>
-    </div>
+    <section class="types">
+      <h2>Le nostre categorìe</h2>
+      <ul>
+        <li v-for="(type, i) in allTypes">
+          <a href="#restaurants-row" v-on:click="filterBusinessesByTypes(type.name)">
+            <img alt="type.name" v-bind:src="type.img">
+            <span class="type-name">@{{ type.name }}</span>
+          </a>
+        </li>
+      </ul>
+    </section>
+
     {{-- / Search by type --}}
 
     {{-- Restaurant List --}}
@@ -93,8 +79,8 @@
 
 
       <div id="restaurants" data-spy="restaurants" data-target="#restaurants" class="row-restaurants-row row">
-        <div class="col-xl-1 col-lg-1  col-md-1 col-sm-0 col-3 row-restaurants-row-space fl"></div>
-        <div class="col-xl-10 col-lg-10 col-md-10 col-sm-12 col-6 row-restaurants-row-cards fl">
+        <div class="col-xl-1 col-lg-1  col-md-1 col-sm-0 col-3 row-restaurants-row-space"></div>
+        <div class="col-xl-10 col-lg-10 col-md-10 col-sm-12 col-6 row-restaurants-row-cards">
 
           <div class="row-restaurants-row-cards-row row">
             <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 row-restaurants-row-cards-row-card"
@@ -154,7 +140,7 @@
         </div>
       </div>
     </div>
-    <div class="col-xl-1 col-lg-1 col-md-1 col-sm-0 col-3 row-restaurants-row-space fl">
+    <div class="col-xl-1 col-lg-1 col-md-1 col-sm-0 col-3 row-restaurants-row-space">
     </div>
     {{-- / Restaurant List --}}
 

@@ -9,32 +9,32 @@ class TypeSeeder extends Seeder
 
   public $typesList = [
           'Italiano',
-          'Etnico',
-          'Cinese',
-          'Giapponese',
-          'Vegano',
-          'Indiano',
-          'Messicano',
-          'Pizza',
-          'Panini',
+          'Pesce',
           'Carne',
+          'Pizza',
+          'Sandwiches',
+          'Vegetariano',
+          'Cinese',
           'Sushi',
-          'Dolci'
+          'Etnico',
+          'Spagnolo',
+          'Sud Americano',
+          'Pasticcerìa'
       ];
 
   public $imgsList = [
-          'https://just-eat-prod-eu-res.cloudinary.com/image/upload/c_fill,d_cms:wallpaper:fallback_4.jpg,h_151,w_387/c_fill,g_auto,f_auto,q_auto,dpr_2.0/v1/it/cuisine-icons/Italiano',
-          'https://just-eat-prod-eu-res.cloudinary.com/image/upload/c_fill,d_cms:wallpaper:fallback_4.jpg,h_151,w_387/c_fill,g_auto,f_auto,q_auto,dpr_2.0/v1/it/cuisine-icons/kebab',
-          'https://just-eat-prod-eu-res.cloudinary.com/image/upload/c_fill,d_cms:wallpaper:fallback_4.jpg,h_151,w_387/c_fill,g_auto,f_auto,q_auto,dpr_2.0/v1/it/cuisine-icons/Cinese',
-          'https://just-eat-prod-eu-res.cloudinary.com/image/upload/c_fill,d_cms:wallpaper:fallback_4.jpg,h_151,w_387/c_fill,g_auto,f_auto,q_auto,dpr_2.0/v1/it/cuisine-icons/Giapponese',
-          'https://just-eat-prod-eu-res.cloudinary.com/image/upload/c_fill,d_cms:wallpaper:fallback_4.jpg,h_151,w_387/c_fill,g_auto,f_auto,q_auto,dpr_2.0/v1/it/cuisine-icons/Vegano',
-          'https://just-eat-prod-eu-res.cloudinary.com/image/upload/c_fill,d_cms:wallpaper:fallback_4.jpg,h_151,w_387/c_fill,g_auto,f_auto,q_auto,dpr_2.0/v1/it/cuisine-icons/Indiano',
-          'https://just-eat-prod-eu-res.cloudinary.com/image/upload/c_fill,d_cms:wallpaper:fallback_4.jpg,h_151,w_387/c_fill,g_auto,f_auto,q_auto,dpr_2.0/v1/it/cuisine-icons/Messicano',
-          'https://just-eat-prod-eu-res.cloudinary.com/image/upload/c_fill,d_cms:wallpaper:fallback_4.jpg,h_151,w_387/c_fill,g_auto,f_auto,q_auto,dpr_2.0/v1/it/cuisine-icons/pizza',
-          'https://just-eat-prod-eu-res.cloudinary.com/image/upload/c_fill,d_cms:wallpaper:fallback_4.jpg,h_151,w_387/c_fill,g_auto,f_auto,q_auto,dpr_2.0/v1/it/cuisine-icons/panini',
-          'https://just-eat-prod-eu-res.cloudinary.com/image/upload/c_fill,d_cms:wallpaper:fallback_4.jpg,h_151,w_387/c_fill,g_auto,f_auto,q_auto,dpr_2.0/v1/it/cuisine-icons/argentino',
-          'https://just-eat-prod-eu-res.cloudinary.com/image/upload/c_fill,d_cms:wallpaper:fallback_4.jpg,h_151,w_387/c_fill,g_auto,f_auto,q_auto,dpr_2.0/v1/it/cuisine-icons/Sushi',
-          'https://just-eat-prod-eu-res.cloudinary.com/image/upload/c_fill,d_cms:wallpaper:fallback_4.jpg,h_151,w_387/c_fill,g_auto,f_auto,q_auto,dpr_2.0/v1/it/cuisine-icons/Dolci'
+    'img/00-type-ita.jpg',
+    'img/00-type-fish.jpg',
+    'img/00-type-steak.jpg',
+    'img/00-type-pizza.jpg',
+    'img/00-type-sandwich.jpg',
+    'img/00-type-vegetarian.jpg',
+    'img/00-type-chinese.jpg',
+    'img/00-type-sushi.jpg',
+    'img/00-type-etnic.jpg',
+    'img/00-type-spanish.jpg',
+    'img/00-type-southam.jpg',
+    'img/00-type-cakes.jpg'
       ];
 
     /**
