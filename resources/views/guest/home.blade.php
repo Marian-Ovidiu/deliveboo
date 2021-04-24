@@ -6,11 +6,8 @@
   <div id="app" class="home-container">
 
     {{-- Jumbotron --}}
-
-
     <div class="row-jumbotron">
       <div class="row content">
-
         <div class="row-jumbotron-left col-md-8 col-sm-12">
           <div class="row-jumbotron-row row">
             <div class="col-sm-12 titles">
@@ -38,8 +35,6 @@
         </div>
       </div>
     </div>
-
-
     {{-- / Jumbotron --}}
 
     {{-- Search by type --}}
@@ -56,7 +51,6 @@
         </ul>
       </div>
     </section>
-
     {{-- / Search by type --}}
 
     {{-- Businesses List --}}
@@ -70,50 +64,63 @@
         </h2>
 
         <ul class="business">
-          <li v-if="viewNamesResults()" v-for="(business, i) in businessesToRender" :key="i">
+        {{-- by name --}}
+          <li class="business-item" v-if="viewNamesResults()" v-for="(business, i) in businessesToRender" :key="i">
             <a :href="'business/'+ business.id">
-            <div class="business-logo">
-              <img :src="business.logo" alt="business.name">
-            </div>
-            <h3>@{{ business.name }}</h3>
-            <div v-if="business.description.length > 100">
-              @{{ business.description.slice(0, 100) }}[...]
-            </div>
-            <div v-else>
-              @{{ business.description }}
-            </div>
-            <div>
-              <span>Dalle: @{{ business.opening_time }}</span><br>
-              <span>Alle: @{{ business.closing_time }}</span>
-            </div>
-            <div>
-              <i class="fas fa-map-marker-alt"></i>
-              @{{ business.address }}
-            </div>
-          </a>
+              <div class="business-item-top">
+                <div class="business-item-top-logo">
+                  <img :src="business.logo" alt="business.name">
+                </div>
+                <h3>@{{ business.name }}</h3>
+              </div>
+              <div class="business-item-description" v-if="business.description.length > 100">
+                @{{ business.description.slice(0, 100) }}[...]
+              </div>
+              <div class="business-item-description" v-else>
+                @{{ business.description }}
+              </div>
+              <div class="business-item-time">
+                <span>Dalle: @{{ business.opening_time }}</span><br>
+                <span>Alle: @{{ business.closing_time }}</span>
+              </div>
+              <div class="business-item-address">
+                <i class="fas fa-map-marker-alt"></i>
+                @{{ business.address }}
+              </div>
+            </a>
           </li>
-          <li v-if="viewTypesResults()" v-for="(business, i) in businessesForType" :key="i">
+          {{-- / by name --}}
+          {{-- by type --}}
+          <li class="business-item" v-if="viewTypesResults()" v-for="(business, i) in businessesForType" :key="i">
             <a :href="'business/'+ business.id">
-            <div class="business-logo">
-              <img :src="business.logo" alt="business.name">
-            </div>
-            <h3>@{{ business.name }}</h3>
-            <div v-if="business.description.length > 100">
-              @{{ business.description.slice(0, 100) }}[...]
-            </div>
-            <div v-else>
-              @{{ business.description }}
-            </div>
-            <i class="fas fa-map-marker-alt"></i>
-            <span>Dalle: @{{ business.opening_time }}</span><br>
-            <span>Alle: @{{ business.closing_time }}</span>
-            @{{ business.address }}
-          </a>
+              <div class="business-item-top">
+                <div class="business-item-top-logo">
+                  <img :src="business.logo" alt="business.name">
+                </div>
+                <h3>@{{ business.name }}</h3>
+              </div>
+              <div class="business-item-description" v-if="business.description.length > 100">
+                @{{ business.description.slice(0, 100) }}[...]
+              </div>
+              <div v-else>
+                @{{ business.description }}
+              </div>
+              <div class="business-item-time">
+                <span>Dalle: @{{ business.opening_time }}</span><br>
+                <span>Alle: @{{ business.closing_time }}</span>
+              </div>
+              <div class="business-item-address">
+                <i class="fas fa-map-marker-alt"></i>
+                @{{ business.address }}
+              </div>
+            </a>
           </li>
+          {{-- / by type --}}
         </ul>
       </div>
     </section>
     {{-- / Businesses List --}}
-  </div>
 
+  </div>
+  {{-- /HOME CONTAINER  --}}
 @endsection
