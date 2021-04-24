@@ -85,7 +85,7 @@
                             {{-- row: address --}}
                             <div class="form-group">
                                 <label for="customer_address"><b>Indirizzo</b></label>
-                                <input type="text" class="form-control {{ $errors->has('customer_address') ? 'is-invalid' : '' }}" id="customer_address_number" name="customer_address_number" placeholder="Indirizzo">
+                                <input type="text" class="form-control {{ $errors->has('customer_address') ? 'is-invalid' : '' }}" id="customer_address" name="customer_address" placeholder="Indirizzo">
                                 <div class="invalid-feedback">
                                     {{ $errors->first('customer_address') }}
                                 </div>
