@@ -10644,78 +10644,12 @@ h3 {
   box-shadow: 5px 10px 14px black;
 }
 
-.header-restaurant-row-jumbotronn {
-  height: 275px;
-  background-size: 100%;
-  background-position: bottom;
-  background-repeat: no-repeat;
-}
-.header-restaurant-row-jumbotronn-cover {
-  height: 100%;
-  width: 100vw;
-  background-color: rgba(0, 0, 0, 0.5);
-}
-.header-restaurant-row-jumbotronn-cover-logo {
-  padding-top: 3%;
-  transition: 1s;
-  color: white;
-  display: flex;
-  flex-direction: column;
-}
-.header-restaurant-row-jumbotronn-cover-logo-img {
-  width: 22%;
-  height: 125px;
-  margin-left: 59px;
-  transition: 1s;
-  transform: scale(1.5);
-  background-size: cover;
-  background-position: center;
-}
-@media (max-width: 768px) {
-  .header-restaurant-row-jumbotronn-cover-logo-img {
-    width: 33%;
-    margin: auto;
-  }
-  .header-restaurant-row-jumbotronn-cover-logo-box {
-    text-align: center;
-    margin: 35px auto 0;
-  }
-}
-@media (max-width: 532px) {
-  .header-restaurant-row-jumbotronn-cover-logo-img {
-    width: 40%;
-    margin: auto;
-  }
-}
-.header-restaurant-row-jumbotronn-cover-logo-box {
-  transition: 1s;
-  text-align: left;
-  margin-top: 35px;
-}
-.header-restaurant-row-jumbotronn-cover-logo-box-title {
-  transition: 1s;
-  font-size: 25px;
-}
-.header-restaurant-row-jumbotronn-cover-logo-box-types {
-  transition: 1s;
-  font-size: 15px;
-}
-@media (max-width: 992px) {
-  .header-restaurant-row-jumbotronn-cover-logo {
-    padding-top: 5%;
-  }
-}
-@media (max-width: 768px) {
-  .header-restaurant-row-jumbotronn-cover-logo {
-    padding-top: 7%;
-  }
-}
 footer {
   color: #3d4d67;
-  font-family: "Monsterrat";
+  font-family: "Montserrat";
 }
 footer .row {
-  background-color: #33D16B;
+  background-color: #FFFFFF;
 }
 footer .row-body-row {
   display: flex;

@@ -1,8 +1,8 @@
 footer {
     color: #3d4d67;
-    font-family: "Monsterrat";
+    font-family: $main-font-family;
     .row {
-        background-color: #33D16B;
+        background-color: #FFFFFF;
         &-body-row{
             display: flex;
             flex-wrap: wrap;
