@@ -56,11 +56,10 @@
     {{-- Businesses List --}}
     <section class="businesses" id="restaurants-row">
       <div class="content">
-
         <h2 class="titles">Scegli il tuo ristorante</h2>
         <h3 class="subtitles">Consulta il menu e ordina i prodotti che vuoi</h3>
         <h2 class="error" v-if="viewNoResults()">
-          Non sono presenti ristoranti in questa categoria! &nbsp; : (
+          Non sono presenti ristoranti in questa categoria! &nbsp;&nbsp; <b>: (</b>
         </h2>
 
         <ul class="business">

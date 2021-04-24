@@ -136,6 +136,13 @@
     .subtitles {
       color: #B9C0FF;
     }
+    .error{
+      margin: 25px 0;
+      font-size: 1.3em;
+      text-align: center;
+      color: #FFFFFF;
+
+    }
     .business {
       @include flex;
       font-size: 0.9em;

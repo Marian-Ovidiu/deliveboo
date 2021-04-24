@@ -10321,6 +10321,12 @@ h3 {
 .home-container .businesses .subtitles {
   color: #B9C0FF;
 }
+.home-container .businesses .error {
+  margin: 25px 0;
+  font-size: 1.3em;
+  text-align: center;
+  color: #FFFFFF;
+}
 .home-container .businesses .business {
   display: flex;
   flex-wrap: wrap;
