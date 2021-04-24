@@ -62,25 +62,28 @@
         <h2 class="error" v-if="viewNoResults()">
           Non sono presenti ristoranti in questa categoria! &nbsp; : (
         </h2>
-        {{-- by name --}}
+
         <ul class="business">
-          <li v-if="viewNamesResults()" v-for="(business, i) in businessesToRender" :key="i">
+        {{-- by name --}}
+          <li class="business-item" v-if="viewNamesResults()" v-for="(business, i) in businessesToRender" :key="i">
             <a :href="'business/'+ business.id">
-              <div class="business-logo">
-                <img :src="business.logo" alt="business.name">
+              <div class="business-item-top">
+                <div class="business-item-top-logo">
+                  <img :src="business.logo" alt="business.name">
+                </div>
+                <h3>@{{ business.name }}</h3>
               </div>
-              <h3>@{{ business.name }}</h3>
-              <div v-if="business.description.length > 100">
+              <div class="business-item-description" v-if="business.description.length > 100">
                 @{{ business.description.slice(0, 100) }}[...]
               </div>
-              <div v-else>
+              <div class="business-item-description" v-else>
                 @{{ business.description }}
               </div>
-              <div>
+              <div class="business-item-time">
                 <span>Dalle: @{{ business.opening_time }}</span><br>
                 <span>Alle: @{{ business.closing_time }}</span>
               </div>
-              <div>
+              <div class="business-item-address">
                 <i class="fas fa-map-marker-alt"></i>
                 @{{ business.address }}
               </div>
@@ -88,23 +91,25 @@
           </li>
           {{-- / by name --}}
           {{-- by type --}}
-          <li v-if="viewTypesResults()" v-for="(business, i) in businessesForType" :key="i">
+          <li class="business-item" v-if="viewTypesResults()" v-for="(business, i) in businessesForType" :key="i">
             <a :href="'business/'+ business.id">
-              <div class="business-logo">
-                <img :src="business.logo" alt="business.name">
+              <div class="business-item-top">
+                <div class="business-item-top-logo">
+                  <img :src="business.logo" alt="business.name">
+                </div>
+                <h3>@{{ business.name }}</h3>
               </div>
-              <h3>@{{ business.name }}</h3>
-              <div v-if="business.description.length > 100">
+              <div class="business-item-description" v-if="business.description.length > 100">
                 @{{ business.description.slice(0, 100) }}[...]
               </div>
               <div v-else>
                 @{{ business.description }}
               </div>
-              <div>
+              <div class="business-item-time">
                 <span>Dalle: @{{ business.opening_time }}</span><br>
                 <span>Alle: @{{ business.closing_time }}</span>
               </div>
-              <div>
+              <div class="business-item-address">
                 <i class="fas fa-map-marker-alt"></i>
                 @{{ business.address }}
               </div>
@@ -115,6 +120,7 @@
       </div>
     </section>
     {{-- / Businesses List --}}
-  </div>
 
+  </div>
+  {{-- /HOME CONTAINER  --}}
 @endsection
