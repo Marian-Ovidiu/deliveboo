@@ -1,4 +1,4 @@
-@extends('admin.layout')
+@extends('layouts.base')
 
 @section('content')
   @dump($errors)

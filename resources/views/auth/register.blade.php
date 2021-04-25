@@ -1,7 +1,8 @@
 @extends('layouts.base')
 
 @section('content')
-  <div class="container">
+  <div class="centering">
+    <div class="container">
     <div class="row justify-content-center">
       {{-- Registration table --}}
       <div class="col-md-8">
@@ -124,4 +125,5 @@
                   {{-- / Registration table --}}
                 </div>
               </div>
-            @endsection
+  </div>
+@endsection

@@ -4,7 +4,13 @@
 }
 
 @mixin flex-sp-btw {
-  display: flex;
-  flex-wrap: wrap;
+  @include flex;
   justify-content: space-between;
+}
+
+@mixin flex-center {
+  @include flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
