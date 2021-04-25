@@ -80,7 +80,9 @@
     {{-- / Header --}}
 
     {{-- Main content --}}
-    @yield('content')
+    <main>
+      @yield('content')
+    </main>
     {{-- / Main content --}}
 
     {{-- Footer --}}
