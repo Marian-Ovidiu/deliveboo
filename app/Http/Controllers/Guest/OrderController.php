@@ -63,7 +63,7 @@ class OrderController extends Controller
       $order->save();
       $order->products()->attach($products);
       $mailableObject = new NewOrderReceived($order);
-      Mail::to('prova@mail.it')->send($mailableObject);
+      Mail::to($order->customer_email)->send($mailableObject);
       return view('guest.order-success', compact('transaction'));
     } else {
       $errors = [];
