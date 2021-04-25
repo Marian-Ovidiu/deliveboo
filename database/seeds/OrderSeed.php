@@ -27,6 +27,8 @@ class OrderSeed extends Seeder
             $order->city = $faker->city;
             $order->postal_code = rand(10000, 99999);
             $order->success = rand(0, 1);
+            $order->created_at = $faker->dateTimeBetween('-2 month', '+1 month');
+            $order->updated_at = $faker->dateTimeBetween('-2 month', '+2 month');
             $order->save();
         }
 

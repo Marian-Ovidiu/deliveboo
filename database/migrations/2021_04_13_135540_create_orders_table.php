@@ -24,7 +24,6 @@ class CreateOrdersTable extends Migration
             $table->float('amount', 6, 2);
             $table->boolean('success');
             $table->timestamps();
-
         });
     }
 

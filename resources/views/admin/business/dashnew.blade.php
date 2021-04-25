@@ -1,3 +1,6 @@
+{{-- @dump($chart) --}}
+{{-- @dump($graphicsOrder) --}}
+
 @extends('layouts.base')
 @section('content')
 
@@ -48,30 +51,29 @@
     <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
             <h1 class="h2">Statistiche</h1>
-
         </div>
-        <canvas class="my-4" id="pie-chart" width="900" height="380"></canvas>
+        <canvas class="my-4" id="my-chart" width="900" height="380"></canvas>
 
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
             <h1 class="h2">I miei Ristoranti</h1>
-
         </div>
-
     </main>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+<!-- CHARTS -->
 <script>
-$(function(){
+    $(function(){
       //get the pie chart canvas
       var cData = JSON.parse(`<?php echo $chart_data; ?>`);
-      var ctx = $("#pie-chart");
+      var ctx = $("#my-chart");
 
       //pie chart data
       var data = {
         labels: cData.label,
         datasets: [
           {
-            label: "Users Count",
+            label: "Ordini andati a buon fine",
             data: cData.data,
             backgroundColor: [
               "#DEB887",
@@ -91,34 +93,37 @@ $(function(){
               "#F4A460",
               "#CDA776",
             ],
-            borderWidth: [1, 1, 1, 1, 1,1,1]
+            borderWidth: [1, 1, 1, 1, 1, 1, 1]
           }
         ]
       };
 
       //options
       var options = {
+        // scale: {
+
+        // },
         responsive: true,
         title: {
-          display: true,
-          position: "top",
-          text: "Last Week Registered Users -  Day Wise Count",
-          fontSize: 18,
-          fontColor: "#111"
+            display: true,
+            position: "top",
+            text: "Last Week Registered Users -  Day Wise Count",
+            fontSize: 18,
+            fontColor: "#111"
         },
         legend: {
-          display: true,
-          position: "bottom",
-          labels: {
-            fontColor: "#333",
-            fontSize: 16
-          }
+            display: true,
+            position: "bottom",
+            labels: {
+                fontColor: "#333",
+                fontSize: 16
+            }
         }
       };
 
-      //create Pie Chart class object
+      //create Bar Chart class object
       var chart1 = new Chart(ctx, {
-        type: "line",
+        type: "bar",
         data: data,
         options: options
       });

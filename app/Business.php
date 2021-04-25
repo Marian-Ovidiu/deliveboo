@@ -20,7 +20,6 @@ class Business extends Model
       'telephone',
       'email',
       'website'
-
   ];
 
     public function user()

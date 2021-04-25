@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\User;
 use App\Business;
+use App\Order;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB as DB;
 
@@ -17,21 +18,40 @@ class DashboardController extends Controller
         return view('admin.business.dashnew', compact('businesses'));
     }
 
-    public function chartjs() {
-        $record = User::select(DB::raw("COUNT(*) as count"), DB::raw("DAYNAME(created_at) as day_name"), DB::raw("DAY(created_at) as day"))
-        ->where('created_at', '>', Carbon::today()->subDay(6))
-        ->groupBy('day_name','day')
-        ->orderBy('day')
+    public function chartjs(Request $request) {
+        $loggedUser = Auth::user()->id;
+
+        $record = Order::select(
+            DB::raw("SUM(amount) as count"),
+            DB::raw("YEAR(created_at) as year"),
+            DB::raw("MONTHNAME(created_at) as month")
+        )
+        // ->join('order_product', 'orders.id', '=', 'order_id')
+        // ->join('products', 'products.id', '=', 'order_product.product_id')
+        // ->join('businesses', 'products.business_id', '=', $loggedUser)
+        ->where('created_at', '>', Carbon::today()->subDay(4))
+        ->groupBy('year','month')
+        ->orderBy('created_at', 'asc')
         ->get();
 
         $data = [];
 
         foreach($record as $row) {
-            $data['label'][] = $row->day_name;
+            $data['label'][] = $row->month;
             $data['data'][] = (int) $row->count;
         }
 
         $data['chart_data'] = json_encode($data);
         return view('admin.business.dashnew', $data);
+
+        // $userId = $request->user()->id;
+        // $businessId = User::find($userId)->businessId;
+        // $orders = Order::all()->where('business_id', $businessId);
+
+        // foreach ($orders as $item) {
+        //     $item->order = $item->order;
+        // }
+
+        // return view('admin.business.dashnew', compact('orders'));
     }
 }
