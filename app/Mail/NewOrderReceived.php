@@ -33,7 +33,7 @@ class NewOrderReceived extends Mailable
     {
         $order = $this->order;
         return $this->from('info@deliveboo.com', 'Deliveboo')
-                    ->subject('Mailtrap Confirmation')
+                    ->subject('Conferma Ordine Deliveboo')
                     ->markdown('mail.order-received', compact('order'));
     }
 }

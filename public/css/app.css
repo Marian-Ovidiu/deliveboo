@@ -10080,6 +10080,15 @@ h3 {
   margin: auto;
   padding: 30px 0;
 }
+.wrapper .centering {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(80vh - 100px);
+  padding: 70px 0;
+}
 .wrapper ul {
   list-style: none;
 }
@@ -10096,6 +10105,7 @@ h3 {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  height: 100px;
   position: relative;
   align-items: center;
   width: 100%;
@@ -10152,6 +10162,77 @@ h3 {
   .top-header-menu-sm > * {
     margin: 15px 0;
   }
+}
+
+.business {
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 0.9em;
+}
+.business-item {
+  width: calc(100% / 3 - 80px);
+  margin: 20px 40px;
+  background-color: #EFEFFF;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+  transition: 0.5s;
+}
+.business-item:hover {
+  background-color: #FFFFFF;
+  transform: scale(1.06);
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+}
+@media (max-width: 800px) {
+  .business-item {
+    width: 90%;
+  }
+}
+.business-item-top {
+  background-color: #6B9BBF;
+  padding: 10px;
+}
+.business-item-top-logo {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+}
+.business-item-top h3 {
+  padding: 10px;
+  font-size: 1.2em;
+  font-weight: 700;
+  color: #FFFFFF;
+  text-shadow: 1px 1px 2px #000000;
+  text-transform: uppercase;
+}
+.business-item-description {
+  padding: 28px;
+  min-height: 120px;
+}
+.business-item-time {
+  background-color: #4BB98C;
+  color: #FFFFFF;
+  text-shadow: 1px 1px 2px #000000;
+  padding: 10px;
+}
+.business-item-address {
+  font-size: 0.9em;
+  padding: 30px;
+}
+.business-item a {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  flex-direction: column;
+  min-height: 450px;
+  color: #404040;
+}
+.business-item a:hover {
+  text-decoration: none;
+}
+.business-item img {
+  position: absolute;
+  width: 100%;
+  min-height: 200px;
 }
 
 .bottom-footer {
@@ -10234,12 +10315,7 @@ h3 {
   }
 }
 .home-container .row-jumbotron-right img {
-  max-height: 320px;
-}
-@media (max-width: 700px) {
-  .home-container .row-jumbotron-right img {
-    max-height: 250px;
-  }
+  max-height: 90%;
 }
 .home-container .row-jumbotron-row .subtitles {
   color: #000250;
@@ -10326,76 +10402,6 @@ h3 {
   font-size: 1.3em;
   text-align: center;
   color: #FFFFFF;
-}
-.home-container .businesses .business {
-  display: flex;
-  flex-wrap: wrap;
-  font-size: 0.9em;
-}
-.home-container .businesses .business-item {
-  width: calc(100% / 3 - 80px);
-  margin: 20px 40px;
-  background-color: #EFEFFF;
-  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
-  transition: 0.5s;
-}
-.home-container .businesses .business-item:hover {
-  background-color: #FFFFFF;
-  transform: scale(1.06);
-  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
-}
-@media (max-width: 800px) {
-  .home-container .businesses .business-item {
-    width: 90%;
-  }
-}
-.home-container .businesses .business-item-top {
-  background-color: #6B9BBF;
-  padding: 10px;
-}
-.home-container .businesses .business-item-top-logo {
-  position: relative;
-  width: 100%;
-  height: 200px;
-  overflow: hidden;
-}
-.home-container .businesses .business-item-top h3 {
-  padding: 10px;
-  font-size: 1.2em;
-  font-weight: 700;
-  color: #FFFFFF;
-  text-shadow: 1px 1px 2px #000000;
-  text-transform: uppercase;
-}
-.home-container .businesses .business-item-description {
-  padding: 28px;
-  min-height: 120px;
-}
-.home-container .businesses .business-item-time {
-  background-color: #4BB98C;
-  color: #FFFFFF;
-  text-shadow: 1px 1px 2px #000000;
-  padding: 10px;
-}
-.home-container .businesses .business-item-address {
-  font-size: 0.9em;
-  padding: 30px;
-}
-.home-container .businesses .business-item a {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  flex-direction: column;
-  min-height: 450px;
-  color: #404040;
-}
-.home-container .businesses .business-item a:hover {
-  text-decoration: none;
-}
-.home-container .businesses .business-item img {
-  position: absolute;
-  width: 100%;
-  min-height: 200px;
 }
 
 .wrapper {

@@ -63,8 +63,8 @@ class OrderController extends Controller
       $order->save();
       $order->products()->attach($products);
       $mailableObject = new NewOrderReceived($order);
-      Mail::to('prova@mail.it')->send($mailableObject);
-      return view('guest.order-success', compact('transaction'));
+      Mail::to($order->customer_email)->send($mailableObject);
+      return view('guest.order-success');
     } else {
       $errors = [];
       foreach($result->errors->deepAll() as $error) {
@@ -73,7 +73,7 @@ class OrderController extends Controller
       $order->success = 0;
       $order->save();
       $order->products()->attach($products);
-      return view('guest.order-error', compact('errors'));
+      return view('guest.order-error');
     }
   }
   // Gestione VALIDAZIONE campi
