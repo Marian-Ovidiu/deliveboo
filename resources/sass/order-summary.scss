@@ -1,1 +1,35 @@
 
+.container-row{
+    .col-7{
+        padding: 40px 0;
+        background-color: #023ca0;
+    }
+    .recap-table{
+        padding: 40px 0;
+        background-color: #006dfa;
+        .row{
+            .col-10{
+                .table{
+                    thead{
+                        tr{
+                            th{
+                                color:white;
+                            }
+                        }
+                    }
+                    tbody{
+                        tr{
+                            td{
+                                color:white;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        th{
+            color: white;
+        }
+    }
+}
+
