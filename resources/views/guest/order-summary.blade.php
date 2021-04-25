@@ -1,4 +1,4 @@
-@extends('layout.base')
+@extends('layouts.base')
 @section('title', 'Il tuo ordine')
 @section('content')
 <script src="https://js.braintreegateway.com/web/dropin/1.27.0/js/dropin.min.js"></script>
