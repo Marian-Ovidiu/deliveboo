@@ -80,7 +80,7 @@ if ($edit) {
   </div>
   {{-- row: visible --}}
 
-  <input type="hidden" name="business_id" id="business_id" value="{{ isset($product) ? $product->business_id : $business_id }}">
+  <input type="hidden" name="business_id" id="business_id" value="{{ isset($product) ? $product->business_id : $business_id}}">
 
   <button type="submit" class="btn btn-primary">{{$submit}} prodotto</button>
 </form>

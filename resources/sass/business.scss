@@ -1,0 +1,100 @@
+.fl{
+    float: left;
+}
+
+.header-row{
+    background-image: $types-bg;
+    color:white;
+    &-jumbotronn{
+        padding: 3% 0;
+        height: 300px;
+        &-container{
+            text-align: center;
+            height: 100%;
+            width:50%;
+            &-img{
+                height: 100%;
+                width: 65%;
+                margin: auto;
+                background-size: cover;
+                box-shadow: 5px 5px $businesses-bg;
+            }
+            &-title{
+
+                font-weight: bold;
+                margin-top: 12%;
+                font-size: 30px;
+                font-family: $main-font-family;
+            }
+        }
+   }
+}
+
+.main-row {
+    background-color: $subtitle-col;
+    color:white;
+    &-main{
+        &-row{
+            &-title{
+                margin-top: 15px;
+                font-size: 30px;
+                font-weight: bold;
+                font-family: $main-font-family;
+            }
+            &-products{
+                &-row{
+                    padding: 0;
+                    background-color: $types-title-col;
+                    margin: 20px 0;
+                    transition: 0.4s;
+                    height: 160px;
+                    &-name{
+                        padding: 0;
+                        &-img{
+                            width: 40%;
+                            height: 100%;
+                            background-size: cover;
+                        }
+                        &-container{
+                            width:60%;
+                            padding-left: 10px;
+                            &-title{
+                                font-size: 20px;
+                                font-weight: bold;
+                            }
+                        }
+                    }
+                    &-price{
+                    }
+                    &-options{
+                        &-btn{
+                            color: white;
+                            font-size: 20px;
+                            width: 90%;
+                            padding: 5px;
+                            border: none;
+                            border-radius: 5px;
+                            background-color: $types-link-bg;
+                        }
+                        &-btn:first-child{
+                            margin-top: 25px;
+                        }
+                    }
+                }
+                &-row:hover{
+                    transform: scale(1.05);
+                    box-shadow: 1px 1px white;
+                }
+            }
+        }
+    }
+    aside{
+        .card:first-child{
+            margin-top: 50px;
+        }
+        .card{
+            background-color: transparent;
+            border: 1px solid gray;
+        }
+    }
+}
