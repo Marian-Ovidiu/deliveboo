@@ -11,7 +11,7 @@
             </div>
             <div class="header-row-jumbotronn-container fl">
                 <div class="header-row-jumbotronn-container-title">{{ $business->name }}</div>
-                <div class="header-row-jumbotronn-container-types">
+                <div class="header-row-jumbotronn-container-types" style="margin-bottom: 25px;">
                     @foreach ($business->types as $id => $type)
                         {{ $type->name }}
                         @if ($id != (count($business->types) - 1))
@@ -19,9 +19,7 @@
                         @endif
                     @endforeach
                 </div>
-                <div class="header-row-jumbotronn-container-btn">
-                    <a href="{{ route('add-prod', [ 'id' => $business->id ]) }}" class="btn btn-sm"><div class="header-restaurant-row-jumbotronn-cover-logo-box-adding-create">Aggiungi Piatto</div></a>
-                </div>
+                <a href="{{ route('add-prod', [ 'id' => $business->id ]) }}">Aggiungi un nuovo piatto</a>
             </div>
         </div>
         <div class="offset-1"></div>
@@ -48,61 +46,47 @@
                         </div>
                         <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-2 main-row-main-row-products-row-price"><strong>Prezzo</strong> <br><br> {{ $product->price }}€</div>
                         <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-2 main-row-main-row-products-row-options" style="text-align: center">
-                            <button type="button" class="main-row-main-row-products-row-options-btn" v-on:click = "add({{$product->id}}, '{{$product->name}}', {{$product->price}})">+</button><br><br>
-                            <button type="button" class="main-row-main-row-products-row-options-btn" v-on:click = "remove({{$product->id}}, {{$product->price}})">-</button>
+                            <a class="main-row-main-row-products-row-options-btn btn" href="{{ route('product.edit', compact('product'))}}">
+                                <i class="fa fa-edit" aria-hidden="true"></i>
+                            </a>
+                            <form action="{{route('product.destroy', compact('product'))}}" method="POST">
+                                @method('DELETE')
+                                @csrf
+                                <button class="main-row-main-row-products-row-options-btn btn" style="margin-top: 20px;color: #000138;">
+                                    <i class="fas fa-meteor"></i>
+                                </button>
+                            </form>
                         </div>
                     </div>
                     @endforeach
                 </div>
             </div>
         </div>
-        <aside class="col-xl-3 col-lg-3 col-md-3 col-sm-10 col-10">
-            <div class="card mb-3">
-                <div class="card-body">
-                    <form>
-                        <div class="form-group">
-                            <label>Coupon</label>
-                            <div class="input-group">
-                                <input type="text" class="form-control coupon" v-model="couponCode" name="" placeholder="Coupon code">
-                                <span class="input-group-append">
-                                    <button @click="discountCoupon" class="btn btn-primary btn-apply coupon">
-                                        Applica
-                                    </button>
-                                </span>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-            <div class="card mb-3">
-                <div class="card-body">
-                    <dl v-for="item in cart">
-                        <dt>
-                            @{{item.name}} x
-                            @{{item.quantity}} <br>
-                            @{{item.price}} €
-                        </dt>
-                    </dl>
-                </div>
-            </div>
+        <aside class="col-3 info-restaurant">
+
             <div class="card">
-                <div class="card-body">
-                    <dl>
-                        <span><strong>Prezzo totale:</strong></span>
-                        <span class="text-right ml-3">&euro; @{{amount}}</span>
-                    </dl>
-                    {{-- <dl>
-                        <dt><strong>Sconto:</strong></dt>
-                        <dd class="text-right text-danger ml-3"></dd>
-                    </dl>
-                    <dl>
-                        <dt><strong>Prezzo scotanto:</strong></dt>
-                        <dd class="text-right text-dark ml-3"></dd>
-                    </dl> --}}
-                    <hr>
-                    <a v-on:click="saveCart()" href="{{ asset(route('cart-checkout', compact('business')))}}" class="btn btn-out btn-primary btn-square btn-main" data-abc="true">Checkout</a>
+            <section class="card-sidebar">
+                <div class="card-sidebar-info"><b>Info Ristorante</b></div>
+                <div class="card-sidebar-info">Indirizzo: <span>{{$business->address}}</span> </div>
+                <div class="card-sidebar-info">Tel: {{$business->telephone}}</div>
+                <div class="card-sidebar-info">Email: {{$business->email}} </div>
+                <div class="card-sidebar-info">Apertura: {{$business->opening_time}}</div>
+                <div class="card-sidebar-info">Chiusura: {{$business->closing_time}}</div>
+                <div class="card-sidebar-info">Day Off: {{$business->opening_time}}</div>
+                <div class="card-sidebar-info"><h6><b>Descrizione</b></h6>
+                    <p class="sidebar-text">{{$business->description}}</p>
                 </div>
-            </div>
+                <div class="card-sidebar-info">
+                    <b>Category</b><br>
+                    @foreach ($business->types as $id=>$type)
+                        {{ $type->name }}
+                            @if ($id != (count($business->types) - 1))
+                            |
+                            @endif
+                    @endforeach
+                </div>
+            </section>
+
         </aside>
         <div class="offset-1"></div>
     </div>

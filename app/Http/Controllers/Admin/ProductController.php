@@ -17,7 +17,7 @@ class ProductController extends Controller
   // Gestione della VISUALIZZAZIONE DI UN SINGOLO PIATTO relativo al Ristorante
   public function show(Product $product)
   {
-    return view('admin.business.product.show',compact('product'));
+    return view('admin.business.product',compact('product'));
   }
 
   // Gestione della CREAZIONE DI UN PIATTO relativo al Ristorante
