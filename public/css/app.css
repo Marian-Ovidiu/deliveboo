@@ -10566,3 +10566,21 @@ h3 {
   padding: 5px 10px;
   margin: 10px auto;
 }
+
+.bl-container {
+  padding: 100px 0px;
+  background: #033da1;
+  color: #fff;
+}
+.bl-container .table-borderless {
+  color: #fff;
+}
+@media (max-width: 760px) {
+  .bl-container .table-borderless {
+    margin-top: 20px;
+  }
+}
+.bl-container input.btn:hover {
+  color: #000BA0;
+  text-decoration: underline;
+}

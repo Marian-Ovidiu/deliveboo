@@ -1,35 +1,17 @@
+.bl-container {
+    padding: 100px 0px;
+    background: #033da1;
+    color: #fff;
 
-.container-row{
-    .col-7{
-        padding: 40px 0;
-        background-color: #023ca0;
+    .table-borderless {
+        color: #fff;
+        @media (max-width: 760px) {
+            margin-top: 20px;
+          }
     }
-    .recap-table{
-        padding: 40px 0;
-        background-color: #006dfa;
-        .row{
-            .col-10{
-                .table{
-                    thead{
-                        tr{
-                            th{
-                                color:white;
-                            }
-                        }
-                    }
-                    tbody{
-                        tr{
-                            td{
-                                color:white;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        th{
-            color: white;
-        }
+
+    input.btn:hover {
+        color: $types-title-col;
+        text-decoration: underline;
     }
 }
-
