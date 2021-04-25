@@ -154,12 +154,19 @@
     }
     &-address{
       font-size: 0.9em;
-      padding: 30px;
+      padding: 20px 30px;
+    }
+    &-actions{
+        padding:10px;
+        display: flex;
+        a{
+            font-size: 25px;
+            margin-right: 10px;
+        }
     }
     a {
       @include flex-sp-btw;
       flex-direction: column;
-      min-height: 450px;
       color: #404040;
       &:hover{
         text-decoration: none;

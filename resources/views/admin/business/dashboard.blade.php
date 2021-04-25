@@ -39,45 +39,46 @@
             <div class="row row-main-restaurants-row">
                 <h1 class="col-12 row-main-restaurants-row-title">I miei Ristoranti</h1>
             </div>
-            <div class="row-main-row row">
-                <div class="col-12 row-main-row-restaurants">
-                    <div class="row-main-row-restaurants-row">
-                        @if (!empty($businesses))
+            <div class="row-main-restaurants-row row">
+                <div class="col-12 row-main-restaurants-row-restaurant">
+                    @if (!empty($businesses))
+                        <div class= "row-main-restaurants-row-restaurant-card">
+                            <ul class="business">
+                                @foreach ($businesses as $business)
+                                    <li class="business-item">
+                                    <a href="#">
+                                        <div class="business-item-top">
+                                            <div class="business-item-top-logo">
+                                                <img src="{{ $business->logo }}" alt="{{ $business->name }}">
+                                            </div>
+                                            <h3>{{ $business->name }}</h3>
+                                        </div>
+                                        <div class="business-item-description">
+                                            {{ $business->description }}
+                                        </div>
+                                        <div class="business-item-time">
+                                            <span>Dalle: {{ $business->opening_time }}</span><br>
+                                            <span>Alle: {{ $business->closing_time }}</span>
+                                        </div>
+                                        <div class="business-item-address">
+                                            <i class="fas fa-map-marker-alt"></i>
+                                            {{ $business->address }}
+                                        </div>
+                                    </a>
+                                    <div class="business-item-actions">
+                                        <a href="{{ route('business.show', compact('business'))}}">
+                                            <i class="fa fa-eye" aria-hidden="true"></i>
+                                        </a>
+                                        <a href="{{ route('business.edit', compact('business'))}}">
+                                            <i class="fa fa-edit" aria-hidden="true"></i>
+                                        </a>
+                                    <div>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
 
-                            <div class="col-4 row-main-row-restaurants-row-card">
-                                <div class= "row-main-row-restaurants-row-card-restaurant">
-                                    <ul class="business">
-                                        @foreach ($businesses as $business)
-                                          <li class="business-item">
-                                            <a href="#">
-                                              <div class="business-item-top">
-                                                <div class="business-item-top-logo">
-                                                  <img src="{{ $business->logo }}" alt="{{ $business->name }}">
-                                                </div>
-                                                <h3>{{ $business->name }}</h3>
-                                              </div>
-                                              <div class="business-item-description">
-                                                {{ $business->description }}
-                                              </div>
-                                              <div class="business-item-time">
-                                                <span>Dalle: {{ $business->opening_time }}</span><br>
-                                                <span>Alle: {{ $business->closing_time }}</span>
-                                              </div>
-                                              <div class="business-item-address">
-                                                <i class="fas fa-map-marker-alt"></i>
-                                                {{ $business->address }}
-                                              </div>
-                                            </a>
-                                          </li>
-                                        @endforeach
-                                      </ul>
-
-
-                                </div>
-                            </div>
-
-                        @endif
-                    </div>
                 </div>
             </div>
         </div>

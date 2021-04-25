@@ -10216,14 +10216,21 @@ h3 {
 }
 .business-item-address {
   font-size: 0.9em;
-  padding: 30px;
+  padding: 20px 30px;
+}
+.business-item-actions {
+  padding: 10px;
+  display: flex;
+}
+.business-item-actions a {
+  font-size: 25px;
+  margin-right: 10px;
 }
 .business-item a {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   flex-direction: column;
-  min-height: 450px;
   color: #404040;
 }
 .business-item a:hover {
@@ -10439,7 +10446,7 @@ h3 {
   text-align: center;
   padding: 10px;
 }
-.row-main-row-restaurants-row {
+.row-main-restaurants-row-row {
   padding: 10px;
   display: flex;
   flex-wrap: wrap;
