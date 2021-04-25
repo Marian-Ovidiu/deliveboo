@@ -23,7 +23,7 @@
             <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-2 row-jumbotron-row-space"></div>
             <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-8 row-jumbotron-row-search">
               <div class="input-group border rounded-pill p-3">
-                <input type="search" placeholder="Inserisci il nome del ristorante..." class="form-control" @keyup = "filterBusinessesByName(query)" @keyup.enter = "scrollToBottom()" class="form-control" v-model="query" >
+                <input type="search" placeholder="Inserisci il nome del ristorante e premi invio" class="form-control" @keyup.enter = "filterBusinessesByName(query)" v-model="query" >
               </div>
             </div>
             <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-2 row-jumbotron-row-space"></div>
@@ -58,8 +58,11 @@
       <div class="content">
         <h2 class="titles">Scegli il tuo ristorante</h2>
         <h3 class="subtitles">Consulta il menu e ordina i prodotti che vuoi</h3>
-        <h2 class="error" v-if="viewNoResults()">
+        <h2 class="error" v-if="viewNoResultsType()">
           Non sono presenti ristoranti in questa categoria! &nbsp;&nbsp; <b>: (</b>
+        </h2>
+        <h2 class="error" v-if="viewNoResultsName()">
+          Non sono presenti ristoranti con questo nome! &nbsp;&nbsp; <b>: (</b>
         </h2>
 
         <ul class="business">
