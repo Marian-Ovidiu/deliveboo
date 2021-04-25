@@ -75,9 +75,9 @@
                             <div class="input-group">
                                 <input type="text" class="form-control coupon" v-model="couponCode" name="" placeholder="Coupon code">
                                 <span class="input-group-append">
-                                    <button @click="discountCoupon" class="btn btn-primary btn-apply coupon">
+                                    <div class="btn btn-primary btn-apply coupon">
                                         Applica
-                                    </button>
+                                    </div>
                                 </span>
                             </div>
                         </div>

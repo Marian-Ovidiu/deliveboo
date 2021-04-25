@@ -1908,7 +1908,7 @@ new Vue({
     query: '',
     cart: [],
     cartSaved: [],
-    coupon: ['BLACKFRIDAY', 'CHICKENFREE', 'HAMBSPECIAL'],
+    coupon: 'FREEDELIVERY',
     couponCode: '',
     couponDiscount: 0.20,
     flagVerificaCoupon: false,
@@ -2029,22 +2029,18 @@ new Vue({
       });
       this.quantity = tot;
     },
-    discountCoupon: function discountCoupon() {
-      var discountedAmount = 0;
-
-      for (var i = 0; i < this.coupon.length; i++) {
-        if (this.couponCode === this.coupon[i]) {
-          discountedAmount -= this.amount * this.couponDiscount;
-          flagVerificaCoupon = true;
-        }
-
-        return this.amount = discountedAmount;
-      }
-
-      if (!flagVerificaCoupon && this.couponCode.length > 0) {
-        this.couponCode = 'Inserire un codice coupon valido';
-      }
-    },
+    // discountCoupon() {
+    //   let discountedAmount = 0;
+    //     if(this.couponCode === this.coupon) {
+    //       discountedAmount -= (this.amount * this.couponDiscount);
+    //       flagVerificaCoupon = true;
+    //     }
+    //     return this.amount = discountedAmount;
+    //   }
+    //   if(!flagVerificaCoupon && this.couponCode.length > 0) {
+    //     this.couponCode = 'Inserire un codice coupon valido'
+    //   }
+    // },
     // CARRELLO: Calcola totale quantità prodotti
     getAmount: function getAmount() {
       var sum = 0;
@@ -37597,7 +37593,7 @@ process.umask = function() { return 0; };
 /******/ 					__webpack_require__.m[moduleId] = moreModules[moduleId];
 /******/ 				}
 /******/ 			}
-/******/ 			if(runtime) var result = runtime(__webpack_require__);
+/******/ 			if(runtime) runtime(__webpack_require__);
 /******/ 			if(parentChunkLoadingFunction) parentChunkLoadingFunction(data);
 /******/ 			for(;i < chunkIds.length; i++) {
 /******/ 				chunkId = chunkIds[i];
@@ -37606,7 +37602,7 @@ process.umask = function() { return 0; };
 /******/ 				}
 /******/ 				installedChunks[chunkIds[i]] = 0;
 /******/ 			}
-/******/ 			return __webpack_require__.O(result);
+/******/ 			__webpack_require__.O();
 /******/ 		}
 /******/ 		
 /******/ 		var chunkLoadingGlobal = self["webpackChunk"] = self["webpackChunk"] || [];

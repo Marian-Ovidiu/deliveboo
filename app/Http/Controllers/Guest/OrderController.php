@@ -23,7 +23,7 @@ class OrderController extends Controller
     ]);
 
     $token = $gateway->ClientToken()->generate();
-    return view('guest.order-summary', compact('business', 'token', 'gateway'));
+    return view('guest.order-summary', compact('business', 'token'));
   }
 
   public function store(Request $request)
