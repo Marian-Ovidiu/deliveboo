@@ -1,46 +1,45 @@
-{{-- @php
+@php
   $timestamp = strtotime(Auth::user()->created_at);
   $user_date = date("d m Y", $timestamp);
-@endphp --}}
+@endphp
 
 @extends('layouts.base')
-{{-- @section('content') --}}
+@section('content')
 
-{{-- <header class="header-dashboard">
-    <div class="header-dashboard-row">
-            <div class=" header-dashboard-row-jumbotronn" style="background-image: url('https://wallpaperaccess.com/full/1306153.jpg')">
-            <div class="  header-dashboard-row-jumbotronn-cover row">
-                <div class="col-1 header-dashboard-row-jumbotronn-cover-space"></div>
-
-                <div class="col-5 header-dashboard-row-jumbotronn-cover-logo">
-                    <div class="header-dashboard-row-jumbotronn-cover-logo-img fl">
-                        <img src="{{ asset('img/00-user-dash.png') }}" alt="{{ Auth::user()->name }}"" style="width:50px ">
-                    </div>
-
-                    <div class="header-dashboard-row-jumbotronn-cover-logo-box fl">
-                        <h3>{{ Auth::user()->name }} {{ Auth::user()->last_name }}</h3>
-                        <h5>{{ Auth::user()->email }}</h5>
-                        <h5>P.IVA: {{ Auth::user()->vat }}</h5>
-                        <h6>Utente dal {{ $user_date }}</h6>
-                    </div>
-                </div>
-
-                <div class="col-5 header-dashboard-row-jumbotronn-cover-btn">
-                    <div class="header-dashboard-row-jumbotronn-cover-btn fl">
-                        <div class="header-dashboard-row-jumbotronn-cover-btn ">
-                            <a href="{{ route('business.create') }}">
-                                <button> Crea Nuovo Ristorante</button>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-            <div class="col-1 header-dashboard-row-jumbotronn-cover-space"></div>
+<header class="row d-flex align-items-center">
+    <div class="offset-1"></div>
+    <div class="content col-5">
+        <div class="content-img">
+            <img src="{{ asset('img/00-user-dash.png') }}" alt="{{ Auth::user()->name }}" style="width:50px ">
+        </div>
+        <div class="content-info">
+            <h3>{{ Auth::user()->name }} {{ Auth::user()->last_name }}</h3>
+            <h5>{{ Auth::user()->email }}</h5>
+            <h5>P.IVA: {{ Auth::user()->vat }}</h5>
+            <h6>Utente dal {{ $user_date }}</h6>
         </div>
     </div>
+    <div class="col-5 d-flex justify-content-center">
+        <a href="{{ route('business.create') }}">
+            <button> Crea Nuovo Ristorante</button>
+        </a>
+    </div>
+    <div class="offset-1"></div>
+
 </header>
 
+<main class="row">
+    <div class="offset-1"></div>
+    <div class="col-10">
+        <div class="row">
+            <div class="col-4"></div>
+            <div class="col-8"></div>
+        </div>
+    </div>
+    <div class="offset-1"></div>
+</main>
+
+{{--
 <div class="container-fluid">
     <main class="main-dashboard">
         <h2 class="main-dashboard-title">I tuoi Ristoranti</h2>
@@ -77,5 +76,5 @@
             <div class="col-2 main-dashboard-row-space"></div>
         </div>
     </main>
-</div>
-@endsection --}}
+</div> --}}
+@endsection
