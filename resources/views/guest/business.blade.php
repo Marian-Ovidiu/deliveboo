@@ -62,7 +62,7 @@
                             <div class="input-group">
                                 <input type="text" class="form-control coupon" v-model="couponCode" name="" placeholder="Coupon code">
                                 <span class="input-group-append">
-                                    <div class="btn btn-primary btn-apply coupon">
+                                    <div @click="discountCoupon()" class="btn btn-primary btn-apply coupon">
                                         Applica
                                     </div>
                                 </span>
@@ -88,14 +88,6 @@
                         <span><strong>Prezzo totale:</strong></span>
                         <span class="text-right ml-3">&euro; @{{amount}}</span>
                     </dl>
-                    {{-- <dl>
-                        <dt><strong>Sconto:</strong></dt>
-                        <dd class="text-right text-danger ml-3"></dd>
-                    </dl>
-                    <dl>
-                        <dt><strong>Prezzo scotanto:</strong></dt>
-                        <dd class="text-right text-dark ml-3"></dd>
-                    </dl> --}}
                     <hr>
                     <a v-on:click="saveCart()" href="{{ asset(route('cart-checkout', compact('business')))}}" class="btn btn-out btn-primary btn-square btn-main" data-abc="true">Checkout</a>
                 </div>

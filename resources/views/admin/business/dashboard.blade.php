@@ -28,10 +28,7 @@
             </a>
         </div>
         <div class="offset-1"></div>
-
     </header>
-
-
 
     <main class="row-main row">
         <div class="offset-1"></div>
@@ -78,10 +75,9 @@
                             </ul>
                         </div>
                     @endif
-
                 </div>
             </div>
         </div>
         <div class="offset-1"></div>
-    </main>
+    </div>
 @endsection
