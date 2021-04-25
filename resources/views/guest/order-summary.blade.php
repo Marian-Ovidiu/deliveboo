@@ -1,36 +1,17 @@
 @extends('layouts.base')
 @section('title', 'Il tuo ordine')
 @section('content')
-<script src="https://js.braintreegateway.com/web/dropin/1.27.0/js/dropin.min.js"></script>
 
 <div class="container" id="app">
-
     <div class="row">
-        <div class="col-2 row-space"></div>
-        <div class="col-8 row-container">
-            <div class="row-container-row row">
-                <div class="col-12 row-container-row-summary">
-                    <div v-for="item in cartSaved" style="display: flex;" class="row-container-row-summary-row row">
-                        <div class="col-5">@{{item.name}}</div>
-                        <div class="col-2">@{{item.quantity}}</div>
-                        <div class="col-5">&euro; @{{item.price}}</div>
-                    </div>
-                </div>
-            </div>
-            <div class="row-container-row row">
-                <div class="col-12 row-container-row-amount">
-                    Totale Ordine € @{{amountSaved}}
-                </div>
-            </div>
-            <hr>
-
+        <div class="col-xs-12 col-sm-8 inner-container">
             {{-- Form --}}
-            <form class="row" action="{{ route('order-payment') }}" method="post">
+            <form class="row" id="payment-form" action="{{ route('order-payment') }}" method="post">
                 @csrf
                 @method( 'POST' )
                 <div class="col-12">
                     <div class="row">
-                        <div class="col-6">
+                        <div class="col-sm-6 col-xs-12">
                             {{-- row: name --}}
                             <div class="form-group">
                                 <label for="customer_name"><b>Nome</b></label>
@@ -41,7 +22,7 @@
                             </div>
                             {{-- / row: name --}}
                         </div>
-                        <div class="col-6">
+                        <div class="col-sm-6 col-xs-12">
                             {{-- row: last name --}}
                             <div class="form-group">
                                 <label for="customer_last_name"><b>Cognome</b></label>
@@ -54,7 +35,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-10">
+                        <div class="col-sm-8 col-xs-12">
                             {{-- row: city --}}
                             <div class="form-group">
                                 <label for="city"><b>Città</b></label>
@@ -65,7 +46,7 @@
                             </div>
                             {{-- / row: city --}}
                         </div>
-                        <div class="col-2">
+                        <div class="col-sm-4 col-xs-12">
                             {{-- row: postal_code --}}
                             <div class="form-group">
                                 <label for="postal_code"><b>Cap</b></label>
@@ -96,7 +77,7 @@
 
 
                     <div class="row">
-                        <div class="col-6">
+                        <div class="col-sm-6 col-xs-12">
                             {{-- row: email --}}
                             <div class="form-group">
                                 <label for="customer_email"><b>Email</b></label>
@@ -107,7 +88,7 @@
                             </div>
                             {{-- / row: email --}}
                         </div>
-                        <div class="col-6">
+                        <div class="col-sm-6 col-xs-12">
                             {{-- row: telephone --}}
                             <div class="form-group">
                                 <label for="customer_telephone"><b>Telefono</b></label>
@@ -144,44 +125,73 @@
 
                     <input v-for ="product in cartSaved" type = "hidden" name = "products[]" :value = "product.id"/>
                     <input v-for ="product in cartSaved" type = "hidden" name = "quantities[]" :value = "product.quantity"/>
-
                     <div class="bt-drop-in-wrapper">
-                    <div id="bt-dropin"></div>
+                        <div id="bt-dropin"></div>
                     </div>
-
-                    <input type="submit" value="Procedi all'ordine" style="margin: 10px 0; width: 300px; padding: 15px; color: white; background-color: #0389ff; border: none;">
+                    <input type="submit" id="submit-button" value="Procedi all'ordine" class="btn btn-success">
                 </div>
-
             </form>
+            {{-- / Form --}}
         </div>
-        <div class="col-2 row-space"></div>
+
+        <div class="recap-table col-xs-12 col-sm-4 inner-container">
+
+            {{-- tabella riepilogativa ordine --}}
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">Prodotto</th>
+                        <th scope="col">Quantità</th>
+                        <th scope="col">Prezzo (€)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="item in cartSaved">
+                        <td class="col-sm-8 col-xs-12">@{{item.name}}</td>
+                        <td class="col-sm-1 col-xs-6">@{{item.quantity}}</td>
+                        <td class="col-sm-3 col-xs-6">@{{item.price}}</td>
+                    </tr>
+                    <tr>
+                        <td class="col-sm-8 col-xs-12">Totale Ordine</td>
+                        <td class="col-sm-1 col-xs-6">€</td>
+                        <td class="col-sm-3 col-xs-6">@{{amountSaved}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            {{-- / tabella riepilogativa ordine --}}
+        </div>
     </div>
-
-@endsection
-
 
 <script src="https://js.braintreegateway.com/web/dropin/1.26.1/js/dropin.min.js"></script>
 <script>
-var form = document.querySelector('#payment-form');
-var client_token = "{{ $token }}";
-braintree.dropin.create({
-    authorization: client_token,
-    selector: '#bt-dropin',
-}, function (createErr, instance) {
-    if (createErr) {
-    console.log('Create Error', createErr);
-    return;
-    }
-    form.addEventListener('submit', function (event) {
-    event.preventDefault();
-    instance.requestPaymentMethod(function (err, payload) {
-        if (err) {
-        console.log('Request Payment Method Error', err);
+    var form = document.querySelector('#payment-form');
+    var client_token = "{{ $token }}";
+
+    braintree.dropin.create({
+        authorization: client_token,
+        selector: '#bt-dropin',
+    }, function (createErr, instance) {
+        if (createErr) {
+        console.log('Create Error', createErr);
         return;
         }
-        // Add the nonce to the form and submit
-        form.submit();
+        form.addEventListener('submit', function (event) {
+            event.preventDefault();
+            instance.requestPaymentMethod(function (err, payload) {
+                if (err) {
+                console.log('Request Payment Method Error', err);
+                return;
+                }
+                // Add the nonce to the form and submit
+                document.querySelector('#nonce').value = payload.nonce;
+                form.submit();
+            });
+        });
     });
-    });
-});
 </script>
+@endsection
+
+
+
+
+

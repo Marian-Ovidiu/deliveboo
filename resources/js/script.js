@@ -10,7 +10,7 @@ new Vue({
     query: '',
     cart: [],
     cartSaved: [],
-    coupon: ['BLACKFRIDAY', 'CHICKENFREE', 'HAMBSPECIAL'],
+    coupon: 'FREEDELIVERY',
     couponCode: '',
     couponDiscount: 0.20,
     flagVerificaCoupon: false,
@@ -143,20 +143,19 @@ new Vue({
       this.quantity = tot;
     },
 
-    discountCoupon() {
-      let discountedAmount = 0;
-      for(let i = 0; i < this.coupon.length; i++) {
-        if(this.couponCode === this.coupon[i]) {
-          discountedAmount -= (this.amount * this.couponDiscount);
-          flagVerificaCoupon = true;
-        }
-        return this.amount = discountedAmount;
-      }
-  
-      if(!flagVerificaCoupon && this.couponCode.length > 0) {
-        this.couponCode = 'Inserire un codice coupon valido'
-      }
-    },
+    // discountCoupon() {
+    //   let discountedAmount = 0;
+    //     if(this.couponCode === this.coupon) {
+    //       discountedAmount -= (this.amount * this.couponDiscount);
+    //       flagVerificaCoupon = true;
+    //     }
+    //     return this.amount = discountedAmount;
+    //   }
+
+    //   if(!flagVerificaCoupon && this.couponCode.length > 0) {
+    //     this.couponCode = 'Inserire un codice coupon valido'
+    //   }
+    // },
 
     // CARRELLO: Calcola totale quantità prodotti
     getAmount() {
