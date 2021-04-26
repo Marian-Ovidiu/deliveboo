@@ -143,6 +143,7 @@ new Vue({
       this.quantity = tot;
     },
 
+    //CARRELLO: Calcola e applica lo sconto al prezzo totale
     discountCoupon() {
       let discountedAmount = 0;
       let fixedDiscountedAmount = 0;
