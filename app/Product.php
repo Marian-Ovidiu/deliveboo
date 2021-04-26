@@ -14,8 +14,7 @@ class Product extends Model
         'ingredients',
         'description',
         'price',
-        'visible',
-        'img',
+        'visible'
     ];
 
     public function businesses()

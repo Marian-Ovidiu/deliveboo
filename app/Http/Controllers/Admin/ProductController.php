@@ -3,15 +3,14 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use App\Business;
 use App\Product;
 
 class ProductController extends Controller
 {
   // Gestione della VISUALIZZAZIONE DI TUTTI PIATTI relativi al Ristorante
-  public function index(Business $business)
+  public function index()
   {
-    return redirect()->route('business.show', compact('business'));
+    return redirect()->route('dashboard');
   }
 
   // Gestione della VISUALIZZAZIONE DI UN SINGOLO PIATTO relativo al Ristorante
@@ -58,10 +57,17 @@ class ProductController extends Controller
   // Gestione dell'INSERIMENTO DEL PIATTO MODIFICATO nel Database
   public function update(Request $request, Product $product)
   {
+
+    $business = $product->business_id;
+
     $this->isValid($request);
 
+    if ($request->hasFile('img')) {
+      $path = $request->file('img')->store('stored-imgs');
+      $product->img = $path;
+    }
+
     $data = $request->all();
-    $business = $product->business_id;
     $product->update($data);
 
     return redirect()->route('business.show', compact('business'));
@@ -84,7 +90,6 @@ class ProductController extends Controller
     'description' => 'required|max:1024',
     'price' => 'required',
     'visible' => 'required',
-    'img' => 'required'
     ]);
   }
 
