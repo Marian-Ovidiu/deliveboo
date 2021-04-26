@@ -10561,6 +10561,9 @@ h3 {
   background-color: transparent;
   border: 1px solid gray;
 }
+.business-main .info-restaurant {
+  padding-bottom: 30px;
+}
 .business-main .info-restaurant .card {
   width: 100%;
   padding: 10px;
