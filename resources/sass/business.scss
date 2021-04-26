@@ -4,7 +4,7 @@
 
 .business-header {
   max-width: 100%;
-  background: $types-link-bg;
+  background: $types-bg;
   color:#FFFFFF;
   &-row-jumbotronn{
     padding: 3% 0;
@@ -18,7 +18,7 @@
         width: 65%;
         margin: auto;
         background-size: cover;
-        box-shadow: 5px 5px $types-title-col;
+        box-shadow: 5px 5px $business-show-bg;
       }
       &-title{
         font-weight: 800;
@@ -33,7 +33,7 @@
 
 .business-main {
   max-width: 100%;
-  background-color: $types-title-col;
+  background-color: $business-show-bg;
   color:white;
   font-size: 0.88em;
   &-row-main{
@@ -47,7 +47,7 @@
       &-products{
         &-row{
           padding: 0;
-          background-color: #1D30E7;
+          background-color: $business-product-bg;
           margin: 20px 0;
           transition: 0.4s;
           height: 160px;

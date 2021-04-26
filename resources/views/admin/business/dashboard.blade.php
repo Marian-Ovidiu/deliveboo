@@ -6,7 +6,7 @@
 @extends('layouts.base')
 @section('content')
 
-    <header class="row-header row d-flex align-items-center">
+    <header class="row-header row d-flex align-items-center no-gutters">
         <div class="offset-1"></div>
         <div class="content col-3">
             <div class="content-img">
@@ -30,7 +30,7 @@
         <div class="offset-1"></div>
     </header>
 
-    <main class="row-main row">
+    <main class="row-main row no-gutters">
         <div class="offset-1"></div>
         <div class="col-10 row-main-restaurants">
             <div class="row row-main-restaurants-row">
