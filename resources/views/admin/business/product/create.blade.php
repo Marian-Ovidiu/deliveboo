@@ -1,4 +1,5 @@
 @extends('layouts.base')
+@section('title', 'Aggiungi piatto')
 
 @section('content')
   <div class="container">
