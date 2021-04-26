@@ -19,11 +19,12 @@
                 |
               @endif
             @endforeach
-          </div>
         </div>
-      </div>
-      <div class="offset-1"></div>
+        <a href="{{ route('add-prod', [ 'id' => $business->id ]) }}">Aggiungi un nuovo piatto</a>
     </div>
+</div>
+<div class="offset-1"></div>
+</div>
   </section>
   {{--  End Header --}}
 
@@ -92,6 +93,6 @@
         </aside>
         <div class="offset-1"></div>
     </div>
-      </section>
+  </section>
     {{-- End Main --}}
 @endsection
