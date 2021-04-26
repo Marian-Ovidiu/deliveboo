@@ -4,7 +4,7 @@
 @section('content')
   {{-- Header --}}
   <section class="business-header">
-    <div class="row">
+    <div class="row no-gutters">
       <div class="offset-1"></div>
       <div class="col-xl-10 col-lg-10 col-md-10 col-sm-10 col-10 business-header-row-jumbotronn">
         <div class="business-header-row-jumbotronn-container fl">
