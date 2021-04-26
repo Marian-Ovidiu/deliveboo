@@ -62,7 +62,7 @@ if ($edit) {
   <div class="form-group">
     <label for="img"><b>Immagine</b></label>
     &nbsp;&nbsp;&nbsp;&nbsp;
-    <input type="file" id="img" name="img" accept="image/*">
+    <input type="file" class="form-control {{ $errors->has('img') ? 'is-invalid' : '' }}"  id="img" name="img" accept="image/*">
     @if (isset($product))
       <small>[ {{ substr($product->img, 12) }} ]</small>
     @endif
