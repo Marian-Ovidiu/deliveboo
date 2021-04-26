@@ -60,6 +60,8 @@ class ProductController extends Controller
   {
     $this->isValid($request);
 
+    $path = $request->file('img')->store('stored-imgs');
+    $product->img = $path;
     $data = $request->all();
     $business = $product->business_id;
     $product->update($data);
