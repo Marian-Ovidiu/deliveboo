@@ -10472,7 +10472,7 @@ h3 {
 
 .business-header {
   max-width: 100%;
-  background: #06AE41;
+  background: linear-gradient(#62D284, #2DCD65);
   color: #FFFFFF;
 }
 .business-header-row-jumbotronn {
@@ -10489,7 +10489,7 @@ h3 {
   width: 65%;
   margin: auto;
   background-size: cover;
-  box-shadow: 5px 5px #000BA0;
+  box-shadow: 5px 5px #000678;
 }
 .business-header-row-jumbotronn-container-title {
   font-weight: 800;
@@ -10501,7 +10501,7 @@ h3 {
 
 .business-main {
   max-width: 100%;
-  background-color: #000BA0;
+  background-color: #000678;
   color: white;
   font-size: 0.88em;
 }
@@ -10513,7 +10513,7 @@ h3 {
 }
 .business-main-row-main-row-products-row {
   padding: 0;
-  background-color: #1D30E7;
+  background-color: linear-gradient(#0510A5, #192ACD);
   margin: 20px 0;
   transition: 0.4s;
   height: 160px;
@@ -10598,7 +10598,7 @@ h3 {
 
 .business-header {
   max-width: 100%;
-  background: #06AE41;
+  background: linear-gradient(#62D284, #2DCD65);
   color: #FFFFFF;
 }
 .business-header-row-jumbotronn {
@@ -10615,7 +10615,7 @@ h3 {
   width: 65%;
   margin: auto;
   background-size: cover;
-  box-shadow: 5px 5px #000BA0;
+  box-shadow: 5px 5px #000678;
 }
 .business-header-row-jumbotronn-container-title {
   font-weight: 800;
@@ -10627,7 +10627,7 @@ h3 {
 
 .business-main {
   max-width: 100%;
-  background-color: #000BA0;
+  background-color: #000678;
   color: white;
   font-size: 0.88em;
 }
@@ -10639,7 +10639,7 @@ h3 {
 }
 .business-main-row-main-row-products-row {
   padding: 0;
-  background-color: #1D30E7;
+  background-color: linear-gradient(#0510A5, #192ACD);
   margin: 20px 0;
   transition: 0.4s;
   height: 160px;
