@@ -3,15 +3,15 @@
 
 @section('content')
     {{-- Header --}}
-    <div class="header-row row">
+    <div class="business-header row">
         <div class="offset-1"></div>
-        <div class="col-xl-10 col-lg-10 col-md-10 col-sm-10 col-10 header-row-jumbotronn">
-            <div class="header-row-jumbotronn-container fl">
-                <div class="header-row-jumbotronn-container-img" style="background-image: url('{{ $business->logo }}')"></div>
+        <div class="col-xl-10 col-lg-10 col-md-10 col-sm-10 col-10 business-header-jumbotronn">
+            <div class="business-header-jumbotronn-container fl">
+                <div class="business-header-jumbotronn-container-img" style="background-image: url('{{ $business->logo }}')"></div>
             </div>
-            <div class="header-row-jumbotronn-container fl">
-                <div class="header-row-jumbotronn-container-title">{{ $business->name }}</div>
-                <div class="header-row-jumbotronn-container-types" style="margin-bottom: 25px;">
+            <div class="business-header-jumbotronn-container fl">
+                <div class="business-header-jumbotronn-container-title">{{ $business->name }}</div>
+                <div class="business-header-jumbotronn-container-types" style="margin-bottom: 25px;">
                     @foreach ($business->types as $id => $type)
                         {{ $type->name }}
                         @if ($id != (count($business->types) - 1))
