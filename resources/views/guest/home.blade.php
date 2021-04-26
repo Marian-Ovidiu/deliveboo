@@ -40,7 +40,7 @@
     {{-- Search by type --}}
     <section class="types">
       <div class="content">
-        <h2 class="titles">Le nostre categorìe</h2>
+        <h2 class="titles">Le nostre categorie</h2>
         <ul>
           <li v-for="(type, i) in allTypes">
             <a href="#restaurants-row" v-on:click="filterBusinessesByTypes(type.name)">
