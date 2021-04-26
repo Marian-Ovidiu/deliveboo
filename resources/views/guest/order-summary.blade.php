@@ -5,7 +5,7 @@
 <div class="bl-container">
     <div class="container" id="app">
         <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-7">
+            <div class="col-xs-12 col-sm-12 col-md-6">
                 {{-- Form --}}
                 <form class="row" id="payment-form" action="{{ route('order-payment') }}" method="post">
                     @csrf
@@ -138,7 +138,7 @@
                 {{-- / Form --}}
             </div>
 
-            <div class="col-xs-12 col-sm-12 col-md-5">
+            <div class="col-xs-12 col-sm-12 col-md-6">
 
                 {{-- tabella riepilogativa ordine --}}
                 <table class="table table-borderless">
