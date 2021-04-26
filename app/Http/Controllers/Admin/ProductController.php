@@ -62,16 +62,11 @@ class ProductController extends Controller
 
     $this->isValid($request);
 
-<<<<<<< HEAD
-    $path = $request->file('img')->store('stored-imgs');
-    $product->img = $path;
-=======
     if ($request->hasFile('img')) {
       $path = $request->file('img')->store('stored-imgs');
       $product->img = $path;
     }
 
->>>>>>> 684e43f3a472d60ca5c2c9674b72df7a30287f90
     $data = $request->all();
     $product->update($data);
 
@@ -93,7 +88,7 @@ class ProductController extends Controller
     'name' => 'required|max:255',
     'ingredients' => 'required|max:512',
     'description' => 'required|max:1024',
-    'price' => 'required',
+    'price' => 'required|numeric|between:0,99999.99',
     'visible' => 'required',
     ]);
   }

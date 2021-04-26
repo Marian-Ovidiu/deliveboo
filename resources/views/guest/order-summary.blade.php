@@ -95,7 +95,7 @@
                                     <label for="customer_telephone"><b>Telefono</b></label>
                                     <input type="text" class="form-control {{ $errors->has('customer_telephone') ? 'is-invalid' : '' }}" id="customer_telephone" name="customer_telephone" placeholder="Numero di Telefono">
                                     <div class="invalid-feedback">
-                                        {{ $errors->first('telephone') }}
+                                        {{ $errors->first('customer_telephone') }}
                                     </div>
                                 </div>
                                 {{-- / row: telephone --}}

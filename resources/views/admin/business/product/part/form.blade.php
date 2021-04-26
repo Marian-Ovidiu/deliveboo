@@ -50,7 +50,7 @@ if ($edit) {
   {{-- / row: price --}}
   <div class="form-group">
     <label for="price">Prezzo</label>
-    <input type="number" class="form-control {{ $errors->has('price') ? 'is-invalid' : '' }}" id="price" name="price"
+    <input type="text" class="form-control {{ $errors->has('price') ? 'is-invalid' : '' }}" id="price" name="price"
     value="{{ isset($product) ? $product->price : '' }}">
     <div class="invalid-feedback">
       {{ $errors->first('price') }}

@@ -29,7 +29,7 @@
             <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-2 row-jumbotron-row-space"></div>
           </div>
         </div>
-        <div class="row-jumbotron-right col-md-4 col-sm-12">
+        <div class="row-jumbotron-right col-md-2 col-sm-12">
           <img src="{{asset('img/01-home.png')}}" alt="Deliveboo">
 
         </div>

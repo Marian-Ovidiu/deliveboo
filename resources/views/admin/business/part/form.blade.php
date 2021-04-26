@@ -39,7 +39,7 @@ $days = [
   {{-- / row: types --}}
   <div class="form-group">
     <label for="type[]"><b>Categoria</b></label>
-    <select class="custom-select" name="type[]" id="type_id" multiple>
+    <select class="custom-select" name="type[]" id="type_id" multiple required>
       @foreach ($types as $type)
         <option value="{{ $type->id }}" @if (isset($business) && $business->types->contains($type->id)) selected @endif>
           {{ $type->name }}
@@ -89,14 +89,14 @@ $days = [
   {{-- row: opening time--}}
   <div class="form-group">
     <label for="opening_time"><b>Orario apertura del ristorante</b></label>
-    <input type="time" class="form-control" id="opening_time" name="opening_time" value="">
+    <input type="time" class="form-control" id="opening_time" name="opening_time" value="{{ isset($business) ? $business->opening_time : '' }}">
   </div>
   {{-- / row: opening time--}}
 
   {{-- row: closing time --}}
   <div class="form-group">
     <label for="closing_time"><b>Orario chiusura del ristorante</b></label>
-    <input type="time" class="form-control" id="closing_time" name="closing_time" value="">
+    <input type="time" class="form-control" id="closing_time" name="closing_time"  value="{{ isset($business) ? $business->closing_time : '' }}">
   </div>
   {{-- / row: closing time --}}
 
@@ -117,7 +117,7 @@ $days = [
   {{-- / row: business email --}}
   <div class="form-group">
     <label for="email"><b>Email Risorante</b></label>
-    <input type="text" class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}" id="email" name="email">
+    <input type="text" class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}" id="email" name="email"  value="{{ isset($business) ? $business->email : '' }}">
     <div class="invalid-feedback">
       {{ $errors->first('email') }}
     </div>
@@ -127,7 +127,7 @@ $days = [
   {{-- row: telephone --}}
   <div class="form-group">
     <label for="telephone"><b>Numero di telefono del Ristorante</b></label>
-    <input id="telephone" type="text" class="form-control {{ $errors->has('telephone') ? 'is-invalid' : '' }}" name="telephone">
+    <input id="telephone" type="text" class="form-control {{ $errors->has('telephone') ? 'is-invalid' : '' }}" name="telephone"  value="{{ isset($business) ? $business->telephone : '' }}">
     <div class="invalid-feedback">
        {{ $errors->first('telephone') }}
     </div>
@@ -138,7 +138,7 @@ $days = [
     {{-- / row: business website --}}
   <div class="form-group">
     <label for="website"><b>Sito web del Risorante (facoltativo)</b></label>
-    <input type="text" class="form-control" id="website" name="website">
+    <input type="text" class="form-control" id="website" name="website"  value="{{ isset($business) ? $business->website : '' }}">
   </div>
   {{-- / row: business website --}}
 
