@@ -1,113 +1,116 @@
-.fl{
-    float: left;
+.fl {
+  float: left;
 }
 
-.header-row{
-    background-image: $types-bg;
-    color:white;
-    &-jumbotronn{
-        padding: 3% 0;
-        height: 300px;
-        &-container{
-            text-align: center;
-            height: 100%;
-            width:50%;
-            &-img{
-                height: 100%;
-                width: 65%;
-                margin: auto;
-                background-size: cover;
-                box-shadow: 5px 5px $businesses-bg;
-            }
-            &-title{
-
-                font-weight: bold;
-                margin-top: 12%;
-                font-size: 30px;
-                font-family: $main-font-family;
-            }
-        }
-   }
+.business-header {
+  max-width: 100%;
+  background: $types-link-bg;
+  color:#FFFFFF;
+  &-row-jumbotronn{
+    padding: 3% 0;
+    height: 300px;
+    &-container{
+      text-align: center;
+      height: 100%;
+      width:50%;
+      &-img{
+        height: 100%;
+        width: 65%;
+        margin: auto;
+        background-size: cover;
+        box-shadow: 5px 5px $types-title-col;
+      }
+      &-title{
+        font-weight: 800;
+        margin-top: 12%;
+        font-size: 30px;
+        text-transform: uppercase;
+        font-family: $main-font-family;
+      }
+    }
+  }
 }
 
-.main-row {
-    background-color: $subtitle-col;
-    color:white;
-    &-main{
+.business-main {
+  max-width: 100%;
+  background-color: $types-title-col;
+  color:white;
+  font-size: 0.88em;
+  &-row-main{
+    &-row{
+      &-title{
+        margin-top: 15px;
+        font-size: 30px;
+        font-weight: bold;
+        font-family: $main-font-family;
+      }
+      &-products{
         &-row{
-            &-title{
-                margin-top: 15px;
-                font-size: 30px;
+          padding: 0;
+          background-color: #1D30E7;
+          margin: 20px 0;
+          transition: 0.4s;
+          height: 160px;
+          &-name{
+            padding: 0;
+            &-img{
+              width: 40%;
+              height: 100%;
+              background-size: cover;
+            }
+            &-container{
+              width:60%;
+              padding-left: 10px;
+              &-title{
+                font-size: 20px;
                 font-weight: bold;
-                font-family: $main-font-family;
+              }
             }
-            &-products{
-                &-row{
-                    padding: 0;
-                    background-color: $types-title-col;
-                    margin: 20px 0;
-                    transition: 0.4s;
-                    height: 160px;
-                    &-name{
-                        padding: 0;
-                        &-img{
-                            width: 40%;
-                            height: 100%;
-                            background-size: cover;
-                        }
-                        &-container{
-                            width:60%;
-                            padding-left: 10px;
-                            &-title{
-                                font-size: 20px;
-                                font-weight: bold;
-                            }
-                        }
-                    }
-                    &-options{
-                        &-btn{
-                            color: white;
-                            font-size: 20px;
-                            width: 90%;
-                            padding: 5px;
-                            border: none;
-                            border-radius: 5px;
-                            background-color: $types-link-bg;
-                        }
-                        &-btn:first-child{
-                            margin-top: 25px;
-                        }
-                    }
-                }
-                &-row:hover{
-                    transform: scale(1.05);
-                    box-shadow: 1px 1px white;
-                }
+          }
+          &-options{
+            &-btn{
+              color: white;
+              font-size: 20px;
+              width: 90%;
+              padding: 5px;
+              border: none;
+              border-radius: 5px;
+              background-color: $types-link-bg;
             }
-        }
-    }
-    aside{
-        .card:first-child{
-            margin-top: 50px;
-        }
-        .card{
-            background-color: transparent;
-            border: 1px solid gray;
-        }
-    }
-    .info-restaurant{
-        .card{
-            width: 100%;
-            padding: 10px;
-            &-sidebar{
-                background-color: $types-link-bg;
-                border-radius: 5px;
-                &-info{
-                    border-bottom: 1px solid gray;
-                    padding: 5px 10px;
-                    margin: 10px auto;
-                }
+            &-btn:first-child{
+              margin-top: 25px;
             }
+          }
         }
+        &-row:hover{
+          transform: scale(1.05);
+          box-shadow: 1px 1px white;
+        }
+      }
     }
+  }
+  aside{
+    .card:first-child{
+      margin-top: 50px;
+    }
+    .card{
+      background-color: transparent;
+      border: 1px solid gray;
+    }
+  }
+  .info-restaurant{
+    .card{
+      width: 100%;
+      padding: 10px;
+      &-sidebar{
+        background-color: $types-link-bg;
+        border-radius: 5px;
+        &-info{
+          border-bottom: 1px solid gray;
+          padding: 5px 10px;
+          margin: 10px auto;
+        }
+      }
+    }
+  }
 }
