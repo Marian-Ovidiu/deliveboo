@@ -1,78 +1,370 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# **INIZIALIZZAZIONE PROGETTO**
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+- ### CREAZIONE PROGETTO LARAVEL
 
-## About Laravel
+	* #### Terminale:
+		```
+    composer create-project --prefer-dist laravel/laravel:^7.0 REPO
+    ```
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- ### UTILIZZO LOCAL-HOST PERSONALE
+	* #### Terminale:
+  ```
+		  php artisan serve
+  ```
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- ### AGGIORNAMENTO SCSS
+	* #### File *package.json*:
+	  ```
+	  "laravel-mix": "^6.0.13"
+	  ```
+	* #### Terminale:
+  ```
+	npm install
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+	npx mix
+  ```
 
-## Learning Laravel
+- ### INSTALLAZIONE BOOTSTRAP
+	* #### Terminale:
+	  ```
+	    composer require laravel/ui:^2.4
+	    php artisan ui bootstrap --auth
+	    npm install
+	  ```
+		* il comando ***--auth*** crea dei layouts per le aree d'accesso.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- ### INSTALLAZIONE FONTAWESOME
+	* #### Terminale:
+  ```
+		npm install --save-dev @fortawesome/fontawesome-free
+  ```
+	* #### File *app.scss*
+  ```php
+		@import '~@fortawesome/fontawesome-free/css/all.min.css';
+  ```
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+# **LARAVEL + DATABASE**
 
-## Laravel Sponsors
+- ### MODIFICA DATABASE DA FILE *.elm*
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+	```
+	DB_CONNECTION=mysql
+	DB_HOST=127.0.0.1
+	DB_PORT=3306
+	DB_DATABASE=nome_database
+	DB_USERNAME=root
+	DB_PASSWORD=root
+	```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- [UserInsights](https://userinsights.com)
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
-- [Invoice Ninja](https://www.invoiceninja.com)
-- [iMi digital](https://www.imi-digital.de/)
-- [Earthlink](https://www.earthlink.ro/)
-- [Steadfast Collective](https://steadfastcollective.com/)
-- [We Are The Robots Inc.](https://watr.mx/)
-- [Understand.io](https://www.understand.io/)
-- [Abdel Elrafa](https://abdelelrafa.com)
-- [Hyper Host](https://hyper.host)
-- [Appoly](https://www.appoly.co.uk)
-- [OP.GG](https://op.gg)
+- ### VERIFICA COLLEGAMENTO DATABASE
+	* #### Terminale:
+  ```
+		  php artisan tinker
 
-## Contributing
+		  DB::Connection()->getPdo()
+  ```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+- ### CREAZIONE TABELLA TRAMITE *MIGRATION*
+Il nome della tabella-database (es. ___items___ ) deve essere plurale.
+	* #### Terminale:
+  ```
+  php artisan make:migration create_items
+  ```
 
-## Code of Conduct
+- ### AGGIUNTA COLONNE NELLA TABELLA CREATA
+  * #### Locazione: *database/migrations*
+    ```php
+	public function up() {
+		$table->string('content', 255);
+	}
+    ```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+- ### ESPORTAZIONE TABELLE NEL DB
+	* #### Terminale:
+  	```
+  php artisan migrate
+  	```
 
-## Security Vulnerabilities
+- ### AGGIUNTA / MODIFICA COLONNA IN TABELLA ESISTENTE
+(*Esempio colonna "type"*)
+	* #### Terminale:
+    ```
+	php artisan make:migration add_type_to_items_table --table=items
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+    ```
+	* #### File (*database/migrations*):
+		**public function up( )**
+    ```php
+      $table->string('type')->after('specific_column');
+    ```
+		**public function down( )**
+    ```php
+      $table->dropColumn('type');
+    ```
+	* #### Terminale:
+    ```
+		php artisan migrate
+    ```
 
-## License
+- ### CREAZIONE *MODEL* COLLEGATO ALLA TABELLA
+Il model dovrà essere al singolare della tabella a cui si riferisce
+	* #### Terminale:
+    ```
+		repo>
+			php artisan make:model Item
+    ```
+	* #### **Combo** (Creazione Model + Tabella associata)
+    ```
+		repo>
+			php artisan make:model Item --Migration
+    ```
+	 Locazione: *app/Item.php*
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+- ### POPOLAZIONE CLASSE DEL MODEL
+  * #### File: *app/Item.php*
+  Da scrivere se il nome tabella non è già plurale
+  ```
+	protected $table = 'nometabella';
+  ```
+	Proprietà-colonne tabella ( *fillable* )
+  ```
+	protected $fillable = [
+    'content',
+    'content2'
+  ];
+  ```
+
+- ### CREAZIONE *CONTROLLER*
+	* #### Terminale:
+    ```
+		  php artisan make:controller ItemController
+    ```
+
+# **CRUD**
+
+- ### CREAZIONE *CONTROLLER* ___CRUD___
+	* #### Terminale:
+    ```
+		repo>
+		  php artisan make:controller --resource ItemController
+    ```
+
+- ### RICHIAMO CRUD NELLE ROTTE
+* #### Area pubblica
+  ```php
+	Route::resources('uri' , 'ItemController');
+		// oppure
+	Route::resources('uri' , ItemController::class);
+  ```
+* #### Area privata (in autenticazione user)
+  ```php
+  Route::prefix('admin')
+  ->namespace('Admin')
+  ->middleware('auth')
+  ->group(function () {
+      Route::resource('uri', ItemController);
+  });
+  ```
+
+- ### CONTROLLER _CRUD_
+* #### app/Http/Controllers/ItemController.php
+
+	* **Collegamento col Model**
+	  ```php
+		use App\Item;
+	  ```
+	* **Index**
+	```php
+	public function index()
+	{
+		$items = Item::all();
+		return view('items.index', compact('items'));
+	}
+	```
+	* **Show**
+	```php
+	public function show(Item $item)
+	{
+		return view('items.show', compact('item'));
+	}
+	```
+	* **Create**
+	```php
+	public function create()
+	{
+		return view('items.create');
+	}
+	```
+	* **Store**
+	```php
+	public function store(Request $request)
+	{
+		$this->isValid($request);
+
+		$data = $request->all();
+		$item = new Item();
+		$item->fill($data);
+		$item->save();
+
+		return redirect()->route('items.index');
+	}
+	```
+	* **Edit**
+	```php
+	public function show(Item $item)
+	{
+		return view('items/edit', compact('item'));
+	}
+	```
+	* **Update**
+	```php
+	public function update(Request $request, Item $item)
+	{
+		$this->isValid($request);
+
+		$data = $request->all();
+		$item->fill($data);
+		$item->update();
+
+		return redirect()->route('items.index');
+	}
+	```
+	* **Destroy**
+	```php
+	public function destroy(Item $item)
+	{
+		$item->delete();
+		return redirect()->route('items.index');
+	}
+	```
+	* **Validation**
+	```php
+	public function isValid($list)
+	{
+		$list->validate([
+		'item' => 'required|numeric|between:0,99.99',
+		]);
+	}
+	```
+
+- ### FILTRO CONTENUTI TABELLA DA "CONTROLLER"
+  ```php
+	$filtrato = Item::where('type', =, 'book')
+	->orderBy('type', 'desc');
+	->limit(1);
+	->get();
+	```
+
+# **UPLOAD FILES**
+
+- ### INSERIMENTO INPUT-UPLOAD NELLA FORM
+
+	* #### Form:
+	`enctype="multipart/form-data"`
+		```php
+		<input type="file" name="picture" class="form-control" id="picture">
+    ```
+- ### ABILITAZIONE (DECOMMENTAZIONE) FILE INFO IN _MAMP_
+
+	* MAMP/bin/php/php7.4.1/php.ini:
+		```
+		extension=fileinfo
+    ```
+
+- ### INSERIMENTO INPUT-UPLOAD NELLA FORM
+
+	* #### Controller (_update_ o _store_):
+		```php
+        $path = $request->file('image')->store('images');
+
+    ```
+		Lo store _images_ si troverà all'interno della cartella _storage/app_.
+
+
+- ### GENERAZIONE SYM-LINK (LINK SIMBOLICO)
+* #### Config/filesystems.php:
+	```php
+	public_path('images') => storage_path('app/images'),
+
+	```
+	Modifica dell'array _links_ per coincidere il nome del **symlink** con quello della cartella in *storage/app*
+
+	* #### Terminale:
+		```
+        php artisan storage:link
+
+    ```
+
+
+# **FORMS**
+
+- ### CREATE / EDIT
+	```php
+		@php
+		if ($edit) {
+		  $method = 'PATCH';
+		  $url = route('posts.update', ['post' => $item->id]);
+		  $submit = 'Edit';
+		} else {
+		  $method = 'POST';
+		  $url = route('posts.store');
+		  $submit = 'Create';
+		}
+		@endphp
+
+		<form action="{{ $url }}" method="post" enctype="multipart/form-data">
+		  @csrf
+		  @method( $method )
+
+		  <div class="form-group">
+		      <label for="name">Name</label>
+		      <input class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}"
+		      type="text" name="name" value="{{ isset($item) ? $item->name : '' }}">
+		      <div class="invalid-feedback">
+		          {{ $errors->first('name') }}
+		      </div>
+		  </div>
+
+		  <button type="submit" class="btn btn-primary">
+		      {{ $submit }} Post
+		  </button>
+		</form>
+	```
+
+- ### INSERIMENTO MODALE PER CANCELLAZIONE
+
+	```php
+		<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#delete{{$item->id}}">
+			Delete item
+		</button>
+		<!-- Modal -->
+		<div class="modal fade" id="delete{{$item->id}}" tabindex="-1" role="dialog">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-body">
+						Do you want delete this item?
+					</div>
+					<div class="modal-footer">
+						<form method="post" action="{{route('items.destroy', compact('item'))}}">
+							@csrf
+							@method('DELETE')
+							<input type="submit" class="btn btn-primary" name="Yes" value="Yes">
+							<button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	```
+
+
+
+
+- ### COLLEGAMENTI "CRUD" IN PAGINA WEB
+```php
+	<a href="{{ route('items.show') }}">
+	<a href="{{route('items.show', $item->id)}}">
+	<a href="{{route('items.show', compact('item'))}}">
+	```
