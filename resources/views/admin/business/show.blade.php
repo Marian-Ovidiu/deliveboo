@@ -41,7 +41,7 @@
                 @foreach ($business->products()->get() as $product)
                     <div class="business-main-row-main-row-products-row row">
                         <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-8 business-main-row-main-row-products-row-name">
-                            <div class="business-main-row-main-row-products-row-name-img fl" style="background-image: url({{ $product->img }});"></div>
+                            <div class="business-main-row-main-row-products-row-name-img fl" style="background-image: url({{asset($product->img) }});"></div>
                             <div class="business-main-row-main-row-products-row-name-container fl">
                                 <span class="business-main-row-main-row-products-row-name-container-title">{{ $product->name }}</span><br>
                                 <span class="business-main-row-main-row-products-row-name-container-description">{{ $product->description }}</span>
