@@ -10,7 +10,7 @@ new Vue({
     query: '',
     cart: [],
     cartSaved: [],
-    coupon: 'FREEDELIVERY',
+    coupon: ['FREEDELIVERY', 'HAMBSPECIAL'],
     couponCode: '',
     couponDiscount: 0.20,
     flagVerificaCoupon: false,
@@ -143,19 +143,24 @@ new Vue({
       this.quantity = tot;
     },
 
-    // discountCoupon() {
-    //   let discountedAmount = 0;
-    //     if(this.couponCode === this.coupon) {
-    //       discountedAmount -= (this.amount * this.couponDiscount);
-    //       flagVerificaCoupon = true;
-    //     }
-    //     return this.amount = discountedAmount;
-    //   }
-
-    //   if(!flagVerificaCoupon && this.couponCode.length > 0) {
-    //     this.couponCode = 'Inserire un codice coupon valido'
-    //   }
-    // },
+    //CARRELLO: Calcola e applica lo sconto al prezzo totale
+    discountCoupon() {
+      let discountedAmount = 0;
+      let fixedDiscountedAmount = 0;
+      for(let i = 0; i < this.coupon.length; i++) {
+        if(this.couponCode === this.coupon[i]) {
+          discount = (this.amount * this.couponDiscount);
+          discountedAmount = this.amount - discount;
+          fixedDiscountedAmount = discountedAmount.toFixed(2);
+          this.flagVerificaCoupon = true;
+        }
+        if(!this.flagVerificaCoupon && this.couponCode.length > 0) {
+            this.couponCode = 'Inserire un codice coupon valido'
+        } else {
+            return this.amount = fixedDiscountedAmount;
+        }
+      }
+    },
 
     // CARRELLO: Calcola totale quantità prodotti
     getAmount() {

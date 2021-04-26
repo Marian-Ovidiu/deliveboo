@@ -10466,89 +10466,75 @@ h3 {
   flex-wrap: wrap;
 }
 
-.container-row .col-7 {
-  padding: 40px 0;
-  background-color: #023ca0;
-}
-.container-row .recap-table {
-  padding: 40px 0;
-  background-color: #006dfa;
-}
-.container-row .recap-table .row .col-10 .table thead tr th {
-  color: white;
-}
-.container-row .recap-table .row .col-10 .table tbody tr td {
-  color: white;
-}
-.container-row .recap-table th {
-  color: white;
-}
-
 .fl {
   float: left;
 }
 
-.header-row {
-  background-image: linear-gradient(#62D284, #2DCD65);
-  color: white;
+.business-header {
+  max-width: 100%;
+  background: #06AE41;
+  color: #FFFFFF;
 }
-.header-row-jumbotronn {
+.business-header-row-jumbotronn {
   padding: 3% 0;
   height: 300px;
 }
-.header-row-jumbotronn-container {
+.business-header-row-jumbotronn-container {
   text-align: center;
   height: 100%;
   width: 50%;
 }
-.header-row-jumbotronn-container-img {
+.business-header-row-jumbotronn-container-img {
   height: 100%;
   width: 65%;
   margin: auto;
   background-size: cover;
-  box-shadow: 5px 5px #000048;
+  box-shadow: 5px 5px #000BA0;
 }
-.header-row-jumbotronn-container-title {
-  font-weight: bold;
+.business-header-row-jumbotronn-container-title {
+  font-weight: 800;
   margin-top: 12%;
   font-size: 30px;
+  text-transform: uppercase;
   font-family: "Montserrat";
 }
 
-.main-row {
-  background-color: #000250;
+.business-main {
+  max-width: 100%;
+  background-color: #000BA0;
   color: white;
+  font-size: 0.88em;
 }
-.main-row-main-row-title {
+.business-main-row-main-row-title {
   margin-top: 15px;
   font-size: 30px;
   font-weight: bold;
   font-family: "Montserrat";
 }
-.main-row-main-row-products-row {
+.business-main-row-main-row-products-row {
   padding: 0;
-  background-color: #000BA0;
+  background-color: #1D30E7;
   margin: 20px 0;
   transition: 0.4s;
   height: 160px;
 }
-.main-row-main-row-products-row-name {
+.business-main-row-main-row-products-row-name {
   padding: 0;
 }
-.main-row-main-row-products-row-name-img {
+.business-main-row-main-row-products-row-name-img {
   width: 40%;
   height: 100%;
   background-size: cover;
 }
-.main-row-main-row-products-row-name-container {
+.business-main-row-main-row-products-row-name-container {
   width: 60%;
   padding-left: 10px;
 }
-.main-row-main-row-products-row-name-container-title {
+.business-main-row-main-row-products-row-name-container-title {
   font-size: 20px;
   font-weight: bold;
 }
-.main-row-main-row-products-row-options-btn {
+.business-main-row-main-row-products-row-options-btn {
   color: white;
   font-size: 20px;
   width: 90%;
@@ -10557,29 +10543,158 @@ h3 {
   border-radius: 5px;
   background-color: #06AE41;
 }
-.main-row-main-row-products-row-options-btn:first-child {
+.business-main-row-main-row-products-row-options-btn:first-child {
   margin-top: 25px;
 }
-.main-row-main-row-products-row:hover {
-  transform: scale(1.05);
-  box-shadow: 1px 1px white;
-}
-.main-row aside .card:first-child {
+.business-main-row-main-row aside .card:first-child {
   margin-top: 50px;
 }
-.main-row aside .card {
+.business-main-row-main-row aside .card {
   background-color: transparent;
   border: none;
 }
-.main-row .info-restaurant .card {
+.business-main aside .card:first-child {
+  margin-top: 50px;
+}
+.business-main aside .card {
+  background-color: transparent;
+  border: 1px solid gray;
+}
+.business-main .info-restaurant .card {
   width: 100%;
   padding: 10px;
 }
-.main-row .info-restaurant .card-sidebar {
+.business-main .info-restaurant .card-sidebar {
   background-color: #06AE41;
   border-radius: 5px;
 }
-.main-row .info-restaurant .card-sidebar-info {
+.business-main .info-restaurant .card-sidebar-info {
+  border-bottom: 1px solid gray;
+  padding: 5px 10px;
+  margin: 10px auto;
+}
+
+.bl-container {
+  padding: 100px 0px;
+  background: #033da1;
+  color: #fff;
+}
+.bl-container .table-borderless {
+  color: #fff;
+}
+@media (max-width: 760px) {
+  .bl-container .table-borderless {
+    margin-top: 20px;
+  }
+}
+.bl-container input.btn:hover {
+  color: #000BA0;
+  text-decoration: underline;
+}
+
+.fl {
+  float: left;
+}
+
+.business-header {
+  max-width: 100%;
+  background: #06AE41;
+  color: #FFFFFF;
+}
+.business-header-row-jumbotronn {
+  padding: 3% 0;
+  height: 300px;
+}
+.business-header-row-jumbotronn-container {
+  text-align: center;
+  height: 100%;
+  width: 50%;
+}
+.business-header-row-jumbotronn-container-img {
+  height: 100%;
+  width: 65%;
+  margin: auto;
+  background-size: cover;
+  box-shadow: 5px 5px #000BA0;
+}
+.business-header-row-jumbotronn-container-title {
+  font-weight: 800;
+  margin-top: 12%;
+  font-size: 30px;
+  text-transform: uppercase;
+  font-family: "Montserrat";
+}
+
+.business-main {
+  max-width: 100%;
+  background-color: #000BA0;
+  color: white;
+  font-size: 0.88em;
+}
+.business-main-row-main-row-title {
+  margin-top: 15px;
+  font-size: 30px;
+  font-weight: bold;
+  font-family: "Montserrat";
+}
+.business-main-row-main-row-products-row {
+  padding: 0;
+  background-color: #1D30E7;
+  margin: 20px 0;
+  transition: 0.4s;
+  height: 160px;
+}
+.business-main-row-main-row-products-row-name {
+  padding: 0;
+}
+.business-main-row-main-row-products-row-name-img {
+  width: 40%;
+  height: 100%;
+  background-size: cover;
+}
+.business-main-row-main-row-products-row-name-container {
+  width: 60%;
+  padding-left: 10px;
+}
+.business-main-row-main-row-products-row-name-container-title {
+  font-size: 20px;
+  font-weight: bold;
+}
+.business-main-row-main-row-products-row-options-btn {
+  color: white;
+  font-size: 20px;
+  width: 90%;
+  padding: 5px;
+  border: none;
+  border-radius: 5px;
+  background-color: #06AE41;
+}
+.business-main-row-main-row-products-row-options-btn:first-child {
+  margin-top: 25px;
+}
+.business-main-row-main-row aside .card:first-child {
+  margin-top: 50px;
+}
+.business-main-row-main-row aside .card {
+  background-color: transparent;
+  border: none;
+}
+.business-main aside .card:first-child {
+  margin-top: 50px;
+}
+.business-main aside .card {
+  background-color: transparent;
+  border: 1px solid gray;
+}
+.business-main .info-restaurant .card {
+  width: 100%;
+  padding: 10px;
+}
+.business-main .info-restaurant .card-sidebar {
+  background-color: #06AE41;
+  border-radius: 5px;
+}
+.business-main .info-restaurant .card-sidebar-info {
   border-bottom: 1px solid gray;
   padding: 5px 10px;
   margin: 10px auto;
