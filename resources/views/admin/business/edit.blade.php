@@ -1,4 +1,5 @@
 @extends('layouts.base')
+@section('title', 'Modifica ristorante')
 
 @section('content')
   <div class="container">

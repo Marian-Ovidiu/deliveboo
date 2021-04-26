@@ -4,6 +4,7 @@
 @endphp
 
 @extends('layouts.base')
+@section('title', 'Dashboard')
 @section('content')
 
     <header class="row-header row d-flex align-items-center no-gutters">

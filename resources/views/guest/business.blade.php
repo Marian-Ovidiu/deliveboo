@@ -1,6 +1,6 @@
 
 @extends('layouts.base')
-@section('title', 'Home Page')
+@section('title', 'Menù')
 
 @section('content')
   {{-- Header --}}
