@@ -58,9 +58,12 @@ class BusinessController extends Controller
     {
         $this->isValid($request);
 
+        if ($request->hasFile('logo')) {
+          $path = $request->file('logo')->store('stored-imgs');
+          $business->logo = $path;
+        }
+
         $data = $request->all();
-        $path = $request->file('logo')->store('stored-imgs');
-        $business->logo = $path;
         $business->update($data);
         $business->types()->sync($data['type']);
         return redirect()->route('dashboard');

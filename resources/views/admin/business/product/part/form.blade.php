@@ -1,6 +1,6 @@
 @php
 if ($edit) {
-  $method = 'PATCH';
+  $method = 'PUT';
   $url = route('product.update', compact('product'));
   $submit = 'Modifica';
 } else {
@@ -40,7 +40,7 @@ if ($edit) {
   {{-- / row: description --}}
   <div class="form-group">
     <label for="description">Descrizione</label>
-    <textarea class="form-control {{ $errors->has('description') ? 'is-invalid' : '' }}" id="description" name="description" rows="6"></textarea>
+    <textarea class="form-control {{ $errors->has('description') ? 'is-invalid' : '' }}" id="description" name="description" rows="6">@if (isset($product)){{ $product->description }}@endif</textarea>
     <div class="invalid-feedback">
       {{ $errors->first('description') }}
     </div>
@@ -80,7 +80,9 @@ if ($edit) {
   </div>
   {{-- row: visible --}}
 
-  <input type="hidden" name="business_id" id="business_id" value="{{ isset($product) ? $product->business_id : $business_id}}">
+  @if (!isset($product))
+    <input type="hidden" name="business_id" id="business_id" value="{{ $business_id }}">
+  @endif
 
   <button type="submit" class="btn btn-primary">{{$submit}} prodotto</button>
 </form>
