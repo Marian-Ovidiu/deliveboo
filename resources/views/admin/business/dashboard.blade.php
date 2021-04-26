@@ -79,5 +79,5 @@
             </div>
         </div>
         <div class="offset-1"></div>
-    </div>
+    </main>
 @endsection
