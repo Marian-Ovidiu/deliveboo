@@ -10586,7 +10586,7 @@ h3 {
 .bl-container .table-borderless {
   color: #fff;
 }
-@media (max-width: 760px) {
+@media (max-width: 1090px) {
   .bl-container .table-borderless {
     margin-top: 20px;
   }

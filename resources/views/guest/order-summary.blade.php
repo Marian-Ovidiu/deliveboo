@@ -5,7 +5,7 @@
 <div class="bl-container">
     <div class="container" id="app">
         <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-6">
+            <div class="col-xs-12 col-lg-6">
                 {{-- Form --}}
                 <form class="row" id="payment-form" action="{{ route('order-payment') }}" method="post">
                     @csrf
@@ -138,7 +138,7 @@
                 {{-- / Form --}}
             </div>
 
-            <div class="col-xs-12 col-sm-12 col-md-6">
+            <div class="col-xs-12 col-lg-6">
 
                 {{-- tabella riepilogativa ordine --}}
                 <table class="table table-borderless">
@@ -151,13 +151,13 @@
                     </thead>
                     <tbody>
                         <tr v-for="item in cartSaved">
-                            <td class="col-sm-8 col-xs-12">@{{item.name}}</td>
+                            <td class="col-sm-6 col-xs-12">@{{item.name}}</td>
                             <td class="col-sm-1 col-xs-6">@{{item.quantity}}</td>
-                            <td class="col-sm-3 col-xs-6">@{{item.price}} €</td>
+                            <td class="col-sm-5 col-xs-6">@{{item.price}}€</td>
                         </tr>
                         <tr>
                             <td class="col-sm-8 col-xs-6">Totale Ordine</td>
-                            <td class="col-sm-4 col-xs-6">@{{amountSaved}} €</td>
+                            <td class="col-sm-4 col-xs-6">@{{amountSaved}}€</td>
                         </tr>
                     </tbody>
                 </table>
