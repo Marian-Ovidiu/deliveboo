@@ -10,8 +10,9 @@ new Vue({
     query: '',
     cart: [],
     cartSaved: [],
-    coupon: ['FREEDELIVERY', 'HAMBSPECIAL'],
+    coupon: ['freedelivery', 'hambspecial'],
     couponCode: '',
+    couponUsed: '',
     couponDiscount: 0.20,
     flagVerificaCoupon: false,
     amount: 0,
@@ -65,9 +66,10 @@ new Vue({
 
             if(this.query === '') {
               this.businessesToRender = []
+              this.businessesToRender = this.allBusinesses;
             }
 
-            document.documentElement.scrollTop = 1100;
+
         })
     },
 
@@ -89,6 +91,11 @@ new Vue({
     // RICERCA: Visualizzazione nessun risultato per nome
     viewNoResultsName () {
       return this.businessesToRender.length === 0;
+    },
+
+    //RICERCA: scrolla la pagina alla sezione ristoranti in homepage
+    scrollDown () {
+        document.documentElement.scrollTop = 1100;
     },
 
     // CARRELLO: Aggiungi prodotto
@@ -147,16 +154,27 @@ new Vue({
     discountCoupon() {
       let discountedAmount = 0;
       let fixedDiscountedAmount = 0;
+      let lowerCoupon = this.couponCode.toLowerCase();
+      let alertCoupon = 'Inserire un codice coupon valido';
+      this.flagVerificaCoupon = false;
+
       for(let i = 0; i < this.coupon.length; i++) {
-        if(this.couponCode === this.coupon[i]) {
+        if(lowerCoupon === this.coupon[i]) {
           discount = (this.amount * this.couponDiscount);
           discountedAmount = this.amount - discount;
           fixedDiscountedAmount = discountedAmount.toFixed(2);
           this.flagVerificaCoupon = true;
         }
+
+        if (this.couponUsed === lowerCoupon || this.couponUsed === alertCoupon) {
+            return this.couponCode = alertCoupon;
+        }
+
         if(!this.flagVerificaCoupon && this.couponCode.length > 0) {
-            this.couponCode = 'Inserire un codice coupon valido'
+            this.couponCode = alertCoupon;
         } else {
+            this.couponUsed = "";
+            this.couponUsed = lowerCoupon;
             return this.amount = fixedDiscountedAmount;
         }
       }

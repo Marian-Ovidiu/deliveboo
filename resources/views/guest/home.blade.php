@@ -23,7 +23,7 @@
             <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-2 row-jumbotron-row-space"></div>
             <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-8 row-jumbotron-row-search">
               <div class="input-group border rounded-pill p-3">
-                <input type="search" placeholder="Inserisci il nome del ristorante e premi invio" class="form-control" @keyup.enter = "filterBusinessesByName(query)" v-model="query" >
+                <input type="search" placeholder="Inserisci il nome del ristorante e premi invio" class="form-control" @keyup.enter = "scrollDown()"  @keyup = "filterBusinessesByName(query)" v-model="query" >
               </div>
             </div>
             <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-2 row-jumbotron-row-space"></div>

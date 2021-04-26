@@ -1908,8 +1908,9 @@ new Vue({
     query: '',
     cart: [],
     cartSaved: [],
-    coupon: ['FREEDELIVERY', 'HAMBSPECIAL'],
+    coupon: ['freedelivery', 'hambspecial'],
     couponCode: '',
+    couponUsed: '',
     couponDiscount: 0.20,
     flagVerificaCoupon: false,
     amount: 0,
@@ -1956,9 +1957,8 @@ new Vue({
 
         if (_this3.query === '') {
           _this3.businessesToRender = [];
+          _this3.businessesToRender = _this3.allBusinesses;
         }
-
-        document.documentElement.scrollTop = 1100;
       });
     },
     // RICERCA: Visualizzazione risultati per nome
@@ -1976,6 +1976,10 @@ new Vue({
     // RICERCA: Visualizzazione nessun risultato per nome
     viewNoResultsName: function viewNoResultsName() {
       return this.businessesToRender.length === 0;
+    },
+    //RICERCA: scrolla la pagina alla sezione ristoranti in homepage
+    scrollDown: function scrollDown() {
+      document.documentElement.scrollTop = 1100;
     },
     // CARRELLO: Aggiungi prodotto
     add: function add(product_id, product_name, product_price) {
@@ -2033,18 +2037,27 @@ new Vue({
     discountCoupon: function discountCoupon() {
       var discountedAmount = 0;
       var fixedDiscountedAmount = 0;
+      var lowerCoupon = this.couponCode.toLowerCase();
+      var alertCoupon = 'Inserire un codice coupon valido';
+      this.flagVerificaCoupon = false;
 
       for (var i = 0; i < this.coupon.length; i++) {
-        if (this.couponCode === this.coupon[i]) {
+        if (lowerCoupon === this.coupon[i]) {
           discount = this.amount * this.couponDiscount;
           discountedAmount = this.amount - discount;
           fixedDiscountedAmount = discountedAmount.toFixed(2);
           this.flagVerificaCoupon = true;
         }
 
+        if (this.couponUsed === lowerCoupon || this.couponUsed === alertCoupon) {
+          return this.couponCode = alertCoupon;
+        }
+
         if (!this.flagVerificaCoupon && this.couponCode.length > 0) {
-          this.couponCode = 'Inserire un codice coupon valido';
+          this.couponCode = alertCoupon;
         } else {
+          this.couponUsed = "";
+          this.couponUsed = lowerCoupon;
           return this.amount = fixedDiscountedAmount;
         }
       }
@@ -37601,7 +37614,7 @@ process.umask = function() { return 0; };
 /******/ 					__webpack_require__.m[moduleId] = moreModules[moduleId];
 /******/ 				}
 /******/ 			}
-/******/ 			if(runtime) var result = runtime(__webpack_require__);
+/******/ 			if(runtime) runtime(__webpack_require__);
 /******/ 			if(parentChunkLoadingFunction) parentChunkLoadingFunction(data);
 /******/ 			for(;i < chunkIds.length; i++) {
 /******/ 				chunkId = chunkIds[i];
@@ -37610,7 +37623,7 @@ process.umask = function() { return 0; };
 /******/ 				}
 /******/ 				installedChunks[chunkIds[i]] = 0;
 /******/ 			}
-/******/ 			return __webpack_require__.O(result);
+/******/ 			__webpack_require__.O();
 /******/ 		}
 /******/ 		
 /******/ 		var chunkLoadingGlobal = self["webpackChunk"] = self["webpackChunk"] || [];
