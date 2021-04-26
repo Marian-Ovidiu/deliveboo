@@ -83,7 +83,8 @@ class ProductController extends Controller
     'ingredients' => 'required|max:512',
     'description' => 'required|max:1024',
     'price' => 'required',
-    'visible' => 'required'
+    'visible' => 'required',
+    'img' => 'required'
     ]);
   }
 
