@@ -10442,6 +10442,11 @@ h3 {
   width: 50%;
   min-width: 500px;
 }
+@media (max-width: 520px) {
+  .form-section-header-img {
+    min-width: 300px;
+  }
+}
 .form-section-header-img img {
   max-width: 100%;
 }

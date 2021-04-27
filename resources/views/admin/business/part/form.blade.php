@@ -34,7 +34,7 @@ $days = [
                 Utente ristoratore
             </div>
             <div class="subtitles">
-                {{$submit}} ristorante.
+                {{$submit}} ristorante
             </div>
             </div>
             <div class="form-section-header-img">
@@ -93,7 +93,7 @@ $days = [
             {{-- / row: description --}}
 
             {{-- row: address --}}
-            <div class="col-md-6 col-xs-12">
+            <div class="col-lg-6 col-xs-12">
                 <div class="form-group ">
                     <label for="address"><b>Indirizzo</b></label>
                     <input type="text" class="form-control {{ $errors->has('address') ? 'is-invalid' : '' }}" id="address"
@@ -106,13 +106,15 @@ $days = [
             {{-- / row: address --}}
 
             {{-- row: logo --}}
-            <div class="col-md-6 col-xs-12">
+            <div class="col-lg-6 col-xs-12">
                 <div class="form-group">
                     <label for="logo"><b>Logo</b></label>
                     &nbsp;&nbsp;&nbsp;&nbsp;
                     <input type="file" id="logo" name="logo" accept="image/*">
                     @if (isset($business))
-                        <small>[ {{ substr($business->logo, 12) }} ]</small>
+                        <small>
+                            <br>&nbsp;File caricato in precedenza: {{ substr($business->logo, 12) }}
+                        </small>
                     @endif
                     <div class="invalid-feedback">
                         {{ $errors->first('logo') }}
@@ -122,7 +124,7 @@ $days = [
             {{-- / row: logo --}}
 
             {{-- row: opening time--}}
-            <div class="col-md-6 col-xs-12">
+            <div class="col-lg-6 col-xs-12">
                 <div class="form-group">
                     <label for="opening_time"><b>Orario apertura del ristorante</b></label>
                     <input type="time" class="form-control" id="opening_time" name="opening_time" value="{{ isset($business) ? $business->opening_time : '' }}">
@@ -131,7 +133,7 @@ $days = [
             {{-- / row: opening time--}}
 
             {{-- row: closing time --}}
-            <div class="col-md-6 col-xs-12">
+            <div class="col-lg-6 col-xs-12">
                 <div class="form-group">
                     <label for="closing_time"><b>Orario chiusura del ristorante</b></label>
                     <input type="time" class="form-control" id="closing_time" name="closing_time"  value="{{ isset($business) ? $business->closing_time : '' }}">
@@ -140,7 +142,7 @@ $days = [
             {{-- / row: closing time --}}
 
             {{-- row: closing day --}}
-            <div class="col-md-6 col-xs-12">
+            <div class="col-lg-6 col-xs-12">
                 <div class="form-group">
                     <label for="closing_day"><b>Giorno di chiusura</b></label>
                     <select class="custom-select" name="closing_day" id="closing_day">
@@ -156,7 +158,7 @@ $days = [
             {{-- / row: closing day --}}
 
             {{-- / row: business email --}}
-            <div class="col-md-6 col-xs-12">
+            <div class="col-lg-6 col-xs-12">
                 <div class="form-group">
                     <label for="email"><b>Email Risorante</b></label>
                     <input type="text" class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}" id="email" name="email"  value="{{ isset($business) ? $business->email : '' }}">
@@ -168,7 +170,7 @@ $days = [
             {{-- / row: business email --}}
 
             {{-- row: telephone --}}
-            <div class="col-md-6 col-xs-12">
+            <div class="col-lg-6 col-xs-12">
                 <div class="form-group">
                     <label for="telephone">
                         <b>Numero di telefono del Ristorante</b>
@@ -182,7 +184,7 @@ $days = [
             {{-- / row: telephone --}}
 
             {{-- / row: business website --}}
-            <div class="col-md-6 col-xs-12">
+            <div class="col-lg-6 col-xs-12">
                 <div class="form-group">
                     <label for="website">
                         <b>Sito web del Risorante (facoltativo)</b>
@@ -194,7 +196,7 @@ $days = [
 
             <input type="hidden" name="user_id" id="user_id" value="{{ Auth::user()->id }}">
 
-            <div class="col-4">
+            <div class="col-6">
                 <button type="submit" class="btn btn-primary">{{$submit}} Ristorante</button>
             </div>
         </form>
