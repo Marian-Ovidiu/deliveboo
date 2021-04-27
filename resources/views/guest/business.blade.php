@@ -4,64 +4,72 @@
 
 @section('content')
   {{-- Header --}}
-  <section class="business-header">
-    <div class="row no-gutters">
-      <div class="offset-1"></div>
-      <div class="col-xl-10 col-lg-10 col-md-10 col-sm-10 col-10 business-header-row-jumbotronn">
-        <div class="business-header-row-jumbotronn-container fl">
-          <div class="business-header-row-jumbotronn-container-img">
-            <img src="{{asset( $business->logo ) }}" alt="Deliveboo">
-          </div>
-        </div>
-        <div class="business-header-row-jumbotronn-container fl">
-          <div class="business-header-row-jumbotronn-container-title">{{ $business->name }}</div>
-          <div class="business-header-row-jumbotronn-container-types">
+  <section class="business-header row no-gutters">
+    <div class="offset-1"></div>
+    <div class="col-xl-10 col-lg-10 col-md-12 col-sm-12 col-12 business-header-jumbotronn">
+        <div class="business-header-jumbotronn-container">
+            <div class="business-header-jumbotronn-container-title">{{ $business->name }}</div>
+            <div class="business-header-jumbotronn-container-types">
             @foreach ($business->types as $id => $type)
-              {{ $type->name }}
-              @if ($id != (count($business->types) - 1))
+                {{ $type->name }}
+                @if ($id != (count($business->types) - 1))
                 |
-              @endif
+                @endif
             @endforeach
-          </div>
+            </div>
         </div>
-      </div>
-      <div class="offset-1"></div>
+        <div class="business-header-jumbotronn-container">
+            <div class="business-header-jumbotronn-container-img">
+            <img src="{{asset( $business->logo ) }}" alt="Deliveboo">
+            </div>
+        </div>
     </div>
+    <div class="offset-1"></div>
   </section>
   {{--  End Header --}}
+
+    {{--  Info --}}
+    <section class="info-row row no-gutters">
+        <div class="info-row-content col-12">
+            <div class="info-row-content-left" >
+                <span><b>Apertura</b> : {{ \Carbon\Carbon::parse( $business->opening_time )->format('H:i') }}</span>
+                <span><b>Chiusura</b> : {{ \Carbon\Carbon::parse( $business->closing_time )->format('H:i') }}</span>
+                <span><b>Day-off</b> : {{ $business->closing_day }}</span>
+            </div>
+            <div class="info-row-content-right">
+                <span>{{ $business->address }}</span>
+                <span><b>Tel.</b> : {{ $business->telephone }}</span>
+            </div>
+        </div>
+    </section>
+    {{--  End Info --}}
 
   {{-- Main --}}
   <section id="app" class="business-main">
     <div class="row no-gutters">
       <div class="offset-1"></div>
-      <div class="col-xl-7 col-lg-7 col-md-7 col-sm-10 col-10 business-main-row-main">
+      <div class="col-xl-7 col-lg-7 col-md-10 col-sm-10 col-10 business-main-row-main">
         <div class="business-main-row-main-row row">
           <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 business-main-row-main-row-title">I nostri piatti</div>
         </div>
+        @foreach ($business->products()->get() as $product)
         <div class="business-main-row-main-row row">
           <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 business-main-row-main-row-products">
-            @foreach ($business->products()->get() as $product)
-              <div class="business-main-row-main-row-products-row row">
-                <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-8 business-main-row-main-row-products-row-name">
-                  <div class="business-main-row-main-row-products-row-name-img fl" style="background-image: url({{asset( $product->img )}});"></div>
-                  <div class="business-main-row-main-row-products-row-name-container fl">
-                    <span class="business-main-row-main-row-products-row-name-container-title">{{ $product->name }}</span><br>
-                    <span class="business-main-row-main-row-products-row-name-container-description">{{ $product->description }}</span>
-                  </div>
-                </div>
-                <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-2 business-main-row-main-row-products-row-price"><strong>Prezzo</strong> <br><br> {{ $product->price }}€</div>
-                <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-2 business-main-row-main-row-products-row-options" style="text-align: center">
-                  <button type="button" class="business-main-row-main-row-products-row-options-btn" v-on:click = "add({{$product->id}}, '{{$product->name}}', {{$product->price}})">+</button><br><br>
-                  <button type="button" class="business-main-row-main-row-products-row-options-btn" v-on:click = "remove({{$product->id}}, {{$product->price}})">-</button>
-                </div>
-              </div>
-            @endforeach
+            <div class="business-main-row-main-row-products-img" style="background-image: url({{asset( $product->img )}});"></div>
+            <div class="business-main-row-main-row-products-container">
+                <span class="business-main-row-main-row-products-container-title">{{ $product->name }}</span><br>
+                <span class="business-main-row-main-row-products-container-description"> {{substr( $product->description, 0, 100)}}[...]</span>
+            </div>
+            <div class="business-main-row-main-row-products-price"><div><strong>Prezzo</strong></div><div style="margin: 0 10px">{{ $product->price }}€</div></div>
+            <div class="business-main-row-main-row-products-options" style="text-align: center">
+                <button type="button" class="business-main-row-main-row-products-options-btn" v-on:click = "add({{$product->id}}, '{{$product->name}}', {{$product->price}})">+</button><br><br>
+                <button type="button" class="business-main-row-main-row-products-options-btn" v-on:click = "remove({{$product->id}}, {{$product->price}})">-</button>
+            </div>
           </div>
         </div>
+        @endforeach
       </div>
-      <div class="col-xl-0  col-lg-0 col-md-0 col-sm-1 col-1"></div>
-      <div class="col-sm-1 col-1"></div>
-      <aside class="col-xl-3 col-lg-3 col-md-3 col-sm-10 col-10">
+      <aside class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
         <div class="card mb-3">
           <div class="card-body">
             <form>
@@ -103,7 +111,7 @@
           </div>
         </div>
       </aside>
-      <div class="offset-1"></div>
+      <div class="col-xl-1 col-lg-1 col-md-1 col-sm-0"></div>
     </div>
   </section>
   {{-- End Main --}}
