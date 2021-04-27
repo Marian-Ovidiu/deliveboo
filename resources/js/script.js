@@ -15,6 +15,7 @@ new Vue({
     couponUsed: '',
     couponDiscount: 0.20,
     flagVerificaCoupon: false,
+    preDiscountAmount: 0,
     amount: 0,
     amountSaved: 0,
     quantity: 0
@@ -157,22 +158,25 @@ new Vue({
       let lowerCoupon = this.couponCode.toLowerCase();
       let alertCoupon = 'Inserire un codice coupon valido';
       let alertCouponEmpty = 'Nessun codice inserito';
+      let alertCartEmpty = 'Aggiungere un prodotto al carrello'
       this.flagVerificaCoupon = false;
 
-      if(this.couponCode === '') {
+      if(this.amount === 0) {
+            return this.couponCode = alertCartEmpty;
+      } else if(this.couponCode === '' ) {
             return this.couponCode = alertCouponEmpty;
+      } else {
+            for(let i = 0; i < this.coupon.length; i++) {
+                if(lowerCoupon === this.coupon[i]) {
+                    discount = (this.amount * this.couponDiscount);
+                    discountedAmount = this.amount - discount;
+                    fixedDiscountedAmount = discountedAmount.toFixed(2);
+                    this.flagVerificaCoupon = true;
+                }
+            }
       }
 
-      for(let i = 0; i < this.coupon.length; i++) {
-            if(lowerCoupon === this.coupon[i]) {
-            discount = (this.amount * this.couponDiscount);
-            discountedAmount = this.amount - discount;
-            fixedDiscountedAmount = discountedAmount.toFixed(2);
-            this.flagVerificaCoupon = true;
-            }
-        }
-
-        if (this.couponUsed === lowerCoupon || this.couponUsed === alertCoupon) {
+        if (lowerCoupon === this.couponUsed   || this.couponCode === alertCoupon) {
             return this.couponCode = alertCoupon;
         }
 
@@ -181,6 +185,7 @@ new Vue({
         } else {
             this.couponUsed = "";
             this.couponUsed = lowerCoupon;
+            this.preDiscountAmount = this.amount;
             return this.amount = fixedDiscountedAmount;
         }
     },
