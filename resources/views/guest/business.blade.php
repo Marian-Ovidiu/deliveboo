@@ -9,7 +9,9 @@
       <div class="offset-1"></div>
       <div class="col-xl-10 col-lg-10 col-md-10 col-sm-10 col-10 business-header-row-jumbotronn">
         <div class="business-header-row-jumbotronn-container fl">
-          <div class="business-header-row-jumbotronn-container-img" style="background-image: url('{{ $business->logo }}')"></div>
+          <div class="business-header-row-jumbotronn-container-img">
+            <img src="{{asset( $business->logo ) }}" alt="Deliveboo">
+          </div>
         </div>
         <div class="business-header-row-jumbotronn-container fl">
           <div class="business-header-row-jumbotronn-container-title">{{ $business->name }}</div>
@@ -90,8 +92,10 @@
           <div class="card-body">
             <dl>
               <span><strong>Prezzo totale:</strong></span>
+              <span v-if="flagVerificaCoupon" style="text-decoration: line-through;">&euro; @{{preDiscountAmount}}</span>
               <span class="text-right ml-3">&euro; @{{amount}}</span>
             </dl>
+            <dl v-if="flagVerificaCoupon">Applicato sconto del 20%!</dl>
             <hr>
             <a v-on:click="saveCart()" href="{{ asset(route('cart-checkout', compact('business')))}}" class="btn btn-out btn-primary btn-square btn-main" data-abc="true">Checkout</a>
           </div>

@@ -1913,6 +1913,7 @@ new Vue({
     couponUsed: '',
     couponDiscount: 0.20,
     flagVerificaCoupon: false,
+    preDiscountAmount: 0,
     amount: 0,
     amountSaved: 0,
     quantity: 0
@@ -2040,22 +2041,25 @@ new Vue({
       var lowerCoupon = this.couponCode.toLowerCase();
       var alertCoupon = 'Inserire un codice coupon valido';
       var alertCouponEmpty = 'Nessun codice inserito';
+      var alertCartEmpty = 'Aggiungere un prodotto al carrello';
       this.flagVerificaCoupon = false;
 
-      if (this.couponCode === '') {
+      if (this.amount === 0) {
+        return this.couponCode = alertCartEmpty;
+      } else if (this.couponCode === '') {
         return this.couponCode = alertCouponEmpty;
-      }
-
-      for (var i = 0; i < this.coupon.length; i++) {
-        if (lowerCoupon === this.coupon[i]) {
-          discount = this.amount * this.couponDiscount;
-          discountedAmount = this.amount - discount;
-          fixedDiscountedAmount = discountedAmount.toFixed(2);
-          this.flagVerificaCoupon = true;
+      } else {
+        for (var i = 0; i < this.coupon.length; i++) {
+          if (lowerCoupon === this.coupon[i]) {
+            discount = this.amount * this.couponDiscount;
+            discountedAmount = this.amount - discount;
+            fixedDiscountedAmount = discountedAmount.toFixed(2);
+            this.flagVerificaCoupon = true;
+          }
         }
       }
 
-      if (this.couponUsed === lowerCoupon || this.couponUsed === alertCoupon) {
+      if (lowerCoupon === this.couponUsed || this.couponCode === alertCoupon) {
         return this.couponCode = alertCoupon;
       }
 
@@ -2064,6 +2068,7 @@ new Vue({
       } else {
         this.couponUsed = "";
         this.couponUsed = lowerCoupon;
+        this.preDiscountAmount = this.amount;
         return this.amount = fixedDiscountedAmount;
       }
     },
@@ -37619,7 +37624,7 @@ process.umask = function() { return 0; };
 /******/ 					__webpack_require__.m[moduleId] = moreModules[moduleId];
 /******/ 				}
 /******/ 			}
-/******/ 			if(runtime) var result = runtime(__webpack_require__);
+/******/ 			if(runtime) runtime(__webpack_require__);
 /******/ 			if(parentChunkLoadingFunction) parentChunkLoadingFunction(data);
 /******/ 			for(;i < chunkIds.length; i++) {
 /******/ 				chunkId = chunkIds[i];
@@ -37628,7 +37633,7 @@ process.umask = function() { return 0; };
 /******/ 				}
 /******/ 				installedChunks[chunkIds[i]] = 0;
 /******/ 			}
-/******/ 			return __webpack_require__.O(result);
+/******/ 			__webpack_require__.O();
 /******/ 		}
 /******/ 		
 /******/ 		var chunkLoadingGlobal = self["webpackChunk"] = self["webpackChunk"] || [];
