@@ -1,0 +1,63 @@
+.form-section {
+  background-color: $form-bg;
+  color: $form-txt-col;
+
+  a {
+    color: $form-txt-col;
+    &:hover {
+      color: $form-txt-col;
+      text-decoration: none;
+    }
+  }
+
+  &-header {
+    background-color: $form-bg-header;
+    .content {
+      @include flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0;
+    }
+    &-data {
+      width: 50%;
+      padding: 20px 0;
+      text-align: center;
+      .titles {
+        color: $title-col;
+      }
+      .subtitles {
+        color: $subtitle-lightcol;
+      }
+    }
+    &-img {
+      width: 50%;
+      min-width: 500px;
+      img {
+        max-width: 100%;
+      }
+    }
+  }
+  .container {
+    padding: 50px 30px;
+  }
+
+  .btn {
+    background-color: $title-col;
+  }
+
+  .order-container {
+    .table-borderless {
+      color: #fff;
+      @media (max-width: 1090px) {
+        margin-top: 20px;
+      }
+    }
+    .cart {
+      background: linear-gradient(#003DB8, #00338E);
+    }
+    .order-form {
+      padding: 0 25px;
+    }
+  }
+
+}

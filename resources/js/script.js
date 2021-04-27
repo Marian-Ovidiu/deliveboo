@@ -95,7 +95,7 @@ new Vue({
 
     //RICERCA: scrolla la pagina alla sezione ristoranti in homepage
     scrollDown () {
-        document.documentElement.scrollTop = 1100;
+        window.location.href = "#restaurants-row";
     },
 
     // CARRELLO: Aggiungi prodotto
@@ -156,14 +156,20 @@ new Vue({
       let fixedDiscountedAmount = 0;
       let lowerCoupon = this.couponCode.toLowerCase();
       let alertCoupon = 'Inserire un codice coupon valido';
+      let alertCouponEmpty = 'Nessun codice inserito';
       this.flagVerificaCoupon = false;
 
+      if(this.couponCode === '') {
+            return this.couponCode = alertCouponEmpty;
+      }
+
       for(let i = 0; i < this.coupon.length; i++) {
-        if(lowerCoupon === this.coupon[i]) {
-          discount = (this.amount * this.couponDiscount);
-          discountedAmount = this.amount - discount;
-          fixedDiscountedAmount = discountedAmount.toFixed(2);
-          this.flagVerificaCoupon = true;
+            if(lowerCoupon === this.coupon[i]) {
+            discount = (this.amount * this.couponDiscount);
+            discountedAmount = this.amount - discount;
+            fixedDiscountedAmount = discountedAmount.toFixed(2);
+            this.flagVerificaCoupon = true;
+            }
         }
 
         if (this.couponUsed === lowerCoupon || this.couponUsed === alertCoupon) {
@@ -171,13 +177,12 @@ new Vue({
         }
 
         if(!this.flagVerificaCoupon && this.couponCode.length > 0) {
-            this.couponCode = alertCoupon;
+            return this.couponCode = alertCoupon;
         } else {
             this.couponUsed = "";
             this.couponUsed = lowerCoupon;
             return this.amount = fixedDiscountedAmount;
         }
-      }
     },
 
     // CARRELLO: Calcola totale quantità prodotti

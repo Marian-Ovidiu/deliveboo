@@ -1,54 +1,23 @@
 .home-container {
 
-  .titles {
-    font-size: 2.4em;
-    font-weight: 800;
-    margin-bottom: 20px;
-    text-align: center;
-    @media (max-width: 800px) {
-      font-size: 2em;
-      margin-bottom: 14px;
-    }
-  }
-
-  .subtitles {
-    font-size: 1.7em;
-    font-weight: 700;
-    margin-bottom: 10px;
-    text-align: center;
-    @media (max-width: 800px) {
-      font-size: 1.2em;
-      margin-bottom: 8px;
-    }
-  }
-
-  .row-jumbotron {
+  .topjumbotron {
     width: 100%;
     min-height: 380px;
+    background-color: $main-bg;
     background-image: url("/img/00-bg.jpg");
     background-position: bottom right;
     background-repeat: no-repeat;
     background-size: 100%;
+    overflow: hidden;
 
     .content {
+      @include flex;
+      justify-content: center;
       padding: 0;
     }
+    &-left {
+      width: 50%;
 
-    &-right {
-      height: 380px;
-      display: flex;
-      justify-content: center;
-      align-items: flex-end;
-      padding: 0 25px;
-      @media (max-width: 700px) {
-        height: 280px;
-      }
-
-      img {
-        max-height: 90%;
-      }
-    }
-    &-row {
       .subtitles {
         color: $subtitle-col;
       }
@@ -57,13 +26,26 @@
         color:$title-col;
         transition: 1s;
       }
-      &-search {
-        .input-group{
-          background-color: rgba(0, 0, 0, 0.2);
-          input{
-            transition: 1s;
-          }
+      .input-group{
+        background-color: rgba(0, 0, 0, 0.2);
+        input{
+          transition: 1s;
         }
+      }
+    }
+    &-right {
+      width: 50%;
+      min-width: 450px;
+      height: 380px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      padding: 0 25px;
+      @media (max-width: 916px) {
+        height: 340px;
+      }
+      img {
+        max-height: 90%;
       }
     }
   }
@@ -81,14 +63,13 @@
       justify-content: center;
 
       li {
-        width: calc(100% / 4);
+        width: 300px;
+        height: 180px;
         padding: 20px 40px;
         text-transform: uppercase;
         font-size: 1.1em;
         font-weight: 700;
-        @media (max-width: 800px) {
-          width: calc(100% / 2);
-        }
+
         img {
           max-width: 100%;
           margin-bottom: 12px;
@@ -132,7 +113,7 @@
       color: #FFFFFF;
     }
     .subtitles {
-      color: #B9C0FF;
+      color: $subtitle-lightcol;
     }
     .error{
       margin: 25px 0;
