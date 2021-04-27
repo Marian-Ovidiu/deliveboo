@@ -18,10 +18,13 @@ new Vue({
     preDiscountAmount: 0,
     amount: 0,
     amountSaved: 0,
-    quantity: 0
+    quantity: 0,
+    displayOff: false
   },
 
   mounted() {
+    setTimeout (this.preloadStop, 5000),
+
     axios.get('http://localhost:8000/api/businesses')
     .then(resp => {
         this.businnessesForType = [];
@@ -39,6 +42,11 @@ new Vue({
   },
 
   methods: {
+
+    // Animazione pre-load homepage
+    preloadStop (){
+      this.displayOff = true;
+    },
 
     // Visualizzazione Hamburger menu
     viewHambMenu () {
