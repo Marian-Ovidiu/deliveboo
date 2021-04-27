@@ -10287,6 +10287,53 @@ h3 {
   margin-bottom: 20px;
 }
 
+.preload {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #FFFFFF;
+  width: 100vw;
+  max-width: 100%;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  transition: 1s;
+  -webkit-animation: fade 5s linear forwards;
+          animation: fade 5s linear forwards;
+}
+.preload img {
+  max-width: 50%;
+}
+@-webkit-keyframes fade {
+  0% {
+    opacity: 100;
+  }
+  55% {
+    opacity: 100;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes fade {
+  0% {
+    opacity: 100;
+  }
+  55% {
+    opacity: 100;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+.preload.off {
+  display: none;
+}
+
 .home-container .topjumbotron {
   width: 100%;
   min-height: 380px;

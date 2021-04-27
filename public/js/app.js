@@ -1916,12 +1916,13 @@ new Vue({
     preDiscountAmount: 0,
     amount: 0,
     amountSaved: 0,
-    quantity: 0
+    quantity: 0,
+    displayOff: false
   },
   mounted: function mounted() {
     var _this = this;
 
-    axios.get('http://localhost:8000/api/businesses').then(function (resp) {
+    setTimeout(this.preloadStop, 5000), axios.get('http://localhost:8000/api/businesses').then(function (resp) {
       _this.businnessesForType = [];
       _this.allBusinesses = resp.data;
       _this.businessesToRender = _this.allBusinesses;
@@ -1931,6 +1932,10 @@ new Vue({
     this.amountSaved = localStorage.getItem('amount');
   },
   methods: {
+    // Animazione pre-load homepage
+    preloadStop: function preloadStop() {
+      this.displayOff = true;
+    },
     // Visualizzazione Hamburger menu
     viewHambMenu: function viewHambMenu() {
       this.hambMenu = !this.hambMenu;
