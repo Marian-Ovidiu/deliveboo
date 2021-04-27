@@ -92,6 +92,7 @@
               <span><strong>Prezzo totale:</strong></span>
               <span class="text-right ml-3">&euro; @{{amount}}</span>
             </dl>
+            <dl v-if="flagVerificaCoupon">Sconto applicato!</dl>
             <hr>
             <a v-on:click="saveCart()" href="{{ asset(route('cart-checkout', compact('business')))}}" class="btn btn-out btn-primary btn-square btn-main" data-abc="true">Checkout</a>
           </div>
