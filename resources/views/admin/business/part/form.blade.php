@@ -46,7 +46,7 @@ $days = [
 
     <div class = "container">
         {{-- Form --}}
-        <form class = "row" action="{{ $url }}" method="post" enctype="multipart/form-data">
+        <form class="row" action="{{ $url }}" method="post" enctype="multipart/form-data">
             @csrf
             @method( $method )
 
@@ -108,9 +108,11 @@ $days = [
             {{-- row: logo --}}
             <div class="col-lg-6 col-xs-12">
                 <div class="form-group">
-                    <label for="logo"><b>Logo</b></label>
+                    <label for="logo">
+                        <b>Logo</b>
+                    </label>
                     &nbsp;&nbsp;&nbsp;&nbsp;
-                    <input type="file" id="logo" name="logo" accept="image/*">
+                    <input type="file" id="logo" class="form-control {{ $errors->has('logo') ? 'is-invalid' : '' }}" name="logo" accept="image/*">
                     @if (isset($business))
                         <small>
                             <br>&nbsp;File caricato in precedenza: {{ substr($business->logo, 12) }}
@@ -160,7 +162,7 @@ $days = [
             {{-- / row: business email --}}
             <div class="col-lg-6 col-xs-12">
                 <div class="form-group">
-                    <label for="email"><b>Email Risorante</b></label>
+                    <label for="email"><b>Email Ristorante</b></label>
                     <input type="text" class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}" id="email" name="email"  value="{{ isset($business) ? $business->email : '' }}">
                     <div class="invalid-feedback">
                     {{ $errors->first('email') }}
@@ -196,7 +198,7 @@ $days = [
 
             <input type="hidden" name="user_id" id="user_id" value="{{ Auth::user()->id }}">
 
-            <div class="col-6">
+            <div class="col-12">
                 <button type="submit" class="btn btn-primary">{{$submit}} Ristorante</button>
             </div>
         </form>
