@@ -10466,59 +10466,29 @@ h3 {
   padding: 0 25px;
 }
 
-.wrapper {
-  max-width: 100%;
-  width: 100vw;
+.dash-header {
+  background-color: #000678;
+  color: #fff;
 }
 
-.row-header {
-  background-color: #000250;
-  color: white;
+.dash-nav {
+  background-color: #2DCD65;
 }
-.row-header .content {
-  text-align: center;
+.dash-nav a {
+  text-transform: uppercase;
+  font-weight: 800;
 }
-.row-header .content-img {
-  margin-bottom: 15px;
-}
-.row-header button {
-  padding: 10px;
-  width: 250px;
-  border: none;
-  color: white;
-  background-color: transparent;
-  transition: 0.4s;
-}
-.row-header button:hover {
-  transform: scale(1.1);
-  background-color: rgba(255, 255, 255, 0.2);
+.dash-nav a:hover {
+  text-decoration: none;
+  color: #fff;
 }
 
-.header-row-jumbotronn-container a {
-  padding: 10px;
-  width: 250px;
-  border: none;
-  color: white;
-  background-color: transparent;
-  transition: 0.4s;
+.dash-main {
+  background-color: #00338E;
+  color: #fff;
 }
-.header-row-jumbotronn-container a:hover {
-  transform: scale(1.1);
-  background-color: rgba(255, 255, 255, 0.2);
-  color: white;
-}
-
-.row-main {
-  background-image: linear-gradient(#62D284, #2DCD65);
-}
-.row-main-restaurants-row-title {
-  text-align: center;
-  padding: 10px;
-}
-.row-main-restaurants-row-row {
-  padding: 10px;
-  display: flex;
-  flex-wrap: wrap;
+.dash-main .text-green {
+  color: #00BE43;
 }
 
 .fl {
