@@ -2,8 +2,13 @@
 @section('title', 'Home')
 
 @section('content')
+
   {{-- HOME CONTAINER  --}}
   <div id="app" class="home-container">
+
+    <div class="preload" :class="{'off' : this.displayOff}">
+      <img src="{{ asset('img/00-logo.gif') }}" alt="Deliveboo">
+    </div>
 
     {{-- Jumbotron --}}
     <section class="topjumbotron">
