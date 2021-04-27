@@ -1,18 +1,28 @@
 @extends('layouts.base')
 
 @section('content')
-  <div class="centering">
+<section class="form-section">
+  <div class="form-section-header">
+    <div class="content">
+      <div class="form-section-header-data">
+        <div class="titles">
+          Registrati
+        </div>
+        <div class="subtitles">
+          Entra a far parte della nostra rete di ristoranti.
+        </div>
+      </div>
+      <div class="form-section-header-img">
+        <img src="{{asset ('img/00-register.jpg')}}" alt="Deliveroo">
+      </div>
+    </div>
+  </div>
+
     <div class="container">
     <div class="row justify-content-center">
       {{-- Registration table --}}
       <div class="col-md-8">
-        <div class="card">
-          {{-- Header --}}
-          <div class="card-header">{{ __('Registrazione') }}</div>
-          {{-- / Header --}}
-
-          {{-- Body --}}
-          <div class="card-body">
+          <div>
             <form method="POST" action="{{ route('register') }}">
               @csrf
               {{-- row: firstname --}}
@@ -119,11 +129,9 @@
                           {{-- / row: submit --}}
                         </form>
                       </div>
-                      {{-- / Body --}}
                     </div>
                   </div>
                   {{-- / Registration table --}}
-                </div>
               </div>
-  </div>
+  </section>
 @endsection

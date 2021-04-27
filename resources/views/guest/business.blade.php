@@ -92,8 +92,10 @@
           <div class="card-body">
             <dl>
               <span><strong>Prezzo totale:</strong></span>
+              <span v-if="flagVerificaCoupon" style="text-decoration: line-through;">&euro; @{{preDiscountAmount}}</span>
               <span class="text-right ml-3">&euro; @{{amount}}</span>
             </dl>
+            <dl v-if="flagVerificaCoupon">Applicato sconto del 20%!</dl>
             <hr>
             <a v-on:click="saveCart()" href="{{ asset(route('cart-checkout', compact('business')))}}" class="btn btn-out btn-primary btn-square btn-main" data-abc="true">Checkout</a>
           </div>
