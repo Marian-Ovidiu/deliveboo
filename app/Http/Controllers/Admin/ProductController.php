@@ -82,14 +82,15 @@ class ProductController extends Controller
   }
 
   // Gestione VALIDAZIONE campi
-  protected function isValid($data)
+  protected function isValid(Request $request)
   {
-    $data->validate([
+    $request->validate([
     'name' => 'required|max:255',
     'ingredients' => 'required|max:512',
     'description' => 'required|max:1024',
+    'img' => 'required',
     'price' => 'required|numeric|between:0,99999.99',
-    'visible' => 'required',
+    'visible' => 'required'
     ]);
   }
 
