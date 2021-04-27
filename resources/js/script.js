@@ -95,7 +95,7 @@ new Vue({
 
     //RICERCA: scrolla la pagina alla sezione ristoranti in homepage
     scrollDown () {
-        document.documentElement.scrollTop = 1100;
+        window.location.href = "#restaurants-row";
     },
 
     // CARRELLO: Aggiungi prodotto

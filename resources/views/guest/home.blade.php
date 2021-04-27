@@ -6,35 +6,26 @@
   <div id="app" class="home-container">
 
     {{-- Jumbotron --}}
-    <div class="row-jumbotron">
-      <div class="row content">
-        <div class="row-jumbotron-left col-md-8 col-sm-12">
-          <div class="row-jumbotron-row row">
-            <div class="col-sm-12 titles">
-              Cerca. Scegli. Ordina.
-            </div>
+    <section class="topjumbotron">
+      <div class="content">
+
+        <div class="topjumbotron-left">
+          <div class="titles">
+            Cerca. Scegli. Ordina.
           </div>
-          <div class="row-jumbotron-row row">
-            <div class="col-sm-12 subtitles">
-              Il tuo ristorante preferito a casa con un click.
-            </div>
+          <div class="subtitles">
+            Il tuo ristorante preferito a casa con un click.
           </div>
-          <div class="row-jumbotron-row row">
-            <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-2 row-jumbotron-row-space"></div>
-            <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-8 row-jumbotron-row-search">
-              <div class="input-group border rounded-pill p-3">
-                <input type="search" placeholder="Inserisci il nome del ristorante e premi invio" class="form-control" @keyup.enter = "scrollDown()"  @keyup = "filterBusinessesByName(query)" v-model="query" >
-              </div>
-            </div>
-            <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-2 row-jumbotron-row-space"></div>
+          <div class="input-group border rounded-pill p-3">
+            <input type="search" placeholder="Inserisci il nome del ristorante" class="form-control" @keyup.enter = "scrollDown()"  @keyup = "filterBusinessesByName(query)" v-model="query" >
           </div>
         </div>
-        <div class="row-jumbotron-right col-md-2 col-sm-12">
-          <img src="{{asset('img/01-home.png')}}" alt="Deliveboo">
 
+        <div class="topjumbotron-right">
+          <img src="{{asset('img/01-home.png')}}" alt="Deliveboo">
         </div>
       </div>
-    </div>
+    </section>
     {{-- / Jumbotron --}}
 
     {{-- Search by type --}}
