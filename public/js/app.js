@@ -1913,6 +1913,7 @@ new Vue({
     couponUsed: '',
     couponDiscount: 0.20,
     flagVerificaCoupon: false,
+    preDiscountAmount: 0,
     amount: 0,
     amountSaved: 0,
     quantity: 0
@@ -2067,6 +2068,7 @@ new Vue({
       } else {
         this.couponUsed = "";
         this.couponUsed = lowerCoupon;
+        this.preDiscountAmount = this.amount;
         return this.amount = fixedDiscountedAmount;
       }
     },
