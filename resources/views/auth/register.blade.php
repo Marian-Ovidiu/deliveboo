@@ -1,4 +1,5 @@
 @extends('layouts.base')
+@section('title', 'Registrati')
 
 @section('content')
 <section class="form-section">
