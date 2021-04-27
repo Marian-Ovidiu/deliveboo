@@ -30,7 +30,7 @@ class BusinessSeeder extends Seeder
             [
                 'name' => 'Ristorane Cinese DI Sichuan',
                 'description' => 'Piatti buoni e di qualità, con grande varietà di portate che spaziano dai classici alle ricette tradizionali della regione di Sichuan. Qui si respira la vera aria del tipico ristorante cinese.',
-                'address' => $faker->address(),
+                'address' => "Via Goffredo 5, 00153 Roma",
                 'closing_day' => $faker->randomElement($closingDays),
                 'opening_time' => $faker->time,
                 'closing_time' => $faker->time,
@@ -42,7 +42,7 @@ class BusinessSeeder extends Seeder
             [
                 'name' => 'Rosemary Terra e Sapori',
                 'description' => 'Locale ben arredato, atmosfera accogliente e cibo di ottima qualità, tutto km 0 e bio.',
-                'address' => $faker->address(),
+                'address' => "Via Daniele Samarate 24, 00125 Roma",
                 'closing_day' => $faker->randomElement($closingDays),
                 'opening_time' => $faker->time,
                 'closing_time' => $faker->time,
@@ -54,7 +54,7 @@ class BusinessSeeder extends Seeder
             [
                 'name' => 'Domò Sushi',
                 'description' => 'Un luogo accogliente, elegante, ben arredato e luminoso, con possibilità di mangiare anche all\'aperto. Sushi fantastico, ad alta digeribilità.',
-                'address' => $faker->address(),
+                'address' => "Via Bellinzona 11, 00198 Roma",
                 'closing_day' => $faker->randomElement($closingDays),
                 'opening_time' => $faker->time,
                 'closing_time' => $faker->time,
@@ -66,7 +66,7 @@ class BusinessSeeder extends Seeder
             [
                 'name' => 'Himalaya\'s Kashmir',
                 'description' => 'Immergersi nelle atmosfere e nei sapori indiani non è stato mai così semplice, ambiente caldo e familiare, ottima cucina.',
-                'address' => $faker->address(),
+                'address' => "Via Cipro 4L, 00136 Roma",
                 'closing_day' => $faker->randomElement($closingDays),
                 'opening_time' => $faker->time,
                 'closing_time' => $faker->time,
@@ -78,7 +78,7 @@ class BusinessSeeder extends Seeder
             [
                 'name' => 'Osteria Maré',
                 'description' => 'Consegna a domicilio, servizio veloce e gentile. Bancone a vista con tutte le etichette dei vini presenti, qualità del cibo nettamente sopra la media',
-                'address' => $faker->address(),
+                'address' => "Borgo Pio 21, 00193 Roma",
                 'closing_day' => $faker->randomElement($closingDays),
                 'opening_time' => $faker->time,
                 'closing_time' => $faker->time,
@@ -102,7 +102,7 @@ class BusinessSeeder extends Seeder
             [
                 'name' => 'Lime Restaurant & Bar',
                 'description' => 'Una frizzante selezione di cocktails e appetitose leccornìe, che ti condurranno in un aperitivo da sogno.',
-                'address' => $faker->address(),
+                'address' => "Piazzale Milvio 3, 00135 Roma",
                 'closing_day' => $faker->randomElement($closingDays),
                 'opening_time' => $faker->time,
                 'closing_time' => $faker->time,
@@ -114,7 +114,7 @@ class BusinessSeeder extends Seeder
             [
                 'name' => 'Osteria da Noiartri',
                 'description' => 'Cucina a base di pesce ottima, servizio accogliente e preciso nella cura dei dettagli.',
-                'address' => $faker->address(),
+                'address' => "Via Metastasio 21, 00186 Roma",
                 'closing_day' => $faker->randomElement($closingDays),
                 'opening_time' => $faker->time,
                 'closing_time' => $faker->time,
@@ -126,7 +126,7 @@ class BusinessSeeder extends Seeder
             [
                 'name' => 'PaninoLAB Tortona District',
                 'description' => 'Ingredienti di qualità eccellente, accostamenti gustosi, quando il panino non è un semplice panino ma un insieme di sapori sapientemente accostati',
-                'address' => $faker->address(),
+                'address' => "Via della Pelliccia 29A, 00153 Roma",
                 'closing_day' => $faker->randomElement($closingDays),
                 'opening_time' => $faker->time,
                 'closing_time' => $faker->time,
@@ -138,7 +138,7 @@ class BusinessSeeder extends Seeder
             [
                 'name' => 'Al Padellone',
                 'description' => 'Stile steak house dallo spirito Industrial, carne ottima e ben accompagnata da buoni contorni.',
-                'address' => $faker->address(),
+                'address' => "Via del Paradiso 39, 00186 Roma",
                 'closing_day' => $faker->randomElement($closingDays),
                 'opening_time' => $faker->time,
                 'closing_time' => $faker->time,

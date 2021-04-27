@@ -17,7 +17,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.1.0/chart.min.js"></script>
   <script src="{{ asset('js/app.js') }}" defer></script>
   <title>Deliveboo - @yield('title')</title>
-
   <link rel="icon" href="img/00-fav.png">
 </head>
 
@@ -31,7 +30,7 @@
 
       {{-- head-logo --}}
       <div class="top-header-logo">
-        <img src="{{ asset('img/00-logo.gif') }}" alt="Deliveboo">
+        <img src="{{ asset('img/00-logo.jpg') }}" alt="Deliveboo">
       </div>
       {{-- / head-logo --}}
 
