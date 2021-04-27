@@ -57,6 +57,8 @@
           </div>
         </div>
       </div>
+      <div class="col-xl-0  col-lg-0 col-md-0 col-sm-1 col-1"></div>
+      <div class="col-sm-1 col-1"></div>
       <aside class="col-xl-3 col-lg-3 col-md-3 col-sm-10 col-10">
         <div class="card mb-3">
           <div class="card-body">

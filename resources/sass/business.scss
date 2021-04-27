@@ -36,64 +36,60 @@
   background-color: $business-show-bg;
   color:white;
   font-size: 0.88em;
-  &-row-main{
-    &-row{
-      &-title{
-        margin-top: 15px;
-        font-size: 30px;
-        font-weight: bold;
-        font-family: $main-font-family;
-      }
-      &-products{
+    &-row-main{
         &-row{
-          padding: 0;
-          background-color: $business-product-bg;
-          margin: 20px 0;
-          transition: 0.4s;
-          height: 160px;
-          &-name{
-            padding: 0;
-            &-img{
-              width: 40%;
-              height: 100%;
-              background-size: cover;
-            }
-            &-container{
-              width:60%;
-              padding-left: 10px;
-              &-title{
-                font-size: 20px;
+            &-title{
+                margin-top: 15px;
+                font-size: 30px;
                 font-weight: bold;
-              }
+                font-family: $main-font-family;
             }
-          }
-          &-options{
-            &-btn{
-              color: white;
-              font-size: 20px;
-              width: 90%;
-              padding: 5px;
-              border: none;
-              border-radius: 5px;
-              background-color: $types-link-bg;
+            &-products{
+                &-row{
+                    padding: 0;
+                    background-color: $business-product-bg;
+                    margin: 20px 0;
+                    transition: 0.4s;
+                    height: 200px;
+                    &-name{
+                        padding: 0;
+                        &-img{
+                            width: 40%;
+                            height: 100%;
+                            background-size: cover;
+                        }
+                        &-container{
+                            width:60%;
+                            padding-left: 10px;
+                            &-title{
+                                font-size: 15px;
+                                font-weight: bold;
+                            }
+                            &-description{
+                                font-size: 13px;
+                            }
+                        }
+                    }
+                    &-options{
+                        &-btn{
+                            color: white;
+                            font-size: 20px;
+                            width: 90%;
+                            padding: 5px;
+                            border: none;
+                            border-radius: 5px;
+                            background-color: $types-link-bg;
+                        }
+                        &-btn:first-child{
+                            margin-top: 25px;
+                        }
+                    }
+                }
             }
-            &-btn:first-child{
-              margin-top: 25px;
-            }
-          }
         }
     }
-    aside{
-        .card:first-child{
-            margin-top: 50px;
-        }
-        .card{
-            background-color: transparent;
-            border: none;
-        }
-      }
-    }
-  }
+
+
   aside{
     .card:first-child{
       margin-top: 50px;

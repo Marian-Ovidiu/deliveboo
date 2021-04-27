@@ -10517,7 +10517,7 @@ h3 {
   background-color: linear-gradient(#0510A5, #192ACD);
   margin: 20px 0;
   transition: 0.4s;
-  height: 160px;
+  height: 200px;
 }
 .business-main-row-main-row-products-row-name {
   padding: 0;
@@ -10532,8 +10532,11 @@ h3 {
   padding-left: 10px;
 }
 .business-main-row-main-row-products-row-name-container-title {
-  font-size: 20px;
+  font-size: 15px;
   font-weight: bold;
+}
+.business-main-row-main-row-products-row-name-container-description {
+  font-size: 13px;
 }
 .business-main-row-main-row-products-row-options-btn {
   color: white;
@@ -10546,13 +10549,6 @@ h3 {
 }
 .business-main-row-main-row-products-row-options-btn:first-child {
   margin-top: 25px;
-}
-.business-main-row-main-row aside .card:first-child {
-  margin-top: 50px;
-}
-.business-main-row-main-row aside .card {
-  background-color: transparent;
-  border: none;
 }
 .business-main aside .card:first-child {
   margin-top: 50px;
