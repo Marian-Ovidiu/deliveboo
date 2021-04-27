@@ -95,7 +95,7 @@
         </div>
 
         <div class="row">
-            <div class="col-8 mx-auto">
+            <div class="col-10 mx-auto">
                 <h4 id="report" class="ml-3">Report</h4>
                 <canvas class="my-4 w-100" id="myChart" width="900" height="380" color="white"></canvas>
             </div>
@@ -105,83 +105,96 @@
     {{-- End Main --}}
 
     <script>
-    $(function(){
-        //get the pie chart canvas
-        var cData = JSON.parse(`<?php echo $chart_data; ?>`);
-        var ctx = $("#myChart");
-
-        //pie chart data
-        var data = {
-            labels: cData.label,
-            datasets: [
-                {
-                label: "",
-                data: cData.data,
-                backgroundColor: [
-                    "#DEB887",
-                    "#A9A9A9",
-                    "#DC143C",
-                    "#F4A460",
-                    "#2E8B57",
-                    "#1D7A46",
-                    "#CDA776",
-                ],
-                borderColor: [
-                    "#CDA776",
-                    "#989898",
-                    "#CB252B",
-                    "#E39371",
-                    "#1D7A46",
-                    "#F4A460",
-                    "#CDA776",
-                ],
-                borderWidth: [1, 1, 1, 1, 1, 1, 1]
-                },
-            ]
-        };
-
-        //options
-        var options = {
-            responsive: true,
-            title: {
-                display: true,
-                position: "top",
-                text: "Last Week Registered Users -  Day Wise Count",
-                fontSize: 18,
-                fontColor: "#fff"
+        const orders = {!! $orders !!};
+        // const orders = JSON.parse(`<?php echo $orders; ?>`);
+        let result = {
+            "01": {
+                totalOrders: 0,
+                money: 0,
+                monthName: "Gennaio",
             },
-            legend: {
-                display: true,
-                position: "bottom",
-                labels: {
-                fontColor: "#fff",
-                fontSize: 16
-                }
+            "02": {
+                totalOrders: 0,
+                money: 0,
+                monthName: "Febbraio",
             },
-            scales: {
-                yAxes: [{
-                    gridLines: {
-                        color: "#fff"
-                    },
-                    ticks: {
-                        fontColor: 'white'
-                    },
-                }],
-                xAxes: [{
-                    ticks: {
-                        fontColor: 'white'
-                    },
-                }]
+            "03": {
+                totalOrders: 0,
+                money: 0,
+                monthName: "Marzo",
             },
-        };
-
-        //create Pie Chart class object
-        var chart1 = new Chart(ctx, {
-          type: "bar",
-          data: data,
-          options: options
+            "04": {
+                totalOrders: 0,
+                money: 0,
+                monthName: "Aprile",
+            },
+        }
+        orders.forEach(order => {
+            result[order.created_at.slice(5,7)].totalOrders += 1;
+            result[order.created_at.slice(5,7)].money += order.amount;
         });
 
-    });
-  </script>
+        // console.log(result)
+
+        const orderValues = []; // restaurant's order, from the api
+        const moneyValues = []; // restaurant's money gained, from the api
+        const monthValues = []; // months
+        for (let key in result) {
+            orderValues.push(result[key].totalOrders);
+            moneyValues.push(result[key].money);
+            monthValues.push(result[key].monthName);
+        }
+    </script>
+
+    <script>
+        $(function(){
+        //get the pie chart canvas
+            var cData = JSON.parse(`<?php echo $orders; ?>`);
+            var ctx = $("#myChart");
+            // var ctx = document.getElementById('myChart').getContext('2d');
+            // var myChart = new Chart(ctx, {
+            var data = {
+                labels: [...monthValues],
+                datasets: [
+                    // first graph
+                    {
+                        label: 'Numero ordini', // legend
+                        data: [...orderValues], // the y value adapt automatically to contain all the values in the array
+                        fill: false, // fil color under the graph
+                        backgroundColor: '#71bed1', // color of the graph under the line
+                        borderColor: '#71bed1', // graph line color
+                        borderWidth: 1.5, // width of the graph line
+                        tension: 0.1, // roundness of the graph line
+                    },
+                    // second graph
+                    {
+                        label: 'Totale incasso in euro', // legend
+                        data: [...moneyValues],
+                        fill: false,
+                        backgroundColor: '#ff6e54', // color of the graph under the line
+                        borderColor: '#ff6e54',
+                        borderWidth: 1.5,
+                        tension: 0.1,
+                    }
+                ],
+                options: {
+                    scales: {
+                        yAxes: [{
+                            gridLines: {
+                                color: "#fff"
+                            },
+                            ticks: {
+                                fontColor: 'white'
+                            },
+                        }],
+                        xAxes: [{
+                            ticks: {
+                                fontColor: 'white'
+                            },
+                        }]
+                    },
+                }
+            }
+        });
+    </script>
 @endsection
