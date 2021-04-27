@@ -35,7 +35,7 @@ class DashboardController extends Controller
     }
 
     $data['chart_data'] = json_encode($data);
-    return view('admin.business.dashboard', $data, compact('businesses'));
+    return view('admin.business.show', $data, compact('businesses'));
   }
 
 }

@@ -28,12 +28,12 @@
                             Crea ristorante
                         </a>
                     </li>
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <a class="nav-link" href="#report">
                             <i class="fas fa-chart-bar"></i>
                             Report mensile
                         </a>
-                    </li>
+                    </li> --}}
                 </ul>
             </div>
         </nav>
@@ -87,79 +87,7 @@
                 </li>
             @endforeach
             </ul>
-
-            <h4 id="report" class="ml-3">Fatturato mensile</h4>
-            <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>
-
         </main>
     </div>
-
-    <script>
-    $(function(){
-        // get bar chart canvas
-        var cData = JSON.parse(`<?php echo $chart_data; ?>`);
-        var ctx = $("#myChart");
-
-        // bar chart data
-        var data = {
-          labels: cData.label,
-          datasets: [
-            {
-              label: "Ordini andati a buon fine",
-              data: cData.data,
-              backgroundColor: [
-                "#DEB887",
-                "#A9A9A9",
-                "#DC143C",
-                "#F4A460",
-                "#2E8B57",
-                "#1D7A46",
-                "#CDA776",
-              ],
-              borderColor: [
-                "#CDA776",
-                "#989898",
-                "#CB252B",
-                "#E39371",
-                "#1D7A46",
-                "#F4A460",
-                "#CDA776",
-              ],
-              borderWidth: [1, 1, 1, 1, 1, 1, 1]
-            }
-          ]
-        };
-
-        // options
-        var options = {
-          responsive: true,
-          title: {
-            display: true,
-            position: "top",
-            text: "",
-            fontSize: 16,
-            fontColor: "#fff"
-          },
-          legend: {
-            display: true,
-            position: "bottom",
-            labels: {
-              fontColor: "#fff",
-              fontSize: 16
-            }
-          },
-          layout: {
-            fontColor: "#fff"
-          }
-        };
-        // create Bar Chart class object
-        var chart1 = new Chart(ctx, {
-          type: "bar",
-          data: data,
-          options: options
-        });
-    });
-  </script>
-
 </div>
 @endsection
