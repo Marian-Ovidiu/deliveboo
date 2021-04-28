@@ -57,7 +57,13 @@
             <div class="business-main-row-main-row-products-img" style="background-image: url({{asset( $product->img )}});"></div>
             <div class="business-main-row-main-row-products-container">
                 <span class="business-main-row-main-row-products-container-title">{{ $product->name }}</span><br>
-                <span class="business-main-row-main-row-products-container-description"> {{substr( $product->description, 0, 100)}}[...]</span>
+                <span class="business-main-row-main-row-products-container-description">
+                    @if (strlen($product->description > 100))
+                        {{substr( $product->description, 0, 100)}}[...]
+                    @else
+                        {{$product->description}}
+                    @endif
+                </span>
             </div>
             <div class="business-main-row-main-row-products-price"><div><strong>Prezzo</strong></div><div style="margin: 0 10px">{{ $product->price }}€</div></div>
             <div class="business-main-row-main-row-products-options" style="text-align: center">
