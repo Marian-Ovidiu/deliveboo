@@ -26,11 +26,11 @@ Order ID: {{$order->id}}
 Prodotti acquistati:
 
 @foreach ($productOrder as $product)
-{{$product->name}} - Quantità: {{$countQuantities[$product->id]}}
+* {{$product->name}} - Quantità: {{$countQuantities[$product->id]}}
 
 @endforeach
 
 Totale: {{$order->amount}} €
 
-Buona giornata da Deliveboo!
+Grazie per aver scelto Deliveboo!
 @endcomponent
