@@ -43,7 +43,9 @@ if ($edit) {
             {{-- row: name --}}
             <div class="col-12">
                 <div class="form-group">
-                    <label for="name">Nome Piatto</label>
+                    <label for="name">
+                        <b>Nome Piatto</b>
+                    </label>
                     <input type="text" class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" id="title" name="name"
                     value="{{ isset($product) ? $product->name : '' }}">
                     <div class="invalid-feedback">
@@ -56,7 +58,9 @@ if ($edit) {
             {{-- / row: ingredients --}}
             <div class="col-12">
                 <div class="form-group">
-                    <label for="ingredients">Ingredienti</label>
+                    <label for="ingredients">
+                        <b>Ingredienti</b>
+                    </label>
                     <textarea class="form-control {{ $errors->has('ingredients') ? 'is-invalid' : '' }}" id="ingredients" name="ingredients" rows="6">@if (isset($product)){{ $product->ingredients }}@endif</textarea>
                     <div class="invalid-feedback">
                     {{ $errors->first('ingredients') }}
@@ -68,7 +72,9 @@ if ($edit) {
             {{-- / row: description --}}
             <div class="col-12">
                 <div class="form-group">
-                    <label for="description">Descrizione</label>
+                    <label for="description">
+                        <b>Descrizione</b>
+                    </label>
                     <textarea class="form-control {{ $errors->has('description') ? 'is-invalid' : '' }}" id="description" name="description" rows="6">@if (isset($product)){{ $product->description }}@endif</textarea>
                     <div class="invalid-feedback">
                     {{ $errors->first('description') }}
@@ -80,7 +86,9 @@ if ($edit) {
             {{-- / row: price --}}
             <div class="col-12">
                 <div class="form-group">
-                    <label for="price">Prezzo</label>
+                    <label for="price">
+                        <b>Prezzo</b>
+                    </label>
                     <input type="text" class="form-control {{ $errors->has('price') ? 'is-invalid' : '' }}" id="price" name="price"
                     value="{{ isset($product) ? $product->price : '' }}">
                     <div class="invalid-feedback">
@@ -109,9 +117,11 @@ if ($edit) {
             {{-- / row: image --}}
 
             {{-- row: visible --}}
-            <div class="col-6">
+            <div class="col-md-4 col-xs-12">
                 <div class="form-group">
-                    <label for="visible">Disponibile</label>
+                    <label for="visible">
+                        <b>Disponibile</b>
+                    </label>
                     &nbsp;&nbsp;&nbsp;&nbsp;
                     <select id="visible" name="visible">
                         <option value="1">Sì</option>
@@ -119,11 +129,13 @@ if ($edit) {
                     </select>
                 </div>
             </div>
-            <div class="col-6">
+            <div class="col-md-8 col-xs-12">
                 @if (isset($product) && $product->visible == 1)
                     attualmente impostato come disponibile.
-                @else
+                @elseif(isset($product) && $product->visible == 0)
                     attualmente impostato come non disponibile.
+                @else
+                    {{-- nel form "crea prodotto" non viene mostrato alcun messaggio --}}
                 @endif
             </div>
             {{-- row: visible --}}
