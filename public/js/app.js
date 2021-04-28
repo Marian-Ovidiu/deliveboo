@@ -1910,7 +1910,6 @@ new Vue({
     cartSaved: [],
     coupon: ['freedelivery', 'hambspecial'],
     couponCode: '',
-    couponUsed: '',
     couponApplied: false,
     couponDiscount: 0.20,
     flagVerificaCoupon: false,
@@ -2042,20 +2041,23 @@ new Vue({
     },
     //CARRELLO: Calcola e applica lo sconto al prezzo totale
     discountCoupon: function discountCoupon() {
-      var discountedAmount = 0;
-      var fixedDiscountedAmount = 0;
-      var lowerCoupon = this.couponCode.toLowerCase();
-      var alertCoupon = 'Inserire un codice coupon valido';
+      var alertCoupon = 'Inserire un codice valido';
       var alertCouponEmpty = 'Nessun codice inserito';
-      var alertCartEmpty = 'Aggiungere almeno un prodotto al carrello';
+      var alertCartEmpty = 'Scegliere un prodotto';
+      var lowerCoupon = this.couponCode.toLowerCase();
+      var discountedAmount;
+      var fixedDiscountedAmount;
 
       if (this.couponApplied) {
-        alert("Hai già utilizzato un coupon!");
+        return alert("Hai già utilizzato un coupon!");
       } else {
+        discountedAmount = 0;
+        fixedDiscountedAmount = 0;
+
         if (this.amount === 0) {
-          this.couponCode = alertCartEmpty;
+          return this.couponCode = alertCartEmpty;
         } else if (this.couponCode === '') {
-          this.couponCode = alertCouponEmpty;
+          return this.couponCode = alertCouponEmpty;
         } else {
           for (var i = 0; i < this.coupon.length; i++) {
             if (lowerCoupon === this.coupon[i]) {
@@ -2068,15 +2070,9 @@ new Vue({
         }
       }
 
-      if (lowerCoupon === this.couponUsed || this.couponCode === alertCoupon) {
-        return this.couponCode = alertCoupon;
-      }
-
       if (!this.flagVerificaCoupon && this.couponCode.length > 0) {
-        this.couponCode = alertCoupon;
+        return this.couponCode = alertCoupon;
       } else {
-        this.couponUsed = "";
-        this.couponUsed = lowerCoupon;
         this.preDiscountAmount = this.amount;
         this.couponApplied = true;
         this.amount = fixedDiscountedAmount;

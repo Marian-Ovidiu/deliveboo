@@ -12,7 +12,6 @@ new Vue({
     cartSaved: [],
     coupon: ['freedelivery', 'hambspecial'],
     couponCode: '',
-    couponUsed: '',
     couponApplied: false,
     couponDiscount: 0.20,
     flagVerificaCoupon: false,
@@ -165,43 +164,39 @@ new Vue({
 
     //CARRELLO: Calcola e applica lo sconto al prezzo totale
     discountCoupon() {
-        let discountedAmount = 0;
-        let fixedDiscountedAmount = 0;
+        const alertCoupon = 'Inserire un codice valido';
+        const alertCouponEmpty = 'Nessun codice inserito';
+        const alertCartEmpty = 'Scegliere un prodotto';
         let lowerCoupon = this.couponCode.toLowerCase();
-        let alertCoupon = 'Inserire un codice coupon valido';
-        let alertCouponEmpty = 'Nessun codice inserito';
-        let alertCartEmpty = 'Aggiungere almeno un prodotto al carrello'
+        let discountedAmount;
+        let fixedDiscountedAmount;
 
         if(this.couponApplied) {
-            alert("Hai già utilizzato un coupon!");
+            return alert("Hai già utilizzato un coupon!");
 
         } else {
+            discountedAmount = 0;
+            fixedDiscountedAmount = 0;
 
             if(this.amount === 0) {
-                    this.couponCode = alertCartEmpty;
+                    return this.couponCode = alertCartEmpty;
             } else if(this.couponCode === '' ) {
-                    this.couponCode = alertCouponEmpty;
+                    return this.couponCode = alertCouponEmpty;
             } else {
-                    for(let i = 0; i < this.coupon.length; i++) {
-                        if(lowerCoupon === this.coupon[i]) {
-                            discount = (this.amount * this.couponDiscount);
-                            discountedAmount = this.amount - discount;
-                            fixedDiscountedAmount = discountedAmount.toFixed(2);
-                            this.flagVerificaCoupon = true;
-                        }
+                for(let i = 0; i < this.coupon.length; i++) {
+                    if(lowerCoupon === this.coupon[i]) {
+                        discount = (this.amount * this.couponDiscount);
+                        discountedAmount = this.amount - discount;
+                        fixedDiscountedAmount = discountedAmount.toFixed(2);
+                        this.flagVerificaCoupon = true;
                     }
                 }
-        }
-
-        if (lowerCoupon === this.couponUsed   || this.couponCode === alertCoupon) {
-            return this.couponCode = alertCoupon;
+            }
         }
 
         if(!this.flagVerificaCoupon && this.couponCode.length > 0) {
-            this.couponCode = alertCoupon;
+            return this.couponCode = alertCoupon;
         } else {
-            this.couponUsed = "";
-            this.couponUsed = lowerCoupon;
             this.preDiscountAmount = this.amount;
             this.couponApplied = true;
             this.amount = fixedDiscountedAmount;
