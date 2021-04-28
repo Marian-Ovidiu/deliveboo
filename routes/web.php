@@ -22,6 +22,7 @@ Route::post('/checkout/payment', 'Guest\OrderController@store')->name('order-pay
  ->group(function () {
    Route::get('', 'DashboardController@index')->name('dashboard');
    Route::resource('business', BusinessController::Class);
+   Route::get('business/{id}/stats', 'BusinessController@stats')->name('stats');
    Route::resource('product', ProductController::Class);
    Route::get('business/{id}/add', 'ProductController@add')->name('add-prod');
  });
