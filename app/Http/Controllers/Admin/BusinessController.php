@@ -186,7 +186,6 @@ class BusinessController extends Controller
         'name' => 'required|max:255',
         'address' => 'required|max:255',
         'description' => 'required|max:1024',
-        'logo' => 'required',
         'type' => 'required',
         'email' => 'required',
         'telephone' => 'required|min:10|max:10',

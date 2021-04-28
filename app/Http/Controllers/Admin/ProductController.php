@@ -88,7 +88,6 @@ class ProductController extends Controller
     'name' => 'required|max:255',
     'ingredients' => 'required|max:512',
     'description' => 'required|max:1024',
-    'img' => 'required',
     'price' => 'required|numeric|between:0,99999.99',
     'visible' => 'required'
     ]);
