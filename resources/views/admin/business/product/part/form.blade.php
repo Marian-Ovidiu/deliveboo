@@ -106,7 +106,7 @@ if ($edit) {
                     </label>
                     &nbsp;&nbsp;&nbsp;&nbsp;
                     <input type="file" class="form-control {{ $errors->has('img') ? 'is-invalid' : '' }}"  id="img" name="img" accept="image/*"
-                    @if (!isset($business)) required @endif>
+                    @if (!isset($product)) required @endif>
                         @if (isset($product))
                             <small> File caricato in precedenza: <br> {{ substr($product->img, 12) }}</small>
                         @endif
