@@ -14,7 +14,7 @@
 
   {{-- Script --}}
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.1.0/chart.min.js"></script>
   <script src="{{ asset('js/app.js') }}" defer></script>
   <title>Deliveboo - @yield('title')</title>
   <link rel="icon" href="img/00-fav.png">

@@ -1911,6 +1911,7 @@ new Vue({
     coupon: ['freedelivery', 'hambspecial'],
     couponCode: '',
     couponUsed: '',
+    couponApplied: false,
     couponDiscount: 0.20,
     flagVerificaCoupon: false,
     preDiscountAmount: 0,
@@ -1922,7 +1923,7 @@ new Vue({
   mounted: function mounted() {
     var _this = this;
 
-    setTimeout(this.preloadStop, 5000), axios.get('http://localhost:8000/api/businesses').then(function (resp) {
+    setTimeout(this.preloadStop, 5000), this.couponApplied = false, this.flagVerificaCoupon = false, axios.get('http://localhost:8000/api/businesses').then(function (resp) {
       _this.businnessesForType = [];
       _this.allBusinesses = resp.data;
       _this.businessesToRender = _this.allBusinesses;
@@ -2046,20 +2047,23 @@ new Vue({
       var lowerCoupon = this.couponCode.toLowerCase();
       var alertCoupon = 'Inserire un codice coupon valido';
       var alertCouponEmpty = 'Nessun codice inserito';
-      var alertCartEmpty = 'Aggiungere un prodotto al carrello';
-      this.flagVerificaCoupon = false;
+      var alertCartEmpty = 'Aggiungere almeno un prodotto al carrello';
 
-      if (this.amount === 0) {
-        return this.couponCode = alertCartEmpty;
-      } else if (this.couponCode === '') {
-        return this.couponCode = alertCouponEmpty;
+      if (this.couponApplied) {
+        alert("Hai già utilizzato un coupon!");
       } else {
-        for (var i = 0; i < this.coupon.length; i++) {
-          if (lowerCoupon === this.coupon[i]) {
-            discount = this.amount * this.couponDiscount;
-            discountedAmount = this.amount - discount;
-            fixedDiscountedAmount = discountedAmount.toFixed(2);
-            this.flagVerificaCoupon = true;
+        if (this.amount === 0) {
+          this.couponCode = alertCartEmpty;
+        } else if (this.couponCode === '') {
+          this.couponCode = alertCouponEmpty;
+        } else {
+          for (var i = 0; i < this.coupon.length; i++) {
+            if (lowerCoupon === this.coupon[i]) {
+              discount = this.amount * this.couponDiscount;
+              discountedAmount = this.amount - discount;
+              fixedDiscountedAmount = discountedAmount.toFixed(2);
+              this.flagVerificaCoupon = true;
+            }
           }
         }
       }
@@ -2069,12 +2073,13 @@ new Vue({
       }
 
       if (!this.flagVerificaCoupon && this.couponCode.length > 0) {
-        return this.couponCode = alertCoupon;
+        this.couponCode = alertCoupon;
       } else {
         this.couponUsed = "";
         this.couponUsed = lowerCoupon;
         this.preDiscountAmount = this.amount;
-        return this.amount = fixedDiscountedAmount;
+        this.couponApplied = true;
+        this.amount = fixedDiscountedAmount;
       }
     },
     // CARRELLO: Calcola totale quantità prodotti
