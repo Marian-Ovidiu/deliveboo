@@ -67,7 +67,7 @@
         <ul class="top-header-menu-lg">
           <li><a href="{{ route('public-home') }}"><span>Home</span></a></li>
           @auth
-            <li><a href="{{ route('dashboard') }}">Area ristoratore &nbsp;{{ ucwords(Auth::user()->name) }}</a></li>
+            <li><a href="{{ route('dashboard') }}">Area ristoratore &nbsp; <small>[{{ Auth::user()->name }}]</small></a></li>
             <li>
                 <a href="{{ route('logout') }}"
                    onclick="event.preventDefault();

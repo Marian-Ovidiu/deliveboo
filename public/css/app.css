@@ -10201,6 +10201,14 @@ h3 {
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
   transition: 0.5s;
 }
+.business-item a {
+  color: #32363C;
+  text-decoration: none;
+}
+.business-item a:hover {
+  color: #32363C;
+  text-decoration: none;
+}
 .business-item:hover {
   background-color: #FFFFFF;
   transform: scale(1.06);

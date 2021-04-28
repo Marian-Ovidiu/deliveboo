@@ -55,10 +55,10 @@
   a {
     color: $link-col;
     text-decoration: none;
-  }
-  a:hover {
-    color: $link-hover-col;
-    text-decoration: underline;
+    &:hover {
+      color: $link-hover-col;
+      text-decoration: underline;
+    }
   }
 }
 
@@ -142,6 +142,15 @@
     background-color: #EFEFFF;
     box-shadow: 2px 2px 4px rgba(0, 0, 0, .4);
     transition: 0.5s;
+
+    a {
+      color: #32363C;
+      text-decoration: none;
+      &:hover {
+        color: #32363C;
+        text-decoration: none;
+      }
+    }
 
     &:hover {
       background-color: #FFFFFF;
