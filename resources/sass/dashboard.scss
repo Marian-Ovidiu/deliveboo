@@ -73,6 +73,7 @@
     a {
         text-transform: uppercase;
         font-weight: 800;
+        font-size: 12px;
     }
     a:hover {
         text-decoration: none;
@@ -83,11 +84,11 @@
 .dash-main {
     background-color: #00338E;
     color: #fff;
-    .text-green {
-        color: #00BE43;
-    }
 }
 
+.text-blue {
+    color: $link-col;
+}
 // #myChart {
 //     color: #fff;
 // }

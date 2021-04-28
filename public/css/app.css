@@ -10542,6 +10542,7 @@ h3 {
 .dash-nav a {
   text-transform: uppercase;
   font-weight: 800;
+  font-size: 12px;
 }
 .dash-nav a:hover {
   text-decoration: none;
@@ -10552,8 +10553,9 @@ h3 {
   background-color: #00338E;
   color: #fff;
 }
-.dash-main .text-green {
-  color: #00BE43;
+
+.text-blue {
+  color: #000138;
 }
 
 .fl {

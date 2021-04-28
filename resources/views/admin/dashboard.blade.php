@@ -15,7 +15,7 @@
                     <span>info</span>
                 </h6> --}}
 
-                <ul class="nav flex-column mt-5 ml-5">
+                <ul class="nav flex-column mt-5">
                     <li class="nav-item">
                         <a class="nav-link" aria-current="page" href="{{ route('dashboard') }}">
                             <i class="fas fa-home"></i>
@@ -56,21 +56,25 @@
 
             <ul class="business justify-content-start dash-main">
             @foreach ($businesses as $business)
-                <li class="business-item">
+                <li class="business-item text-blue">
                     <div class="business-item-top">
                         <div class="business-item-top-logo">
                             <img src="{{ $business->logo }}" alt="{{ $business->name }}">
                         </div>
                         <h3>{{ $business->name }}</h3>
                     </div>
-                    <div class="business-item-description text-green">
-                        {{ $business->description }}
+                    <div class="business-item-description">
+                        @if (strlen($business->description) > 200)
+                            {{substr($business->description, 0, 200)}}[...]
+                        @else
+                            {{$business->description}}
+                        @endif
                     </div>
                     <div class="business-item-time">
                         <span>Dalle: {{ $business->opening_time }}</span><br>
                         <span>Alle: {{ $business->closing_time }}</span>
                     </div>
-                    <div class="business-item-address text-green">
+                    <div class="business-item-address">
                         <i class="fas fa-map-marker-alt"></i>
                         {{ $business->address }}
                     </div>

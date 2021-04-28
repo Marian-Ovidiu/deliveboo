@@ -58,7 +58,7 @@
             <div class="business-main-row-main-row-products-container">
                 <span class="business-main-row-main-row-products-container-title">{{ $product->name }}</span><br>
                 <span class="business-main-row-main-row-products-container-description">
-                    @if (strlen($product->description > 100))
+                    @if (strlen($product->description) > 100)
                         {{substr( $product->description, 0, 100)}}[...]
                     @else
                         {{$product->description}}
