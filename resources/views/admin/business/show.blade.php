@@ -99,6 +99,11 @@
                                     @endif
                             @endforeach
                         </div>
+                        <div align="center">
+                          <br>
+                          <a class="btn" href="{{ route('business.edit', compact('business'))}}">Modifica Dati</a>
+                          <br><br>
+                        </div>
                     </section>
                 </div>
             </aside>

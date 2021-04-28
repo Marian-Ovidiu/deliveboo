@@ -10764,3 +10764,10 @@ h3 {
   padding: 5px 10px;
   margin: 10px auto;
 }
+
+.info-restaurant .card-sidebar-info {
+  border-bottom: 1px solid #002664 !important;
+}
+.info-restaurant .btn {
+  background-color: #002664;
+}

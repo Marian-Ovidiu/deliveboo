@@ -57,7 +57,6 @@
             <ul class="business justify-content-start dash-main">
             @foreach ($businesses as $business)
                 <li class="business-item">
-                    {{-- <a href="#"> --}}
                     <div class="business-item-top">
                         <div class="business-item-top-logo">
                             <img src="{{ $business->logo }}" alt="{{ $business->name }}">
@@ -75,7 +74,6 @@
                         <i class="fas fa-map-marker-alt"></i>
                         {{ $business->address }}
                     </div>
-                    {{-- </a> --}}
                     <div class="business-item-actions">
                         <a href="{{ route('business.show', compact('business'))}}">
                             <i class="fa fa-eye" aria-hidden="true"></i>
