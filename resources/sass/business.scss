@@ -10,6 +10,7 @@
 
   .content {
     @include flex;
+    justify-content: center;
     align-items: center;
     padding: 0;
   }

@@ -50,7 +50,7 @@
             <div class="offset-1"></div>
             <div class="col-xl-7 col-lg-7 col-md-10 col-sm-10 col-10 business-main-row-main">
                 <div class="business-main-row-main-row row">
-                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 business-main-row-main-row-title">I nostri piatti</div>
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 business-main-row-main-row-title">I tuoi piatti</div>
                 </div>
                 @foreach ($business->products()->get() as $product)
                     <div class="business-main-row-main-row row">
@@ -79,6 +79,7 @@
 
                 {{-- Statistics --}}
                 <div style="text-align: center; margin-top: 30px">
+                    <div><h3><b>Le tue statistiche</b></h3></div>
                   <IFRAME
                   name = "chartjs"
                   src = "{{ route('stats', [ 'id' => $business->id ]) }}"

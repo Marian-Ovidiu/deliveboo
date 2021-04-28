@@ -58,8 +58,8 @@ var myChart = new Chart(ctx, {
             label: 'Numero ordini', // legend
             data: [...orderValues], // the y value adapt automatically to contain all the values in the array
             fill: false, // fil color under the graph
-            backgroundColor: '#71bed1', // color of the graph under the line
-            borderColor: '#71bed1', // graph line color
+            backgroundColor: 'white', // color of the graph under the line
+            borderColor: '#00BE43', // graph line color
             borderWidth: 1.5, // width of the graph line
             tension: 0.1, // roundness of the graph line
         },
@@ -68,8 +68,8 @@ var myChart = new Chart(ctx, {
             label: 'Totale incasso in euro', // legend
             data: [...moneyValues],
             fill: false,
-            backgroundColor: '#ff6e54', // color of the graph under the line
-            borderColor: '#ff6e54',
+            backgroundColor: '#00BE43', // color of the graph under the line
+            borderColor: 'white',
             borderWidth: 1.5,
             tension: 0.1,
         }
