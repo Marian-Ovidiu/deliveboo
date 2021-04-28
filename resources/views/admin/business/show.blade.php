@@ -53,6 +53,7 @@
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 business-main-row-main-row-title">I tuoi piatti</div>
                 </div>
                 @foreach ($business->products()->get() as $product)
+                @include('admin.business.modal')
                     <div class="business-main-row-main-row row">
                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 business-main-row-main-row-products">
                             <div class="business-main-row-main-row-products-img" style="background-image: url({{asset( $product->img )}});"></div>
@@ -65,13 +66,11 @@
                                 <a class="business-main-row-main-row-products-options-btn"  href="{{ route('product.edit', compact('product'))}}">
                                     <i class="fa fa-edit" aria-hidden="true"></i>
                                 </a>
-                                <form action="{{route('product.destroy', compact('product'))}}" method="POST" class="no-gutters">
-                                    @method('DELETE')
-                                    @csrf
-                                    <button class="business-main-row-main-row-products-options-btn"  style="color: #000138;">
+
+                                    <button class="business-main-row-main-row-products-options-btn" data-toggle="modal" data-target="#modalDelete{{$product->id}}" style="color: #000138;">
                                         <i class="fas fa-meteor"></i>
                                     </button>
-                                </form>
+
                             </div>
                         </div>
                     </div>
