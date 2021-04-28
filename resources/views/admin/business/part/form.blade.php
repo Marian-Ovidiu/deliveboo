@@ -120,7 +120,8 @@ $days = [
                         <b>Logo</b>
                     </label>
                     &nbsp;&nbsp;&nbsp;&nbsp;
-                    <input type="file" id="logo" class="form-control {{ $errors->has('logo') ? 'is-invalid' : '' }}" name="logo" accept="image/*">
+                    <input type="file" id="logo" class="form-control {{ $errors->has('logo') ? 'is-invalid' : '' }}" name="logo" accept="image/*"
+                    @if (!isset($business)) required @endif>
                     @if (isset($business))
                         <small>
                             <br>&nbsp;File caricato in precedenza: {{ substr($business->logo, 12) }}

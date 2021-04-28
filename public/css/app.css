@@ -10080,6 +10080,14 @@ h3 {
   margin: auto;
   padding: 30px 0;
 }
+.wrapper .btn {
+  background-color: #00BE43;
+  color: #FFFFFF;
+}
+.wrapper .btn:hover {
+  color: #FFFFFF;
+  text-decoration: none;
+}
 .wrapper .titles {
   font-size: 2.4em;
   font-weight: 800;
@@ -10162,7 +10170,7 @@ h3 {
     display: block;
   }
   .top-header-menu-sm {
-    position: absolute;
+    position: fixed;
     z-index: 100;
     top: 0;
     right: 0;
@@ -10192,6 +10200,14 @@ h3 {
   background-color: #EFEFFF;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
   transition: 0.5s;
+}
+.business-item a {
+  color: #32363C;
+  text-decoration: none;
+}
+.business-item a:hover {
+  color: #32363C;
+  text-decoration: none;
 }
 .business-item:hover {
   background-color: #FFFFFF;
@@ -10500,9 +10516,6 @@ h3 {
 .form-section .container {
   padding: 50px 30px;
 }
-.form-section .btn {
-  background-color: #00BE43;
-}
 .form-section .order-container .table-borderless {
   color: #fff;
 }
@@ -10758,4 +10771,11 @@ h3 {
   border-bottom: 1px solid gray;
   padding: 5px 10px;
   margin: 10px auto;
+}
+
+.info-restaurant .card-sidebar-info {
+  border-bottom: 1px solid #002664 !important;
+}
+.info-restaurant .btn {
+  background-color: #002664;
 }

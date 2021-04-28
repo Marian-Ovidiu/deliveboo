@@ -17,7 +17,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.1.0/chart.min.js"></script>
   <script src="{{ asset('js/app.js') }}" defer></script>
   <title>Deliveboo - @yield('title')</title>
-  <link rel="icon" href="img/00-fav.png">
+  <link rel="icon" href="{{ asset('img/00-fav.png')}}">
 </head>
 
 <body>
@@ -67,7 +67,7 @@
         <ul class="top-header-menu-lg">
           <li><a href="{{ route('public-home') }}"><span>Home</span></a></li>
           @auth
-            <li><a href="{{ route('dashboard') }}">Area ristoratore &nbsp;{{ ucwords(Auth::user()->name) }}</a></li>
+            <li><a href="{{ route('dashboard') }}">Area ristoratore &nbsp; <small>[{{ Auth::user()->name }}]</small></a></li>
             <li>
                 <a href="{{ route('logout') }}"
                    onclick="event.preventDefault();

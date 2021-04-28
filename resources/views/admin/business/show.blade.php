@@ -2,31 +2,31 @@
 @section('title', 'Gestione menù')
 
 @section('content')
-   {{-- Header --}}
-    <section class="business-header row no-gutters">
-        <div class="offset-1"></div>
-        <div class="col-xl-10 col-lg-10 col-md-12 col-sm-12 col-12 business-header-jumbotronn">
-            <div class="business-header-jumbotronn-container">
-                <div class="business-header-jumbotronn-container-title">{{ $business->name }}</div>
-                <div class="business-header-jumbotronn-container-types">
-                    @foreach ($business->types as $id => $type)
-                        {{ $type->name }}
-                        @if ($id != (count($business->types) - 1))
-                        |
-                        @endif
-                    @endforeach
-                </div>
-                <a href="{{ route('add-prod', [ 'id' => $business->id ]) }}">Aggiungi un nuovo piatto</a>
-            </div>
-            <div class="business-header-jumbotronn-container">
-                <div class="business-header-jumbotronn-container-img">
-                    <img src="{{asset( $business->logo ) }}" alt="Deliveboo">
-                </div>
-            </div>
-        </div>
-        <div class="offset-1"></div>
-    </section>
-    {{--  End Header --}}
+
+  {{-- Header --}}
+  <section class="busines-header">
+      <div class="content">
+          <div class="busines-header-data">
+          <div class="titles">
+              {{ $business->name }}
+          </div>
+          <div class="subtitles">
+            @foreach ($business->types as $id => $type)
+                {{ $type->name }}
+                @if ($id != (count($business->types) - 1))
+                |
+                @endif
+            @endforeach
+            <br><br>
+            <a class="btn" href="{{ route('add-prod', [ 'id' => $business->id ]) }}">Aggiungi un nuovo piatto</a>
+          </div>
+          </div>
+          <div class="busines-header-img">
+          <img src="{{asset( $business->logo ) }}" alt="Deliveroo">
+          </div>
+      </div>
+  </section>
+  {{--  End Header --}}
 
     {{--  Info --}}
     <section class="info-row row no-gutters">
@@ -76,6 +76,23 @@
                         </div>
                     </div>
                 @endforeach
+
+                {{-- Statistics --}}
+                <div style="text-align: center; margin-top: 30px">
+                  <IFRAME
+                  name = "chartjs"
+                  src = "{{ route('stats', [ 'id' => $business->id ]) }}"
+                  width = "90%"
+                  height = "850"
+                  scrolling	= "0"
+                  frameborder	= "0"
+                  marginwidth = "0"
+                  marginheight = "0"
+                  >
+                  </IFRAME>
+                </div>
+              {{-- / Statistics --}}
+
             </div>
             <aside class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12 info-restaurant">
                 <div class="card">
@@ -99,6 +116,11 @@
                                     @endif
                             @endforeach
                         </div>
+                        <div align="center">
+                          <br>
+                          <a class="btn" href="{{ route('business.edit', compact('business'))}}">Modifica Dati</a>
+                          <br><br>
+                        </div>
                     </section>
                 </div>
             </aside>
@@ -108,97 +130,4 @@
     </section>
     {{-- End Main --}}
 
-    <script>
-        const orders = {!! $orders !!};
-        // const orders = JSON.parse(`<?php echo $orders; ?>`);
-        let result = {
-            "01": {
-                totalOrders: 0,
-                money: 0,
-                monthName: "Gennaio",
-            },
-            "02": {
-                totalOrders: 0,
-                money: 0,
-                monthName: "Febbraio",
-            },
-            "03": {
-                totalOrders: 0,
-                money: 0,
-                monthName: "Marzo",
-            },
-            "04": {
-                totalOrders: 0,
-                money: 0,
-                monthName: "Aprile",
-            },
-        }
-        orders.forEach(order => {
-            result[order.created_at.slice(5,7)].totalOrders += 1;
-            result[order.created_at.slice(5,7)].money += order.amount;
-        });
-
-        // console.log(result)
-
-        const orderValues = []; // restaurant's order, from the api
-        const moneyValues = []; // restaurant's money gained, from the api
-        const monthValues = []; // months
-        for (let key in result) {
-            orderValues.push(result[key].totalOrders);
-            moneyValues.push(result[key].money);
-            monthValues.push(result[key].monthName);
-        }
-    </script>
-
-    <script>
-        $(function(){
-        //get the pie chart canvas
-            var cData = JSON.parse(`<?php echo $orders; ?>`);
-            var ctx = $("#myChart");
-            // var ctx = document.getElementById('myChart').getContext('2d');
-            // var myChart = new Chart(ctx, {
-            var data = {
-                labels: [...monthValues],
-                datasets: [
-                    // first graph
-                    {
-                        label: 'Numero ordini', // legend
-                        data: [...orderValues], // the y value adapt automatically to contain all the values in the array
-                        fill: false, // fil color under the graph
-                        backgroundColor: '#71bed1', // color of the graph under the line
-                        borderColor: '#71bed1', // graph line color
-                        borderWidth: 1.5, // width of the graph line
-                        tension: 0.1, // roundness of the graph line
-                    },
-                    // second graph
-                    {
-                        label: 'Totale incasso in euro', // legend
-                        data: [...moneyValues],
-                        fill: false,
-                        backgroundColor: '#ff6e54', // color of the graph under the line
-                        borderColor: '#ff6e54',
-                        borderWidth: 1.5,
-                        tension: 0.1,
-                    }
-                ],
-                options: {
-                    scales: {
-                        yAxes: [{
-                            gridLines: {
-                                color: "#fff"
-                            },
-                            ticks: {
-                                fontColor: 'white'
-                            },
-                        }],
-                        xAxes: [{
-                            ticks: {
-                                fontColor: 'white'
-                            },
-                        }]
-                    },
-                }
-            }
-        });
-    </script>
 @endsection

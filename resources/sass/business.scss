@@ -76,7 +76,6 @@
       flex-direction: column;
     }
   }
-
 }
 
 .business-main {
@@ -220,5 +219,14 @@
         }
       }
     }
+  }
+}
+
+.info-restaurant {
+  .card-sidebar-info {
+    border-bottom: 1px solid $form-bg-header !important;
+  }
+  .btn {
+    background-color: $form-bg-header;
   }
 }
