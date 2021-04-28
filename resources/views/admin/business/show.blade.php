@@ -46,34 +46,6 @@
 
     {{-- Main --}}
     <section id="app" class="business-main">
-<<<<<<< HEAD
-        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12  business-main row">
-            <div class="offset-1"></div>
-            <div class="col-xl-7 col-lg-7 col-md-7 col-sm-10 col-10 business-main-row-main">
-                <div class="business-main-row-main-row row">
-                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 business-main-row-main-row-title">I nostri piatti</div>
-                </div>
-                <div class="business-main-row-main-row row">
-                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 business-main-row-main-row-products">
-                        @foreach ($business->products()->get() as $product)
-                        <div class="business-main-row-main-row-products-row row">
-                            <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-8 business-main-row-main-row-products-row-name">
-                                <div class="business-main-row-main-row-products-row-name-img fl" style="background-image: url('{{asset( $product->img )}}');"></div>
-                                <div class="business-main-row-main-row-products-row-name-container fl">
-                                    <span class="business-main-row-main-row-products-row-name-container-title">{{ $product->name }}</span><br>
-                                    <span class="business-main-row-main-row-products-row-name-container-description">{{ $product->description }}</span>
-                                </div>
-                            </div>
-                            <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-2 business-main-row-main-row-products-row-price"><strong>Prezzo</strong> <br><br> {{ $product->price }}€</div>
-                            <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-2 business-main-row-main-row-products-row-options" style="text-align: center">
-                                <a class="business-main-row-main-row-products-row-options-btn btn" href="{{ route('product.edit', compact('product'))}}">
-                                    <i class="fa fa-edit" aria-hidden="true"></i>
-                                </a>
-                                <form action="{{route('product.destroy', compact('product'))}}" method="POST">
-                                    @method('DELETE')
-                                    @csrf
-                                    <button class="business-main-row-main-row-products-row-options-btn btn" style="margin-top: 20px;color: #000138;">
-=======
         <div class="row no-gutters">
             <div class="offset-1"></div>
             <div class="col-xl-7 col-lg-7 col-md-10 col-sm-10 col-10 business-main-row-main">
@@ -97,54 +69,11 @@
                                     @method('DELETE')
                                     @csrf
                                     <button class="business-main-row-main-row-products-options-btn"  style="color: #000138;">
->>>>>>> e399331093bc9ba9d0c3484de6ec9e3c5413f5ef
                                         <i class="fas fa-meteor"></i>
                                     </button>
                                 </form>
                             </div>
                         </div>
-<<<<<<< HEAD
-                        @endforeach
-                    </div>
-                </div>
-            </div>
-            <aside class="col-3 info-restaurant">
-
-                <div class="card">
-                <section class="card-sidebar">
-                    <div class="card-sidebar-info"><b>Info Ristorante</b></div>
-                    <div class="card-sidebar-info">Indirizzo: <span>{{$business->address}}</span> </div>
-                    <div class="card-sidebar-info">Tel: {{$business->telephone}}</div>
-                    <div class="card-sidebar-info">Email: {{$business->email}} </div>
-                    <div class="card-sidebar-info">Apertura: {{$business->opening_time}}</div>
-                    <div class="card-sidebar-info">Chiusura: {{$business->closing_time}}</div>
-                    <div class="card-sidebar-info">Day Off: {{$business->opening_time}}</div>
-                    <div class="card-sidebar-info"><h6><b>Descrizione</b></h6>
-                        <p class="sidebar-text">{{$business->description}}</p>
-                    </div>
-                    <div class="card-sidebar-info">
-                        <b>Category</b><br>
-                        @foreach ($business->types as $id=>$type)
-                            {{ $type->name }}
-                                @if ($id != (count($business->types) - 1))
-                                |
-                                @endif
-                        @endforeach
-                    </div>
-                </section>
-
-            </aside>
-            <div class="offset-1"></div>
-        </div>
-
-        <div class="row">
-            <div class="col-10 mx-auto">
-                <h4 id="report" class="ml-3">Report</h4>
-                <canvas class="my-4 w-100" id="myChart" width="900" height="380" color="white"></canvas>
-            </div>
-        </div>
-
-=======
                     </div>
                 @endforeach
             </div>
@@ -157,7 +86,7 @@
                         <div class="card-sidebar-info">Email: {{$business->email}} </div>
                         <div class="card-sidebar-info">Apertura: {{$business->opening_time}}</div>
                         <div class="card-sidebar-info">Chiusura: {{$business->closing_time}}</div>
-                        <div class="card-sidebar-info">Day Off: {{$business->opening_time}}</div>
+                        <div class="card-sidebar-info">Day Off: {{$business->closing_day}}</div>
                         <div class="card-sidebar-info"><h6><b>Descrizione</b></h6>
                             <p class="sidebar-text">{{$business->description}}</p>
                         </div>
@@ -176,7 +105,6 @@
 
         <div class="offset-1"></div>
         </div>
->>>>>>> e399331093bc9ba9d0c3484de6ec9e3c5413f5ef
     </section>
     {{-- End Main --}}
 

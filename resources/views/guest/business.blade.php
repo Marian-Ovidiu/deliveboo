@@ -3,28 +3,27 @@
 @section('title', 'Menù')
 
 @section('content')
+
   {{-- Header --}}
-  <section class="business-header row no-gutters">
-    <div class="offset-1"></div>
-    <div class="col-xl-10 col-lg-10 col-md-12 col-sm-12 col-12 business-header-jumbotronn">
-        <div class="business-header-jumbotronn-container">
-            <div class="business-header-jumbotronn-container-title">{{ $business->name }}</div>
-            <div class="business-header-jumbotronn-container-types">
+  <section class="busines-header">
+      <div class="content">
+          <div class="busines-header-data">
+          <div class="titles">
+              {{ $business->name }}
+          </div>
+          <div class="subtitles">
             @foreach ($business->types as $id => $type)
                 {{ $type->name }}
                 @if ($id != (count($business->types) - 1))
                 |
                 @endif
             @endforeach
-            </div>
-        </div>
-        <div class="business-header-jumbotronn-container">
-            <div class="business-header-jumbotronn-container-img">
-            <img src="{{asset( $business->logo ) }}" alt="Deliveboo">
-            </div>
-        </div>
-    </div>
-    <div class="offset-1"></div>
+          </div>
+          </div>
+          <div class="busines-header-img">
+          <img src="{{asset( $business->logo ) }}" alt="Deliveroo">
+          </div>
+      </div>
   </section>
   {{--  End Header --}}
 
@@ -62,7 +61,7 @@
             </div>
             <div class="business-main-row-main-row-products-price"><div><strong>Prezzo</strong></div><div style="margin: 0 10px">{{ $product->price }}€</div></div>
             <div class="business-main-row-main-row-products-options" style="text-align: center">
-                <button type="button" class="business-main-row-main-row-products-options-btn" v-on:click = "add({{$product->id}}, '{{$product->name}}', {{$product->price}})">+</button><br><br>
+                <button type="button" class="business-main-row-main-row-products-options-btn" v-on:click = "add({{$product->id}}, '{{$product->name}}', {{$product->price}})">+</button><br>
                 <button type="button" class="business-main-row-main-row-products-options-btn" v-on:click = "remove({{$product->id}}, {{$product->price}})">-</button>
             </div>
           </div>

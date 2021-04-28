@@ -53,7 +53,9 @@ $days = [
             {{-- row: name --}}
             <div class="col-12">
                 <div class="form-group">
-                    <label for="name"><b>Nome Risorante</b></label>
+                    <label for="name">
+                        <b>Nome Risorante</b>
+                    </label>
                     <input type="text" class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" id="name" name="name"
                     value="{{ isset($business) ? $business->name : '' }}">
                     <div class="invalid-feedback">
@@ -66,7 +68,9 @@ $days = [
             {{-- / row: types --}}
             <div class="col-12">
                 <div class="form-group">
-                    <label for="type[]"><b>Categoria</b></label>
+                    <label for="type[]">
+                        <b>Categoria</b>
+                    </label>
                     <select class="custom-select" name="type[]" id="type_id" multiple required>
                     @foreach ($types as $type)
                         <option value="{{ $type->id }}" @if (isset($business) && $business->types->contains($type->id)) selected @endif>
@@ -81,7 +85,9 @@ $days = [
             {{-- row: description --}}
             <div class="col-12">
                 <div class="form-group">
-                    <label for="description"><b>Descrizione</b></label>
+                    <label for="description">
+                        <b>Descrizione</b>
+                    </label>
                     <textarea class="form-control {{ $errors->has('description') ? 'is-invalid' : '' }}"
                     id="description" name="description" rows="6"> @if(isset($business)) {{ $business->description }} @endif
                     </textarea>
@@ -95,7 +101,9 @@ $days = [
             {{-- row: address --}}
             <div class="col-lg-6 col-xs-12">
                 <div class="form-group ">
-                    <label for="address"><b>Indirizzo</b></label>
+                    <label for="address">
+                        <b>Indirizzo</b>
+                    </label>
                     <input type="text" class="form-control {{ $errors->has('address') ? 'is-invalid' : '' }}" id="address"
                     name="address" value="{{ isset($business) ? $business->address : '' }}">
                     <div class="invalid-feedback">
@@ -128,7 +136,9 @@ $days = [
             {{-- row: opening time--}}
             <div class="col-lg-6 col-xs-12">
                 <div class="form-group">
-                    <label for="opening_time"><b>Orario apertura del ristorante</b></label>
+                    <label for="opening_time">
+                        <b>Orario apertura del ristorante</b>
+                    </label>
                     <input type="time" class="form-control" id="opening_time" name="opening_time" value="{{ isset($business) ? $business->opening_time : '' }}">
                 </div>
             </div>
@@ -137,7 +147,9 @@ $days = [
             {{-- row: closing time --}}
             <div class="col-lg-6 col-xs-12">
                 <div class="form-group">
-                    <label for="closing_time"><b>Orario chiusura del ristorante</b></label>
+                    <label for="closing_time">
+                        <b>Orario chiusura del ristorante</b>
+                    </label>
                     <input type="time" class="form-control" id="closing_time" name="closing_time"  value="{{ isset($business) ? $business->closing_time : '' }}">
                 </div>
             </div>
@@ -146,7 +158,9 @@ $days = [
             {{-- row: closing day --}}
             <div class="col-lg-6 col-xs-12">
                 <div class="form-group">
-                    <label for="closing_day"><b>Giorno di chiusura</b></label>
+                    <label for="closing_day">
+                        <b>Giorno di chiusura</b>
+                    </label>
                     <select class="custom-select" name="closing_day" id="closing_day">
                     @foreach ($days as $day)
                         <option value="{{ $day }}"
@@ -162,7 +176,9 @@ $days = [
             {{-- / row: business email --}}
             <div class="col-lg-6 col-xs-12">
                 <div class="form-group">
-                    <label for="email"><b>Email Ristorante</b></label>
+                    <label for="email">
+                        <b>Email Ristorante</b>
+                    </label>
                     <input type="text" class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}" id="email" name="email"  value="{{ isset($business) ? $business->email : '' }}">
                     <div class="invalid-feedback">
                     {{ $errors->first('email') }}
