@@ -109,15 +109,22 @@ if ($edit) {
             {{-- / row: image --}}
 
             {{-- row: visible --}}
-            <div class="col-12">
+            <div class="col-6">
                 <div class="form-group">
                     <label for="visible">Disponibile</label>
                     &nbsp;&nbsp;&nbsp;&nbsp;
-                    <input type="checkbox" id="visible" name="visible" value="1"
-                    @if (isset($product) && $product->visible == 1)
-                        checked
-                    @endif>
+                    <select id="visible" name="visible">
+                        <option value="1">Sì</option>
+                        <option value="0">No</option>
+                    </select>
                 </div>
+            </div>
+            <div class="col-6">
+                @if (isset($product) && $product->visible == 1)
+                    attualmente impostato come disponibile.
+                @else
+                    attualmente impostato come non disponibile.
+                @endif
             </div>
             {{-- row: visible --}}
 
