@@ -2,31 +2,31 @@
 @section('title', 'Gestione menù')
 
 @section('content')
-   {{-- Header --}}
-    <section class="business-header row no-gutters">
-        <div class="offset-1"></div>
-        <div class="col-xl-10 col-lg-10 col-md-12 col-sm-12 col-12 business-header-jumbotronn">
-            <div class="business-header-jumbotronn-container">
-                <div class="business-header-jumbotronn-container-title">{{ $business->name }}</div>
-                <div class="business-header-jumbotronn-container-types">
-                    @foreach ($business->types as $id => $type)
-                        {{ $type->name }}
-                        @if ($id != (count($business->types) - 1))
-                        |
-                        @endif
-                    @endforeach
-                </div>
-                <a href="{{ route('add-prod', [ 'id' => $business->id ]) }}">Aggiungi un nuovo piatto</a>
-            </div>
-            <div class="business-header-jumbotronn-container">
-                <div class="business-header-jumbotronn-container-img">
-                    <img src="{{asset( $business->logo ) }}" alt="Deliveboo">
-                </div>
-            </div>
-        </div>
-        <div class="offset-1"></div>
-    </section>
-    {{--  End Header --}}
+
+  {{-- Header --}}
+  <section class="busines-header">
+      <div class="content">
+          <div class="busines-header-data">
+          <div class="titles">
+              {{ $business->name }}
+          </div>
+          <div class="subtitles">
+            @foreach ($business->types as $id => $type)
+                {{ $type->name }}
+                @if ($id != (count($business->types) - 1))
+                |
+                @endif
+            @endforeach
+            <br><br>
+            <a class="btn" href="{{ route('add-prod', [ 'id' => $business->id ]) }}">Aggiungi un nuovo piatto</a>
+          </div>
+          </div>
+          <div class="busines-header-img">
+          <img src="{{asset( $business->logo ) }}" alt="Deliveroo">
+          </div>
+      </div>
+  </section>
+  {{--  End Header --}}
 
     {{--  Info --}}
     <section class="info-row row no-gutters">
