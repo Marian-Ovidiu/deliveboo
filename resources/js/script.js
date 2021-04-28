@@ -13,6 +13,7 @@ new Vue({
     coupon: ['freedelivery', 'hambspecial'],
     couponCode: '',
     couponUsed: '',
+    couponApplied: false,
     couponDiscount: 0.20,
     flagVerificaCoupon: false,
     preDiscountAmount: 0,
@@ -24,6 +25,9 @@ new Vue({
 
   mounted() {
     setTimeout (this.preloadStop, 5000),
+
+    this.couponApplied = false,
+    this.flagVerificaCoupon = false,
 
     axios.get('http://localhost:8000/api/businesses')
     .then(resp => {
@@ -161,40 +165,46 @@ new Vue({
 
     //CARRELLO: Calcola e applica lo sconto al prezzo totale
     discountCoupon() {
-      let discountedAmount = 0;
-      let fixedDiscountedAmount = 0;
-      let lowerCoupon = this.couponCode.toLowerCase();
-      let alertCoupon = 'Inserire un codice coupon valido';
-      let alertCouponEmpty = 'Nessun codice inserito';
-      let alertCartEmpty = 'Aggiungere un prodotto al carrello'
-      this.flagVerificaCoupon = false;
+        let discountedAmount = 0;
+        let fixedDiscountedAmount = 0;
+        let lowerCoupon = this.couponCode.toLowerCase();
+        let alertCoupon = 'Inserire un codice coupon valido';
+        let alertCouponEmpty = 'Nessun codice inserito';
+        let alertCartEmpty = 'Aggiungere almeno un prodotto al carrello'
 
-      if(this.amount === 0) {
-            return this.couponCode = alertCartEmpty;
-      } else if(this.couponCode === '' ) {
-            return this.couponCode = alertCouponEmpty;
-      } else {
-            for(let i = 0; i < this.coupon.length; i++) {
-                if(lowerCoupon === this.coupon[i]) {
-                    discount = (this.amount * this.couponDiscount);
-                    discountedAmount = this.amount - discount;
-                    fixedDiscountedAmount = discountedAmount.toFixed(2);
-                    this.flagVerificaCoupon = true;
+        if(this.couponApplied) {
+            alert("Hai già utilizzato un coupon!");
+
+        } else {
+
+            if(this.amount === 0) {
+                    this.couponCode = alertCartEmpty;
+            } else if(this.couponCode === '' ) {
+                    this.couponCode = alertCouponEmpty;
+            } else {
+                    for(let i = 0; i < this.coupon.length; i++) {
+                        if(lowerCoupon === this.coupon[i]) {
+                            discount = (this.amount * this.couponDiscount);
+                            discountedAmount = this.amount - discount;
+                            fixedDiscountedAmount = discountedAmount.toFixed(2);
+                            this.flagVerificaCoupon = true;
+                        }
+                    }
                 }
-            }
-      }
+        }
 
         if (lowerCoupon === this.couponUsed   || this.couponCode === alertCoupon) {
             return this.couponCode = alertCoupon;
         }
 
         if(!this.flagVerificaCoupon && this.couponCode.length > 0) {
-            return this.couponCode = alertCoupon;
+            this.couponCode = alertCoupon;
         } else {
             this.couponUsed = "";
             this.couponUsed = lowerCoupon;
             this.preDiscountAmount = this.amount;
-            return this.amount = fixedDiscountedAmount;
+            this.couponApplied = true;
+            this.amount = fixedDiscountedAmount;
         }
     },
 
