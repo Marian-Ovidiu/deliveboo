@@ -2,7 +2,7 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content" style="color: #000138;">
         <div class="modal-header" >
-          <h5 class="modal-title" id="exampleModalLongTitle">Azione di Delete dell'oggetto</h5>
+          <h5 class="modal-title" id="exampleModalLongTitle">Conferma eliminazione prodotto</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
