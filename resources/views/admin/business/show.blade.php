@@ -59,18 +59,22 @@
                             <div class="business-main-row-main-row-products-img" style="background-image: url({{asset( $product->img )}});"></div>
                             <div class="business-main-row-main-row-products-container">
                                 <span class="business-main-row-main-row-products-container-title">{{ $product->name }}</span><br>
-                                <span class="business-main-row-main-row-products-container-description"> {{substr( $product->description, 0, 100)}}[...]</span>
+                                <div class="business-main-row-main-row-products-container-description" style="word-wrap: break-word; margin-top: 20px;">
+                                    @if (strlen($product->description) > 400)
+                                        {{substr( $product->description, 0, 400)}}[...]
+                                    @else
+                                        {{$product->description}}
+                                    @endif
+                                </div>
                             </div>
                             <div class="business-main-row-main-row-products-price"><div><strong>Prezzo</strong></div><div style="margin: 0 10px">{{ $product->price }}€</div></div>
                             <div class="business-main-row-main-row-products-options" style="text-align: center">
                                 <a class="business-main-row-main-row-products-options-btn"  href="{{ route('product.edit', compact('product'))}}">
                                     <i class="fa fa-edit" aria-hidden="true"></i>
                                 </a>
-
-                                    <button class="business-main-row-main-row-products-options-btn" data-toggle="modal" data-target="#modalDelete{{$product->id}}" style="color: #000138;">
-                                        <i class="fas fa-meteor"></i>
-                                    </button>
-
+                                <button class="business-main-row-main-row-products-options-btn" data-toggle="modal" data-target="#modalDelete{{$product->id}}" style="color: #000138;">
+                                    <i class="fas fa-meteor"></i>
+                                </button>
                             </div>
                         </div>
                     </div>
