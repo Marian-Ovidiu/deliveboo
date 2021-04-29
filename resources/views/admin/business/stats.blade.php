@@ -1,97 +1,109 @@
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.1.0/chart.min.js"></script>
+<!DOCTYPE html>
+<html lang="it" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.1.0/chart.min.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="img/00-ico.png">
+  </head>
+  <body>
 
+    <script>
+    let orders ={!! $orders !!};
 
-<script>
-const orders ={!! $orders !!};
-let result = {
-    "01": {
-        totalOrders: 15,
-        money: 55.5,
-        monthName: "Gennaio",
-    },
-    "02": {
-        totalOrders: 50,
-        money: 70,
-        monthName: "Febbraio",
-    },
-    "03": {
-        totalOrders: 35,
-        money: 90,
-        monthName: "Marzo",
-    },
-    "04": {
-        totalOrders: 0,
-        money: 0,
-        monthName: "Aprile",
-    },
-}
-    orders.forEach(order => {
-        result[order.created_at.slice(5,7)].totalOrders += 1;
-        result[order.created_at.slice(5,7)].money += order.amount;
-    });
-    console.log(result)
-    const orderValues = []; // restaurant's order, from the api
-    const moneyValues = []; // restaurant's money gained, from the api
-    const monthValues = []; // months
-    for (let key in result) {
-        orderValues.push(result[key].totalOrders);
-        moneyValues.push(result[key].money);
-        monthValues.push(result[key].monthName);
-    }
-</script>
-
-
-    <div>
-        <canvas id="myChart" width="100" height="75"></canvas>
-    </div>
-
-
-<script>
-    var ctx = document.getElementById('myChart').getContext('2d');
-var myChart = new Chart(ctx, {
-    type: 'bar', // set the kind of chart
-    data: {
-        labels: [...monthValues],
-        datasets: [
-          // first graph
-          {
-            label: 'Numero ordini', // legend
-            data: [...orderValues], // the y value adapt automatically to contain all the values in the array
-            fill: false, // fil color under the graph
-            backgroundColor: 'white', // color of the graph under the line
-            borderColor: '#00BE43', // graph line color
-            borderWidth: 1.5, // width of the graph line
-            tension: 0.1, // roundness of the graph line
+    let values = {
+        "01": {
+            orders: 25,
+            amount: 980,
+            month: "Gennaio",
         },
-          // second graph
-        {
-            label: 'Totale incasso in euro', // legend
-            data: [...moneyValues],
-            fill: false,
-            backgroundColor: '#00BE43', // color of the graph under the line
-            borderColor: 'white',
-            borderWidth: 1.5,
-            tension: 0.1,
+        "02": {
+            orders: 42,
+            amount: 1929,
+            month: "Febbraio",
+        },
+        "03": {
+            orders: 38,
+            amount: 1342,
+            month: "Marzo",
+        },
+        "04": {
+            orders: 15,
+            amount: 754,
+            month: "Aprile",
+        },
+    }
+        orders.forEach(order => {
+            values[order.created_at.slice(5,7)].orders += 1;
+            values[order.created_at.slice(5,7)].amount += order.amount;
+        });
+
+        let myOrders = [];
+        let myAmounts = [];
+        let myMonths = [];
+        for (let key in values) {
+            myOrders.push(values[key].orders);
+            myAmounts.push(values[key].amount);
+            myMonths.push(values[key].month);
         }
-                  ]
-    },
-    options: {
-        scales: {
-            x: {
-                beginAtZero: true,
-                ticks: {
-                    color: 'white',
-                    maxRotation: 90,
-                    minRotation: 45
-                },
+    </script>
+
+
+        <div>
+            <canvas id="myChart" width="100" height="75"></canvas>
+        </div>
+
+
+    <script>
+        let container = document.getElementById('myChart').getContext('2d');
+        let myChart = new Chart(container, {
+        type: 'bar', // set the kind of chart
+        data: {
+            labels: [...myMonths],
+            datasets: [
+              // first graph
+              {
+                label: 'Ordini', // legend
+                data: [...myOrders], // the y value adapt automatically to contain all the values in the array
+                fill: false, // fil color under the graph
+                backgroundColor: 'white', // color of the graph under the line
+                borderColor: '#00BE43', // graph line color
+                borderWidth: 1.5, // width of the graph line
+                tension: 0.1, // roundness of the graph line
             },
-             y: {
-                beginAtZero: true,
-                ticks: {
-                    color: 'white',
+              // second graph
+            {
+                label: 'Incasso (euro)', // legend
+                data: [...myAmounts],
+                fill: false,
+                backgroundColor: '#00BE43', // color of the graph under the line
+                borderColor: 'white',
+                borderWidth: 1.5,
+                tension: 0.1,
+            }
+                      ]
+        },
+        options: {
+            scales: {
+                x: {
+                    beginAtZero: true,
+                    ticks: {
+                        color: 'white',
+                        maxRotation: 90,
+                        minRotation: 45
+                    },
                 },
+                 y: {
+                    beginAtZero: true,
+                    ticks: {
+                        color: 'white',
+                    },
+                }
             }
         }
-    }
-});
-</script>
+    });
+    </script>
+
+  </body>
+</html>
