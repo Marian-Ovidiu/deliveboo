@@ -28,7 +28,7 @@ class BusinessController extends Controller
         return view('admin.business.show', compact('business'));
     }
 
-    // Gestione della VISUALIZZAZIONE DI UN SINGOLO RISTORANTE relativo all'user
+    // Gestione delle STATISTICHE degli ordni relativi al ristorante
     public function stats($id)
     {
         $products = Product::where('business_id', $id)->get();
@@ -37,7 +37,7 @@ class BusinessController extends Controller
             $query->where('business_id', $id);
         })->get());
 
-        return view('admin.business.stats', compact('orders', 'id'));
+        return view('admin.business.part.stats', compact('orders', 'id'));
     }
 
     // Gestione della CREAZIONE DI UN RISTORANTE relativo all'user

@@ -10007,61 +10007,6 @@ h3 {
     border-color: #dee2e6;
   }
 }
-.dashboard {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-.dashboard .user-header {
-  display: flex;
-  align-items: center;
-  padding: 30px;
-  margin-bottom: 30px;
-  background: linear-gradient(#4A4C5A, #8A8BA4);
-  border-radius: 15px;
-}
-.dashboard .user-header-avatar {
-  width: 20%;
-  margin-right: 50px;
-}
-.dashboard .user-header-avatar img {
-  background: rgba(255, 255, 255, 0.4);
-  border-radius: 50%;
-  max-width: 80%;
-}
-.dashboard .user-header-data {
-  width: 40%;
-  color: #FFF;
-  text-shadow: 1px 1px #000;
-}
-.dashboard .user-header-button .btn {
-  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.4);
-}
-.dashboard .user-businesses-title {
-  color: #4A4C5A;
-  font-weight: bolder;
-}
-.dashboard .table {
-  width: 95%;
-  margin: auto;
-  border: 1px dashed #8A8BA4;
-  font-size: 0.95em;
-}
-.dashboard-business-nav {
-  display: flex;
-}
-.dashboard-business-nav > * {
-  margin-right: 25px;
-}
-.dashboard .products-list {
-  display: flex;
-  flex-wrap: wrap;
-}
-.dashboard .products-list > * {
-  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
-  margin: 20px;
-}
-
 * {
   margin: 0;
   padding: 0;

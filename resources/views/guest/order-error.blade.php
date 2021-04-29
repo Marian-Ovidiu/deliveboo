@@ -2,7 +2,6 @@
 @section('title', 'Pagamento rifiutato')
 
 @section('content')
-dd($errors);
 <div class="row-jumbotron">
     <div class="row content">
       <div class="card border-dark mb-3" style="width: 100%; text-align: center;">

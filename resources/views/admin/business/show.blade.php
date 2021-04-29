@@ -53,7 +53,7 @@
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 business-main-row-main-row-title">I tuoi piatti</div>
                 </div>
                 @foreach ($business->products()->get() as $product)
-                @include('admin.business.modal')
+                @include('admin.business.part.modal')
                     <div class="business-main-row-main-row row">
                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 business-main-row-main-row-products">
                             <div class="business-main-row-main-row-products-img" style="background-image: url({{asset( $product->img )}});"></div>
